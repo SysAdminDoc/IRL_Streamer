@@ -119,11 +119,10 @@ fun PreferenceRow(
             .height(height)
             .then(
                 if (enabled && onClick != null) {
-                    Modifier.clickable(
-                        interactionSource = interaction,
-                        indication = null,
-                        onClick = onClick,
-                    )
+                    // Ripple restored: suppressing it bought nothing (a settled
+                    // screenshot never shows one) and made preference rows the
+                    // only rows in the app with no press feedback.
+                    Modifier.clickable(onClick = onClick)
                 } else Modifier,
             )
             .testTag("setting_$id")

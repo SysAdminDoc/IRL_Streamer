@@ -36,6 +36,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Reopening a settings dialog showed the catalog default instead of the value it
   was editing, so confirming it silently reverted the saved setting - and a
   multi-select dropped every selection the default did not contain.
+- Accessibility on the live console: plain buttons (Settings, Reload, Snapshot)
+  no longer announce a "Not selected" state they do not have, quick-panel toggles
+  are real switch-role controls spanning the whole row rather than a stateless
+  clickable row beside a switch, and preference rows regained their press ripple.
 - The safe-margin overlay honours the persisted ratios setting. "Safe margins
   ratios" is a nine-option multi-select, but the console drew one hardcoded 16:9
   rectangle, so selecting 21:9 or several ratios changed nothing on screen.

@@ -153,15 +153,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
 
 ### P3
 
-- [ ] P3 — IS-44 Accessibility gaps on the surfaces D010 claims were improved
-  Category: a11y
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/live/LiveConsoleScreen.kt:196-199` (every console button, toggle or not, announces "Selected"/"Not selected"), `QuickSettingsPanel.kt:305-320` (quick-toggle rows are 27 dp tall; `AuditedSwitch` state semantics live on the switch while the click action lives on the row — TalkBack reads a stateless clickable row), `PreferenceComponents.kt:124` (`indication = null` removes the ripple from every preference row while toggle rows keep theirs)
-  Problem: non-toggle buttons (Settings, Reload, Snapshot) announce a selection state they don't have; quick-panel rows are far below the 48 dp target D010 cites; the switch's On/Off state is not merged into the actionable row semantics; and tap feedback is inconsistent across row types (ripple suppression buys nothing — static captures never show ripples).
-  Fix: set `stateDescription` only when the control is a toggle; add `Modifier.toggleable(value = checked, role = Role.Switch)` on the quick rows (semantic 48 dp via `minimumInteractiveComponentSize` without changing visuals) and clear the child switch's duplicate semantics; drop `indication = null`.
-  Acceptance: TalkBack announces no selection state on plain buttons, announces On/Off on toggle rows, and Accessibility Scanner reports no sub-48 dp targets on the quick panel; geometry/SSIM results unchanged.
-  Confidence: Verified
-  Effort: M
-
 - [ ] P3 — IS-48 Validation-state 101's error text lives in a 3.5-second system toast — capture timing can silently lose it
   Category: testing
   Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/ReplicaApp.kt:41-47` (validationError rendered via `Toast` then immediately consumed), `DebugStateCatalog.kt:86`
@@ -172,6 +163,14 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Effort: S
 
 ## Findings from the 2026-08-15 drain
+
+- [ ] P3 — IS-68 Quick-panel switches are checkable but unnamed in the accessibility tree
+  Why: the rows are now `toggleable` with `Role.Switch`, so the tree exposes a checkable node spanning the whole row (verified), but that node carries no name — the label stays a sibling `Text`. A screen reader announces a switch with no indication of what it switches.
+  Evidence: `adb shell uiautomator dump` of `135_live_console_display` shows three `checkable="true"` nodes at `[1135,202][1989,278]` and below, each with empty `text` and `content-desc`, while `Grid`, `Safe margins` and `Lock Screen` appear as separate `TextView` nodes. Tried and rejected during the 2026-08-15 drain: `Modifier.semantics(mergeDescendants = true) {}` after `toggleable`, `Modifier.semantics { contentDescription = title }` after `toggleable`, and the same before it — none changed the dumped node.
+  Touches: `.../ui/live/QuickSettingsPanel.kt` (`QuickToggle`)
+  Acceptance: the checkable node for each quick toggle reports its label (as `text` or `content-desc`) in a `uiautomator` dump, and toggling it still works.
+  Complexity: S
+  Note: verify with a Compose `SemanticsNodeInteraction` assertion rather than the dump alone — the dump is the accessibility tree as exported, which may differ from Compose's merged tree.
 
 - [ ] P2 — IS-67 Quick settings panel covers the console telemetry block
   Why: on every panel-open state (130-138) the replica's telemetry readings disappear behind the quick panel, while the audit hierarchy for the same states lists all three readings as present. The panel is therefore too wide, too far left, or drawn at the wrong z-order relative to the telemetry.

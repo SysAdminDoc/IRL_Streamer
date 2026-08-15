@@ -2,6 +2,7 @@ package com.irlstreamer.reconstruction.ui.live
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -36,6 +37,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -307,7 +310,11 @@ private fun QuickToggle(title: String, checked: Boolean, onToggle: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .height(27.02.dp)
-            .clickable(onClick = onToggle)
+            // The whole row is the control. Making it `toggleable` rather than
+            // `clickable` gives it the switch role and its on/off state, so a
+            // screen reader announces one control instead of a stateless row
+            // next to a state it cannot activate.
+            .toggleable(value = checked, role = Role.Switch, onValueChange = { onToggle() })
             .testTag("quick_${title.lowercase().replace(' ', '_').replace('/', '_')}"),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -315,6 +322,8 @@ private fun QuickToggle(title: String, checked: Boolean, onToggle: () -> Unit) {
         AuditedSwitch(
             checked = checked,
             enabled = true,
+            // The row above owns the semantics; the switch is decoration here.
+            modifier = Modifier.clearAndSetSemantics { },
         )
     }
 }

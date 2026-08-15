@@ -193,7 +193,8 @@ private fun ConsoleIconButton(
     description: String,
     modifier: Modifier,
     visualDiameter: androidx.compose.ui.unit.Dp,
-    selected: Boolean = false,
+    /** Null for a plain button; true/false only for controls that really have a state. */
+    selected: Boolean? = null,
     onClick: () -> Unit,
 ) {
     Box(
@@ -201,7 +202,12 @@ private fun ConsoleIconButton(
             .size(48.dp)
             .semantics {
                 role = Role.Button
-                stateDescription = if (selected) "Selected" else "Not selected"
+                // Settings, Reload and Snapshot are plain buttons. Announcing
+                // "Not selected" on them told a screen-reader user about a state
+                // they do not have.
+                if (selected != null) {
+                    stateDescription = if (selected) "Selected" else "Not selected"
+                }
             }
             .testTag(description.lowercase().replace(' ', '_')),
         contentAlignment = Alignment.Center,
@@ -211,13 +217,13 @@ private fun ConsoleIconButton(
             modifier = Modifier
                 .size(visualDiameter)
                 .clip(CircleShape)
-                .background(if (selected) Color(0xAA555555) else Color(0x773C3C3C))
+                .background(if (selected == true) Color(0xAA555555) else Color(0x773C3C3C))
                 .border(0.5.dp, Color(0x886F6F6F), CircleShape),
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = description,
-                tint = if (selected) Color.White else Color(0xFF888888),
+                tint = if (selected == true) Color.White else Color(0xFF888888),
                 modifier = Modifier.size((visualDiameter * 0.55f).coerceAtMost(32.dp)),
             )
         }
