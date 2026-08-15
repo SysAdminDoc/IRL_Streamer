@@ -1,0 +1,71 @@
+{
+  "matched_elements": 2,
+  "unmatched_audit_elements": [
+    "Custom Page",
+    "Enable Streamelements Dashboard",
+    "Enables the activity/replay dashboard locally. You will have to login manually because SE doesn't have a token",
+    "Streamlabs API Key",
+    "This is for the local alert replay/view dashboard. Looks like 9b6b77b411b345b87bdf6e6c5a811751. You get it from the remote control url widget/controller/xxxxxxxxxxxxxxxxxxxx",
+    "This is for the local alert replay/view dashboard. You get it from API Settings, looks like AABF3L45J3L2LKJ74LK5",
+    "Toonation API Key"
+  ],
+  "replica_only_elements": [
+    "Activity/replay dashboards are local fixtures. On-stream alerts belong in a web overlay.",
+    "Alert Dashboard",
+    "Blank; locally simulated and never transmitted",
+    "Custom chatbox URL",
+    "Custom chatbox url, setting this ignores the username settings above",
+    "Dashboard A API Key",
+    "Show user count"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 20.5,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Streamer options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        580,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        647,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 66,
+      "dheight": 0
+    }
+  ],
+  "screen": "009_streamer_settings_alerts"
+}

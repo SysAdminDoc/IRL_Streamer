@@ -1,0 +1,63 @@
+{
+  "matched_elements": 2,
+  "unmatched_audit_elements": [
+    "Enter your Twitch stream key",
+    "Enter your Twitch username",
+    "Twitch.tv"
+  ],
+  "replica_only_elements": [
+    "Platform A",
+    "Stream key",
+    "Username"
+  ],
+  "max_abs_dleft": 73,
+  "max_abs_dtop": 34,
+  "max_abs_dwidth": 126,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 47.0,
+  "origins_within_2px_pct": 0.0,
+  "origins_within_4px_pct": 0.0,
+  "elements": [
+    {
+      "key": "OK",
+      "class": "Button",
+      "audit_bounds": [
+        1553,
+        735,
+        1733,
+        870
+      ],
+      "replica_bounds": [
+        1626,
+        769,
+        1680,
+        826
+      ],
+      "dleft": 73,
+      "dtop": 34,
+      "dwidth": -126,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1340,
+        735,
+        1553,
+        870
+      ],
+      "replica_bounds": [
+        1387,
+        769,
+        1537,
+        826
+      ],
+      "dleft": 47,
+      "dtop": 34,
+      "dwidth": -63,
+      "dheight": -78
+    }
+  ],
+  "screen": "030_twitch_quick_setup_form"
+}

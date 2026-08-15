@@ -1,0 +1,163 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [
+    "KICK.COM",
+    "TWITCH.TV"
+  ],
+  "replica_only_elements": [
+    "Name",
+    "PLATFORM A",
+    "PLATFORM B",
+    "Quick Site Setup"
+  ],
+  "max_abs_dleft": 580,
+  "max_abs_dtop": 169,
+  "max_abs_dwidth": 2032,
+  "max_abs_dheight": 102,
+  "mean_abs_origin_error_px": 123.0,
+  "origins_within_2px_pct": 21.43,
+  "origins_within_4px_pct": 21.43,
+  "elements": [
+    {
+      "key": "SAVE",
+      "class": "Button",
+      "audit_bounds": [
+        1128,
+        945,
+        2181,
+        1080
+      ],
+      "replica_bounds": [
+        1708,
+        976,
+        1806,
+        1033
+      ],
+      "dleft": 580,
+      "dtop": 31,
+      "dwidth": -955,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        75,
+        945,
+        1128,
+        1080
+      ],
+      "replica_bounds": [
+        560,
+        976,
+        710,
+        1033
+      ],
+      "dleft": 485,
+      "dtop": 31,
+      "dwidth": -903,
+      "dheight": -78
+    },
+    {
+      "key": "AuditTest3not_a_url",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        496,
+        2181,
+        622
+      ],
+      "replica_bounds": [
+        87,
+        665,
+        2294,
+        800
+      ],
+      "dleft": 12,
+      "dtop": 169,
+      "dwidth": 101,
+      "dheight": 9
+    },
+    {
+      "key": "Start typing or paste URL to view protocol-specific fields for authentication etc.",
+      "class": "TextView",
+      "audit_bounds": [
+        98,
+        412,
+        2158,
+        465
+      ],
+      "replica_bounds": [
+        98,
+        581,
+        1572,
+        634
+      ],
+      "dleft": 0,
+      "dtop": 169,
+      "dwidth": -586,
+      "dheight": 0
+    },
+    {
+      "key": "URL",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        653,
+        2181,
+        779
+      ],
+      "replica_bounds": [
+        87,
+        804,
+        161,
+        828
+      ],
+      "dleft": 12,
+      "dtop": 151,
+      "dwidth": -2032,
+      "dheight": -102
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "New outgoing connection",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        724,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        824,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 99,
+      "dheight": 0
+    }
+  ],
+  "screen": "024_new_connection_invalid_url"
+}

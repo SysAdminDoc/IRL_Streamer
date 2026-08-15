@@ -1,0 +1,135 @@
+{
+  "matched_elements": 6,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 27,
+  "max_abs_dtop": 34,
+  "max_abs_dwidth": 156,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 27.667,
+  "origins_within_2px_pct": 8.33,
+  "origins_within_4px_pct": 8.33,
+  "elements": [
+    {
+      "key": "Bottom left",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        278,
+        675,
+        575,
+        810
+      ],
+      "replica_bounds": [
+        305,
+        709,
+        546,
+        777
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -56,
+      "dheight": -67
+    },
+    {
+      "key": "Center",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        278,
+        540,
+        575,
+        675
+      ],
+      "replica_bounds": [
+        305,
+        574,
+        446,
+        642
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -156,
+      "dheight": -67
+    },
+    {
+      "key": "Custom",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        278,
+        945,
+        575,
+        1080
+      ],
+      "replica_bounds": [
+        305,
+        979,
+        470,
+        1047
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -132,
+      "dheight": -67
+    },
+    {
+      "key": "Top left",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        278,
+        270,
+        575,
+        405
+      ],
+      "replica_bounds": [
+        305,
+        304,
+        469,
+        372
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -133,
+      "dheight": -67
+    },
+    {
+      "key": "Top right",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        278,
+        405,
+        575,
+        540
+      ],
+      "replica_bounds": [
+        305,
+        439,
+        496,
+        507
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -106,
+      "dheight": -67
+    },
+    {
+      "key": "Bottom right",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        278,
+        810,
+        575,
+        945
+      ],
+      "replica_bounds": [
+        305,
+        810,
+        553,
+        945
+      ],
+      "dleft": 27,
+      "dtop": 0,
+      "dwidth": -49,
+      "dheight": 0
+    }
+  ],
+  "screen": "112_web_overlay_position_menu"
+}

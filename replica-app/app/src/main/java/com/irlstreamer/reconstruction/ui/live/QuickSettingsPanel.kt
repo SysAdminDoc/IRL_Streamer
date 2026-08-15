@@ -55,17 +55,23 @@ fun QuickSettingsPanel(
     val tabScroll = rememberScrollState()
     val bodyScroll = rememberScrollState(initial = if (state.runtime.quickPanelLower) 220 else 0)
     LaunchedEffect(state.runtime.quickTab) {
+        // Audit evidence: the tab strip's horizontal offset per state, measured from
+        // the audited tab bounds. Taking CAMERA's text origin as the strip origin, it
+        // sits at screen x=1146 on 131/132, 1005 on 135, 763 on 136 and 677 on
+        // 137/138 - i.e. the strip is scrolled by 0, 141, 383 and 469 px.
         val target = when (state.runtime.quickTab) {
             QuickTab.CAMERA, QuickTab.NETWORK -> 0
-            QuickTab.DISPLAY -> 60
-            QuickTab.OVERLAYS -> 150
-            QuickTab.AUDIO -> 230
-            QuickTab.LOG -> 300
+            QuickTab.DISPLAY -> 141
+            QuickTab.OVERLAYS -> 383
+            QuickTab.AUDIO, QuickTab.LOG -> 469
         }
         tabScroll.animateScrollTo(target.coerceAtMost(tabScroll.maxValue))
     }
-    LaunchedEffect(state.runtime.quickPanelLower) {
-        bodyScroll.scrollTo(if (state.runtime.quickPanelLower) bodyScroll.maxValue else 0)
+    LaunchedEffect(state.runtime.quickPanelLower, state.runtime.quickTab) {
+        // Audit evidence: the LOG tab is shown scrolled to its newest entry
+        // (screen 138), so it anchors to the bottom regardless of panel state.
+        val atBottom = state.runtime.quickPanelLower || state.runtime.quickTab == QuickTab.LOG
+        bodyScroll.scrollTo(if (atBottom) bodyScroll.maxValue else 0)
     }
 
     Column(
@@ -247,14 +253,29 @@ private fun AudioQuickSettings(state: AppUiState, viewModel: MainViewModel) {
 
 @Composable
 private fun LogQuickSettings() {
+    // Audit evidence: screen 138 shows a wrapped encoder-configuration dump filling
+    // the panel, scrolled to the bottom, ending on an onVideoCaptureStateChanged
+    // line. The reference text lists the capture device's own vendor encoder keys;
+    // reproducing those would assert hardware this local simulation does not have,
+    // so the fixture keeps the audited shape, length and ordering with the
+    // simulation's own deterministic values (deviation D009).
     Text(
         text = "Not writing to file\nGo to Record settings to toggle writing\n" +
             "21:25:52 {type=MIC, source=local, channels=2, sampleRate=44100, bitRate=96000}\n" +
-            "21:25:52 {mime=video/avc, bitRate=6000000, fps=30, keyFrameInterval=2, videoSize=1920x1080}\n" +
             "21:25:52 local camera fixture opened\n" +
-            "21:25:52 H.264, 1920x1080\n" +
+            "21:25:52 {mime=video/avc, profile=8, bitrate=6000000, priority=0,\n" +
+            "intra-refresh-period=0, color-standard=1,\n" +
+            "feature-secure-playback=0,\n" +
+            "csd-1=java.nio.HeapByteBuffer[pos=0 lim=9\n" +
+            "cap=9], color-transfer=3, crop-bottom=1079,\n" +
+            "value=0, prepend-sps-pps-to-idr-frames=0,\n" +
+            "video-qp-average=0, crop-left=0,\n" +
+            "width=1920, bitrate-mode=1, color-range=2,\n" +
+            "crop-top=0, frame-rate=30, height=1080,\n" +
+            "csd-0=java.nio.HeapByteBuffer[pos=0 lim=23\n" +
+            "cap=23]}\n" +
             "21:25:53 onAudioCaptureStateChanged, state=SIMULATED\n" +
-            "21:25:53 onVideoCaptureStateChanged, state=SIMULATED",
+            "21:25:53 onVideoCaptureStateChanged,\nstate=SIMULATED",
         color = Color(0xFFBDBDBD),
         fontSize = 9.sp,
         lineHeight = 11.sp,

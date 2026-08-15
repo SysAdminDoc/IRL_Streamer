@@ -1,0 +1,161 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [
+    "Cellular Weight",
+    "Enable Cellular",
+    "Tune what links are enabled when bonding and their relative weights. Weights are relative so don't have an effect if only one connection enabled.\nThis can be adjusted live in the quick settings network tab."
+  ],
+  "replica_only_elements": [
+    "Tune which links are enabled and their relative weights. The same values appear in Network quick settings."
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 218,
+  "max_abs_dwidth": 1624,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 49.0,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Advanced Bonding Settings",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        603,
+        2136,
+        656
+      ],
+      "replica_bounds": [
+        278,
+        821,
+        796,
+        889
+      ],
+      "dleft": 0,
+      "dtop": 218,
+      "dwidth": -1340,
+      "dheight": 15
+    },
+    {
+      "key": "Enable Bonding for the following connections:",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        459,
+        1072,
+        512
+      ],
+      "replica_bounds": [
+        278,
+        652,
+        1135,
+        703
+      ],
+      "dleft": 0,
+      "dtop": 193,
+      "dwidth": 63,
+      "dheight": -2
+    },
+    {
+      "key": "Only bond the connections, video is sent straight to the destination",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        240,
+        1431,
+        293
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        1526,
+        380
+      ],
+      "dleft": 0,
+      "dtop": 87,
+      "dwidth": 95,
+      "dheight": 0
+    },
+    {
+      "key": "Connections",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        406,
+        2136,
+        459
+      ],
+      "replica_bounds": [
+        278,
+        466,
+        512,
+        534
+      ],
+      "dleft": 0,
+      "dtop": 60,
+      "dwidth": -1624,
+      "dheight": 15
+    },
+    {
+      "key": "Bonding Only",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        542,
+        240
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        559,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 17,
+      "dheight": 41
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Bonding and NoDrop options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        781,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        892,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 110,
+      "dheight": 0
+    }
+  ],
+  "screen": "017_bonding_mode_controls"
+}

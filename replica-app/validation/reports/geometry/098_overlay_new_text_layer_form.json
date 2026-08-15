@@ -1,0 +1,197 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Off"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 1801,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 5.0,
+  "origins_within_2px_pct": 88.89,
+  "origins_within_4px_pct": 88.89,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Text",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        476,
+        353,
+        529
+      ],
+      "replica_bounds": [
+        278,
+        478,
+        358,
+        531
+      ],
+      "dleft": 0,
+      "dtop": 2,
+      "dwidth": 5,
+      "dheight": 0
+    },
+    {
+      "key": "Active",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        921,
+        403,
+        982
+      ],
+      "replica_bounds": [
+        278,
+        922,
+        411,
+        984
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 8,
+      "dheight": 1
+    },
+    {
+      "key": "HTML code",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        619,
+        510,
+        680
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        522,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 12,
+      "dheight": 1
+    },
+    {
+      "key": "Layer",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        373,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        395,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 0
+    },
+    {
+      "key": "Name",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        397,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        403,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 6,
+      "dheight": 1
+    },
+    {
+      "key": "Periodic refresh",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        770,
+        594,
+        831
+      ],
+      "replica_bounds": [
+        278,
+        771,
+        616,
+        833
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 22,
+      "dheight": 1
+    },
+    {
+      "key": "Scale",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1050,
+        388,
+        1080
+      ],
+      "replica_bounds": [
+        278,
+        1051,
+        2189,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 1801,
+      "dheight": -1
+    },
+    {
+      "key": "Type",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        374,
+        476
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        379,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 5,
+      "dheight": 1
+    }
+  ],
+  "screen": "098_overlay_new_text_layer_form"
+}

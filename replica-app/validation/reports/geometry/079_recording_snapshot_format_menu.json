@@ -1,0 +1,117 @@
+{
+  "matched_elements": 5,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 39,
+  "max_abs_dwidth": 1184,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 45.9,
+  "origins_within_2px_pct": 10.0,
+  "origins_within_4px_pct": 10.0,
+  "elements": [
+    {
+      "key": "JPEG",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        376,
+        1767,
+        511
+      ],
+      "replica_bounds": [
+        579,
+        415,
+        695,
+        483
+      ],
+      "dleft": 91,
+      "dtop": 39,
+      "dwidth": -1163,
+      "dheight": -67
+    },
+    {
+      "key": "PNG",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        511,
+        1767,
+        646
+      ],
+      "replica_bounds": [
+        579,
+        550,
+        674,
+        618
+      ],
+      "dleft": 91,
+      "dtop": 39,
+      "dwidth": -1184,
+      "dheight": -67
+    },
+    {
+      "key": "WebP",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        646,
+        1767,
+        781
+      ],
+      "replica_bounds": [
+        579,
+        685,
+        701,
+        753
+      ],
+      "dleft": 91,
+      "dtop": 39,
+      "dwidth": -1157,
+      "dheight": -67
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        792,
+        1733,
+        927
+      ],
+      "replica_bounds": [
+        1550,
+        825,
+        1700,
+        882
+      ],
+      "dleft": 30,
+      "dtop": 33,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Snapshot format",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        277,
+        1699,
+        353
+      ],
+      "replica_bounds": [
+        557,
+        282,
+        999,
+        358
+      ],
+      "dleft": 1,
+      "dtop": 5,
+      "dwidth": -701,
+      "dheight": 0
+    }
+  ],
+  "screen": "079_recording_snapshot_format_menu"
+}

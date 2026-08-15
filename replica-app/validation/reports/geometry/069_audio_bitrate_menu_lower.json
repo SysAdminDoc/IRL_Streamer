@@ -1,0 +1,86 @@
+{
+  "matched_elements": 3,
+  "unmatched_audit_elements": [
+    "128 Kbps",
+    "160 Kbps",
+    "256 Kbps",
+    "96 Kbps"
+  ],
+  "replica_only_elements": [
+    "16 Kbps",
+    "24 Kbps",
+    "32 Kbps",
+    "Auto",
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 573,
+  "max_abs_dwidth": 1107,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 122.5,
+  "origins_within_2px_pct": 33.33,
+  "origins_within_4px_pct": 33.33,
+  "elements": [
+    {
+      "key": "64 Kbps",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        356
+      ],
+      "replica_bounds": [
+        579,
+        852,
+        751,
+        889
+      ],
+      "dleft": 91,
+      "dtop": 573,
+      "dwidth": -1107,
+      "dheight": -40
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1550,
+        928,
+        1700,
+        985
+      ],
+      "dleft": 30,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Bitrate",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        733,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -967,
+      "dheight": 0
+    }
+  ],
+  "screen": "069_audio_bitrate_menu_lower"
+}

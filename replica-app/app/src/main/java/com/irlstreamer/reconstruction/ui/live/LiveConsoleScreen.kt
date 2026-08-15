@@ -222,9 +222,11 @@ private fun ConsoleIconButton(
 private fun TelemetryBlock(modifier: Modifier = Modifier) {
     Column(modifier = modifier.width(100.dp), horizontalAlignment = Alignment.End) {
         Icon(Icons.Default.BatteryChargingFull, "Battery 73 percent", tint = Color(0xFF15942D), modifier = Modifier.size(width = 42.dp, height = 20.dp))
-        Text("-520 mA", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
-        Text("-2104 mW", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
-        Text("34.7 °C", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
+        // Audit evidence: screen 001 telemetry read -283 mA / -1144 mW / 31.6 °C.
+        // These are deterministic sanitised fixtures, not live device readings.
+        Text("-283 mA", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
+        Text("-1144 mW", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
+        Text("31.6 °C", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
     }
 }
 

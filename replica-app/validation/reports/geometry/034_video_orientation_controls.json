@@ -1,0 +1,197 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [
+    "White balance"
+  ],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 107,
+  "max_abs_dwidth": 1496,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 37.722,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Continuous auto focus",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        877,
+        673,
+        930
+      ],
+      "replica_bounds": [
+        278,
+        984,
+        702,
+        1037
+      ],
+      "dleft": 0,
+      "dtop": 107,
+      "dwidth": 29,
+      "dheight": 0
+    },
+    {
+      "key": "Focus mode",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        816,
+        526,
+        877
+      ],
+      "replica_bounds": [
+        278,
+        922,
+        540,
+        984
+      ],
+      "dleft": 0,
+      "dtop": 106,
+      "dwidth": 14,
+      "dheight": 1
+    },
+    {
+      "key": "This is always enabled now.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        529,
+        757,
+        582
+      ],
+      "replica_bounds": [
+        278,
+        629,
+        794,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 100,
+      "dwidth": 37,
+      "dheight": 0
+    },
+    {
+      "key": "Keep streaming when not in focus.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        468,
+        971,
+        529
+      ],
+      "replica_bounds": [
+        278,
+        567,
+        1017,
+        629
+      ],
+      "dleft": 0,
+      "dtop": 99,
+      "dwidth": 46,
+      "dheight": 1
+    },
+    {
+      "key": "Start new lens with",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        695,
+        2136,
+        748
+      ],
+      "replica_bounds": [
+        278,
+        768,
+        640,
+        836
+      ],
+      "dleft": 0,
+      "dtop": 73,
+      "dwidth": -1496,
+      "dheight": 15
+    },
+    {
+      "key": "Background streaming",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        347,
+        2136,
+        400
+      ],
+      "replica_bounds": [
+        278,
+        413,
+        702,
+        481
+      ],
+      "dleft": 0,
+      "dtop": 66,
+      "dwidth": -1434,
+      "dheight": 15
+    },
+    {
+      "key": "Double Tap to Flip Camera",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        804,
+        234
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        838,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 34,
+      "dheight": 47
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Video parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        588,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        656,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 67,
+      "dheight": 0
+    }
+  ],
+  "screen": "034_video_orientation_controls"
+}

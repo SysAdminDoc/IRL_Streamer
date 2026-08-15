@@ -1,0 +1,163 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [
+    "Acoustic Echo Canceler [Qualcomm Fluence]",
+    "Noise Suppression [Qualcomm Fluence]"
+  ],
+  "replica_only_elements": [
+    "Acoustic Echo Canceler [local device capability]",
+    "Noise Suppression [local device capability]",
+    "Periodically play a silent sound to keep bluetooth speaker awake",
+    "Processing"
+  ],
+  "max_abs_dleft": 1863,
+  "max_abs_dtop": 224,
+  "max_abs_dwidth": 1665,
+  "max_abs_dheight": 101,
+  "mean_abs_origin_error_px": 168.357,
+  "origins_within_2px_pct": 57.14,
+  "origins_within_4px_pct": 57.14,
+  "elements": [
+    {
+      "key": "0.0dB",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        318,
+        378,
+        371
+      ],
+      "replica_bounds": [
+        2141,
+        481,
+        2248,
+        549
+      ],
+      "dleft": 1863,
+      "dtop": 163,
+      "dwidth": 7,
+      "dheight": 15
+    },
+    {
+      "key": "Input gain",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        257,
+        476,
+        318
+      ],
+      "replica_bounds": [
+        278,
+        481,
+        2141,
+        549
+      ],
+      "dleft": 0,
+      "dtop": 224,
+      "dwidth": 1665,
+      "dheight": 7
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        153
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -101
+    },
+    {
+      "key": "Tap to reset to 0dB",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        574,
+        607,
+        627
+      ],
+      "replica_bounds": [
+        278,
+        549,
+        584,
+        617
+      ],
+      "dleft": 0,
+      "dtop": -25,
+      "dwidth": -23,
+      "dheight": 15
+    },
+    {
+      "key": "Audio parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        590,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        658,
+        153
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 67,
+      "dheight": -26
+    },
+    {
+      "key": "Acoustic Echo Canceler (AEC)",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        717,
+        880,
+        778
+      ],
+      "replica_bounds": [
+        278,
+        717,
+        918,
+        779
+      ],
+      "dleft": 0,
+      "dtop": 0,
+      "dwidth": 38,
+      "dheight": 1
+    },
+    {
+      "key": "Noise Suppressor (NS)",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        921,
+        734,
+        982
+      ],
+      "replica_bounds": [
+        278,
+        921,
+        763,
+        983
+      ],
+      "dleft": 0,
+      "dtop": 0,
+      "dwidth": 29,
+      "dheight": 1
+    }
+  ],
+  "screen": "075_audio_processing"
+}

@@ -1,0 +1,117 @@
+{
+  "matched_elements": 5,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 39,
+  "max_abs_dwidth": 1127,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 45.9,
+  "origins_within_2px_pct": 10.0,
+  "origins_within_4px_pct": 10.0,
+  "elements": [
+    {
+      "key": "Preview",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        511,
+        1767,
+        646
+      ],
+      "replica_bounds": [
+        579,
+        550,
+        746,
+        618
+      ],
+      "dleft": 91,
+      "dtop": 39,
+      "dwidth": -1112,
+      "dheight": -67
+    },
+    {
+      "key": "Preview + stream",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        376,
+        1767,
+        511
+      ],
+      "replica_bounds": [
+        579,
+        415,
+        946,
+        483
+      ],
+      "dleft": 91,
+      "dtop": 39,
+      "dwidth": -912,
+      "dheight": -67
+    },
+    {
+      "key": "Stream",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        646,
+        1767,
+        781
+      ],
+      "replica_bounds": [
+        579,
+        685,
+        731,
+        753
+      ],
+      "dleft": 91,
+      "dtop": 39,
+      "dwidth": -1127,
+      "dheight": -67
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        792,
+        1733,
+        927
+      ],
+      "replica_bounds": [
+        1550,
+        825,
+        1700,
+        882
+      ],
+      "dleft": 30,
+      "dtop": 33,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "View mode",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        277,
+        1699,
+        353
+      ],
+      "replica_bounds": [
+        557,
+        282,
+        849,
+        358
+      ],
+      "dleft": 1,
+      "dtop": 5,
+      "dwidth": -851,
+      "dheight": 0
+    }
+  ],
+  "screen": "111_web_overlay_view_mode_menu"
+}

@@ -1,0 +1,140 @@
+{
+  "matched_elements": 6,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Center",
+    "Position",
+    "Scale is relative to video resolution; Off uses original size.",
+    "Z Order"
+  ],
+  "max_abs_dleft": 580,
+  "max_abs_dtop": 512,
+  "max_abs_dwidth": 955,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 257.083,
+  "origins_within_2px_pct": 33.33,
+  "origins_within_4px_pct": 33.33,
+  "elements": [
+    {
+      "key": "SAVE",
+      "class": "Button",
+      "audit_bounds": [
+        1128,
+        472,
+        2181,
+        607
+      ],
+      "replica_bounds": [
+        1708,
+        984,
+        1806,
+        1041
+      ],
+      "dleft": 580,
+      "dtop": 512,
+      "dwidth": -955,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        75,
+        472,
+        1128,
+        607
+      ],
+      "replica_bounds": [
+        560,
+        984,
+        710,
+        1041
+      ],
+      "dleft": 485,
+      "dtop": 512,
+      "dwidth": -903,
+      "dheight": -78
+    },
+    {
+      "key": "Layers with greater Z Order will appear at front.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        329,
+        1090,
+        382
+      ],
+      "replica_bounds": [
+        278,
+        818,
+        1158,
+        869
+      ],
+      "dleft": 0,
+      "dtop": 489,
+      "dwidth": 68,
+      "dheight": -2
+    },
+    {
+      "key": "5",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        300,
+        239
+      ],
+      "replica_bounds": [
+        278,
+        644,
+        301,
+        697
+      ],
+      "dleft": 0,
+      "dtop": 425,
+      "dwidth": 1,
+      "dheight": 33
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Layer",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        373,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        395,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 0
+    }
+  ],
+  "screen": "100_overlay_new_text_layer_form_actions"
+}

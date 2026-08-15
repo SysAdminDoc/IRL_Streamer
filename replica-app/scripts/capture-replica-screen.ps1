@@ -3,7 +3,8 @@ param(
     [Parameter(Mandatory = $true)][string]$Serial,
     [Parameter(Mandatory = $true)][string]$ScreenId,
     [int]$SettleMilliseconds = 900,
-    [switch]$Warm
+    [switch]$Warm,
+    [switch]$SkipHierarchy
 )
 
 . (Join-Path $PSScriptRoot 'Common.ps1')
@@ -33,4 +34,23 @@ Invoke-Checked -FilePath $android.Adb -Arguments @('-s', $Serial, 'shell', 'scre
 Invoke-Checked -FilePath $android.Adb -Arguments @('-s', $Serial, 'pull', $remote, $output) -LogPath $log
 Invoke-Checked -FilePath $android.Adb -Arguments @('-s', $Serial, 'shell', 'rm', $remote) -LogPath $log
 if (-not (Test-Path -LiteralPath $output -PathType Leaf)) { throw "Screenshot capture failed: $output" }
+
+# Capture the replica UI hierarchy from the same state. SSIM says *that* a screen
+# differs; only the hierarchy says *which element* moved, which is what the audit's
+# 2 px layout-bounds target is measured against (scripts/geometry_diff.py).
+if (-not $SkipHierarchy) {
+    $hierarchyDir = Join-Path $script:ValidationRoot 'hierarchy'
+    New-Item -ItemType Directory -Path $hierarchyDir -Force | Out-Null
+    $remoteHierarchy = "/sdcard/irl_streamer_hierarchy_$safeId.xml"
+    try {
+        Invoke-Checked -FilePath $android.Adb -Arguments @('-s', $Serial, 'shell', 'uiautomator', 'dump', $remoteHierarchy) -LogPath $log
+        Invoke-Checked -FilePath $android.Adb -Arguments @('-s', $Serial, 'pull', $remoteHierarchy, (Join-Path $hierarchyDir "$safeId.xml")) -LogPath $log
+        Invoke-Checked -FilePath $android.Adb -Arguments @('-s', $Serial, 'shell', 'rm', $remoteHierarchy) -LogPath $log
+    }
+    catch {
+        # A hierarchy dump can legitimately fail while an animation is in flight.
+        # The screenshot is the gating artifact, so record and continue.
+        Write-Warning "Hierarchy dump unavailable for ${safeId}: $($_.Exception.Message)"
+    }
+}
 Write-Host $output

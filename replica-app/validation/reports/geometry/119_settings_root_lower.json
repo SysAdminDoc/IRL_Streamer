@@ -1,0 +1,175 @@
+{
+  "matched_elements": 8,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 46,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 22.375,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Advanced options",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        823,
+        638,
+        884
+      ],
+      "replica_bounds": [
+        278,
+        869,
+        660,
+        931
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 22,
+      "dheight": 1
+    },
+    {
+      "key": "Display",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        370,
+        423,
+        431
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        433,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 10,
+      "dheight": 1
+    },
+    {
+      "key": "Help & support",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        974,
+        576,
+        1035
+      ],
+      "replica_bounds": [
+        278,
+        1020,
+        595,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 19,
+      "dheight": -1
+    },
+    {
+      "key": "Import/Export Settings",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        672,
+        737,
+        733
+      ],
+      "replica_bounds": [
+        278,
+        718,
+        767,
+        780
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 30,
+      "dheight": 1
+    },
+    {
+      "key": "Overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        521,
+        449,
+        582
+      ],
+      "replica_bounds": [
+        278,
+        567,
+        460,
+        629
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 11,
+      "dheight": 1
+    },
+    {
+      "key": "Recording",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        481,
+        280
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        493,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 12,
+      "dheight": 1
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Settings",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        422,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        455,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 32,
+      "dheight": 0
+    }
+  ],
+  "screen": "119_settings_root_lower"
+}

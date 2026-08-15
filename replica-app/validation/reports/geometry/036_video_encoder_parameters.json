@@ -1,0 +1,215 @@
+{
+  "matched_elements": 10,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 10.7,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Bitrate H264 - HEVC is auto 66%",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        282,
+        917,
+        343
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        960,
+        327
+      ],
+      "dleft": 0,
+      "dtop": -17,
+      "dwidth": 43,
+      "dheight": 1
+    },
+    {
+      "key": "Bitrate mode",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        486,
+        535,
+        547
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        551,
+        531
+      ],
+      "dleft": 0,
+      "dtop": -17,
+      "dwidth": 16,
+      "dheight": 1
+    },
+    {
+      "key": "Format",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        894,
+        422,
+        955
+      ],
+      "replica_bounds": [
+        278,
+        877,
+        430,
+        939
+      ],
+      "dleft": 0,
+      "dtop": -17,
+      "dwidth": 8,
+      "dheight": 1
+    },
+    {
+      "key": "Keyframe frequency",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        690,
+        679,
+        751
+      ],
+      "replica_bounds": [
+        278,
+        673,
+        704,
+        735
+      ],
+      "dleft": 0,
+      "dtop": -17,
+      "dwidth": 25,
+      "dheight": 1
+    },
+    {
+      "key": "2 sec",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        751,
+        371,
+        804
+      ],
+      "replica_bounds": [
+        278,
+        735,
+        378,
+        788
+      ],
+      "dleft": 0,
+      "dtop": -16,
+      "dwidth": 7,
+      "dheight": 0
+    },
+    {
+      "key": "6000 Kbps",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        343,
+        464,
+        396
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        477,
+        380
+      ],
+      "dleft": 0,
+      "dtop": -16,
+      "dwidth": 13,
+      "dheight": 0
+    },
+    {
+      "key": "Auto",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        955,
+        360,
+        1008
+      ],
+      "replica_bounds": [
+        278,
+        939,
+        365,
+        992
+      ],
+      "dleft": 0,
+      "dtop": -16,
+      "dwidth": 5,
+      "dheight": 0
+    },
+    {
+      "key": "System default",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        547,
+        539,
+        600
+      ],
+      "replica_bounds": [
+        278,
+        531,
+        559,
+        584
+      ],
+      "dleft": 0,
+      "dtop": -16,
+      "dwidth": 20,
+      "dheight": 0
+    },
+    {
+      "key": "Video parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        588,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        656,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 67,
+      "dheight": 0
+    }
+  ],
+  "screen": "036_video_encoder_parameters"
+}

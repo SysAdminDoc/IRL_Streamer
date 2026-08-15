@@ -1,0 +1,145 @@
+{
+  "matched_elements": 6,
+  "unmatched_audit_elements": [
+    "CANCEL",
+    "Password",
+    "SAVE",
+    "Show password"
+  ],
+  "replica_only_elements": [
+    "Local fixture",
+    "Name",
+    "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host.",
+    "URL"
+  ],
+  "max_abs_dleft": 180,
+  "max_abs_dtop": 361,
+  "max_abs_dwidth": 2003,
+  "max_abs_dheight": 102,
+  "mean_abs_origin_error_px": 154.75,
+  "origins_within_2px_pct": 16.67,
+  "origins_within_4px_pct": 16.67,
+  "elements": [
+    {
+      "key": "Login",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        608,
+        2181,
+        734
+      ],
+      "replica_bounds": [
+        87,
+        969,
+        190,
+        993
+      ],
+      "dleft": 12,
+      "dtop": 361,
+      "dwidth": -2003,
+      "dheight": -102
+    },
+    {
+      "key": "RTMP authorization",
+      "class": "TextView",
+      "audit_bounds": [
+        98,
+        512,
+        657,
+        573
+      ],
+      "replica_bounds": [
+        278,
+        872,
+        645,
+        925
+      ],
+      "dleft": 180,
+      "dtop": 360,
+      "dwidth": -192,
+      "dheight": -8
+    },
+    {
+      "key": "Target type - Leave Default for most cases",
+      "class": "TextView",
+      "audit_bounds": [
+        98,
+        456,
+        832,
+        509
+      ],
+      "replica_bounds": [
+        278,
+        810,
+        1179,
+        872
+      ],
+      "dleft": 180,
+      "dtop": 354,
+      "dwidth": 167,
+      "dheight": 9
+    },
+    {
+      "key": "rtmp://198.51.100.1/live",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        219,
+        2181,
+        335
+      ],
+      "replica_bounds": [
+        87,
+        535,
+        2294,
+        670
+      ],
+      "dleft": 12,
+      "dtop": 316,
+      "dwidth": 101,
+      "dheight": 19
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "New outgoing connection",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        724,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        824,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 99,
+      "dheight": 0
+    }
+  ],
+  "screen": "028_rtmp_authorization_fields"
+}

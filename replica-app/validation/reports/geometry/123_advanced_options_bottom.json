@@ -1,0 +1,161 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [
+    "USB Camera#6",
+    "USB OTG works unstable unfortunately and it's dependent on hardware capabilities. So if you enable this feature and it doesn't work, this means IRL Pro can't handle it.\n\nTap on this message to read more details on our website."
+  ],
+  "replica_only_elements": [
+    "USB OTG depends on hardware capabilities. This local reconstruction does not open an external support site.",
+    "WebViews"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 174,
+  "max_abs_dwidth": 1595,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 31.071,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Take picture from USB UVC camera.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        856,
+        899,
+        909
+      ],
+      "replica_bounds": [
+        278,
+        682,
+        945,
+        735
+      ],
+      "dleft": 0,
+      "dtop": -174,
+      "dwidth": 46,
+      "dheight": 0
+    },
+    {
+      "key": "Encoder buffer size",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        326,
+        2136,
+        379
+      ],
+      "replica_bounds": [
+        278,
+        262,
+        645,
+        330
+      ],
+      "dleft": 0,
+      "dtop": -64,
+      "dwidth": -1491,
+      "dheight": 15
+    },
+    {
+      "key": "USB Camera",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        674,
+        2136,
+        727
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        541,
+        682
+      ],
+      "dleft": 0,
+      "dtop": -54,
+      "dwidth": -1595,
+      "dheight": 9
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Enable custom encoder buffer size",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        447,
+        972,
+        508
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        1018,
+        478
+      ],
+      "dleft": 0,
+      "dtop": -31,
+      "dwidth": 46,
+      "dheight": 1
+    },
+    {
+      "key": "Use recommended encoder buffer size.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        508,
+        961,
+        561
+      ],
+      "replica_bounds": [
+        278,
+        478,
+        1011,
+        531
+      ],
+      "dleft": 0,
+      "dtop": -30,
+      "dwidth": 50,
+      "dheight": 0
+    },
+    {
+      "key": "Advanced options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        591,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        660,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 68,
+      "dheight": 0
+    }
+  ],
+  "screen": "123_advanced_options_bottom"
+}

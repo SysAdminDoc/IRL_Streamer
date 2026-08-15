@@ -1,0 +1,181 @@
+{
+  "matched_elements": 8,
+  "unmatched_audit_elements": [
+    "Double Tap to Flip Camera",
+    "Reverse Orientation"
+  ],
+  "replica_only_elements": [
+    "Flip between physical sub-cameras",
+    "Resolution"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 305,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 116.438,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Landscape",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        581,
+        468,
+        634
+      ],
+      "replica_bounds": [
+        278,
+        886,
+        481,
+        939
+      ],
+      "dleft": 0,
+      "dtop": 305,
+      "dwidth": 13,
+      "dheight": 0
+    },
+    {
+      "key": "System default",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        377,
+        539,
+        430
+      ],
+      "replica_bounds": [
+        278,
+        682,
+        559,
+        735
+      ],
+      "dleft": 0,
+      "dtop": 305,
+      "dwidth": 20,
+      "dheight": 0
+    },
+    {
+      "key": "FPS",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        316,
+        358,
+        377
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        362,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 304,
+      "dwidth": 4,
+      "dheight": 1
+    },
+    {
+      "key": "Live rotation",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        724,
+        527,
+        785
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        545,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 304,
+      "dwidth": 18,
+      "dheight": -9
+    },
+    {
+      "key": "Orientation",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        520,
+        500,
+        581
+      ],
+      "replica_bounds": [
+        278,
+        824,
+        516,
+        886
+      ],
+      "dleft": 0,
+      "dtop": 304,
+      "dwidth": 16,
+      "dheight": 1
+    },
+    {
+      "key": "1920x1080 (16:9)",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        585,
+        226
+      ],
+      "replica_bounds": [
+        278,
+        478,
+        607,
+        531
+      ],
+      "dleft": 0,
+      "dtop": 259,
+      "dwidth": 22,
+      "dheight": 46
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Video parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        588,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        656,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 67,
+      "dheight": 0
+    }
+  ],
+  "screen": "033_video_resolution_fps"
+}

@@ -1,0 +1,180 @@
+{
+  "matched_elements": 8,
+  "unmatched_audit_elements": [
+    "Scale is relative to video resolution, on 100% it fills entire screen. When set to \"Off\", original size is used."
+  ],
+  "replica_only_elements": [
+    "Layers with greater Z Order will appear at front.",
+    "Scale is relative to video resolution; Off uses original size."
+  ],
+  "max_abs_dleft": 1911,
+  "max_abs_dtop": 198,
+  "max_abs_dwidth": 1801,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 177.625,
+  "origins_within_2px_pct": 43.75,
+  "origins_within_4px_pct": 43.75,
+  "elements": [
+    {
+      "key": "Off",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        278,
+        333,
+        331
+      ],
+      "replica_bounds": [
+        2189,
+        243,
+        2248,
+        311
+      ],
+      "dleft": 1911,
+      "dtop": -35,
+      "dwidth": 4,
+      "dheight": 15
+    },
+    {
+      "key": "Position",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        677,
+        443,
+        738
+      ],
+      "replica_bounds": [
+        278,
+        479,
+        454,
+        541
+      ],
+      "dleft": 0,
+      "dtop": -198,
+      "dwidth": 11,
+      "dheight": 1
+    },
+    {
+      "key": "Z Order",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        881,
+        426,
+        942
+      ],
+      "replica_bounds": [
+        278,
+        683,
+        436,
+        745
+      ],
+      "dleft": 0,
+      "dtop": -198,
+      "dwidth": 10,
+      "dheight": 1
+    },
+    {
+      "key": "5",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        942,
+        300,
+        995
+      ],
+      "replica_bounds": [
+        278,
+        745,
+        301,
+        798
+      ],
+      "dleft": 0,
+      "dtop": -197,
+      "dwidth": 1,
+      "dheight": 0
+    },
+    {
+      "key": "Center",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        738,
+        393,
+        791
+      ],
+      "replica_bounds": [
+        278,
+        541,
+        401,
+        594
+      ],
+      "dleft": 0,
+      "dtop": -197,
+      "dwidth": 8,
+      "dheight": 0
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Scale",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        388,
+        278
+      ],
+      "replica_bounds": [
+        278,
+        243,
+        2189,
+        311
+      ],
+      "dleft": 0,
+      "dtop": 24,
+      "dwidth": 1801,
+      "dheight": 9
+    },
+    {
+      "key": "Layer",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        373,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        395,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 0
+    }
+  ],
+  "screen": "099_overlay_new_text_layer_form_lower"
+}

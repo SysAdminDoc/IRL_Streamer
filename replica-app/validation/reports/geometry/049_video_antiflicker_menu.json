@@ -1,0 +1,137 @@
+{
+  "matched_elements": 6,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 40,
+  "max_abs_dwidth": 1212,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 49.583,
+  "origins_within_2px_pct": 8.33,
+  "origins_within_4px_pct": 8.33,
+  "elements": [
+    {
+      "key": "50Hz",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        443,
+        1767,
+        578
+      ],
+      "replica_bounds": [
+        579,
+        483,
+        689,
+        551
+      ],
+      "dleft": 91,
+      "dtop": 40,
+      "dwidth": -1169,
+      "dheight": -67
+    },
+    {
+      "key": "60Hz",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        578,
+        1767,
+        713
+      ],
+      "replica_bounds": [
+        579,
+        618,
+        689,
+        686
+      ],
+      "dleft": 91,
+      "dtop": 40,
+      "dwidth": -1169,
+      "dheight": -67
+    },
+    {
+      "key": "Auto",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        713,
+        1767,
+        848
+      ],
+      "replica_bounds": [
+        579,
+        753,
+        679,
+        821
+      ],
+      "dleft": 91,
+      "dtop": 40,
+      "dwidth": -1179,
+      "dheight": -67
+    },
+    {
+      "key": "Off",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        308,
+        1767,
+        443
+      ],
+      "replica_bounds": [
+        579,
+        348,
+        646,
+        416
+      ],
+      "dleft": 91,
+      "dtop": 40,
+      "dwidth": -1212,
+      "dheight": -67
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        859,
+        1733,
+        994
+      ],
+      "replica_bounds": [
+        1550,
+        893,
+        1700,
+        950
+      ],
+      "dleft": 30,
+      "dtop": 34,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Anti-flicker",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        209,
+        1699,
+        285
+      ],
+      "replica_bounds": [
+        557,
+        215,
+        846,
+        291
+      ],
+      "dleft": 1,
+      "dtop": 6,
+      "dwidth": -854,
+      "dheight": 0
+    }
+  ],
+  "screen": "049_video_antiflicker_menu"
+}

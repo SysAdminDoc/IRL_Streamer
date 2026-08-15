@@ -1,0 +1,157 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 109,
+  "max_abs_dwidth": 1212,
+  "max_abs_dheight": 98,
+  "mean_abs_origin_error_px": 71.071,
+  "origins_within_2px_pct": 14.29,
+  "origins_within_4px_pct": 14.29,
+  "elements": [
+    {
+      "key": "Fast",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        473,
+        1767,
+        608
+      ],
+      "replica_bounds": [
+        579,
+        582,
+        671,
+        650
+      ],
+      "dleft": 91,
+      "dtop": 109,
+      "dwidth": -1187,
+      "dheight": -67
+    },
+    {
+      "key": "High quality",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        608,
+        1767,
+        743
+      ],
+      "replica_bounds": [
+        579,
+        717,
+        833,
+        785
+      ],
+      "dleft": 91,
+      "dtop": 109,
+      "dwidth": -1025,
+      "dheight": -67
+    },
+    {
+      "key": "Minimal",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        743,
+        1767,
+        878
+      ],
+      "replica_bounds": [
+        579,
+        852,
+        749,
+        889
+      ],
+      "dleft": 91,
+      "dtop": 109,
+      "dwidth": -1109,
+      "dheight": -98
+    },
+    {
+      "key": "Off",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        338,
+        1767,
+        473
+      ],
+      "replica_bounds": [
+        579,
+        447,
+        646,
+        515
+      ],
+      "dleft": 91,
+      "dtop": 109,
+      "dwidth": -1212,
+      "dheight": -67
+    },
+    {
+      "key": "System default",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        338
+      ],
+      "replica_bounds": [
+        579,
+        312,
+        899,
+        380
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -959,
+      "dheight": 9
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1550,
+        928,
+        1700,
+        985
+      ],
+      "dleft": 30,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Noise reduction",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        975,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -725,
+      "dheight": 0
+    }
+  ],
+  "screen": "063_video_noise_reduction_menu"
+}

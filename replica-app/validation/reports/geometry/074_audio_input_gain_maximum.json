@@ -1,0 +1,198 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Acoustic Echo Canceler (AEC)",
+    "Tap to reset to 0dB"
+  ],
+  "max_abs_dleft": 1865,
+  "max_abs_dtop": 98,
+  "max_abs_dwidth": 1667,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 129.222,
+  "origins_within_2px_pct": 44.44,
+  "origins_within_4px_pct": 44.44,
+  "elements": [
+    {
+      "key": "+10.0",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        900,
+        376,
+        953
+      ],
+      "replica_bounds": [
+        2143,
+        802,
+        2248,
+        870
+      ],
+      "dleft": 1865,
+      "dtop": -98,
+      "dwidth": 7,
+      "dheight": 15
+    },
+    {
+      "key": "Processing",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        740,
+        2136,
+        793
+      ],
+      "replica_bounds": [
+        278,
+        670,
+        488,
+        738
+      ],
+      "dleft": 0,
+      "dtop": -70,
+      "dwidth": -1648,
+      "dheight": 15
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Keep Speakers Awake",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        513,
+        718,
+        574
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        745,
+        531
+      ],
+      "dleft": 0,
+      "dtop": -44,
+      "dwidth": 27,
+      "dheight": 1
+    },
+    {
+      "key": "Sample rate",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        309,
+        517,
+        370
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        532,
+        327
+      ],
+      "dleft": 0,
+      "dtop": -44,
+      "dwidth": 15,
+      "dheight": 1
+    },
+    {
+      "key": "44100",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        370,
+        388,
+        423
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        395,
+        380
+      ],
+      "dleft": 0,
+      "dtop": -43,
+      "dwidth": 7,
+      "dheight": 0
+    },
+    {
+      "key": "Periodically play a silent sound to keep bluetooth speaker awake",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        574,
+        1391,
+        627
+      ],
+      "replica_bounds": [
+        278,
+        531,
+        1480,
+        584
+      ],
+      "dleft": 0,
+      "dtop": -43,
+      "dwidth": 89,
+      "dheight": 0
+    },
+    {
+      "key": "Input gain",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        839,
+        476,
+        900
+      ],
+      "replica_bounds": [
+        278,
+        802,
+        2143,
+        870
+      ],
+      "dleft": 0,
+      "dtop": -37,
+      "dwidth": 1667,
+      "dheight": 7
+    },
+    {
+      "key": "Audio parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        590,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        658,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 67,
+      "dheight": 0
+    }
+  ],
+  "screen": "074_audio_input_gain_maximum"
+}

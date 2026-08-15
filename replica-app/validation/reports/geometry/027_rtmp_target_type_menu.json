@@ -1,0 +1,115 @@
+{
+  "matched_elements": 5,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 27,
+  "max_abs_dtop": 34,
+  "max_abs_dwidth": 232,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 27.1,
+  "origins_within_2px_pct": 10.0,
+  "origins_within_4px_pct": 10.0,
+  "elements": [
+    {
+      "key": "Akamai/Dacast",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        98,
+        427,
+        657,
+        562
+      ],
+      "replica_bounds": [
+        125,
+        461,
+        452,
+        529
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -232,
+      "dheight": -67
+    },
+    {
+      "key": "Limelight Networks",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        98,
+        562,
+        657,
+        697
+      ],
+      "replica_bounds": [
+        125,
+        596,
+        538,
+        664
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -146,
+      "dheight": -67
+    },
+    {
+      "key": "Periscope Producer",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        98,
+        697,
+        657,
+        832
+      ],
+      "replica_bounds": [
+        125,
+        731,
+        543,
+        799
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -141,
+      "dheight": -67
+    },
+    {
+      "key": "RTMP authorization",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        98,
+        292,
+        657,
+        427
+      ],
+      "replica_bounds": [
+        125,
+        326,
+        546,
+        394
+      ],
+      "dleft": 27,
+      "dtop": 34,
+      "dwidth": -138,
+      "dheight": -67
+    },
+    {
+      "key": "Default (no authorization)",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        98,
+        157,
+        657,
+        292
+      ],
+      "replica_bounds": [
+        125,
+        157,
+        635,
+        292
+      ],
+      "dleft": 27,
+      "dtop": 0,
+      "dwidth": -49,
+      "dheight": 0
+    }
+  ],
+  "screen": "027_rtmp_target_type_menu"
+}

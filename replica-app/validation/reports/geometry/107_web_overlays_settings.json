@@ -1,0 +1,135 @@
+{
+  "matched_elements": 6,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 159,
+  "max_abs_dwidth": 1610,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 44.417,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Manage web overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        612,
+        710,
+        673
+      ],
+      "replica_bounds": [
+        278,
+        771,
+        736,
+        833
+      ],
+      "dleft": 0,
+      "dtop": 159,
+      "dwidth": 26,
+      "dheight": 1
+    },
+    {
+      "key": "New web overlay",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        461,
+        616,
+        522
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        636,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 159,
+      "dwidth": 20,
+      "dheight": 1
+    },
+    {
+      "key": "For perf, no more than 3\u20134 web overlays are recommended",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        340,
+        1304,
+        393
+      ],
+      "replica_bounds": [
+        278,
+        448,
+        1381,
+        499
+      ],
+      "dleft": 0,
+      "dtop": 108,
+      "dwidth": 77,
+      "dheight": -2
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Web overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        287,
+        2136,
+        340
+      ],
+      "replica_bounds": [
+        278,
+        262,
+        526,
+        330
+      ],
+      "dleft": 0,
+      "dtop": -25,
+      "dwidth": -1610,
+      "dheight": 15
+    },
+    {
+      "key": "Overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        428,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        462,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 33,
+      "dheight": 0
+    }
+  ],
+  "screen": "107_web_overlays_settings"
+}

@@ -1,0 +1,143 @@
+{
+  "matched_elements": 6,
+  "unmatched_audit_elements": [
+    "Bonding is the process of using multiple internet connections, such as cellular + wifi, to improve streaming bandwidth and reliability.\nThere are two supported methods:",
+    "Built in Bonding (Courtesy of IRL Toolkit)\nWorks when streaming direct to Twitch, or an rtmp/srt server without bonding support.",
+    "To use custom bonding server (IRL Toolkit, Belabox Cloud, SRTLA Server, etc), bonding, enter a provided connection url srtla://host:port"
+  ],
+  "replica_only_elements": [
+    "Bonding uses multiple internet connections, such as cellular + Wi-Fi, to improve bandwidth and reliability. This reconstruction provides a safe local simulation.",
+    "Built-in behavior is simulated locally and transmits no media.",
+    "Use an independently licensed, owner-controlled server implementation."
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 44,
+  "max_abs_dwidth": 1703,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 13.917,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "1. Own Bonding Server (SRTLA)",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        576,
+        2136,
+        629
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        947,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 44,
+      "dwidth": -1189,
+      "dheight": 9
+    },
+    {
+      "key": "Bonding",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        287,
+        2136,
+        340
+      ],
+      "replica_bounds": [
+        278,
+        262,
+        433,
+        330
+      ],
+      "dleft": 0,
+      "dtop": -25,
+      "dwidth": -1703,
+      "dheight": 15
+    },
+    {
+      "key": "Bonding Only",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1039,
+        542,
+        1080
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        559,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": -11,
+      "dwidth": 17,
+      "dheight": 11
+    },
+    {
+      "key": "2. Connection Bonding Service",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        819,
+        2136,
+        872
+      ],
+      "replica_bounds": [
+        278,
+        824,
+        931,
+        886
+      ],
+      "dleft": 0,
+      "dtop": 5,
+      "dwidth": -1205,
+      "dheight": 9
+    },
+    {
+      "key": "Bonding and NoDrop options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        781,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        892,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 110,
+      "dheight": 0
+    }
+  ],
+  "screen": "016_bonding_settings"
+}

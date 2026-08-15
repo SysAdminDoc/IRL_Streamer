@@ -1,0 +1,199 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [
+    "Show the chat platform icon per chat message (Twitch, Kick, etc.)"
+  ],
+  "replica_only_elements": [
+    "Show the chat platform icon per chat message (Platform A, Platform B, etc.)"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 13.222,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "220",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        810,
+        344,
+        863
+      ],
+      "replica_bounds": [
+        278,
+        833,
+        348,
+        886
+      ],
+      "dleft": 0,
+      "dtop": 23,
+      "dwidth": 4,
+      "dheight": 0
+    },
+    {
+      "key": "Half the height of the chat box",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1014,
+        801,
+        1067
+      ],
+      "replica_bounds": [
+        278,
+        1037,
+        844,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 23,
+      "dwidth": 43,
+      "dheight": -10
+    },
+    {
+      "key": "Chat font scale",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        749,
+        581,
+        810
+      ],
+      "replica_bounds": [
+        278,
+        771,
+        602,
+        833
+      ],
+      "dleft": 0,
+      "dtop": 22,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Show bots in chat",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        447,
+        636,
+        508
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        660,
+        531
+      ],
+      "dleft": 0,
+      "dtop": 22,
+      "dwidth": 24,
+      "dheight": 1
+    },
+    {
+      "key": "Show commands in chat",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        598,
+        772,
+        659
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        802,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 22,
+      "dwidth": 30,
+      "dheight": 1
+    },
+    {
+      "key": "Show platform icons",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        243,
+        692,
+        304
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        719,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 22,
+      "dwidth": 27,
+      "dheight": 1
+    },
+    {
+      "key": "Smaller chat box",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        953,
+        612,
+        1014
+      ],
+      "replica_bounds": [
+        278,
+        975,
+        634,
+        1037
+      ],
+      "dleft": 0,
+      "dtop": 22,
+      "dwidth": 22,
+      "dheight": 1
+    },
+    {
+      "key": "Streamer options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        580,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        647,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 66,
+      "dheight": 0
+    }
+  ],
+  "screen": "015_streamer_platform_icons_enabled"
+}

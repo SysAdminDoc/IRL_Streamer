@@ -1,0 +1,278 @@
+{
+  "matched_elements": 12,
+  "unmatched_audit_elements": [
+    "-1432 mA",
+    "-5784 mW",
+    "34.7 \u00b0C",
+    "61\u00b0",
+    "67\u00b0",
+    "Audio",
+    "Display",
+    "FRONT",
+    "Log",
+    "Network",
+    "Overlays#11"
+  ],
+  "replica_only_elements": [
+    "-283 mA",
+    "Battery 73 percent",
+    "Flip camera",
+    "Mute microphone",
+    "OIS",
+    "Quick settings",
+    "Reload chat and overlays",
+    "Settings",
+    "Start broadcast",
+    "Take snapshot (local simulation)"
+  ],
+  "max_abs_dleft": 297,
+  "max_abs_dtop": 126,
+  "max_abs_dwidth": 529,
+  "max_abs_dheight": 39,
+  "mean_abs_origin_error_px": 33.708,
+  "origins_within_2px_pct": 33.33,
+  "origins_within_4px_pct": 41.67,
+  "elements": [
+    {
+      "key": "Overlays",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1432,
+        118,
+        1692,
+        208
+      ],
+      "replica_bounds": [
+        1135,
+        244,
+        1857,
+        295
+      ],
+      "dleft": -297,
+      "dtop": 126,
+      "dwidth": 462,
+      "dheight": -39
+    },
+    {
+      "key": "Text - Timestamp",
+      "class": "CheckBox",
+      "audit_bounds": [
+        1135,
+        307,
+        1989,
+        397
+      ],
+      "replica_bounds": [
+        1203,
+        332,
+        1528,
+        400
+      ],
+      "dleft": 68,
+      "dtop": 25,
+      "dwidth": -529,
+      "dheight": -22
+    },
+    {
+      "key": "LOG",
+      "class": "TextView",
+      "audit_bounds": [
+        1959,
+        136,
+        2012,
+        189
+      ],
+      "replica_bounds": [
+        1900,
+        138,
+        1978,
+        189
+      ],
+      "dleft": -59,
+      "dtop": 2,
+      "dwidth": 25,
+      "dheight": -2
+    },
+    {
+      "key": "73\u00b0",
+      "class": "TextView",
+      "audit_bounds": [
+        1638,
+        956,
+        1767,
+        1035
+      ],
+      "replica_bounds": [
+        1674,
+        982,
+        1731,
+        1026
+      ],
+      "dleft": 36,
+      "dtop": 26,
+      "dwidth": -72,
+      "dheight": -35
+    },
+    {
+      "key": "BACK",
+      "class": "TextView",
+      "audit_bounds": [
+        1496,
+        973,
+        1624,
+        1035
+      ],
+      "replica_bounds": [
+        1528,
+        970,
+        1624,
+        1021
+      ],
+      "dleft": 32,
+      "dtop": -3,
+      "dwidth": -32,
+      "dheight": -11
+    },
+    {
+      "key": "Long Press to edit text overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        397,
+        1989,
+        450
+      ],
+      "replica_bounds": [
+        1135,
+        425,
+        1641,
+        493
+      ],
+      "dleft": 0,
+      "dtop": 28,
+      "dwidth": -348,
+      "dheight": 15
+    },
+    {
+      "key": "103\u00b0",
+      "class": "TextView",
+      "audit_bounds": [
+        1781,
+        956,
+        1910,
+        1035
+      ],
+      "replica_bounds": [
+        1806,
+        974,
+        1885,
+        1018
+      ],
+      "dleft": 25,
+      "dtop": 18,
+      "dwidth": -50,
+      "dheight": -35
+    },
+    {
+      "key": "30 fps",
+      "class": "TextView",
+      "audit_bounds": [
+        775,
+        962,
+        933,
+        1035
+      ],
+      "replica_bounds": [
+        800,
+        965,
+        909,
+        1033
+      ],
+      "dleft": 25,
+      "dtop": 3,
+      "dwidth": -49,
+      "dheight": -5
+    },
+    {
+      "key": "AUDIO",
+      "class": "TextView",
+      "audit_bounds": [
+        1736,
+        136,
+        1851,
+        189
+      ],
+      "replica_bounds": [
+        1715,
+        138,
+        1837,
+        189
+      ],
+      "dleft": -21,
+      "dtop": 2,
+      "dwidth": 7,
+      "dheight": -2
+    },
+    {
+      "key": "OVERLAYS",
+      "class": "TextView",
+      "audit_bounds": [
+        1466,
+        136,
+        1658,
+        189
+      ],
+      "replica_bounds": [
+        1461,
+        138,
+        1664,
+        189
+      ],
+      "dleft": -5,
+      "dtop": 2,
+      "dwidth": 11,
+      "dheight": -2
+    },
+    {
+      "key": "DISPLAY",
+      "class": "TextView",
+      "audit_bounds": [
+        1243,
+        136,
+        1398,
+        189
+      ],
+      "replica_bounds": [
+        1245,
+        138,
+        1409,
+        189
+      ],
+      "dleft": 2,
+      "dtop": 2,
+      "dwidth": 9,
+      "dheight": -2
+    },
+    {
+      "key": "NETWORK",
+      "class": "TextView",
+      "audit_bounds": [
+        1112,
+        136,
+        1175,
+        189
+      ],
+      "replica_bounds": [
+        1112,
+        138,
+        1186,
+        189
+      ],
+      "dleft": 0,
+      "dtop": 2,
+      "dwidth": 11,
+      "dheight": -2
+    }
+  ],
+  "screen": "136_live_console_overlays"
+}

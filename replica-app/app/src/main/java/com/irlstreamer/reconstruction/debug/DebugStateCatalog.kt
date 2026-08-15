@@ -3,6 +3,7 @@ package com.irlstreamer.reconstruction.debug
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
+import com.irlstreamer.reconstruction.model.PopupBounds
 import com.irlstreamer.reconstruction.model.QuickTab
 import com.irlstreamer.reconstruction.model.RuntimeUiState
 import com.irlstreamer.reconstruction.model.ScreenOverrides
@@ -33,11 +34,16 @@ object DebugStateCatalog {
             24 -> base.settings(SettingsPage.CONNECTION_FORM, 3).copy(formVariant = "invalid")
             25 -> base.settings(SettingsPage.CONNECTION_FORM).copy(formVariant = "rtmp")
             26 -> base.settings(SettingsPage.CONNECTION_FORM, 3).copy(formVariant = "rtmp")
+            // Audit evidence: 027 is an anchored spinner popup at [98,157]-[657,832],
+            // not a centred AlertDialog.
             27 -> base.settings(SettingsPage.CONNECTION_FORM, 3).copy(formVariant = "rtmp", dialog = choiceDialog(
                 id = "rtmp_target",
                 title = "Target type",
                 selected = "Default (no authorization)",
                 options = listOf("Default (no authorization)", "RTMP authorization", "Akamai/Dacast", "Limelight Networks", "Periscope Producer"),
+            ).copy(
+                type = DialogType.POPUP_MENU,
+                popupBounds = PopupBounds(leftDp = 34.84f, topDp = 55.82f, widthDp = 198.76f),
             ))
             28 -> base.settings(SettingsPage.CONNECTION_FORM, 3).copy(formVariant = "rtmp_auth")
             29 -> base.settings(SettingsPage.MANAGE_CONNECTIONS)
@@ -52,7 +58,7 @@ object DebugStateCatalog {
             74 -> base.settings(SettingsPage.AUDIO, 6).copy(overrides = ScreenOverrides(audioInputGainDb = 10f))
             75 -> base.settings(SettingsPage.AUDIO, 8)
             76 -> base.settings(SettingsPage.RECORDING)
-            77 -> base.settings(SettingsPage.RECORDING).withDialog(numberDialog("section_minutes", "Sections duration (minutes)", "30"))
+            77 -> base.settings(SettingsPage.RECORDING).withDialog(numberDialog("section_minutes", "Sections duration (minutes)", "30").copy(focusFieldOnShow = true))
             78 -> base.settings(SettingsPage.RECORDING, 4)
             79 -> base.settings(SettingsPage.RECORDING, 4).withDialog(choiceDialog("snapshot_format", "Snapshot format", "JPEG", listOf("JPEG", "PNG", "WebP")))
             in 80..81 -> base.settings(SettingsPage.RECORDING, 4).withDialog(choiceDialog("snapshot_quality", "Snapshot quality", "90", listOf("100", "95", "90", "85")))
@@ -88,7 +94,13 @@ object DebugStateCatalog {
             109 -> base.settings(SettingsPage.WEB_OVERLAY_FORM, 5).copy(formVariant = "default")
             110 -> base.settings(SettingsPage.WEB_OVERLAY_FORM, 9).copy(formVariant = "default")
             111 -> base.settings(SettingsPage.WEB_OVERLAY_FORM).withDialog(choiceDialog("view_mode", "View mode", "Preview + stream", listOf("Preview + stream", "Preview", "Stream")))
-            112 -> base.settings(SettingsPage.WEB_OVERLAY_FORM).withDialog(choiceDialog("position", "Position", "Center", listOf("Top left", "Top right", "Center", "Bottom left", "Bottom right", "Custom")))
+            // Audit evidence: 112 is an anchored spinner popup at [278,270]-[575,1080].
+            112 -> base.settings(SettingsPage.WEB_OVERLAY_FORM).withDialog(
+                choiceDialog("position", "Position", "Center", listOf("Top left", "Top right", "Center", "Bottom left", "Bottom right", "Custom")).copy(
+                    type = DialogType.POPUP_MENU,
+                    popupBounds = PopupBounds(leftDp = 98.84f, topDp = 96.0f, widthDp = 105.6f),
+                )
+            )
             113 -> base.settings(SettingsPage.WEB_OVERLAY_FORM).copy(formVariant = "custom")
             114 -> base.settings(SettingsPage.WEB_OVERLAY_FORM, 4).copy(formVariant = "custom")
             115 -> base.settings(SettingsPage.MANAGE_WEB_OVERLAYS)
@@ -137,7 +149,7 @@ object DebugStateCatalog {
         message = "You don't have any active connections, please add one.",
         positive = "CREATE CONNECTION",
         negative = "CANCEL",
-    )
+    ).copy(overLiveConsole = true)
 
     private fun RuntimeUiState.settings(page: SettingsPage, index: Int = 0) = copy(
         route = AppRoute.Settings(page),
@@ -209,9 +221,9 @@ object DebugStateCatalog {
         48 -> choiceDialog("white_balance", "White balance", "Auto", listOf("Auto", "Cloudy daylight", "Daylight", "Fluorescent", "Incandescent"))
         49 -> choiceDialog("anti_flicker", "Anti-flicker", "Auto", listOf("Off", "50Hz", "60Hz", "Auto"))
         in 50..53 -> choiceDialog("exposure", "Exposure compensation", "0", (-20..20).map { if (it > 0) "+${it / 10.0}" else "${it / 10.0}" }.map { it.removeSuffix(".0") })
-        55 -> numberDialog("h264_bitrate_kbps", "Bitrate", "6000")
+        55 -> numberDialog("h264_bitrate_kbps", "Bitrate", "6000").copy(focusFieldOnShow = true)
         56 -> choiceDialog("bitrate_mode", "Bitrate mode", "System default", listOf("System default", "Constant quality", "Variable bitrate", "Constant bitrate", "Constant bitrate w/frame drops (OFTEN UNSUPPORTED)"))
-        57 -> numberDialog("keyframe", "Keyframe frequency", "2")
+        57 -> numberDialog("keyframe", "Keyframe frequency", "2").copy(focusFieldOnShow = true)
         58 -> choiceDialog("format", "Format", "Auto", listOf("Auto", "H.264", "HEVC"))
         59 -> choiceDialog("h264_profile", "H.264 profile", "System default", listOf("System default", "Baseline", "Constrained Baseline", "Main", "High"))
         60 -> choiceDialog("hevc_profile", "HEVC profile", "System default", listOf("System default", "Main", "Main 10", "Main 10 HDR 10", "Main 10 HDR 10 Plus"))

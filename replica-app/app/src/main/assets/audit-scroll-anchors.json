@@ -1,0 +1,758 @@
+{
+ "002_settings_root": {
+  "label": "IRL Pro",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "003_settings_root_scrolled": {
+  "label": "Video",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "004_settings_root_bottom": {
+  "label": "Recording",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "005_settings_root_final": {
+  "label": "Recording",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "006_streamer_settings": {
+  "label": "Chat",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "007_streamer_settings_chat_scrolled": {
+  "label": "Show bots in chat",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "008_streamer_settings_dashboard": {
+  "label": "Right chat box",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "009_streamer_settings_alerts": {
+  "label": "Streamlabs API Key",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "010_streamer_settings_custom_page": {
+  "label": "Enable Streamelements Dashboard",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "011_streamer_settings_final": {
+  "label": "Enable Streamelements Dashboard",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "015_streamer_platform_icons_enabled": {
+  "label": "Show platform icons",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "016_bonding_settings": {
+  "label": "Bonding",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "017_bonding_mode_controls": {
+  "label": "Bonding Only",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "018_bonding_link_weights": {
+  "label": "100",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "019_bonding_link_weights_lower": {
+  "label": "100",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "020_bonding_wifi_weight_adjusted": {
+  "label": "100",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "021_connections_list_empty": {
+  "label": "Long hold to edit a connection, only one active at a time.",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "022_new_connection_protocol_menu": {
+  "label": "Quick Site Setup",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "023_new_connection_form_bottom": {
+  "label": "TWITCH.TV",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "024_new_connection_invalid_url": {
+  "label": "TWITCH.TV",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "025_new_connection_rtmp_fields": {
+  "label": "Quick Site Setup",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "026_new_connection_rtmp_advanced": {
+  "label": "TWITCH.TV",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "027_rtmp_target_type_menu": {
+  "label": "Default (no authorization)",
+  "row_top_px": 157,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "028_rtmp_authorization_fields": {
+  "label": "rtmp://198.51.100.1/live",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "029_manage_connections_empty": {
+  "label": "New connection",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "032_video_settings": {
+  "label": "Multi-camera capture",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "033_video_resolution_fps": {
+  "label": "1920x1080 (16:9)",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "034_video_orientation_controls": {
+  "label": "Double Tap to Flip Camera",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "035_video_lens_defaults": {
+  "label": "White balance",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "036_video_encoder_parameters": {
+  "label": "Bitrate H264 - HEVC is auto 66%",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "037_video_codec_color": {
+  "label": "Auto adjust bitrate based on format",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "038_video_vendor_enhancements": {
+  "label": "On",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "039_video_adaptive_bitrate": {
+  "label": "On",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "040_video_adaptive_floor": {
+  "label": "On",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "041_video_start_camera_menu": {
+  "label": "Rear camera (0)",
+  "row_top_px": 308,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "042_video_resolution_menu": {
+  "label": "1920x1080 (16:9)",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "043_video_resolution_menu_lower": {
+  "label": "1088x1088",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "044_video_fps_menu": {
+  "label": "System default",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "045_video_fps_menu_middle": {
+  "label": "15 fixed rate",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "046_video_fps_menu_lower": {
+  "label": "15 fixed rate",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "047_video_focus_mode_menu": {
+  "label": "Continuous auto focus",
+  "row_top_px": 443,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "048_video_white_balance_menu": {
+  "label": "Auto",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "049_video_antiflicker_menu": {
+  "label": "Off",
+  "row_top_px": 308,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "050_video_exposure_compensation_menu": {
+  "label": "0",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "051_video_exposure_compensation_menu_scrolled": {
+  "label": "+0.4",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "052_video_exposure_compensation_menu_lower": {
+  "label": "+0.8",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "053_video_exposure_compensation_menu_bottom": {
+  "label": "+1.6",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "054_video_manual_bitrate_enabled": {
+  "label": "Encoder parameters",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "056_video_bitrate_mode_menu": {
+  "label": "System default",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "058_video_format_menu": {
+  "label": "Auto",
+  "row_top_px": 376,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "059_video_h264_profile_menu": {
+  "label": "System default",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "060_video_hevc_profile_menu": {
+  "label": "System default",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "061_video_eis_menu": {
+  "label": "System default",
+  "row_top_px": 372,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "062_video_ois_menu": {
+  "label": "System default",
+  "row_top_px": 376,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "063_video_noise_reduction_menu": {
+  "label": "System default",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "064_video_adaptive_bitrate_mode_menu": {
+  "label": "Automatically Select",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "065_audio_settings": {
+  "label": "Prefer Bluetooth Mic/Headset",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "066_audio_source_menu": {
+  "label": "Camcorder",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "067_audio_channels_menu": {
+  "label": "Mono",
+  "row_top_px": 443,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "068_audio_bitrate_menu": {
+  "label": "Auto",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "069_audio_bitrate_menu_lower": {
+  "label": "64 Kbps",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "070_audio_bitrate_menu_bottom": {
+  "label": "96 Kbps",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "071_audio_settings_lower": {
+  "label": "Sample rate",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "072_audio_sample_rate_menu": {
+  "label": "22050",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "073_audio_sample_rate_menu_top": {
+  "label": "8000",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "074_audio_input_gain_maximum": {
+  "label": "Sample rate",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "075_audio_processing": {
+  "label": "Input gain",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "076_recording_settings": {
+  "label": "Record stream",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "078_recording_settings_lower": {
+  "label": "Snapshot format",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "079_recording_snapshot_format_menu": {
+  "label": "JPEG",
+  "row_top_px": 376,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "081_recording_snapshot_quality_menu_lower": {
+  "label": "100",
+  "row_top_px": 308,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "083_display_settings": {
+  "label": "Show audio level meter",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "087_display_safe_margin_controls": {
+  "label": "Show audio level meter",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "088_display_safe_margin_ratio_menu": {
+  "label": "1:1 (1.0)",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "089_display_safe_margin_ratio_menu_lower": {
+  "label": "14:9 (1.56)",
+  "row_top_px": 279,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "090_display_safe_margin_indent_maximum": {
+  "label": "Show audio level meter",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "091_overlays_list": {
+  "label": "Text/Picture Overlays",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "092_text_picture_overlays_empty": {
+  "label": "Show layers on preview",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "093_text_picture_overlay_layers": {
+  "label": "Layers",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "094_overlay_timestamp_editor": {
+  "label": "Layers",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "096_overlay_new_layer_type_menu": {
+  "label": "Name",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "097_overlay_layer_type_menu": {
+  "label": "Picture",
+  "row_top_px": 443,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "098_overlay_new_text_layer_form": {
+  "label": "Name",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "099_overlay_new_text_layer_form_lower": {
+  "label": "Scale",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "100_overlay_new_text_layer_form_actions": {
+  "label": "5",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "101_overlay_blank_save_validation": {
+  "label": "5",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "validation_state"
+ },
+ "102_overlay_manage_layers": {
+  "label": "Timestamp",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "103_overlay_timestamp_edit_form": {
+  "label": "Name",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "104_overlay_timestamp_refresh_controls": {
+  "label": "Periodic refresh",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "107_web_overlays_settings": {
+  "label": "Web overlays",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "108_web_overlay_new_form": {
+  "label": "Name",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "109_web_overlay_new_form_lower": {
+  "label": "Center",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "110_web_overlay_webview_options": {
+  "label": "Height",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "111_web_overlay_view_mode_menu": {
+  "label": "Preview + stream",
+  "row_top_px": 376,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "112_web_overlay_position_menu": {
+  "label": "Top left",
+  "row_top_px": 270,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "selection_dialog"
+ },
+ "113_web_overlay_custom_position_fields": {
+  "label": "Name",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "114_web_overlay_custom_position_coordinates": {
+  "label": "Position",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "115_web_overlay_manage_empty": {
+  "label": "New web overlay",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "116_import_export_settings": {
+  "label": "Import settings",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "119_settings_root_lower": {
+  "label": "Recording",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "120_advanced_options": {
+  "label": "Misc Settings",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "121_advanced_options_mid": {
+  "label": "Keep streaming when not in focus.",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "122_advanced_options_lower": {
+  "label": "Horizon stream demo",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "123_advanced_options_bottom": {
+  "label": "Encoder buffer size",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "124_advanced_webviews": {
+  "label": "USB OTG works unstable unfortunately and it's dependent on hardware capabilities. So if you enable this feature and it doesn't work, this means IRL Pro can't handle it.\n\nTap on this message to read more details on our website.",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "125_advanced_bottommost": {
+  "label": "USB OTG works unstable unfortunately and it's dependent on hardware capabilities. So if you enable this feature and it doesn't work, this means IRL Pro can't handle it.\n\nTap on this message to read more details on our website.",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "126_preferred_camera_api_dialog": {
+  "label": "Advanced options",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ },
+ "128_help_support": {
+  "label": "Discord",
+  "row_top_px": 219,
+  "scroll_offset_dp": 0.0,
+  "scroll_offset_px": 0,
+  "surface_type": "settings_screen"
+ }
+}

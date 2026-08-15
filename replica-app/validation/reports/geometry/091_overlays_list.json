@@ -1,0 +1,95 @@
+{
+  "matched_elements": 4,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 10.5,
+  "origins_within_2px_pct": 75.0,
+  "origins_within_4px_pct": 75.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Settings",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        422,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        455,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 32,
+      "dheight": 0
+    },
+    {
+      "key": "Text/Picture Overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        706,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        735,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 29,
+      "dheight": 1
+    },
+    {
+      "key": "Web Overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        548,
+        476
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        565,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 17,
+      "dheight": 1
+    }
+  ],
+  "screen": "091_overlays_list"
+}

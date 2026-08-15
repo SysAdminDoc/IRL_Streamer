@@ -1,0 +1,160 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [
+    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('MMM dd, HH:mm:ss', 'en_US') %></b>"
+  ],
+  "replica_only_elements": [
+    "Local green date/time layer",
+    "Pause overlays"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 114,
+  "max_abs_dwidth": 1734,
+  "max_abs_dheight": 101,
+  "mean_abs_origin_error_px": 29.5,
+  "origins_within_2px_pct": 57.14,
+  "origins_within_4px_pct": 57.14,
+  "elements": [
+    {
+      "key": "Timestamp",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        354,
+        505,
+        415
+      ],
+      "replica_bounds": [
+        278,
+        468,
+        518,
+        530
+      ],
+      "dleft": 0,
+      "dtop": 114,
+      "dwidth": 13,
+      "dheight": 1
+    },
+    {
+      "key": "Layers",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        233,
+        2136,
+        286
+      ],
+      "replica_bounds": [
+        278,
+        314,
+        402,
+        382
+      ],
+      "dleft": 0,
+      "dtop": 81,
+      "dwidth": -1734,
+      "dheight": 15
+    },
+    {
+      "key": "Manage layers",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        755,
+        568,
+        816
+      ],
+      "replica_bounds": [
+        278,
+        823,
+        586,
+        885
+      ],
+      "dleft": 0,
+      "dtop": 68,
+      "dwidth": 18,
+      "dheight": 1
+    },
+    {
+      "key": "New layer",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        604,
+        474,
+        665
+      ],
+      "replica_bounds": [
+        278,
+        672,
+        486,
+        734
+      ],
+      "dleft": 0,
+      "dtop": 68,
+      "dwidth": 12,
+      "dheight": 1
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        153
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -101
+    },
+    {
+      "key": "Overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        428,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        462,
+        153
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 33,
+      "dheight": -26
+    },
+    {
+      "key": "Check layers images availability",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        974,
+        909,
+        1035
+      ],
+      "replica_bounds": [
+        278,
+        974,
+        954,
+        1036
+      ],
+      "dleft": 0,
+      "dtop": 0,
+      "dwidth": 45,
+      "dheight": 1
+    }
+  ],
+  "screen": "093_text_picture_overlay_layers"
+}

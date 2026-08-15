@@ -1,0 +1,179 @@
+{
+  "matched_elements": 8,
+  "unmatched_audit_elements": [
+    "Version 3.5.23 build 305230"
+  ],
+  "replica_only_elements": [
+    "Version 0.1.0 \u00b7 clean-room reconstruction"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 8.25,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Bonding settings",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        726,
+        571,
+        779
+      ],
+      "replica_bounds": [
+        278,
+        735,
+        593,
+        788
+      ],
+      "dleft": 0,
+      "dtop": 9,
+      "dwidth": 22,
+      "dheight": 0
+    },
+    {
+      "key": "Chatbox and activity feed settings",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        522,
+        866,
+        575
+      ],
+      "replica_bounds": [
+        278,
+        531,
+        913,
+        584
+      ],
+      "dleft": 0,
+      "dtop": 9,
+      "dwidth": 47,
+      "dheight": 0
+    },
+    {
+      "key": "Bonding",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        665,
+        443,
+        726
+      ],
+      "replica_bounds": [
+        278,
+        673,
+        453,
+        735
+      ],
+      "dleft": 0,
+      "dtop": 8,
+      "dwidth": 10,
+      "dheight": 1
+    },
+    {
+      "key": "Connections",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        869,
+        531,
+        930
+      ],
+      "replica_bounds": [
+        278,
+        877,
+        547,
+        939
+      ],
+      "dleft": 0,
+      "dtop": 8,
+      "dwidth": 16,
+      "dheight": 1
+    },
+    {
+      "key": "Streamer",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        461,
+        461,
+        522
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        472,
+        531
+      ],
+      "dleft": 0,
+      "dtop": 8,
+      "dwidth": 11,
+      "dheight": 1
+    },
+    {
+      "key": "Video",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1020,
+        393,
+        1080
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        400,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 8,
+      "dwidth": 7,
+      "dheight": -8
+    },
+    {
+      "key": "Settings",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        422,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        455,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 32,
+      "dheight": 0
+    }
+  ],
+  "screen": "002_settings_root"
+}

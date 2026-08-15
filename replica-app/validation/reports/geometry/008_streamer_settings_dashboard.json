@@ -1,0 +1,197 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [
+    "This is for the activity feed only (Bell icon on right). To add the on stream alerts, use a web overlay."
+  ],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 1754,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 12.056,
+  "origins_within_2px_pct": 55.56,
+  "origins_within_4px_pct": 55.56,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Custom chatbox url, setting this ignores the username settings above",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        804,
+        1479,
+        857
+      ],
+      "replica_bounds": [
+        278,
+        833,
+        1573,
+        886
+      ],
+      "dleft": 0,
+      "dtop": 29,
+      "dwidth": 94,
+      "dheight": 0
+    },
+    {
+      "key": "Custom chatbox URL",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        743,
+        699,
+        804
+      ],
+      "replica_bounds": [
+        278,
+        771,
+        724,
+        833
+      ],
+      "dleft": 0,
+      "dtop": 28,
+      "dwidth": 25,
+      "dheight": 1
+    },
+    {
+      "key": "Show user count",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        592,
+        614,
+        653
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        635,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 28,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Move chat box to the right",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        305,
+        729,
+        358
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        765,
+        380
+      ],
+      "dleft": 0,
+      "dtop": 22,
+      "dwidth": 36,
+      "dheight": 0
+    },
+    {
+      "key": "Right chat box",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        244,
+        565,
+        305
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        584,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 21,
+      "dwidth": 19,
+      "dheight": 1
+    },
+    {
+      "key": "Other",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        471,
+        2136,
+        524
+      ],
+      "replica_bounds": [
+        278,
+        466,
+        382,
+        534
+      ],
+      "dleft": 0,
+      "dtop": -5,
+      "dwidth": -1754,
+      "dheight": 15
+    },
+    {
+      "key": "Alert Dashboard",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        970,
+        2136,
+        1023
+      ],
+      "replica_bounds": [
+        278,
+        972,
+        583,
+        1040
+      ],
+      "dleft": 0,
+      "dtop": 2,
+      "dwidth": -1553,
+      "dheight": 15
+    },
+    {
+      "key": "Streamer options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        580,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        647,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 66,
+      "dheight": 0
+    }
+  ],
+  "screen": "008_streamer_settings_dashboard"
+}

@@ -1,0 +1,164 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [
+    "Advanced options#1",
+    "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available.",
+    "If IRL Pro sits in background and has no active connections, it will quit after a timeout.",
+    "Stream and record front camera as appears in preview (mirrored)."
+  ],
+  "replica_only_elements": [
+    "Disable Camera2 only if camera resolutions or framerates are unavailable.",
+    "If IRL Streamer sits in background and has no active connections, it will quit after a timeout.",
+    "Stream and record front camera as it appears in preview (mirrored)."
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 127,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 31.143,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Mirror front camera",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1004,
+        667,
+        1065
+      ],
+      "replica_bounds": [
+        278,
+        877,
+        693,
+        939
+      ],
+      "dleft": 0,
+      "dtop": -127,
+      "dwidth": 26,
+      "dheight": 1
+    },
+    {
+      "key": "Preferred camera API",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        754,
+        703,
+        815
+      ],
+      "replica_bounds": [
+        278,
+        673,
+        731,
+        735
+      ],
+      "dleft": 0,
+      "dtop": -81,
+      "dwidth": 28,
+      "dheight": 1
+    },
+    {
+      "key": "This is always enabled now.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        263,
+        757,
+        316
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        794,
+        380
+      ],
+      "dleft": 0,
+      "dtop": 64,
+      "dwidth": 37,
+      "dheight": 0
+    },
+    {
+      "key": "Keep streaming when not in focus.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        971,
+        263
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        1017,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 46,
+      "dheight": 18
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Quit if inactive in background",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        406,
+        859,
+        467
+      ],
+      "replica_bounds": [
+        278,
+        442,
+        901,
+        504
+      ],
+      "dleft": 0,
+      "dtop": 36,
+      "dwidth": 42,
+      "dheight": 1
+    },
+    {
+      "key": "Advanced options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        591,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        660,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 68,
+      "dheight": 0
+    }
+  ],
+  "screen": "121_advanced_options_mid"
+}

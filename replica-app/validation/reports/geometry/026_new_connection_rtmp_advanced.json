@@ -1,0 +1,165 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [
+    "AuditTestz",
+    "KICK.COM",
+    "RTMP URL schema is rtmp://server/application/streamkey, e.g. rtmp://a.rtmp.youtube.com/live2/abcd-efgh-abcd-efgh",
+    "TWITCH.TV"
+  ],
+  "replica_only_elements": [
+    "Local fixture",
+    "Name",
+    "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host.",
+    "URL"
+  ],
+  "max_abs_dleft": 580,
+  "max_abs_dtop": 63,
+  "max_abs_dwidth": 955,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 122.571,
+  "origins_within_2px_pct": 14.29,
+  "origins_within_4px_pct": 21.43,
+  "elements": [
+    {
+      "key": "SAVE",
+      "class": "Button",
+      "audit_bounds": [
+        1128,
+        945,
+        2181,
+        1080
+      ],
+      "replica_bounds": [
+        1708,
+        1008,
+        1806,
+        1065
+      ],
+      "dleft": 580,
+      "dtop": 63,
+      "dwidth": -955,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        75,
+        945,
+        1128,
+        1080
+      ],
+      "replica_bounds": [
+        560,
+        1008,
+        710,
+        1065
+      ],
+      "dleft": 485,
+      "dtop": 63,
+      "dwidth": -903,
+      "dheight": -78
+    },
+    {
+      "key": "Default (no authorization)",
+      "class": "TextView",
+      "audit_bounds": [
+        98,
+        835,
+        657,
+        896
+      ],
+      "replica_bounds": [
+        278,
+        872,
+        758,
+        925
+      ],
+      "dleft": 180,
+      "dtop": 37,
+      "dwidth": -79,
+      "dheight": -8
+    },
+    {
+      "key": "Target type - Leave Default for most cases",
+      "class": "TextView",
+      "audit_bounds": [
+        98,
+        779,
+        832,
+        832
+      ],
+      "replica_bounds": [
+        278,
+        810,
+        1179,
+        872
+      ],
+      "dleft": 180,
+      "dtop": 31,
+      "dwidth": 167,
+      "dheight": 9
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "rtmp://198.51.100.1/live",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        532,
+        2181,
+        658
+      ],
+      "replica_bounds": [
+        87,
+        535,
+        2294,
+        670
+      ],
+      "dleft": 12,
+      "dtop": 3,
+      "dwidth": 101,
+      "dheight": 9
+    },
+    {
+      "key": "New outgoing connection",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        724,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        824,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 99,
+      "dheight": 0
+    }
+  ],
+  "screen": "026_new_connection_rtmp_advanced"
+}

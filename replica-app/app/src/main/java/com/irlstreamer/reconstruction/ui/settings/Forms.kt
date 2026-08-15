@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
@@ -35,7 +36,10 @@ import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.ui.components.AuditedAppBar
+import com.irlstreamer.reconstruction.ui.components.ConnectionFormField
 import com.irlstreamer.reconstruction.ui.components.FormTextField
+import com.irlstreamer.reconstruction.ui.components.FormHint
+import com.irlstreamer.reconstruction.ui.components.FormSectionHeader
 import com.irlstreamer.reconstruction.ui.components.InfoRow
 import com.irlstreamer.reconstruction.ui.components.PreferenceRow
 import com.irlstreamer.reconstruction.ui.components.SectionHeader
@@ -47,7 +51,7 @@ import com.irlstreamer.reconstruction.ui.theme.AuditColors
 fun ConnectionFormScreen(state: AppUiState, viewModel: MainViewModel) {
     val variant = state.runtime.formVariant ?: "empty"
     var name by remember(variant) { mutableStateOf(if (variant == "invalid") "AuditTest3not_a_url" else if (variant.startsWith("rtmp")) "Local fixture" else "") }
-    var url by remember(variant) { mutableStateOf(if (variant.startsWith("rtmp")) "rtmp://192.0.2.1/live" else "") }
+    var url by remember(variant) { mutableStateOf(if (variant.startsWith("rtmp")) "rtmp://198.51.100.1/live" else "") }
     var login by remember(variant) { mutableStateOf("") }
     var password by remember(variant) { mutableStateOf("") }
     val rtmp = url.startsWith("rtmp://", ignoreCase = true) || variant.startsWith("rtmp")
@@ -58,10 +62,19 @@ fun ConnectionFormScreen(state: AppUiState, viewModel: MainViewModel) {
 
     FormScaffold("New outgoing connection", viewModel) {
         LazyColumn(modifier = Modifier.fillMaxSize(), state = listState) {
-            item { SectionHeader("Quick Site Setup") }
+            // Audit evidence: screen 025 gives the exact form structure.
+            //   "Quick Site Setup"  [75,309]-[2181,377]
+            //   two buttons         [75,377]-[777,512] and [777,377]-[1479,512], 702 px each
+            //   one hint slot       [98,580]-[2158,633] whose text changes with the URL
+            //   Name  EditText      [75,664]-[2181,790]
+            //   URL   EditText      [75,821]-[2181,947]   (field pitch 157 px)
+            // The form previously rendered two separate hint rows and stretched the
+            // buttons across the full width.
+            item { Spacer(Modifier.height(32.dp)) }
+            item { FormSectionHeader("Quick Site Setup") }
             item {
                 Row(modifier = Modifier.fillMaxWidth()) {
-                    FormButton("PLATFORM A", Modifier.weight(1f)) {
+                    FormButton("PLATFORM A", Modifier.width(249.6.dp)) {
                         viewModel.showDialog(DialogRequest(
                             id = "platform_a",
                             title = "Platform A",
@@ -69,7 +82,7 @@ fun ConnectionFormScreen(state: AppUiState, viewModel: MainViewModel) {
                             options = listOf("Username", "Stream key"),
                         ))
                     }
-                    FormButton("PLATFORM B", Modifier.weight(1f)) {
+                    FormButton("PLATFORM B", Modifier.width(249.6.dp)) {
                         viewModel.showDialog(DialogRequest(
                             id = "platform_b",
                             title = "Platform B",
@@ -79,11 +92,24 @@ fun ConnectionFormScreen(state: AppUiState, viewModel: MainViewModel) {
                     }
                 }
             }
-            item { InfoRow("protocol_hint", "Start typing or paste URL to view protocol-specific fields for authentication etc.", enabled = true) }
-            item { FormTextField("connection_name", "Name", name, { name = it }) }
-            item { FormTextField("connection_url", "URL", url, { url = it }, KeyboardType.Uri) }
+            // One hint slot, not two: the audited TextView keeps its position and
+            // swaps its text once the URL identifies a protocol.
+            item { Spacer(Modifier.height(24.18.dp)) }
+            item {
+                FormHint(
+                    if (rtmp) {
+                        "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host."
+                    } else {
+                        "Start typing or paste URL to view protocol-specific fields for authentication etc."
+                    },
+                )
+            }
+            item { Spacer(Modifier.height(2.49.dp)) }
+            item { ConnectionFormField("connection_name", "Name", name, { name = it }) }
+            item { Spacer(Modifier.height(10.67.dp)) }
+            item { ConnectionFormField("connection_url", "URL", url, { url = it }, KeyboardType.Uri) }
             if (rtmp) {
-                item { InfoRow("rtmp_help", "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host.", enabled = true) }
+                item { Spacer(Modifier.height(43.02.dp)) }
                 item {
                     PreferenceRow(
                         id = "rtmp_target",
@@ -103,8 +129,8 @@ fun ConnectionFormScreen(state: AppUiState, viewModel: MainViewModel) {
                 }
             }
             if (authorization) {
-                item { FormTextField("connection_login", "Login", login, { login = it }) }
-                item { FormTextField("connection_password", "Password", password, { password = it }, visualTransformation = PasswordVisualTransformation()) }
+                item { ConnectionFormField("connection_login", "Login", login, { login = it }) }
+                item { ConnectionFormField("connection_password", "Password", password, { password = it }, visualTransformation = PasswordVisualTransformation()) }
             }
             item {
                 FormFooter(

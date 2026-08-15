@@ -45,9 +45,42 @@ data class DialogRequest(
     val positiveLabel: String = "OK",
     val negativeLabel: String = "CANCEL",
     val dismissOnChoice: Boolean = true,
+    /**
+     * The live console hides the status bar, so a modal raised over it centres on the
+     * full 1080 px height (audit screen 142, centre y = 539.5 px) instead of the
+     * settings region that begins 83 px down (centre y = 581.5 px).
+     */
+    val overLiveConsole: Boolean = false,
+    /**
+     * Audit screens 055, 057 and 077 were captured with the field focused and the
+     * soft keyboard raised. On the reference device the Samsung IME takes over the
+     * whole landscape window, which is why those screenshots show a keyboard rather
+     * than the modal that the matching UI hierarchy proves is still present.
+     */
+    val focusFieldOnShow: Boolean = false,
+    /**
+     * First visible option index for a scrolled choice list. Audit states such as
+     * 045_video_fps_menu_middle and 046_video_fps_menu_lower captured the same menu
+     * at different scroll offsets, so the option list must start where the audit
+     * hierarchy shows it starting.
+     */
+    val listAnchorIndex: Int = 0,
+    /**
+     * Absolute placement for an anchored spinner popup. Audit screens 027 and 112 are
+     * not AlertDialogs: they are `ListView` popups anchored to their spinner row, with
+     * no title and no button bar (027 at [98,157]-[657,832]; 112 at [278,270]-[575,1080]).
+     */
+    val popupBounds: PopupBounds? = null,
 )
 
-enum class DialogType { CHOICE_SINGLE, CHOICE_MULTIPLE, TEXT, NUMBER, ALERT, ABOUT }
+/** Absolute popup placement in dp, converted from the audited pixel bounds at 450 dpi. */
+data class PopupBounds(
+    val leftDp: Float,
+    val topDp: Float,
+    val widthDp: Float,
+)
+
+enum class DialogType { CHOICE_SINGLE, CHOICE_MULTIPLE, TEXT, NUMBER, ALERT, ABOUT, POPUP_MENU }
 
 data class ReplicaSettings(
     val showPlatformIcons: Boolean = false,

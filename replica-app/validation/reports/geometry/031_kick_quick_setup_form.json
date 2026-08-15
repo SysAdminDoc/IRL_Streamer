@@ -1,0 +1,65 @@
+{
+  "matched_elements": 2,
+  "unmatched_audit_elements": [
+    "Enter your Kick Stream Key",
+    "Enter your Kick Stream URL",
+    "Enter your Kick username",
+    "Kick.com"
+  ],
+  "replica_only_elements": [
+    "Platform B",
+    "Stream URL",
+    "Stream key",
+    "Username"
+  ],
+  "max_abs_dleft": 73,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 126,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 47.5,
+  "origins_within_2px_pct": 0.0,
+  "origins_within_4px_pct": 0.0,
+  "elements": [
+    {
+      "key": "OK",
+      "class": "Button",
+      "audit_bounds": [
+        1553,
+        813,
+        1733,
+        948
+      ],
+      "replica_bounds": [
+        1626,
+        848,
+        1680,
+        905
+      ],
+      "dleft": 73,
+      "dtop": 35,
+      "dwidth": -126,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1340,
+        813,
+        1553,
+        948
+      ],
+      "replica_bounds": [
+        1387,
+        848,
+        1537,
+        905
+      ],
+      "dleft": 47,
+      "dtop": 35,
+      "dwidth": -63,
+      "dheight": -78
+    }
+  ],
+  "screen": "031_kick_quick_setup_form"
+}

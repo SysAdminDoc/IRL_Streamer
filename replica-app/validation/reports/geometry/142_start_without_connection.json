@@ -1,0 +1,95 @@
+{
+  "matched_elements": 4,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 28,
+  "max_abs_dtop": 55,
+  "max_abs_dwidth": 701,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 26.25,
+  "origins_within_2px_pct": 12.5,
+  "origins_within_4px_pct": 12.5,
+  "elements": [
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1057,
+        603,
+        1270,
+        738
+      ],
+      "replica_bounds": [
+        1080,
+        658,
+        1230,
+        715
+      ],
+      "dleft": 23,
+      "dtop": 55,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "CREATE CONNECTION",
+      "class": "Button",
+      "audit_bounds": [
+        1270,
+        603,
+        1733,
+        738
+      ],
+      "replica_bounds": [
+        1298,
+        658,
+        1700,
+        715
+      ],
+      "dleft": 28,
+      "dtop": 55,
+      "dwidth": -61,
+      "dheight": -78
+    },
+    {
+      "key": "You don't have any active connections, please add one.",
+      "class": "TextView",
+      "audit_bounds": [
+        572,
+        485,
+        1683,
+        538
+      ],
+      "replica_bounds": [
+        557,
+        466,
+        1700,
+        596
+      ],
+      "dleft": -15,
+      "dtop": -19,
+      "dwidth": 32,
+      "dheight": 77
+    },
+    {
+      "key": "Start Broadcast?",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        381,
+        1699,
+        457
+      ],
+      "replica_bounds": [
+        557,
+        367,
+        999,
+        443
+      ],
+      "dleft": 1,
+      "dtop": -14,
+      "dwidth": -701,
+      "dheight": 0
+    }
+  ],
+  "screen": "142_start_without_connection"
+}

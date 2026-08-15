@@ -1,0 +1,178 @@
+{
+  "matched_elements": 8,
+  "unmatched_audit_elements": [
+    "1280",
+    "Center"
+  ],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 146,
+  "max_abs_dwidth": 1535,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 34.188,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Width",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        882,
+        394,
+        943
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        401,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 146,
+      "dwidth": 7,
+      "dheight": -9
+    },
+    {
+      "key": "Width/Height scaled to 1080p canvas",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        761,
+        929,
+        814
+      ],
+      "replica_bounds": [
+        278,
+        856,
+        977,
+        907
+      ],
+      "dleft": 0,
+      "dtop": 95,
+      "dwidth": 48,
+      "dheight": -2
+    },
+    {
+      "key": "Z Order",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        338,
+        426,
+        399
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        436,
+        327
+      ],
+      "dleft": 0,
+      "dtop": -73,
+      "dwidth": 10,
+      "dheight": 1
+    },
+    {
+      "key": "1",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        399,
+        300,
+        452
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        301,
+        380
+      ],
+      "dleft": 0,
+      "dtop": -72,
+      "dwidth": 1,
+      "dheight": 0
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Layers with greater Z Order will appear at front.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        542,
+        1090,
+        595
+      ],
+      "replica_bounds": [
+        278,
+        501,
+        1158,
+        552
+      ],
+      "dleft": 0,
+      "dtop": -41,
+      "dwidth": 68,
+      "dheight": -2
+    },
+    {
+      "key": "WebView options",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        708,
+        2136,
+        761
+      ],
+      "replica_bounds": [
+        278,
+        670,
+        601,
+        738
+      ],
+      "dleft": 0,
+      "dtop": -38,
+      "dwidth": -1535,
+      "dheight": 15
+    },
+    {
+      "key": "Layer",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        373,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        395,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 0
+    }
+  ],
+  "screen": "109_web_overlay_new_form_lower"
+}

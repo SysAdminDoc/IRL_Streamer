@@ -1,0 +1,217 @@
+{
+  "matched_elements": 10,
+  "unmatched_audit_elements": [
+    "Bitrate matches the value recommended based on resolution and frame rate."
+  ],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 97,
+  "max_abs_dwidth": 1480,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 37.1,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Bitrate matches resolution",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        931,
+        806,
+        992
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        842,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 97,
+      "dwidth": 36,
+      "dheight": -9
+    },
+    {
+      "key": "0",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        644,
+        300,
+        697
+      ],
+      "replica_bounds": [
+        278,
+        735,
+        301,
+        788
+      ],
+      "dleft": 0,
+      "dtop": 91,
+      "dwidth": 1,
+      "dheight": 0
+    },
+    {
+      "key": "Auto",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        236,
+        360,
+        289
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        365,
+        380
+      ],
+      "dleft": 0,
+      "dtop": 91,
+      "dwidth": 5,
+      "dheight": 0
+    },
+    {
+      "key": "Auto",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        440,
+        360,
+        493
+      ],
+      "replica_bounds": [
+        278,
+        531,
+        365,
+        584
+      ],
+      "dleft": 0,
+      "dtop": 91,
+      "dwidth": 5,
+      "dheight": 0
+    },
+    {
+      "key": "Anti-flicker",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        379,
+        493,
+        440
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        511,
+        531
+      ],
+      "dleft": 0,
+      "dtop": 90,
+      "dwidth": 18,
+      "dheight": 1
+    },
+    {
+      "key": "Exposure compensation",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        583,
+        762,
+        644
+      ],
+      "replica_bounds": [
+        278,
+        673,
+        791,
+        735
+      ],
+      "dleft": 0,
+      "dtop": 90,
+      "dwidth": 29,
+      "dheight": 1
+    },
+    {
+      "key": "Encoder parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        810,
+        2136,
+        863
+      ],
+      "replica_bounds": [
+        278,
+        874,
+        656,
+        942
+      ],
+      "dleft": 0,
+      "dtop": 64,
+      "dwidth": -1480,
+      "dheight": 15
+    },
+    {
+      "key": "White balance",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        561,
+        236
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        579,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 18,
+      "dheight": 45
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Video parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        588,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        656,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 67,
+      "dheight": 0
+    }
+  ],
+  "screen": "035_video_lens_defaults"
+}

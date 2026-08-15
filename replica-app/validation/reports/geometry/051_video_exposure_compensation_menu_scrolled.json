@@ -1,0 +1,67 @@
+{
+  "matched_elements": 2,
+  "unmatched_audit_elements": [
+    "+0.4",
+    "+0.5",
+    "+0.6",
+    "+0.7",
+    "+0.8"
+  ],
+  "replica_only_elements": [
+    "-1.6",
+    "-1.7",
+    "-1.8",
+    "-1.9",
+    "-2"
+  ],
+  "max_abs_dleft": 30,
+  "max_abs_dtop": 39,
+  "max_abs_dwidth": 510,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 17.75,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1550,
+        928,
+        1700,
+        985
+      ],
+      "dleft": 30,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Exposure compensation",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        1190,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -510,
+      "dheight": 0
+    }
+  ],
+  "screen": "051_video_exposure_compensation_menu_scrolled"
+}

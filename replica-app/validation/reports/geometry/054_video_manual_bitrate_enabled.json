@@ -1,0 +1,35 @@
+{
+  "matched_elements": 0,
+  "unmatched_audit_elements": [
+    "2 sec",
+    "6000 Kbps",
+    "Bitrate H264 - HEVC is auto 66%",
+    "Bitrate is now defined manually.",
+    "Bitrate matches resolution",
+    "Bitrate mode",
+    "Encoder parameters",
+    "Keyframe frequency",
+    "Navigate up",
+    "System default",
+    "Video parameters"
+  ],
+  "replica_only_elements": [
+    "Automatically Select",
+    "CANCEL",
+    "Legacy - Hybrid",
+    "Legacy - Ladder ascend",
+    "Legacy - Logarithmic descend",
+    "Local bonding simulation",
+    "Mode",
+    "Selected"
+  ],
+  "max_abs_dleft": 0,
+  "max_abs_dtop": 0,
+  "max_abs_dwidth": 0,
+  "max_abs_dheight": 0,
+  "mean_abs_origin_error_px": 0.0,
+  "origins_within_2px_pct": 0.0,
+  "origins_within_4px_pct": 0.0,
+  "elements": [],
+  "screen": "054_video_manual_bitrate_enabled"
+}

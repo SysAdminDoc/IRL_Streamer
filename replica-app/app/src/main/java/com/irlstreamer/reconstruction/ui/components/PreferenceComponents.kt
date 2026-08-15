@@ -52,15 +52,21 @@ fun AuditedAppBar(title: String, onBack: () -> Unit) {
         IconButton(
             onClick = onBack,
             modifier = Modifier
+                // Audit evidence: the nav-icon cell measures [75,84]-[233,219],
+                // i.e. 56.18 x 48 dp centred at (154, 151.5) px. Like the title it
+                // sits 5 px below the app-bar centre, hence the same 1.78 dp offset.
                 .size(width = 56.18.dp, height = 48.dp)
                 .align(Alignment.CenterStart)
+                .offset(y = 1.78.dp)
                 .testTag("navigate_up"),
         ) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = "Navigate up",
                 tint = AuditColors.PrimaryText,
-                modifier = Modifier.size(32.dp),
+                // The drawn arrow measures 45 x 44 px (16 dp) in the audit
+                // screenshots; a 24 dp Material icon renders that glyph size.
+                modifier = Modifier.size(24.dp),
             )
         }
         Text(
@@ -255,6 +261,14 @@ fun InfoRow(id: String, text: String, enabled: Boolean = false) {
     }
 }
 
+/**
+ * Editable field styled as a preference row.
+ *
+ * Audit evidence: the layer and web-overlay forms (screens 098, 108, 113) render
+ * their fields as title + summary rows inset 203 px / 72.18 dp from the content
+ * edge - not as the connection form's full-width underlined fields. Those use
+ * [ConnectionFormField] instead.
+ */
 @Composable
 fun FormTextField(
     id: String,
@@ -312,6 +326,114 @@ fun FormTextField(
             }
         },
     )
+}
+
+@Composable
+fun ConnectionFormField(
+    id: String,
+    label: String,
+    value: String,
+    onValueChange: (String) -> Unit,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    auditedHeight: androidx.compose.ui.unit.Dp = 47.29.dp,
+) {
+    // Audit evidence: screen 026. The connection form uses full-width text fields,
+    // not preference rows. Measured from the screenshot and hierarchy:
+    //   Name  EditText [75,375]-[2181,501]; label glyphs y=351..374; value y=418..457;
+    //         underline y=476..478 (3 px, unfocused)
+    //   URL   EditText [75,532]-[2181,658]; label y=508..531; value y=560..627;
+    //         underline y=633..638 (6 px, focused, accent coloured)
+    // Field pitch is 157 px. The previous implementation inset the field by the
+    // 72.18 dp preference-row margin, placing every label ~190 px right of the audit.
+    var focused by remember { mutableStateOf(false) }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(auditedHeight)
+            .padding(start = 4.27.dp, end = 7.82.dp),
+    ) {
+        Text(
+            label,
+            color = if (focused) AuditColors.Accent else AuditColors.SecondaryText,
+            fontSize = 14.sp,
+            lineHeight = 18.84.sp,
+        )
+        BasicTextField(
+            value = value,
+            onValueChange = onValueChange,
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
+            visualTransformation = visualTransformation,
+            textStyle = TextStyle(
+                color = AuditColors.PrimaryText,
+                fontSize = 20.sp,
+                lineHeight = 26.67.sp,
+            ),
+            cursorBrush = androidx.compose.ui.graphics.SolidColor(AuditColors.Accent),
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .onFocusChanged { focused = it.isFocused }
+                .testTag("field_$id"),
+            decorationBox = { innerTextField ->
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.CenterStart) {
+                    innerTextField()
+                }
+            },
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                // 3 px unfocused, 6 px focused, measured at 450 dpi.
+                .height(if (focused) 2.13.dp else 1.07.dp)
+                .background(if (focused) AuditColors.Accent else AuditColors.SecondaryText),
+        )
+    }
+}
+
+/** Form section header. Audit evidence: screen 025 "Quick Site Setup" [75,309]-[2181,377], 68 px tall. */
+@Composable
+fun FormSectionHeader(title: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(24.18.dp),
+        contentAlignment = Alignment.CenterStart,
+    ) {
+        Text(
+            text = title,
+            color = AuditColors.Accent,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+        )
+    }
+}
+
+/**
+ * The connection form's single hint slot.
+ *
+ * Audit evidence: screen 025 [98,580]-[2158,633] - 53 px tall, inset 23 px from the
+ * content edge. The same TextView carries the protocol-specific text once a URL is
+ * entered, so this is one slot rather than two stacked rows.
+ */
+@Composable
+fun FormHint(text: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(18.84.dp)
+            .padding(start = 8.18.dp, end = 8.18.dp),
+        contentAlignment = Alignment.CenterStart,
+    ) {
+        Text(
+            text = text,
+            color = AuditColors.SecondaryText,
+            fontSize = 14.sp,
+            lineHeight = 18.84.sp,
+            maxLines = 1,
+        )
+    }
 }
 
 @Composable

@@ -1,0 +1,95 @@
+{
+  "matched_elements": 4,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 73,
+  "max_abs_dtop": 49,
+  "max_abs_dwidth": 409,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 29.0,
+  "origins_within_2px_pct": 37.5,
+  "origins_within_4px_pct": 37.5,
+  "elements": [
+    {
+      "key": "OK",
+      "class": "Button",
+      "audit_bounds": [
+        1553,
+        641,
+        1733,
+        776
+      ],
+      "replica_bounds": [
+        1626,
+        690,
+        1680,
+        747
+      ],
+      "dleft": 73,
+      "dtop": 49,
+      "dwidth": -126,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1340,
+        641,
+        1553,
+        776
+      ],
+      "replica_bounds": [
+        1387,
+        690,
+        1537,
+        747
+      ],
+      "dleft": 47,
+      "dtop": 49,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Sections duration (minutes)",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        427,
+        1699,
+        495
+      ],
+      "replica_bounds": [
+        557,
+        417,
+        1291,
+        493
+      ],
+      "dleft": 1,
+      "dtop": -10,
+      "dwidth": -409,
+      "dheight": 8
+    },
+    {
+      "key": "30",
+      "class": "EditText",
+      "audit_bounds": [
+        544,
+        495,
+        1711,
+        630
+      ],
+      "replica_bounds": [
+        545,
+        493,
+        1712,
+        651
+      ],
+      "dleft": 1,
+      "dtop": -2,
+      "dwidth": 0,
+      "dheight": 23
+    }
+  ],
+  "screen": "077_recording_section_duration_editor"
+}

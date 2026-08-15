@@ -1,0 +1,86 @@
+{
+  "matched_elements": 3,
+  "unmatched_audit_elements": [
+    "11025",
+    "12000",
+    "16000",
+    "8000"
+  ],
+  "replica_only_elements": [
+    "24000",
+    "32000",
+    "44100",
+    "48000",
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 507,
+  "max_abs_dwidth": 1147,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 111.5,
+  "origins_within_2px_pct": 33.33,
+  "origins_within_4px_pct": 33.33,
+  "elements": [
+    {
+      "key": "22050",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        819,
+        1767,
+        878
+      ],
+      "replica_bounds": [
+        579,
+        312,
+        711,
+        380
+      ],
+      "dleft": 91,
+      "dtop": -507,
+      "dwidth": -1147,
+      "dheight": 9
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1550,
+        928,
+        1700,
+        985
+      ],
+      "dleft": 30,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Sample rate",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        873,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -827,
+      "dheight": 0
+    }
+  ],
+  "screen": "073_audio_sample_rate_menu_top"
+}

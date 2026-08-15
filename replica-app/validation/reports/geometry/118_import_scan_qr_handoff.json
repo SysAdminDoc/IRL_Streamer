@@ -1,0 +1,61 @@
+{
+  "matched_elements": 2,
+  "unmatched_audit_elements": [
+    "Install Barcode Scanner?",
+    "This application requires Barcode Scanner. Would you like to install it?"
+  ],
+  "replica_only_elements": [
+    "Install QR Scanner?",
+    "This reconstruction can use an installed QR scanner. Would you like to open the app store?"
+  ],
+  "max_abs_dleft": 88,
+  "max_abs_dtop": 42,
+  "max_abs_dwidth": 123,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 59.0,
+  "origins_within_2px_pct": 0.0,
+  "origins_within_4px_pct": 0.0,
+  "elements": [
+    {
+      "key": "NO",
+      "class": "Button",
+      "audit_bounds": [
+        1373,
+        657,
+        1553,
+        792
+      ],
+      "replica_bounds": [
+        1461,
+        699,
+        1518,
+        756
+      ],
+      "dleft": 88,
+      "dtop": 42,
+      "dwidth": -123,
+      "dheight": -78
+    },
+    {
+      "key": "YES",
+      "class": "Button",
+      "audit_bounds": [
+        1553,
+        657,
+        1733,
+        792
+      ],
+      "replica_bounds": [
+        1617,
+        699,
+        1689,
+        756
+      ],
+      "dleft": 64,
+      "dtop": 42,
+      "dwidth": -108,
+      "dheight": -78
+    }
+  ],
+  "screen": "118_import_scan_qr_handoff"
+}

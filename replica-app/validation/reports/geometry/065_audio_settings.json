@@ -1,0 +1,199 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [
+    "Microphone to use for recording audio. Note that the exact behaviour of the options depends on how the option is implemented on your device."
+  ],
+  "replica_only_elements": [
+    "Camcorder \u00b7 behavior depends on device implementation"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 45,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 17.056,
+  "origins_within_2px_pct": 61.11,
+  "origins_within_4px_pct": 61.11,
+  "elements": [
+    {
+      "key": "Audio channels",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        665,
+        586,
+        726
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        606,
+        682
+      ],
+      "dleft": 0,
+      "dtop": -45,
+      "dwidth": 20,
+      "dheight": 1
+    },
+    {
+      "key": "Bitrate",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        869,
+        410,
+        930
+      ],
+      "replica_bounds": [
+        278,
+        824,
+        419,
+        886
+      ],
+      "dleft": 0,
+      "dtop": -45,
+      "dwidth": 9,
+      "dheight": 1
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Sample rate",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1073,
+        517,
+        1080
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        532,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": -45,
+      "dwidth": 15,
+      "dheight": 45
+    },
+    {
+      "key": "Auto",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        930,
+        360,
+        983
+      ],
+      "replica_bounds": [
+        278,
+        886,
+        365,
+        939
+      ],
+      "dleft": 0,
+      "dtop": -44,
+      "dwidth": 5,
+      "dheight": 0
+    },
+    {
+      "key": "Stereo",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        726,
+        391,
+        779
+      ],
+      "replica_bounds": [
+        278,
+        682,
+        399,
+        735
+      ],
+      "dleft": 0,
+      "dtop": -44,
+      "dwidth": 8,
+      "dheight": 0
+    },
+    {
+      "key": "Audio parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        590,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        658,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 67,
+      "dheight": 0
+    },
+    {
+      "key": "Audio source",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        542,
+        476
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        558,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 16,
+      "dheight": 1
+    },
+    {
+      "key": "Prefer Bluetooth Mic/Headset",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        876,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        915,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 39,
+      "dheight": 1
+    }
+  ],
+  "screen": "065_audio_settings"
+}

@@ -104,12 +104,13 @@ def main() -> int:
     mae = float(np.mean(active_values) / 255.0)
     rmse = float(np.sqrt(np.mean(np.square(active_values.astype(np.float64)))) / 255.0)
     within_eight = float(np.mean(np.max(absolute, axis=2)[valid] <= 8))
-    score, score_map = structural_similarity(reference, aligned, channel_axis=2, data_range=255, full=True)
-    if args.mask:
-        per_pixel = np.mean(score_map, axis=2) if score_map.ndim == 3 else score_map
-        score = float(np.mean(per_pixel[valid]))
-    else:
-        score = float(score)
+    # The strict gate is always the unmasked whole-screen score. A mask only ever
+    # produces the *secondary* app-chrome diagnostic, so excluding a region can
+    # never turn a failing screen into a passing one.
+    whole_score, score_map = structural_similarity(reference, aligned, channel_axis=2, data_range=255, full=True)
+    score = float(whole_score)
+    per_pixel = np.mean(score_map, axis=2) if score_map.ndim == 3 else score_map
+    app_chrome_score = float(np.mean(per_pixel[valid])) if args.mask else None
 
     args.overlay.parent.mkdir(parents=True, exist_ok=True)
     Image.blend(reference_image, aligned_image, 0.5).save(args.overlay)
@@ -133,6 +134,10 @@ def main() -> int:
         "pixel_fraction_within_8": within_eight,
         "masked_pixel_fraction": float(1.0 - np.mean(valid)),
         "alignment": {"dx": dx, "dy": dy},
+        # Secondary diagnostic only: SSIM over app-owned comparable pixels, with the
+        # documented system/evidence-only regions excluded. Never gates the result.
+        "app_chrome_ssim": app_chrome_score,
+        "gate": "unmasked_whole_screen_ssim",
     }
     args.result.write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps(result))

@@ -1,0 +1,103 @@
+{
+  "matched_elements": 4,
+  "unmatched_audit_elements": [
+    "About IRL Pro",
+    "Discord"
+  ],
+  "replica_only_elements": [
+    "About IRL Streamer",
+    "Community",
+    "External support links are intentionally omitted",
+    "Produces no share action in this privacy-safe fixture"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 107,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 30.375,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Reset app settings",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        566,
+        649,
+        627
+      ],
+      "replica_bounds": [
+        278,
+        673,
+        674,
+        735
+      ],
+      "dleft": 0,
+      "dtop": 107,
+      "dwidth": 25,
+      "dheight": 1
+    },
+    {
+      "key": "Send cameras debug details to developers",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        1123,
+        476
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        1178,
+        531
+      ],
+      "dleft": 0,
+      "dtop": 54,
+      "dwidth": 55,
+      "dheight": 1
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Help & support",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        539,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        597,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 57,
+      "dheight": 0
+    }
+  ],
+  "screen": "128_help_support"
+}

@@ -1,0 +1,106 @@
+{
+  "matched_elements": 4,
+  "unmatched_audit_elements": [
+    "100#1",
+    "50",
+    "Enable Ethernet/USB Connection",
+    "Ethernet Weight",
+    "WiFi Weight"
+  ],
+  "replica_only_elements": [
+    "Advanced Bonding Settings",
+    "Cellular Weight",
+    "Enable Cellular",
+    "Tune which links are enabled and their relative weights. The same values appear in Network quick settings."
+  ],
+  "max_abs_dleft": 188,
+  "max_abs_dtop": 646,
+  "max_abs_dwidth": 110,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 180.75,
+  "origins_within_2px_pct": 37.5,
+  "origins_within_4px_pct": 37.5,
+  "elements": [
+    {
+      "key": "Enable WiFi",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        339,
+        511,
+        400
+      ],
+      "replica_bounds": [
+        278,
+        985,
+        527,
+        1047
+      ],
+      "dleft": 0,
+      "dtop": 646,
+      "dwidth": 16,
+      "dheight": 1
+    },
+    {
+      "key": "100",
+      "class": "TextView",
+      "audit_bounds": [
+        1990,
+        219,
+        2091,
+        234
+      ],
+      "replica_bounds": [
+        2178,
+        749,
+        2248,
+        817
+      ],
+      "dleft": 188,
+      "dtop": 530,
+      "dwidth": -31,
+      "dheight": 53
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Bonding and NoDrop options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        781,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        892,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 110,
+      "dheight": 0
+    }
+  ],
+  "screen": "020_bonding_wifi_weight_adjusted"
+}

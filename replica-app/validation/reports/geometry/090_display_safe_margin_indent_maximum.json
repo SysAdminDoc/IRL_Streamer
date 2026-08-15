@@ -1,0 +1,195 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 211,
+  "max_abs_dtop": 97,
+  "max_abs_dwidth": 1502,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 22.056,
+  "origins_within_2px_pct": 77.78,
+  "origins_within_4px_pct": 77.78,
+  "elements": [
+    {
+      "key": "20",
+      "class": "TextView",
+      "audit_bounds": [
+        1990,
+        997,
+        2091,
+        1058
+      ],
+      "replica_bounds": [
+        2201,
+        900,
+        2248,
+        968
+      ],
+      "dleft": 211,
+      "dtop": -97,
+      "dwidth": -54,
+      "dheight": 7
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "16:9 (1.78)",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        778,
+        466,
+        831
+      ],
+      "replica_bounds": [
+        278,
+        780,
+        481,
+        833
+      ],
+      "dleft": 0,
+      "dtop": 2,
+      "dwidth": 15,
+      "dheight": 0
+    },
+    {
+      "key": "Display",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        404,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        433,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 28,
+      "dheight": 0
+    },
+    {
+      "key": "Grid 3x3",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        443,
+        476
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        454,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 11,
+      "dheight": 1
+    },
+    {
+      "key": "Safe margin indent %",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        899,
+        699,
+        960
+      ],
+      "replica_bounds": [
+        278,
+        900,
+        2201,
+        968
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 1502,
+      "dheight": 7
+    },
+    {
+      "key": "Safe margins ratios",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        717,
+        666,
+        778
+      ],
+      "replica_bounds": [
+        278,
+        718,
+        692,
+        780
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 26,
+      "dheight": 1
+    },
+    {
+      "key": "Show audio level meter",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        743,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        773,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 30,
+      "dheight": 1
+    },
+    {
+      "key": "Show safe margins",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        566,
+        661,
+        627
+      ],
+      "replica_bounds": [
+        278,
+        567,
+        684,
+        629
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 23,
+      "dheight": 1
+    }
+  ],
+  "screen": "090_display_safe_margin_indent_maximum"
+}

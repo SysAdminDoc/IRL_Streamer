@@ -1,0 +1,157 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Timestamp"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 93,
+  "max_abs_dwidth": 1734,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 31.643,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Layers",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        959,
+        2136,
+        1012
+      ],
+      "replica_bounds": [
+        278,
+        866,
+        402,
+        934
+      ],
+      "dleft": 0,
+      "dtop": -93,
+      "dwidth": -1734,
+      "dheight": 15
+    },
+    {
+      "key": "Enable standby mode",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        483,
+        707,
+        544
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        734,
+        478
+      ],
+      "dleft": 0,
+      "dtop": -67,
+      "dwidth": 27,
+      "dheight": 1
+    },
+    {
+      "key": "Pause overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        785,
+        578,
+        846
+      ],
+      "replica_bounds": [
+        278,
+        718,
+        598,
+        780
+      ],
+      "dleft": 0,
+      "dtop": -67,
+      "dwidth": 20,
+      "dheight": 1
+    },
+    {
+      "key": "Show layers on preview",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        332,
+        746,
+        393
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        777,
+        327
+      ],
+      "dleft": 0,
+      "dtop": -67,
+      "dwidth": 31,
+      "dheight": 1
+    },
+    {
+      "key": "Standby overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        634,
+        616,
+        695
+      ],
+      "replica_bounds": [
+        278,
+        567,
+        638,
+        629
+      ],
+      "dleft": 0,
+      "dtop": -67,
+      "dwidth": 22,
+      "dheight": 1
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Overlays",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        428,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        462,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 33,
+      "dheight": 0
+    }
+  ],
+  "screen": "092_text_picture_overlays_empty"
+}

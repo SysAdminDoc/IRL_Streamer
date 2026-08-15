@@ -1,0 +1,199 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [
+    "Enable this only if you have serious issues with connectivity, e.g. USB tethering not working."
+  ],
+  "replica_only_elements": [
+    "Enable only for unusual local connectivity such as USB tethering."
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 73,
+  "max_abs_dwidth": 1549,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 25.944,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Don't check network connection",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        902,
+        920,
+        963
+      ],
+      "replica_bounds": [
+        278,
+        975,
+        962,
+        1037
+      ],
+      "dleft": 0,
+      "dtop": 73,
+      "dwidth": 42,
+      "dheight": 1
+    },
+    {
+      "key": "Do nothing",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        615,
+        467,
+        668
+      ],
+      "replica_bounds": [
+        278,
+        682,
+        481,
+        735
+      ],
+      "dleft": 0,
+      "dtop": 67,
+      "dwidth": 14,
+      "dheight": 0
+    },
+    {
+      "key": "Volume keys",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        554,
+        533,
+        615
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        548,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 66,
+      "dwidth": 15,
+      "dheight": 1
+    },
+    {
+      "key": "Say no to vertical videos.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        267,
+        708,
+        320
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        743,
+        380
+      ],
+      "dleft": 0,
+      "dtop": 60,
+      "dwidth": 35,
+      "dheight": 0
+    },
+    {
+      "key": "Horizon stream demo",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        711,
+        267
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        737,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 26,
+      "dheight": 14
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Platform-specific tweaks",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        781,
+        2136,
+        834
+      ],
+      "replica_bounds": [
+        278,
+        821,
+        749,
+        889
+      ],
+      "dleft": 0,
+      "dtop": 40,
+      "dwidth": -1387,
+      "dheight": 15
+    },
+    {
+      "key": "Camera controls",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        433,
+        2136,
+        486
+      ],
+      "replica_bounds": [
+        278,
+        466,
+        587,
+        534
+      ],
+      "dleft": 0,
+      "dtop": 33,
+      "dwidth": -1549,
+      "dheight": 15
+    },
+    {
+      "key": "Advanced options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        591,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        660,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 68,
+      "dheight": 0
+    }
+  ],
+  "screen": "122_advanced_options_lower"
+}

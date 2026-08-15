@@ -1,0 +1,225 @@
+{
+  "matched_elements": 10,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Battery 73 percent",
+    "Flip camera",
+    "Mute microphone",
+    "OIS",
+    "Quick settings",
+    "Reload chat and overlays",
+    "Settings",
+    "Start broadcast",
+    "Take snapshot (local simulation)"
+  ],
+  "max_abs_dleft": 36,
+  "max_abs_dtop": 26,
+  "max_abs_dwidth": 72,
+  "max_abs_dheight": 35,
+  "mean_abs_origin_error_px": 16.5,
+  "origins_within_2px_pct": 10.0,
+  "origins_within_4px_pct": 35.0,
+  "elements": [
+    {
+      "key": "61\u00b0",
+      "class": "TextView",
+      "audit_bounds": [
+        1638,
+        863,
+        1767,
+        942
+      ],
+      "replica_bounds": [
+        1674,
+        881,
+        1731,
+        925
+      ],
+      "dleft": 36,
+      "dtop": 18,
+      "dwidth": -72,
+      "dheight": -35
+    },
+    {
+      "key": "67\u00b0",
+      "class": "TextView",
+      "audit_bounds": [
+        1781,
+        863,
+        1910,
+        942
+      ],
+      "replica_bounds": [
+        1817,
+        881,
+        1874,
+        925
+      ],
+      "dleft": 36,
+      "dtop": 18,
+      "dwidth": -72,
+      "dheight": -35
+    },
+    {
+      "key": "73\u00b0",
+      "class": "TextView",
+      "audit_bounds": [
+        1638,
+        956,
+        1767,
+        1035
+      ],
+      "replica_bounds": [
+        1674,
+        982,
+        1731,
+        1026
+      ],
+      "dleft": 36,
+      "dtop": 26,
+      "dwidth": -72,
+      "dheight": -35
+    },
+    {
+      "key": "FRONT",
+      "class": "TextView",
+      "audit_bounds": [
+        1469,
+        880,
+        1624,
+        942
+      ],
+      "replica_bounds": [
+        1503,
+        877,
+        1624,
+        928
+      ],
+      "dleft": 34,
+      "dtop": -3,
+      "dwidth": -34,
+      "dheight": -11
+    },
+    {
+      "key": "BACK",
+      "class": "TextView",
+      "audit_bounds": [
+        1496,
+        973,
+        1624,
+        1035
+      ],
+      "replica_bounds": [
+        1528,
+        970,
+        1624,
+        1021
+      ],
+      "dleft": 32,
+      "dtop": -3,
+      "dwidth": -32,
+      "dheight": -11
+    },
+    {
+      "key": "103\u00b0",
+      "class": "TextView",
+      "audit_bounds": [
+        1781,
+        956,
+        1910,
+        1035
+      ],
+      "replica_bounds": [
+        1806,
+        974,
+        1885,
+        1018
+      ],
+      "dleft": 25,
+      "dtop": 18,
+      "dwidth": -50,
+      "dheight": -35
+    },
+    {
+      "key": "30 fps",
+      "class": "TextView",
+      "audit_bounds": [
+        775,
+        962,
+        933,
+        1035
+      ],
+      "replica_bounds": [
+        800,
+        965,
+        909,
+        1033
+      ],
+      "dleft": 25,
+      "dtop": 3,
+      "dwidth": -49,
+      "dheight": -5
+    },
+    {
+      "key": "31.6 \u00b0C",
+      "class": "TextView",
+      "audit_bounds": [
+        1905,
+        161,
+        1995,
+        199
+      ],
+      "replica_bounds": [
+        1905,
+        155,
+        1995,
+        193
+      ],
+      "dleft": 0,
+      "dtop": -6,
+      "dwidth": 0,
+      "dheight": 0
+    },
+    {
+      "key": "-1144 mW",
+      "class": "TextView",
+      "audit_bounds": [
+        1866,
+        120,
+        1995,
+        158
+      ],
+      "replica_bounds": [
+        1871,
+        117,
+        1995,
+        155
+      ],
+      "dleft": 5,
+      "dtop": -3,
+      "dwidth": -5,
+      "dheight": 0
+    },
+    {
+      "key": "-283 mA",
+      "class": "TextView",
+      "audit_bounds": [
+        1889,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1892,
+        79,
+        1995,
+        117
+      ],
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": 0
+    }
+  ],
+  "screen": "001_streamer_home_default"
+}

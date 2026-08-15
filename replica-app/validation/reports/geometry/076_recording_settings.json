@@ -1,0 +1,197 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [
+    "JPEG"
+  ],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 36,
+  "max_abs_dwidth": 116,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 13.111,
+  "origins_within_2px_pct": 55.56,
+  "origins_within_4px_pct": 55.56,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Video recording is split into sections by default for reliability purposes. You may disable this if you need.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        619,
+        1959,
+        718
+      ],
+      "replica_bounds": [
+        278,
+        655,
+        1959,
+        761
+      ],
+      "dleft": 0,
+      "dtop": 36,
+      "dwidth": 0,
+      "dheight": 7
+    },
+    {
+      "key": "Split video into sections",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        558,
+        756,
+        619
+      ],
+      "replica_bounds": [
+        278,
+        593,
+        791,
+        655
+      ],
+      "dleft": 0,
+      "dtop": 35,
+      "dwidth": 35,
+      "dheight": 1
+    },
+    {
+      "key": "WARNING: Recording will stop when the battery level is critically low, usually ~7%.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        1684,
+        468
+      ],
+      "replica_bounds": [
+        278,
+        448,
+        1800,
+        499
+      ],
+      "dleft": 0,
+      "dtop": 33,
+      "dwidth": 116,
+      "dheight": -2
+    },
+    {
+      "key": "30",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        869,
+        322,
+        922
+      ],
+      "replica_bounds": [
+        278,
+        886,
+        325,
+        939
+      ],
+      "dleft": 0,
+      "dtop": 17,
+      "dwidth": 3,
+      "dheight": 0
+    },
+    {
+      "key": "Sections duration (minutes)",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        808,
+        834,
+        869
+      ],
+      "replica_bounds": [
+        278,
+        824,
+        871,
+        886
+      ],
+      "dleft": 0,
+      "dtop": 16,
+      "dwidth": 37,
+      "dheight": 1
+    },
+    {
+      "key": "Snapshot format",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1012,
+        614,
+        1073
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        635,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 16,
+      "dwidth": 21,
+      "dheight": -9
+    },
+    {
+      "key": "Record stream",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        571,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        589,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 18,
+      "dheight": 1
+    },
+    {
+      "key": "Recording options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        596,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        668,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 71,
+      "dheight": 0
+    }
+  ],
+  "screen": "076_recording_settings"
+}

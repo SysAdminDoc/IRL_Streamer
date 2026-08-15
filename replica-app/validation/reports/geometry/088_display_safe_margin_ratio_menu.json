@@ -1,0 +1,175 @@
+{
+  "matched_elements": 8,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 39,
+  "max_abs_dwidth": 1101,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 51.25,
+  "origins_within_2px_pct": 12.5,
+  "origins_within_4px_pct": 12.5,
+  "elements": [
+    {
+      "key": "14:9 (1.56)",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        819,
+        1767,
+        878
+      ],
+      "replica_bounds": [
+        579,
+        852,
+        810,
+        889
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1048,
+      "dheight": -22
+    },
+    {
+      "key": "1:1 (1.0)",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        414
+      ],
+      "replica_bounds": [
+        579,
+        312,
+        757,
+        380
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1101,
+      "dheight": -67
+    },
+    {
+      "key": "3:2 (1.5)",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        684,
+        1767,
+        819
+      ],
+      "replica_bounds": [
+        579,
+        717,
+        757,
+        785
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1101,
+      "dheight": -67
+    },
+    {
+      "key": "4:3 (1.33)",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        549,
+        1767,
+        684
+      ],
+      "replica_bounds": [
+        579,
+        582,
+        783,
+        650
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1075,
+      "dheight": -67
+    },
+    {
+      "key": "5:4 (1.25)",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        414,
+        1767,
+        549
+      ],
+      "replica_bounds": [
+        579,
+        447,
+        783,
+        515
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1075,
+      "dheight": -67
+    },
+    {
+      "key": "OK",
+      "class": "Button",
+      "audit_bounds": [
+        1553,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1626,
+        928,
+        1680,
+        985
+      ],
+      "dleft": 73,
+      "dtop": 39,
+      "dwidth": -126,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1340,
+        889,
+        1553,
+        1024
+      ],
+      "replica_bounds": [
+        1387,
+        928,
+        1537,
+        985
+      ],
+      "dleft": 47,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Safe margins ratios",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        1073,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -627,
+      "dheight": 0
+    }
+  ],
+  "screen": "088_display_safe_margin_ratio_menu"
+}

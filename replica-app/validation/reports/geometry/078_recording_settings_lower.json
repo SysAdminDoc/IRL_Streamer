@@ -1,0 +1,181 @@
+{
+  "matched_elements": 8,
+  "unmatched_audit_elements": [
+    "DCIM/IRLPro, Podcasts/IRLPro",
+    "Whether to use Storage Access Framework for saving photos and videos. This should be enabled to allow saving to external SD cards."
+  ],
+  "replica_only_elements": [
+    "DCIM/IRLStreamer, Podcasts/IRLStreamer",
+    "Enable to select a user-owned destination through Android's folder picker."
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 53,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 101,
+  "mean_abs_origin_error_px": 21.875,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "90",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        522,
+        322,
+        575
+      ],
+      "replica_bounds": [
+        278,
+        575,
+        325,
+        628
+      ],
+      "dleft": 0,
+      "dtop": 53,
+      "dwidth": 3,
+      "dheight": 0
+    },
+    {
+      "key": "JPEG",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        318,
+        374,
+        371
+      ],
+      "replica_bounds": [
+        278,
+        371,
+        380,
+        424
+      ],
+      "dleft": 0,
+      "dtop": 53,
+      "dwidth": 6,
+      "dheight": 0
+    },
+    {
+      "key": "Snapshot format",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        257,
+        614,
+        318
+      ],
+      "replica_bounds": [
+        278,
+        309,
+        635,
+        371
+      ],
+      "dleft": 0,
+      "dtop": 52,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Snapshot quality",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        461,
+        612,
+        522
+      ],
+      "replica_bounds": [
+        278,
+        513,
+        635,
+        575
+      ],
+      "dleft": 0,
+      "dtop": 52,
+      "dwidth": 23,
+      "dheight": 1
+    },
+    {
+      "key": "Use Storage Access Framework",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        665,
+        913,
+        726
+      ],
+      "replica_bounds": [
+        278,
+        717,
+        952,
+        779
+      ],
+      "dleft": 0,
+      "dtop": 52,
+      "dwidth": 39,
+      "dheight": 1
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        153
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -101
+    },
+    {
+      "key": "Save to",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        915,
+        426,
+        976
+      ],
+      "replica_bounds": [
+        278,
+        921,
+        436,
+        983
+      ],
+      "dleft": 0,
+      "dtop": 6,
+      "dwidth": 10,
+      "dheight": 1
+    },
+    {
+      "key": "Recording options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        596,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        668,
+        153
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 71,
+      "dheight": -26
+    }
+  ],
+  "screen": "078_recording_settings_lower"
+}

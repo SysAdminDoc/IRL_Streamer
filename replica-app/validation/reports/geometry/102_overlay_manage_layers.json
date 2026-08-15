@@ -1,0 +1,119 @@
+{
+  "matched_elements": 5,
+  "unmatched_audit_elements": [
+    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('MMM dd, HH:mm:ss', 'en_US') %></b>"
+  ],
+  "replica_only_elements": [
+    "Local date/time layer"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 45,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 17.3,
+  "origins_within_2px_pct": 60.0,
+  "origins_within_4px_pct": 60.0,
+  "elements": [
+    {
+      "key": "Delete multiple",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        665,
+        578,
+        726
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        599,
+        682
+      ],
+      "dleft": 0,
+      "dtop": -45,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "New layer",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        514,
+        474,
+        575
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        486,
+        531
+      ],
+      "dleft": 0,
+      "dtop": -45,
+      "dwidth": 12,
+      "dheight": 1
+    },
+    {
+      "key": "Manage layers",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        533,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        589,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 55,
+      "dheight": 0
+    },
+    {
+      "key": "Timestamp",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        505,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        518,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 13,
+      "dheight": 1
+    }
+  ],
+  "screen": "102_overlay_manage_layers"
+}

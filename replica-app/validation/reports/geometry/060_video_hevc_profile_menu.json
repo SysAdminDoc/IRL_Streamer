@@ -1,0 +1,157 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 39,
+  "max_abs_dwidth": 1174,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 49.357,
+  "origins_within_2px_pct": 14.29,
+  "origins_within_4px_pct": 14.29,
+  "elements": [
+    {
+      "key": "Main",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        414,
+        1767,
+        549
+      ],
+      "replica_bounds": [
+        579,
+        447,
+        684,
+        515
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1174,
+      "dheight": -67
+    },
+    {
+      "key": "Main 10",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        549,
+        1767,
+        684
+      ],
+      "replica_bounds": [
+        579,
+        582,
+        749,
+        650
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1109,
+      "dheight": -67
+    },
+    {
+      "key": "Main 10 HDR 10",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        684,
+        1767,
+        819
+      ],
+      "replica_bounds": [
+        579,
+        717,
+        921,
+        785
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -937,
+      "dheight": -67
+    },
+    {
+      "key": "Main 10 HDR 10 Plus",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        819,
+        1767,
+        878
+      ],
+      "replica_bounds": [
+        579,
+        852,
+        1026,
+        889
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -832,
+      "dheight": -22
+    },
+    {
+      "key": "System default",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        414
+      ],
+      "replica_bounds": [
+        579,
+        312,
+        899,
+        380
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -959,
+      "dheight": -67
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1550,
+        928,
+        1700,
+        985
+      ],
+      "dleft": 30,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "HEVC profile",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        890,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -810,
+      "dheight": 0
+    }
+  ],
+  "screen": "060_video_hevc_profile_menu"
+}

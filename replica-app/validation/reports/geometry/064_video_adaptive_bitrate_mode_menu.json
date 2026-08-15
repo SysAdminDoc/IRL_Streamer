@@ -1,0 +1,140 @@
+{
+  "matched_elements": 6,
+  "unmatched_audit_elements": [
+    "IRL Pro SRT/SRTLA/Bonding"
+  ],
+  "replica_only_elements": [
+    "Local bonding simulation",
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 39,
+  "max_abs_dwidth": 994,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 47.25,
+  "origins_within_2px_pct": 16.67,
+  "origins_within_4px_pct": 16.67,
+  "elements": [
+    {
+      "key": "Automatically Select",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        414
+      ],
+      "replica_bounds": [
+        579,
+        312,
+        1018,
+        380
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -840,
+      "dheight": -67
+    },
+    {
+      "key": "Legacy - Hybrid",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        819,
+        1767,
+        878
+      ],
+      "replica_bounds": [
+        579,
+        852,
+        905,
+        889
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -953,
+      "dheight": -22
+    },
+    {
+      "key": "Legacy - Ladder ascend",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        684,
+        1767,
+        819
+      ],
+      "replica_bounds": [
+        579,
+        717,
+        1079,
+        785
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -779,
+      "dheight": -67
+    },
+    {
+      "key": "Legacy - Logarithmic descend",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        549,
+        1767,
+        684
+      ],
+      "replica_bounds": [
+        579,
+        582,
+        1214,
+        650
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -644,
+      "dheight": -67
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1550,
+        928,
+        1700,
+        985
+      ],
+      "dleft": 30,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Mode",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        706,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -994,
+      "dheight": 0
+    }
+  ],
+  "screen": "064_video_adaptive_bitrate_mode_menu"
+}

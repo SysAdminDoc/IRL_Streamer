@@ -1,0 +1,105 @@
+{
+  "matched_elements": 4,
+  "unmatched_audit_elements": [
+    "16:9 (1.78)",
+    "19.5:9 (2.17)",
+    "21:9 (2.33)",
+    "2:1 (2.0)"
+  ],
+  "replica_only_elements": [
+    "1:1 (1.0)",
+    "3:2 (1.5)",
+    "4:3 (1.33)",
+    "5:4 (1.25)"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 573,
+  "max_abs_dwidth": 1048,
+  "max_abs_dheight": 91,
+  "mean_abs_origin_error_px": 108.0,
+  "origins_within_2px_pct": 25.0,
+  "origins_within_4px_pct": 25.0,
+  "elements": [
+    {
+      "key": "14:9 (1.56)",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        407
+      ],
+      "replica_bounds": [
+        579,
+        852,
+        810,
+        889
+      ],
+      "dleft": 91,
+      "dtop": 573,
+      "dwidth": -1048,
+      "dheight": -91
+    },
+    {
+      "key": "OK",
+      "class": "Button",
+      "audit_bounds": [
+        1553,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1626,
+        928,
+        1680,
+        985
+      ],
+      "dleft": 73,
+      "dtop": 39,
+      "dwidth": -126,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1340,
+        889,
+        1553,
+        1024
+      ],
+      "replica_bounds": [
+        1387,
+        928,
+        1537,
+        985
+      ],
+      "dleft": 47,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Safe margins ratios",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        1073,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -627,
+      "dheight": 0
+    }
+  ],
+  "screen": "089_display_safe_margin_ratio_menu_lower"
+}

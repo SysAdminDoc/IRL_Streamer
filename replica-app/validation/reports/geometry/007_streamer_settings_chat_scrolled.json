@@ -1,0 +1,215 @@
+{
+  "matched_elements": 10,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 92,
+  "max_abs_dwidth": 90,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 38.4,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "220",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        537,
+        344,
+        590
+      ],
+      "replica_bounds": [
+        278,
+        629,
+        348,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 92,
+      "dwidth": 4,
+      "dheight": 0
+    },
+    {
+      "key": "Half the height of the chat box",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        741,
+        801,
+        794
+      ],
+      "replica_bounds": [
+        278,
+        833,
+        844,
+        886
+      ],
+      "dleft": 0,
+      "dtop": 92,
+      "dwidth": 43,
+      "dheight": 0
+    },
+    {
+      "key": "Shift over chat from the left, useful for clip on lenses",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        945,
+        1185,
+        998
+      ],
+      "replica_bounds": [
+        278,
+        1037,
+        1262,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 92,
+      "dwidth": 77,
+      "dheight": -10
+    },
+    {
+      "key": "Chat font scale",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        476,
+        581,
+        537
+      ],
+      "replica_bounds": [
+        278,
+        567,
+        602,
+        629
+      ],
+      "dleft": 0,
+      "dtop": 91,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Increase chat left margin",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        884,
+        775,
+        945
+      ],
+      "replica_bounds": [
+        278,
+        975,
+        809,
+        1037
+      ],
+      "dleft": 0,
+      "dtop": 91,
+      "dwidth": 34,
+      "dheight": 1
+    },
+    {
+      "key": "Show commands in chat",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        325,
+        772,
+        386
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        802,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 91,
+      "dwidth": 30,
+      "dheight": 1
+    },
+    {
+      "key": "Smaller chat box",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        680,
+        612,
+        741
+      ],
+      "replica_bounds": [
+        278,
+        771,
+        634,
+        833
+      ],
+      "dleft": 0,
+      "dtop": 91,
+      "dwidth": 22,
+      "dheight": 1
+    },
+    {
+      "key": "Show bots in chat",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        636,
+        235
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        660,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 24,
+      "dheight": 46
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Streamer options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        580,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        647,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 66,
+      "dheight": 0
+    }
+  ],
+  "screen": "007_streamer_settings_chat_scrolled"
+}

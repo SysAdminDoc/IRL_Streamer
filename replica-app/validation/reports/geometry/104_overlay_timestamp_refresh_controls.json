@@ -1,0 +1,163 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [
+    "Periodic refresh",
+    "Scale is relative to video resolution, on 100% it fills entire screen. When set to \"Off\", original size is used."
+  ],
+  "replica_only_elements": [
+    "Center",
+    "Position",
+    "Scale is relative to video resolution; Off uses original size.",
+    "Z Order"
+  ],
+  "max_abs_dleft": 1881,
+  "max_abs_dtop": 163,
+  "max_abs_dwidth": 1771,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 180.929,
+  "origins_within_2px_pct": 42.86,
+  "origins_within_4px_pct": 42.86,
+  "elements": [
+    {
+      "key": "20 %",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        761,
+        361,
+        814
+      ],
+      "replica_bounds": [
+        2159,
+        598,
+        2248,
+        666
+      ],
+      "dleft": 1881,
+      "dtop": -163,
+      "dwidth": 6,
+      "dheight": 15
+    },
+    {
+      "key": "Active",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        571,
+        403,
+        632
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        411,
+        531
+      ],
+      "dleft": 0,
+      "dtop": -102,
+      "dwidth": 8,
+      "dheight": 1
+    },
+    {
+      "key": "Refresh interval (sec)",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        367,
+        704,
+        428
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        735,
+        327
+      ],
+      "dleft": 0,
+      "dtop": -102,
+      "dwidth": 31,
+      "dheight": 1
+    },
+    {
+      "key": "Scale",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        700,
+        388,
+        761
+      ],
+      "replica_bounds": [
+        278,
+        598,
+        2159,
+        666
+      ],
+      "dleft": 0,
+      "dtop": -102,
+      "dwidth": 1771,
+      "dheight": 7
+    },
+    {
+      "key": "1",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        428,
+        300,
+        481
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        301,
+        380
+      ],
+      "dleft": 0,
+      "dtop": -101,
+      "dwidth": 1,
+      "dheight": 0
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Layer",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        373,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        395,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 0
+    }
+  ],
+  "screen": "104_overlay_timestamp_refresh_controls"
+}

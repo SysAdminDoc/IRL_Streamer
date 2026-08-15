@@ -1,0 +1,119 @@
+{
+  "matched_elements": 5,
+  "unmatched_audit_elements": [
+    "You can take a picture of QR code with your camera app which recognizes QR."
+  ],
+  "replica_only_elements": [
+    "You can take a picture of a QR code with a camera app which recognizes QR."
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 89,
+  "max_abs_dwidth": 91,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 17.3,
+  "origins_within_2px_pct": 70.0,
+  "origins_within_4px_pct": 70.0,
+  "elements": [
+    {
+      "key": "Export settings",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        709,
+        581,
+        770
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        601,
+        682
+      ],
+      "dleft": 0,
+      "dtop": -89,
+      "dwidth": 20,
+      "dheight": 1
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Import settings",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        584,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        604,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 20,
+      "dheight": 1
+    },
+    {
+      "key": "Import/Export Settings",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        678,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        770,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 91,
+      "dheight": 0
+    },
+    {
+      "key": "Scan QR code",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        558,
+        476
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        575,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 17,
+      "dheight": 1
+    }
+  ],
+  "screen": "116_import_export_settings"
+}

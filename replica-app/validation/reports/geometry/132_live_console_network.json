@@ -1,0 +1,320 @@
+{
+  "matched_elements": 14,
+  "unmatched_audit_elements": [
+    "-2106 mW",
+    "-512 mA",
+    "103\u00b0",
+    "33.3 \u00b0C",
+    "61\u00b0",
+    "67\u00b0",
+    "73\u00b0",
+    "BACK",
+    "Camera",
+    "Display",
+    "Enable Cellular",
+    "FRONT",
+    "Network",
+    "Overlays"
+  ],
+  "replica_only_elements": [
+    "-283 mA",
+    "Battery 73 percent",
+    "Flip camera",
+    "Mute microphone",
+    "Quick settings",
+    "Reload chat and overlays",
+    "Settings",
+    "Start broadcast",
+    "Take snapshot (local simulation)"
+  ],
+  "max_abs_dleft": 795,
+  "max_abs_dtop": 3,
+  "max_abs_dwidth": 795,
+  "max_abs_dheight": 30,
+  "mean_abs_origin_error_px": 59.929,
+  "origins_within_2px_pct": 67.86,
+  "origins_within_4px_pct": 78.57,
+  "elements": [
+    {
+      "key": "Off",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        284,
+        1989,
+        337
+      ],
+      "replica_bounds": [
+        1930,
+        285,
+        1989,
+        336
+      ],
+      "dleft": 795,
+      "dtop": 1,
+      "dwidth": -795,
+      "dheight": -2
+    },
+    {
+      "key": "0bps",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        542,
+        1989,
+        595
+      ],
+      "replica_bounds": [
+        1897,
+        543,
+        1989,
+        594
+      ],
+      "dleft": 762,
+      "dtop": 1,
+      "dwidth": -762,
+      "dheight": -2
+    },
+    {
+      "key": "Bonding",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        880,
+        1989,
+        933
+      ],
+      "replica_bounds": [
+        1186,
+        881,
+        1339,
+        904
+      ],
+      "dleft": 51,
+      "dtop": 1,
+      "dwidth": -701,
+      "dheight": -30
+    },
+    {
+      "key": "30 fps",
+      "class": "TextView",
+      "audit_bounds": [
+        775,
+        962,
+        933,
+        1035
+      ],
+      "replica_bounds": [
+        800,
+        965,
+        909,
+        1033
+      ],
+      "dleft": 25,
+      "dtop": 3,
+      "dwidth": -49,
+      "dheight": -5
+    },
+    {
+      "key": "OVERLAYS",
+      "class": "TextView",
+      "audit_bounds": [
+        1849,
+        136,
+        2012,
+        189
+      ],
+      "replica_bounds": [
+        1838,
+        138,
+        2012,
+        189
+      ],
+      "dleft": -11,
+      "dtop": 2,
+      "dwidth": 11,
+      "dheight": -2
+    },
+    {
+      "key": "NETWORK",
+      "class": "TextView",
+      "audit_bounds": [
+        1372,
+        136,
+        1558,
+        189
+      ],
+      "replica_bounds": [
+        1367,
+        138,
+        1563,
+        189
+      ],
+      "dleft": -5,
+      "dtop": 2,
+      "dwidth": 10,
+      "dheight": -2
+    },
+    {
+      "key": "CAMERA",
+      "class": "TextView",
+      "audit_bounds": [
+        1146,
+        136,
+        1304,
+        189
+      ],
+      "replica_bounds": [
+        1142,
+        138,
+        1308,
+        189
+      ],
+      "dleft": -4,
+      "dtop": 2,
+      "dwidth": 8,
+      "dheight": -2
+    },
+    {
+      "key": "DISPLAY",
+      "class": "TextView",
+      "audit_bounds": [
+        1626,
+        136,
+        1781,
+        189
+      ],
+      "replica_bounds": [
+        1622,
+        138,
+        1786,
+        189
+      ],
+      "dleft": -4,
+      "dtop": 2,
+      "dwidth": 9,
+      "dheight": -2
+    },
+    {
+      "key": "6.0Mbps",
+      "class": "TextView",
+      "audit_bounds": [
+        1837,
+        671,
+        1989,
+        724
+      ],
+      "replica_bounds": [
+        1839,
+        672,
+        1989,
+        723
+      ],
+      "dleft": 2,
+      "dtop": 1,
+      "dwidth": -2,
+      "dheight": -2
+    },
+    {
+      "key": "Bitrate Mode",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        360,
+        1989,
+        413
+      ],
+      "replica_bounds": [
+        1135,
+        361,
+        1374,
+        412
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": -615,
+      "dheight": -2
+    },
+    {
+      "key": "Conditioner",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        231,
+        1989,
+        284
+      ],
+      "replica_bounds": [
+        1135,
+        232,
+        1350,
+        283
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": -639,
+      "dheight": -2
+    },
+    {
+      "key": "Current Adaptive Bitrate",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        489,
+        1989,
+        542
+      ],
+      "replica_bounds": [
+        1135,
+        490,
+        1582,
+        541
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": -407,
+      "dheight": -2
+    },
+    {
+      "key": "Target Video Bitrate",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        618,
+        1989,
+        671
+      ],
+      "replica_bounds": [
+        1135,
+        619,
+        1506,
+        670
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": -483,
+      "dheight": -2
+    },
+    {
+      "key": "Double tap \"Target Bitrate\" to reset bitrate to start value",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        747,
+        1989,
+        846
+      ],
+      "replica_bounds": [
+        1135,
+        747,
+        1989,
+        846
+      ],
+      "dleft": 0,
+      "dtop": 0,
+      "dwidth": 0,
+      "dheight": 0
+    }
+  ],
+  "screen": "132_live_console_network"
+}

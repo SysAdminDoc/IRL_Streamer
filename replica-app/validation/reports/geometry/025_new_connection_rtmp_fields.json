@@ -1,0 +1,108 @@
+{
+  "matched_elements": 4,
+  "unmatched_audit_elements": [
+    "AuditTestz",
+    "KICK.COM",
+    "RTMP URL schema is rtmp://server/application/streamkey, e.g. rtmp://a.rtmp.youtube.com/live2/abcd-efgh-abcd-efgh",
+    "TWITCH.TV",
+    "Target type - Leave Default for most cases"
+  ],
+  "replica_only_elements": [
+    "Local fixture",
+    "Name",
+    "PLATFORM A",
+    "PLATFORM B",
+    "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host.",
+    "URL"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 1795,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 12.75,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "rtmp://198.51.100.1/live",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        821,
+        2181,
+        947
+      ],
+      "replica_bounds": [
+        87,
+        828,
+        2294,
+        963
+      ],
+      "dleft": 12,
+      "dtop": 7,
+      "dwidth": 101,
+      "dheight": 9
+    },
+    {
+      "key": "New outgoing connection",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        724,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        824,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 99,
+      "dheight": 0
+    },
+    {
+      "key": "Quick Site Setup",
+      "class": "TextView",
+      "audit_bounds": [
+        75,
+        309,
+        2181,
+        377
+      ],
+      "replica_bounds": [
+        75,
+        310,
+        386,
+        378
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": -1795,
+      "dheight": 0
+    }
+  ],
+  "screen": "025_new_connection_rtmp_fields"
+}

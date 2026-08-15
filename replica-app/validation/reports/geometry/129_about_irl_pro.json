@@ -1,0 +1,40 @@
+{
+  "matched_elements": 1,
+  "unmatched_audit_elements": [
+    "Built by WilliamH - Version 3.5.23 build 305230",
+    "Includes licensed SRTLA code"
+  ],
+  "replica_only_elements": [
+    "Independent build - Version 0.1.0\nLocal simulation; no licensed transport code"
+  ],
+  "max_abs_dleft": 73,
+  "max_abs_dtop": 40,
+  "max_abs_dwidth": 126,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 56.5,
+  "origins_within_2px_pct": 0.0,
+  "origins_within_4px_pct": 0.0,
+  "elements": [
+    {
+      "key": "OK",
+      "class": "Button",
+      "audit_bounds": [
+        1553,
+        659,
+        1733,
+        794
+      ],
+      "replica_bounds": [
+        1626,
+        699,
+        1680,
+        756
+      ],
+      "dleft": 73,
+      "dtop": 40,
+      "dwidth": -126,
+      "dheight": -78
+    }
+  ],
+  "screen": "129_about_irl_pro"
+}

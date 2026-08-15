@@ -1,0 +1,79 @@
+{
+  "matched_elements": 3,
+  "unmatched_audit_elements": [
+    "larix://"
+  ],
+  "replica_only_elements": [
+    "irlstreamer://"
+  ],
+  "max_abs_dleft": 73,
+  "max_abs_dtop": 45,
+  "max_abs_dwidth": 737,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 36.167,
+  "origins_within_2px_pct": 16.67,
+  "origins_within_4px_pct": 16.67,
+  "elements": [
+    {
+      "key": "OK",
+      "class": "Button",
+      "audit_bounds": [
+        1553,
+        645,
+        1733,
+        780
+      ],
+      "replica_bounds": [
+        1626,
+        690,
+        1680,
+        747
+      ],
+      "dleft": 73,
+      "dtop": 45,
+      "dwidth": -126,
+      "dheight": -78
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1340,
+        645,
+        1553,
+        780
+      ],
+      "replica_bounds": [
+        1387,
+        690,
+        1537,
+        747
+      ],
+      "dleft": 47,
+      "dtop": 45,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Import settings",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        423,
+        1699,
+        499
+      ],
+      "replica_bounds": [
+        557,
+        417,
+        963,
+        493
+      ],
+      "dleft": 1,
+      "dtop": -6,
+      "dwidth": -737,
+      "dheight": 0
+    }
+  ],
+  "screen": "117_import_settings_file_picker"
+}

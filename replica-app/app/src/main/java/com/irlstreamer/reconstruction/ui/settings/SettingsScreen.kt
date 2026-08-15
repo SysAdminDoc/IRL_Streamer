@@ -10,7 +10,9 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import com.irlstreamer.reconstruction.MainViewModel
+import com.irlstreamer.reconstruction.debug.AuditScrollAnchors
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.AppUiState
 import com.irlstreamer.reconstruction.model.SettingsPage
@@ -49,7 +51,15 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
             spec.items
         }
     }
-    val initialIndex = state.runtime.settingsScrollIndex.coerceIn(0, (visibleItems.size - 1).coerceAtLeast(0))
+    // Prefer the audited scroll position: the anchor names the row that the audit
+    // hierarchy shows flush against the top of the list viewport. Fall back to the
+    // catalog index only when a state has no recorded anchor.
+    val anchorLabel = AuditScrollAnchors.labelFor(LocalContext.current, state.runtime.debugScreenId)
+    val anchorIndex = anchorLabel
+        ?.let { label -> visibleItems.indexOfFirst { itemTitle(it) == label } }
+        ?.takeIf { it >= 0 }
+    val initialIndex = anchorIndex
+        ?: state.runtime.settingsScrollIndex.coerceIn(0, (visibleItems.size - 1).coerceAtLeast(0))
     val listState = key(state.runtime.debugScreenId, initialIndex) {
         rememberLazyListState(initialFirstVisibleItemIndex = initialIndex)
     }
@@ -126,6 +136,15 @@ private fun handleAction(action: SettingAction, viewModel: MainViewModel) {
         SettingAction.OpenFolder -> viewModel.requestFolderPicker()
         is SettingAction.Toast -> viewModel.showToast(action.message)
     }
+}
+
+/** Visible label of a row, used to resolve an audited scroll anchor. */
+internal fun itemTitle(item: SettingItem): String = when (item) {
+    is SettingItem.Section -> item.title
+    is SettingItem.Row -> item.title
+    is SettingItem.Toggle -> item.title
+    is SettingItem.Slider -> item.title
+    is SettingItem.Info -> item.text
 }
 
 private fun itemKey(item: SettingItem, index: Int): String = when (item) {

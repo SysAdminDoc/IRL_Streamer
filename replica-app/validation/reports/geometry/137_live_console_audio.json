@@ -1,0 +1,259 @@
+{
+  "matched_elements": 11,
+  "unmatched_audit_elements": [
+    "-2545 mW",
+    "-630 mA",
+    "34.7 \u00b0C",
+    "61\u00b0",
+    "67\u00b0",
+    "Audio",
+    "Display",
+    "FRONT",
+    "Log",
+    "Network",
+    "Overlays"
+  ],
+  "replica_only_elements": [
+    "-283 mA",
+    "Battery 73 percent",
+    "Flip camera",
+    "Mute microphone",
+    "NETWORK",
+    "OIS",
+    "Quick settings",
+    "Reload chat and overlays",
+    "Settings",
+    "Start broadcast",
+    "Take snapshot (local simulation)"
+  ],
+  "max_abs_dleft": 88,
+  "max_abs_dtop": 26,
+  "max_abs_dwidth": 666,
+  "max_abs_dheight": 35,
+  "mean_abs_origin_error_px": 20.0,
+  "origins_within_2px_pct": 45.45,
+  "origins_within_4px_pct": 54.55,
+  "elements": [
+    {
+      "key": "DISPLAY",
+      "class": "TextView",
+      "audit_bounds": [
+        1157,
+        136,
+        1312,
+        189
+      ],
+      "replica_bounds": [
+        1245,
+        138,
+        1409,
+        189
+      ],
+      "dleft": 88,
+      "dtop": 2,
+      "dwidth": 9,
+      "dheight": -2
+    },
+    {
+      "key": "OVERLAYS",
+      "class": "TextView",
+      "audit_bounds": [
+        1380,
+        136,
+        1572,
+        189
+      ],
+      "replica_bounds": [
+        1461,
+        138,
+        1664,
+        189
+      ],
+      "dleft": 81,
+      "dtop": 2,
+      "dwidth": 11,
+      "dheight": -2
+    },
+    {
+      "key": "AUDIO",
+      "class": "TextView",
+      "audit_bounds": [
+        1650,
+        136,
+        1765,
+        189
+      ],
+      "replica_bounds": [
+        1715,
+        138,
+        1837,
+        189
+      ],
+      "dleft": 65,
+      "dtop": 2,
+      "dwidth": 7,
+      "dheight": -2
+    },
+    {
+      "key": "73\u00b0",
+      "class": "TextView",
+      "audit_bounds": [
+        1638,
+        956,
+        1767,
+        1035
+      ],
+      "replica_bounds": [
+        1674,
+        982,
+        1731,
+        1026
+      ],
+      "dleft": 36,
+      "dtop": 26,
+      "dwidth": -72,
+      "dheight": -35
+    },
+    {
+      "key": "BACK",
+      "class": "TextView",
+      "audit_bounds": [
+        1496,
+        973,
+        1624,
+        1035
+      ],
+      "replica_bounds": [
+        1528,
+        970,
+        1624,
+        1021
+      ],
+      "dleft": 32,
+      "dtop": -3,
+      "dwidth": -32,
+      "dheight": -11
+    },
+    {
+      "key": "LOG",
+      "class": "TextView",
+      "audit_bounds": [
+        1873,
+        136,
+        1947,
+        189
+      ],
+      "replica_bounds": [
+        1900,
+        138,
+        1978,
+        189
+      ],
+      "dleft": 27,
+      "dtop": 2,
+      "dwidth": 4,
+      "dheight": -2
+    },
+    {
+      "key": "103\u00b0",
+      "class": "TextView",
+      "audit_bounds": [
+        1781,
+        956,
+        1910,
+        1035
+      ],
+      "replica_bounds": [
+        1806,
+        974,
+        1885,
+        1018
+      ],
+      "dleft": 25,
+      "dtop": 18,
+      "dwidth": -50,
+      "dheight": -35
+    },
+    {
+      "key": "30 fps",
+      "class": "TextView",
+      "audit_bounds": [
+        775,
+        962,
+        933,
+        1035
+      ],
+      "replica_bounds": [
+        800,
+        965,
+        909,
+        1033
+      ],
+      "dleft": 25,
+      "dtop": 3,
+      "dwidth": -49,
+      "dheight": -5
+    },
+    {
+      "key": "0.0dB",
+      "class": "TextView",
+      "audit_bounds": [
+        1889,
+        284,
+        1989,
+        337
+      ],
+      "replica_bounds": [
+        1890,
+        285,
+        1989,
+        336
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": -1,
+      "dheight": -2
+    },
+    {
+      "key": "Input gain",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        231,
+        1989,
+        284
+      ],
+      "replica_bounds": [
+        1135,
+        232,
+        1323,
+        283
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": -666,
+      "dheight": -2
+    },
+    {
+      "key": "Double tap \"Input gain\" to reset to 0dB",
+      "class": "TextView",
+      "audit_bounds": [
+        1135,
+        360,
+        1989,
+        413
+      ],
+      "replica_bounds": [
+        1135,
+        360,
+        1692,
+        428
+      ],
+      "dleft": 0,
+      "dtop": 0,
+      "dwidth": -297,
+      "dheight": 15
+    }
+  ],
+  "screen": "137_live_console_audio"
+}

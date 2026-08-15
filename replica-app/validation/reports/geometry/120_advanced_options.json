@@ -1,0 +1,124 @@
+{
+  "matched_elements": 5,
+  "unmatched_audit_elements": [
+    "Enables any tweaks I'm testing that aren't ready yet",
+    "Experimental SRTLA Tweaks",
+    "Show SRTLA Debug"
+  ],
+  "replica_only_elements": [
+    "Enables local experimental fixtures that aren't ready yet",
+    "Experimental Bonding Tweaks",
+    "Keep streaming when not in focus.",
+    "Show Bonding Debug"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 1601,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 12.3,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Misc Settings",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        287,
+        2136,
+        340
+      ],
+      "replica_bounds": [
+        278,
+        262,
+        535,
+        330
+      ],
+      "dleft": 0,
+      "dtop": -25,
+      "dwidth": -1601,
+      "dheight": 15
+    },
+    {
+      "key": "Allow RTMP HEVC",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        710,
+        647,
+        771
+      ],
+      "replica_bounds": [
+        278,
+        718,
+        668,
+        780
+      ],
+      "dleft": 0,
+      "dtop": 8,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Show status bar on broadcast page",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        408,
+        984,
+        469
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        1030,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 8,
+      "dwidth": 46,
+      "dheight": 1
+    },
+    {
+      "key": "Advanced options",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        591,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        660,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 68,
+      "dheight": 0
+    }
+  ],
+  "screen": "120_advanced_options"
+}

@@ -1,0 +1,323 @@
+{
+  "matched_elements": 15,
+  "unmatched_audit_elements": [
+    "Files on Galaxy S22 Ultra",
+    "Galaxy S22 Ultra",
+    "Music"
+  ],
+  "replica_only_elements": [
+    "AppManager",
+    "Files on sdk_gphone64_x86_64",
+    "sdk_gphone64_x86_64"
+  ],
+  "max_abs_dleft": 1439,
+  "max_abs_dtop": 151,
+  "max_abs_dwidth": 56,
+  "max_abs_dheight": 24,
+  "mean_abs_origin_error_px": 133.767,
+  "origins_within_2px_pct": 20.0,
+  "origins_within_4px_pct": 20.0,
+  "elements": [
+    {
+      "key": "DCIM",
+      "class": "TextView",
+      "audit_bounds": [
+        1769,
+        900,
+        1865,
+        953
+      ],
+      "replica_bounds": [
+        330,
+        1051,
+        426,
+        1080
+      ],
+      "dleft": -1439,
+      "dtop": 151,
+      "dwidth": 0,
+      "dheight": -24
+    },
+    {
+      "key": "Documents",
+      "class": "TextView",
+      "audit_bounds": [
+        274,
+        1056,
+        474,
+        1080
+      ],
+      "replica_bounds": [
+        814,
+        1051,
+        1014,
+        1080
+      ],
+      "dleft": 540,
+      "dtop": -5,
+      "dwidth": 0,
+      "dheight": 5
+    },
+    {
+      "key": "Download",
+      "class": "TextView",
+      "audit_bounds": [
+        772,
+        1056,
+        946,
+        1080
+      ],
+      "replica_bounds": [
+        1299,
+        1051,
+        1472,
+        1080
+      ],
+      "dleft": 527,
+      "dtop": -5,
+      "dwidth": -1,
+      "dheight": 5
+    },
+    {
+      "key": "Audiobooks",
+      "class": "TextView",
+      "audit_bounds": [
+        1271,
+        900,
+        1478,
+        953
+      ],
+      "replica_bounds": [
+        1783,
+        895,
+        1989,
+        948
+      ],
+      "dleft": 512,
+      "dtop": -5,
+      "dwidth": -1,
+      "dheight": 0
+    },
+    {
+      "key": "Movies",
+      "class": "TextView",
+      "audit_bounds": [
+        1271,
+        1056,
+        1397,
+        1080
+      ],
+      "replica_bounds": [
+        1783,
+        1051,
+        1908,
+        1080
+      ],
+      "dleft": 512,
+      "dtop": -5,
+      "dwidth": -1,
+      "dheight": 5
+    },
+    {
+      "key": "Alarms",
+      "class": "TextView",
+      "audit_bounds": [
+        274,
+        900,
+        398,
+        953
+      ],
+      "replica_bounds": [
+        330,
+        895,
+        452,
+        948
+      ],
+      "dleft": 56,
+      "dtop": -5,
+      "dwidth": -2,
+      "dheight": 0
+    },
+    {
+      "key": "Can\u2019t use this folder",
+      "class": "TextView",
+      "audit_bounds": [
+        301,
+        568,
+        702,
+        629
+      ],
+      "replica_bounds": [
+        357,
+        563,
+        755,
+        624
+      ],
+      "dleft": 56,
+      "dtop": -5,
+      "dwidth": -3,
+      "dheight": 0
+    },
+    {
+      "key": "To protect your privacy, choose another folder",
+      "class": "TextView",
+      "audit_bounds": [
+        301,
+        629,
+        1009,
+        676
+      ],
+      "replica_bounds": [
+        357,
+        624,
+        1045,
+        670
+      ],
+      "dleft": 56,
+      "dtop": -5,
+      "dwidth": -20,
+      "dheight": -1
+    },
+    {
+      "key": "USE THIS FOLDER",
+      "class": "Button",
+      "audit_bounds": [
+        114,
+        945,
+        2142,
+        1080
+      ],
+      "replica_bounds": [
+        170,
+        945,
+        2142,
+        1080
+      ],
+      "dleft": 56,
+      "dtop": 0,
+      "dwidth": -56,
+      "dheight": 0
+    },
+    {
+      "key": "Android",
+      "class": "TextView",
+      "audit_bounds": [
+        772,
+        900,
+        908,
+        953
+      ],
+      "replica_bounds": [
+        814,
+        895,
+        949,
+        948
+      ],
+      "dleft": 42,
+      "dtop": -5,
+      "dwidth": -1,
+      "dheight": 0
+    },
+    {
+      "key": "CREATE NEW FOLDER",
+      "class": "Button",
+      "audit_bounds": [
+        1581,
+        703,
+        2069,
+        838
+      ],
+      "replica_bounds": [
+        1580,
+        698,
+        2069,
+        833
+      ],
+      "dleft": -1,
+      "dtop": -5,
+      "dwidth": 1,
+      "dheight": 0
+    },
+    {
+      "key": "List view",
+      "class": "Button",
+      "audit_bounds": [
+        1977,
+        371,
+        2113,
+        506
+      ],
+      "replica_bounds": [
+        1977,
+        366,
+        2113,
+        501
+      ],
+      "dleft": 0,
+      "dtop": -5,
+      "dwidth": 0,
+      "dheight": 0
+    },
+    {
+      "key": "More options",
+      "class": "ImageView",
+      "audit_bounds": [
+        2046,
+        84,
+        2181,
+        219
+      ],
+      "replica_bounds": [
+        2046,
+        79,
+        2181,
+        214
+      ],
+      "dleft": 0,
+      "dtop": -5,
+      "dwidth": 0,
+      "dheight": 0
+    },
+    {
+      "key": "New folder",
+      "class": "Button",
+      "audit_bounds": [
+        1774,
+        84,
+        1910,
+        219
+      ],
+      "replica_bounds": [
+        1774,
+        79,
+        1910,
+        214
+      ],
+      "dleft": 0,
+      "dtop": -5,
+      "dwidth": 0,
+      "dheight": 0
+    },
+    {
+      "key": "Sort by...",
+      "class": "Button",
+      "audit_bounds": [
+        1910,
+        84,
+        2046,
+        219
+      ],
+      "replica_bounds": [
+        1910,
+        79,
+        2046,
+        214
+      ],
+      "dleft": 0,
+      "dtop": -5,
+      "dwidth": 0,
+      "dheight": 0
+    }
+  ],
+  "screen": "082_recording_save_to_control"
+}

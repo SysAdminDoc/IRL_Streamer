@@ -1,0 +1,157 @@
+{
+  "matched_elements": 7,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [
+    "Selected"
+  ],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 39,
+  "max_abs_dwidth": 959,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 47.071,
+  "origins_within_2px_pct": 21.43,
+  "origins_within_4px_pct": 21.43,
+  "elements": [
+    {
+      "key": "Constant bitrate",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        684,
+        1767,
+        819
+      ],
+      "replica_bounds": [
+        579,
+        717,
+        923,
+        785
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -935,
+      "dheight": -67
+    },
+    {
+      "key": "Constant bitrate w/frame drops (OFTEN UNSUPPORTED)",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        819,
+        1767,
+        878
+      ],
+      "replica_bounds": [
+        579,
+        818,
+        1700,
+        889
+      ],
+      "dleft": 91,
+      "dtop": -1,
+      "dwidth": -158,
+      "dheight": 12
+    },
+    {
+      "key": "Constant quality",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        414,
+        1767,
+        549
+      ],
+      "replica_bounds": [
+        579,
+        447,
+        928,
+        515
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -930,
+      "dheight": -67
+    },
+    {
+      "key": "System default",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        414
+      ],
+      "replica_bounds": [
+        579,
+        312,
+        899,
+        380
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -959,
+      "dheight": -67
+    },
+    {
+      "key": "Variable bitrate",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        549,
+        1767,
+        684
+      ],
+      "replica_bounds": [
+        579,
+        582,
+        903,
+        650
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -955,
+      "dheight": -67
+    },
+    {
+      "key": "CANCEL",
+      "class": "Button",
+      "audit_bounds": [
+        1520,
+        889,
+        1733,
+        1024
+      ],
+      "replica_bounds": [
+        1550,
+        928,
+        1700,
+        985
+      ],
+      "dleft": 30,
+      "dtop": 39,
+      "dwidth": -63,
+      "dheight": -78
+    },
+    {
+      "key": "Bitrate mode",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        180,
+        1699,
+        256
+      ],
+      "replica_bounds": [
+        557,
+        179,
+        897,
+        255
+      ],
+      "dleft": 1,
+      "dtop": -1,
+      "dwidth": -803,
+      "dheight": 0
+    }
+  ],
+  "screen": "056_video_bitrate_mode_menu"
+}

@@ -1,0 +1,143 @@
+{
+  "matched_elements": 6,
+  "unmatched_audit_elements": [
+    "KICK.COM",
+    "TWITCH.TV"
+  ],
+  "replica_only_elements": [
+    "CANCEL",
+    "PLATFORM A",
+    "PLATFORM B",
+    "SAVE"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 2032,
+  "max_abs_dheight": 102,
+  "mean_abs_origin_error_px": 12.333,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Name",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        664,
+        2181,
+        790
+      ],
+      "replica_bounds": [
+        87,
+        641,
+        197,
+        665
+      ],
+      "dleft": 12,
+      "dtop": -23,
+      "dwidth": -1996,
+      "dheight": -102
+    },
+    {
+      "key": "URL",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        821,
+        2181,
+        947
+      ],
+      "replica_bounds": [
+        87,
+        804,
+        161,
+        828
+      ],
+      "dleft": 12,
+      "dtop": -17,
+      "dwidth": -2032,
+      "dheight": -102
+    },
+    {
+      "key": "New outgoing connection",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        724,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        824,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 99,
+      "dheight": 0
+    },
+    {
+      "key": "Quick Site Setup",
+      "class": "TextView",
+      "audit_bounds": [
+        75,
+        309,
+        2181,
+        377
+      ],
+      "replica_bounds": [
+        75,
+        310,
+        386,
+        378
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": -1795,
+      "dheight": 0
+    },
+    {
+      "key": "Start typing or paste URL to view protocol-specific fields for authentication etc.",
+      "class": "TextView",
+      "audit_bounds": [
+        98,
+        580,
+        2158,
+        633
+      ],
+      "replica_bounds": [
+        98,
+        581,
+        1572,
+        634
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": -586,
+      "dheight": 0
+    }
+  ],
+  "screen": "022_new_connection_protocol_menu"
+}

@@ -1,0 +1,95 @@
+{
+  "matched_elements": 4,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 118,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 10.5,
+  "origins_within_2px_pct": 75.0,
+  "origins_within_4px_pct": 75.0,
+  "elements": [
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Delete multiple",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        578,
+        476
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        599,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Manage outgoing connections",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        807,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        926,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 118,
+      "dheight": 0
+    },
+    {
+      "key": "New connection",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        604,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        624,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 20,
+      "dheight": 1
+    }
+  ],
+  "screen": "029_manage_connections_empty"
+}

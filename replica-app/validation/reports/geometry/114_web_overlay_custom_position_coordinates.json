@@ -1,0 +1,215 @@
+{
+  "matched_elements": 10,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 1751,
+  "max_abs_dtop": 93,
+  "max_abs_dwidth": 1543,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 200.3,
+  "origins_within_2px_pct": 40.0,
+  "origins_within_4px_pct": 40.0,
+  "elements": [
+    {
+      "key": "Right 100 %",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        416,
+        482,
+        469
+      ],
+      "replica_bounds": [
+        2029,
+        447,
+        2248,
+        515
+      ],
+      "dleft": 1751,
+      "dtop": 31,
+      "dwidth": 15,
+      "dheight": 15
+    },
+    {
+      "key": "Bottom 100 %",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        711,
+        521,
+        764
+      ],
+      "replica_bounds": [
+        1989,
+        661,
+        2248,
+        729
+      ],
+      "dleft": 1711,
+      "dtop": -50,
+      "dwidth": 16,
+      "dheight": 15
+    },
+    {
+      "key": "Custom",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        234,
+        414,
+        287
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        422,
+        380
+      ],
+      "dleft": 0,
+      "dtop": 93,
+      "dwidth": 8,
+      "dheight": 0
+    },
+    {
+      "key": "H Position",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        355,
+        486,
+        416
+      ],
+      "replica_bounds": [
+        278,
+        447,
+        2029,
+        515
+      ],
+      "dleft": 0,
+      "dtop": 92,
+      "dwidth": 1543,
+      "dheight": 7
+    },
+    {
+      "key": "Z Order",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        967,
+        426,
+        1028
+      ],
+      "replica_bounds": [
+        278,
+        897,
+        436,
+        959
+      ],
+      "dleft": 0,
+      "dtop": -70,
+      "dwidth": 10,
+      "dheight": 1
+    },
+    {
+      "key": "1",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1028,
+        300,
+        1080
+      ],
+      "replica_bounds": [
+        278,
+        959,
+        301,
+        1012
+      ],
+      "dleft": 0,
+      "dtop": -69,
+      "dwidth": 1,
+      "dheight": 1
+    },
+    {
+      "key": "Position",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        443,
+        234
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        454,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 11,
+      "dheight": 47
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "V Position",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        650,
+        483,
+        711
+      ],
+      "replica_bounds": [
+        278,
+        661,
+        1989,
+        729
+      ],
+      "dleft": 0,
+      "dtop": 11,
+      "dwidth": 1506,
+      "dheight": 7
+    },
+    {
+      "key": "Layer",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        373,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        395,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 0
+    }
+  ],
+  "screen": "114_web_overlay_custom_position_coordinates"
+}

@@ -1,0 +1,215 @@
+{
+  "matched_elements": 10,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 105,
+  "max_abs_dwidth": 509,
+  "max_abs_dheight": 151,
+  "mean_abs_origin_error_px": 9.8,
+  "origins_within_2px_pct": 85.0,
+  "origins_within_4px_pct": 85.0,
+  "elements": [
+    {
+      "key": "body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        627,
+        1604,
+        680
+      ],
+      "replica_bounds": [
+        278,
+        522,
+        2113,
+        726
+      ],
+      "dleft": 0,
+      "dtop": -105,
+      "dwidth": 509,
+      "dheight": 151
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Center",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1035,
+        393,
+        1080
+      ],
+      "replica_bounds": [
+        278,
+        1037,
+        401,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 2,
+      "dwidth": 8,
+      "dheight": -2
+    },
+    {
+      "key": "Preview + stream",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        831,
+        579,
+        884
+      ],
+      "replica_bounds": [
+        278,
+        833,
+        600,
+        886
+      ],
+      "dleft": 0,
+      "dtop": 2,
+      "dwidth": 21,
+      "dheight": 0
+    },
+    {
+      "key": "Custom CSS",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        566,
+        529,
+        627
+      ],
+      "replica_bounds": [
+        278,
+        567,
+        543,
+        628
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 14,
+      "dheight": 0
+    },
+    {
+      "key": "Layer",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        373,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        395,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 0
+    },
+    {
+      "key": "Name",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        397,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        403,
+        327
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 6,
+      "dheight": 1
+    },
+    {
+      "key": "Position",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        974,
+        443,
+        1035
+      ],
+      "replica_bounds": [
+        278,
+        975,
+        454,
+        1037
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 11,
+      "dheight": 1
+    },
+    {
+      "key": "URL",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        415,
+        359,
+        476
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        363,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 4,
+      "dheight": 1
+    },
+    {
+      "key": "View mode",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        770,
+        501,
+        831
+      ],
+      "replica_bounds": [
+        278,
+        771,
+        514,
+        833
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 13,
+      "dheight": 1
+    }
+  ],
+  "screen": "108_web_overlay_new_form"
+}

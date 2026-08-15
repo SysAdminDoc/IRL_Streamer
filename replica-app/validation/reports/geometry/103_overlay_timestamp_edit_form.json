@@ -1,0 +1,200 @@
+{
+  "matched_elements": 9,
+  "unmatched_audit_elements": [
+    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('MMM dd, HH:mm:ss', 'en_US') %></b>"
+  ],
+  "replica_only_elements": [
+    "1",
+    "Date/time \u00b7 MMM dd, HH:mm:ss \u00b7 en-US"
+  ],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 151,
+  "max_abs_dwidth": 1638,
+  "max_abs_dheight": 98,
+  "mean_abs_origin_error_px": 35.833,
+  "origins_within_2px_pct": 55.56,
+  "origins_within_4px_pct": 55.56,
+  "elements": [
+    {
+      "key": "Periodic refresh",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        922,
+        594,
+        983
+      ],
+      "replica_bounds": [
+        278,
+        771,
+        616,
+        833
+      ],
+      "dleft": 0,
+      "dtop": -151,
+      "dwidth": 22,
+      "dheight": 1
+    },
+    {
+      "key": "Refresh interval (sec)",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1073,
+        704,
+        1080
+      ],
+      "replica_bounds": [
+        278,
+        922,
+        735,
+        984
+      ],
+      "dleft": 0,
+      "dtop": -151,
+      "dwidth": 31,
+      "dheight": 55
+    },
+    {
+      "key": "Timestamp",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        325,
+        475,
+        378
+      ],
+      "replica_bounds": [
+        278,
+        220,
+        2113,
+        371
+      ],
+      "dleft": 0,
+      "dtop": -105,
+      "dwidth": 1638,
+      "dheight": 98
+    },
+    {
+      "key": "HTML code",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        672,
+        510,
+        733
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        522,
+        681
+      ],
+      "dleft": 0,
+      "dtop": -52,
+      "dwidth": 12,
+      "dheight": 0
+    },
+    {
+      "key": "Type",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        468,
+        374,
+        529
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        379,
+        478
+      ],
+      "dleft": 0,
+      "dtop": -52,
+      "dwidth": 5,
+      "dheight": 1
+    },
+    {
+      "key": "Text",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        529,
+        353,
+        582
+      ],
+      "replica_bounds": [
+        278,
+        478,
+        358,
+        531
+      ],
+      "dleft": 0,
+      "dtop": -51,
+      "dwidth": 5,
+      "dheight": 0
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Layer",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        373,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        395,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 21,
+      "dheight": 0
+    },
+    {
+      "key": "Name",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        264,
+        397,
+        325
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        403,
+        326
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 6,
+      "dheight": 0
+    }
+  ],
+  "screen": "103_overlay_timestamp_edit_form"
+}
