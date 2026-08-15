@@ -1,25 +1,14 @@
 {
-  "matched_elements": 3,
-  "unmatched_audit_elements": [
-    "24 fixed rate",
-    "30 fixed rate",
-    "7-24 variable rate",
-    "7-30 variable rate"
-  ],
-  "replica_only_elements": [
-    "10 fixed rate",
-    "7-10 variable rate",
-    "7-15 variable rate",
-    "Selected",
-    "System default"
-  ],
+  "matched_elements": 7,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
   "max_abs_dleft": 91,
-  "max_abs_dtop": 573,
+  "max_abs_dtop": 85,
   "max_abs_dwidth": 1038,
   "max_abs_dheight": 78,
-  "mean_abs_origin_error_px": 122.5,
-  "origins_within_2px_pct": 33.33,
-  "origins_within_4px_pct": 33.33,
+  "mean_abs_origin_error_px": 64.214,
+  "origins_within_2px_pct": 14.29,
+  "origins_within_4px_pct": 14.29,
   "elements": [
     {
       "key": "15 fixed rate",
@@ -32,14 +21,94 @@
       ],
       "replica_bounds": [
         579,
+        312,
+        844,
+        380
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1014,
+      "dheight": -15
+    },
+    {
+      "key": "24 fixed rate",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        497,
+        1767,
+        632
+      ],
+      "replica_bounds": [
+        579,
+        582,
+        844,
+        650
+      ],
+      "dleft": 91,
+      "dtop": 85,
+      "dwidth": -1014,
+      "dheight": -67
+    },
+    {
+      "key": "30 fixed rate",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        767,
+        1767,
+        878
+      ],
+      "replica_bounds": [
+        579,
         852,
         844,
         889
       ],
       "dleft": 91,
-      "dtop": 573,
+      "dtop": 85,
       "dwidth": -1014,
-      "dheight": -46
+      "dheight": -74
+    },
+    {
+      "key": "7-24 variable rate",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        362,
+        1767,
+        497
+      ],
+      "replica_bounds": [
+        579,
+        447,
+        946,
+        515
+      ],
+      "dleft": 91,
+      "dtop": 85,
+      "dwidth": -912,
+      "dheight": -67
+    },
+    {
+      "key": "7-30 variable rate",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        632,
+        1767,
+        767
+      ],
+      "replica_bounds": [
+        579,
+        717,
+        946,
+        785
+      ],
+      "dleft": 91,
+      "dtop": 85,
+      "dwidth": -912,
+      "dheight": -67
     },
     {
       "key": "CANCEL",

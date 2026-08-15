@@ -20,6 +20,13 @@ sealed interface SettingItem {
         val title: String,
         val summary: String = "",
         val enabled: Boolean = true,
+        /**
+         * Summary shown while the toggle is off, when the audit records a
+         * different string for each state. Audit evidence: screen 054 shows
+         * "Bitrate is now defined manually." where screens 032-037 show the
+         * recommended-bitrate text. Null keeps [summary] for both states.
+         */
+        val summaryOff: String? = null,
     ) : SettingItem
     data class Slider(
         val key: String,
@@ -172,7 +179,12 @@ object SettingsCatalog {
             SettingItem.Row("anti_flicker", "Anti-flicker", "Auto", action = SettingAction.Dialog(choice("anti_flicker", "Anti-flicker", "Auto", listOf("Off", "50Hz", "60Hz", "Auto")))),
             SettingItem.Row("exposure", "Exposure compensation", "0", action = SettingAction.Dialog(choice("exposure", "Exposure compensation", "0", (-20..20).map { value -> if (value == 0) "0" else if (value > 0) "+${value / 10.0}".removeSuffix(".0") else "${value / 10.0}".removeSuffix(".0") }))),
             SettingItem.Section("Encoder parameters"),
-            SettingItem.Toggle("bitrate_matches_resolution", "Bitrate matches resolution", "Bitrate matches the value recommended based on resolution and frame rate."),
+            SettingItem.Toggle(
+                "bitrate_matches_resolution",
+                "Bitrate matches resolution",
+                "Bitrate matches the value recommended based on resolution and frame rate.",
+                summaryOff = "Bitrate is now defined manually.",
+            ),
             SettingItem.Row("h264_bitrate", "Bitrate H264 - HEVC is auto 66%", valueKey = "h264_bitrate", action = SettingAction.Dialog(number("h264_bitrate_kbps", "Bitrate", "6000"))),
             SettingItem.Row("bitrate_mode", "Bitrate mode", "System default", action = SettingAction.Dialog(choice("bitrate_mode", "Bitrate mode", "System default", listOf("System default", "Constant quality", "Variable bitrate", "Constant bitrate", "Constant bitrate w/frame drops (OFTEN UNSUPPORTED)")))),
             SettingItem.Row("keyframe", "Keyframe frequency", "2 sec", action = SettingAction.Dialog(number("keyframe", "Keyframe frequency", "2"))),
@@ -300,8 +312,13 @@ object SettingsCatalog {
             SettingItem.Toggle("experimental_bonding", "Experimental Bonding Tweaks", "Enables local experimental fixtures that aren't ready yet"),
             SettingItem.Toggle("keep_streaming", "Keep streaming when not in focus.", "This is always enabled now.", enabled = false),
             SettingItem.Toggle("quit_inactive", "Quit if inactive in background", "If IRL Streamer sits in background and has no active connections, it will quit after a timeout."),
-            SettingItem.Row("preferred_camera", "Preferred camera API", "Disable Camera2 only if camera resolutions or framerates are unavailable.", enabled = false),
-            SettingItem.Toggle("mirror_front", "Mirror front camera", "Stream and record front camera as it appears in preview (mirrored)."),
+            // Audit evidence: screen 126 shows a preference category titled
+            // "Advanced options" at [278,276]-[2136,329], the same shape as the
+            // "Misc Settings" header in screen 120, immediately above the
+            // preferred-camera row.
+            SettingItem.Section("Advanced options"),
+            SettingItem.Row("preferred_camera", "Preferred camera API", "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available.", enabled = false),
+            SettingItem.Toggle("mirror_front", "Mirror front camera", "Stream and record front camera as appears in preview (mirrored)."),
             SettingItem.Toggle("horizon", "Horizon stream demo", "Say no to vertical videos.", enabled = false),
             SettingItem.Section("Camera controls"),
             SettingItem.Row("volume_keys", "Volume keys", "Do nothing", action = SettingAction.Dialog(choice("volume_keys", "Volume keys", "Do nothing", listOf("Start/stop broadcast", "Zoom", "Flip camera", "Do nothing")))),

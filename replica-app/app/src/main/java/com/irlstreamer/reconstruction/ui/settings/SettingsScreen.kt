@@ -11,10 +11,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import android.util.Log
+import com.irlstreamer.reconstruction.BuildConfig
 import com.irlstreamer.reconstruction.MainViewModel
 import com.irlstreamer.reconstruction.debug.AuditScrollAnchors
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.AppUiState
+import com.irlstreamer.reconstruction.model.DialogRequest
+import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.ui.components.AuditedAppBar
 import com.irlstreamer.reconstruction.ui.components.InfoRow
@@ -58,6 +62,16 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
     val anchorIndex = anchorLabel
         ?.let { label -> visibleItems.indexOfFirst { itemTitle(it) == label } }
         ?.takeIf { it >= 0 }
+    if (anchorLabel != null && anchorIndex == null && BuildConfig.ENABLE_DEBUG_STATE_SELECTOR) {
+        // Falling back to the catalog index is the behaviour the anchors exist to
+        // replace, so it must never happen quietly: an anchor that resolves to
+        // nothing looks identical to a state that never had one.
+        Log.w(
+            "AuditScrollAnchors",
+            "Anchor \"$anchorLabel\" for ${state.runtime.debugScreenId} matched no row on $page; " +
+                "falling back to index ${state.runtime.settingsScrollIndex}",
+        )
+    }
     val initialIndex = anchorIndex
         ?: state.runtime.settingsScrollIndex.coerceIn(0, (visibleItems.size - 1).coerceAtLeast(0))
     val listState = key(state.runtime.debugScreenId, initialIndex) {
@@ -94,7 +108,7 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
                             enabled = derivedEnabled,
                             accentTitle = item.accentTitle,
                             onClick = if (derivedEnabled) {
-                                { handleAction(item.action, viewModel) }
+                                { handleAction(item.action, state, viewModel) }
                             } else null,
                         )
                     }
@@ -103,7 +117,7 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
                         TogglePreferenceRow(
                             key = item.key,
                             title = item.title,
-                            summary = item.summary,
+                            summary = if (!value && item.summaryOff != null) item.summaryOff else item.summary,
                             checked = value,
                             enabled = item.enabled,
                             onToggle = { viewModel.toggleBoolean(item.key, value) },
@@ -128,14 +142,56 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
     }
 }
 
-private fun handleAction(action: SettingAction, viewModel: MainViewModel) {
+private fun handleAction(action: SettingAction, state: AppUiState, viewModel: MainViewModel) {
     when (action) {
         SettingAction.None -> Unit
         is SettingAction.Navigate -> viewModel.navigateTo(action.page)
-        is SettingAction.Dialog -> viewModel.showDialog(action.request)
+        is SettingAction.Dialog -> viewModel.showDialog(withCurrentValue(action.request, state))
         SettingAction.OpenFolder -> viewModel.requestFolderPicker()
         is SettingAction.Toast -> viewModel.showToast(action.message)
     }
+}
+
+/**
+ * Seed a dialog with the value it is editing.
+ *
+ * The catalog's `DialogRequest` carries the audited *default*, which is correct
+ * for a first open and wrong for every one after it: a reopened dialog showed
+ * the default instead of the saved value, and confirming it wrote that default
+ * back over the user's setting. A multi-select was worse - reopening dropped
+ * every selection the catalog default did not contain.
+ *
+ * Debug states are unaffected: `DebugStateCatalog` injects its dialogs into
+ * runtime state directly and never routes through here, so the audited captures
+ * keep exactly the selection they were captured with.
+ */
+internal fun withCurrentValue(request: DialogRequest, state: AppUiState): DialogRequest {
+    val transient = state.runtime.transientValues[request.id]
+    return when (request.type) {
+        DialogType.TEXT, DialogType.NUMBER -> {
+            val current = transient ?: persistedValue(request.id, state)
+            if (current != null) request.copy(initialValue = current) else request
+        }
+        DialogType.CHOICE_SINGLE ->
+            if (transient != null) request.copy(selectedOptions = setOf(transient)) else request
+        DialogType.CHOICE_MULTIPLE -> {
+            val current = persistedSelection(request.id, state)
+            if (current != null) request.copy(selectedOptions = current) else request
+        }
+        else -> request
+    }
+}
+
+private fun persistedValue(id: String, state: AppUiState): String? = when (id) {
+    "chat_font_scale" -> state.settings.chatFontScale.toString()
+    "alert_dashboard_scale" -> state.settings.alertDashboardScale.toString()
+    "h264_bitrate_kbps" -> state.settings.h264BitrateKbps.toString()
+    else -> null
+}
+
+private fun persistedSelection(id: String, state: AppUiState): Set<String>? = when (id) {
+    "safe_margin_ratios" -> state.settings.safeMarginRatios
+    else -> null
 }
 
 /** Visible label of a row, used to resolve an audited scroll anchor. */

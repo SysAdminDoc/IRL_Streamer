@@ -35,7 +35,7 @@ The captured target comprises 145 visual states, 119 logical screen names, 15 pr
 - Reference viewport: 2316 x 1080 px, 450 dpi, 823.47 x 384 dp landscape.
 - App settings retain the observed system status bar; the live console hides it by default.
 - Core observed colors, dimensions, typography roles, and interaction wording come from `app-audit/design/`.
-- Dynamic camera imagery and telemetry are legitimate mask candidates, but the final sweep deliberately used no masks so every replacement remains visible in raw metrics.
+- Dynamic camera imagery and telemetry are legitimate mask candidates. The strict gate is computed unmasked so every replacement stays visible in the raw metric; a small register of operating-system-owned regions feeds only the secondary app-chrome diagnostic (`validation/masks/README.md`).
 - Android/Material library icons are used where the audit classifies icons as replaceable.
 - Accessibility debt in the source is intentionally corrected with named controls and 48 dp semantic hit targets; these improvements remain documented deviations.
 
@@ -55,4 +55,4 @@ Real broadcasting, proprietary SRTLA/bonding behavior, live third-party chat/das
 
 ## Execution result
 
-Phases 1–7 were executed. All 145 states are implemented and captured, six JVM tests and four device UI tests pass, lint passes, and the minified release installs and launches. The strict visual gate remains open: 0/145 screens reach SSIM 0.985 (median 0.836694; maximum 0.930146). The project is therefore delivered as a partially validated clean-room reconstruction; see `validation/reports/final-coverage-report.md` and `design-qa.md`.
+Phases 1–7 were executed. All 145 states are implemented and captured, the JVM and device UI suites pass, lint passes, and the minified release installs and launches. The strict visual gate remains open: no screen reaches SSIM 0.985. The project is therefore delivered as a partially validated clean-room reconstruction. Exact current numbers are generated rather than restated here - see `validation/reports/final-coverage-report.md` and `design-qa.md`.

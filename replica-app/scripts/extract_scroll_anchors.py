@@ -42,11 +42,29 @@ def bounds(node):
     return tuple(int(v) for v in m.groups()) if m else None
 
 
+def title_of(node) -> str:
+    """Return a preference row's own title, or "" when it has none.
+
+    The title must come from `android:id/title` rather than from the first text
+    descendant. A row that is partially scrolled past the top of the viewport
+    exposes its value (`android:id/seekbar_value`) or its summary first in
+    document order, and those strings - "100", "On", "Auto" - never match a row
+    title in the settings catalog, so the app silently failed to resolve the
+    anchor and fell back to the hand-guessed index the anchors replaced.
+    """
+    for child in node.iter("node"):
+        text = (child.get("text") or "").strip()
+        if text and (child.get("resource-id") or "").endswith("/title"):
+            return text
+    return ""
+
+
 def main() -> int:
     with CATALOG.open(encoding="utf-8-sig", newline="") as fh:
         rows = list(csv.DictReader(fh))
 
     anchors = {}
+    skipped = []
     for row in rows:
         sid = row["screen_id"]
         surface = row["surface_type"]
@@ -75,6 +93,10 @@ def main() -> int:
                 None,
             )
             if listv is None:
+                # e.g. 057, whose dump is covered by the IME. Record it rather
+                # than dropping it silently - a missing anchor and a skipped
+                # surface are otherwise indistinguishable.
+                skipped.append(f"{sid} (no list view in dump)")
                 continue
             list_left, list_top, list_right, _ = bounds(listv)
             viewport_top = list_top
@@ -83,27 +105,35 @@ def main() -> int:
                 for n in nodes
                 if bounds(n)[0] >= list_left
                 and bounds(n)[2] <= list_right
-                and bounds(n)[1] >= list_top
+                # Admit a row straddling the viewport top, matching the settings
+                # branch. Requiring top >= list_top made scroll_offset_px
+                # structurally zero for every selection dialog.
+                and bounds(n)[3] > list_top
                 and (n.get("text") or "").strip()
             ]
         else:
             continue
 
         if not candidates:
+            skipped.append(f"{sid} (no candidate rows in viewport)")
             continue
         candidates.sort(key=lambda c: c[0])
-        top, node = candidates[0]
 
-        # The row's own label is the first text descendant.
-        label = ""
-        for child in node.iter("node"):
-            text = (child.get("text") or "").strip()
-            if text:
-                label = text
-                break
-        if not label:
-            label = (node.get("text") or "").strip()
-        if not label:
+        if surface == "selection_dialog":
+            # Choice rows carry their label directly on the row node.
+            top, node = candidates[0]
+            label = (node.get("text") or "").strip() or next(
+                ((c.get("text") or "").strip() for c in node.iter("node") if (c.get("text") or "").strip()),
+                "",
+            )
+        else:
+            # Anchor on the first row that actually has a title. See title_of().
+            top, label = next(
+                ((t, title_of(n)) for t, n in candidates if title_of(n)),
+                (None, ""),
+            )
+        if not label or top is None:
+            skipped.append(f"{sid} (no titled row in viewport)")
             continue
 
         anchors[sid] = {
@@ -120,6 +150,8 @@ def main() -> int:
     print(f"wrote {len(anchors)} scroll anchors -> {OUT}")
     partial = sum(1 for a in anchors.values() if a["scroll_offset_px"] > 0)
     print(f"  anchors with a partially scrolled first row: {partial}")
+    for entry in skipped:
+        print(f"  skipped: {entry}")
     return 0
 
 

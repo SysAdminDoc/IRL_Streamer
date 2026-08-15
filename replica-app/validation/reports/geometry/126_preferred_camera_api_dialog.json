@@ -1,68 +1,17 @@
 {
-  "matched_elements": 4,
-  "unmatched_audit_elements": [
-    "Advanced options#1",
-    "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available.",
-    "Horizon stream demo",
-    "Say no to vertical videos.",
-    "Stream and record front camera as appears in preview (mirrored)."
-  ],
+  "matched_elements": 9,
+  "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Disable Camera2 only if camera resolutions or framerates are unavailable.",
-    "If IRL Streamer sits in background and has no active connections, it will quit after a timeout.",
-    "Keep streaming when not in focus.",
-    "Quit if inactive in background",
-    "Stream and record front camera as it appears in preview (mirrored).",
-    "This is always enabled now."
+    "Camera controls"
   ],
   "max_abs_dleft": 45,
-  "max_abs_dtop": 276,
-  "max_abs_dwidth": 90,
+  "max_abs_dtop": 35,
+  "max_abs_dwidth": 1522,
   "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 73.5,
+  "mean_abs_origin_error_px": 12.056,
   "origins_within_2px_pct": 50.0,
   "origins_within_4px_pct": 50.0,
   "elements": [
-    {
-      "key": "Preferred camera API",
-      "class": "TextView",
-      "audit_bounds": [
-        278,
-        397,
-        703,
-        458
-      ],
-      "replica_bounds": [
-        278,
-        673,
-        731,
-        735
-      ],
-      "dleft": 0,
-      "dtop": 276,
-      "dwidth": 28,
-      "dheight": 1
-    },
-    {
-      "key": "Mirror front camera",
-      "class": "TextView",
-      "audit_bounds": [
-        278,
-        647,
-        667,
-        708
-      ],
-      "replica_bounds": [
-        278,
-        877,
-        693,
-        939
-      ],
-      "dleft": 0,
-      "dtop": 230,
-      "dwidth": 26,
-      "dheight": 1
-    },
     {
       "key": "Navigate up",
       "class": "ImageButton",
@@ -82,6 +31,146 @@
       "dtop": 35,
       "dwidth": -90,
       "dheight": -67
+    },
+    {
+      "key": "Horizon stream demo",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        851,
+        711,
+        912
+      ],
+      "replica_bounds": [
+        278,
+        824,
+        737,
+        886
+      ],
+      "dleft": 0,
+      "dtop": -27,
+      "dwidth": 26,
+      "dheight": 1
+    },
+    {
+      "key": "Mirror front camera",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        647,
+        667,
+        708
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        693,
+        682
+      ],
+      "dleft": 0,
+      "dtop": -27,
+      "dwidth": 26,
+      "dheight": 1
+    },
+    {
+      "key": "Say no to vertical videos.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        912,
+        708,
+        965
+      ],
+      "replica_bounds": [
+        278,
+        886,
+        743,
+        939
+      ],
+      "dleft": 0,
+      "dtop": -26,
+      "dwidth": 35,
+      "dheight": 0
+    },
+    {
+      "key": "Stream and record front camera as appears in preview (mirrored).",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        708,
+        1410,
+        761
+      ],
+      "replica_bounds": [
+        278,
+        682,
+        1499,
+        735
+      ],
+      "dleft": 0,
+      "dtop": -26,
+      "dwidth": 89,
+      "dheight": 0
+    },
+    {
+      "key": "Advanced options",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        276,
+        2136,
+        329
+      ],
+      "replica_bounds": [
+        278,
+        262,
+        614,
+        330
+      ],
+      "dleft": 0,
+      "dtop": -14,
+      "dwidth": -1522,
+      "dheight": 15
+    },
+    {
+      "key": "Preferred camera API",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        397,
+        703,
+        458
+      ],
+      "replica_bounds": [
+        278,
+        389,
+        731,
+        451
+      ],
+      "dleft": 0,
+      "dtop": -8,
+      "dwidth": 28,
+      "dheight": 1
+    },
+    {
+      "key": "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        458,
+        2136,
+        557
+      ],
+      "replica_bounds": [
+        278,
+        451,
+        2271,
+        557
+      ],
+      "dleft": 0,
+      "dtop": -7,
+      "dwidth": 135,
+      "dheight": 7
     },
     {
       "key": "Advanced options",

@@ -192,46 +192,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: M
 
-- [ ] P1 — IS-25 Debug state 054 renders the wrong surface entirely — an adaptive-mode dialog instead of the manual-bitrate settings screen
-  Category: correctness
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/debug/DebugStateCatalog.kt:53` (`in 41..64` branch) and `:216-234` (`videoDialog` has no case for 54, so it falls to the `else` adaptive-mode dialog)
-  Problem: audit `054_video_manual_bitrate_enabled` is type `settings_screen` — the Video page with "Bitrate matches resolution" toggled off so the H264 bitrate row is enabled. The catalog blankets 41..64 with `.withDialog(videoDialog(number))`, so 054 injects the adaptive-bitrate-mode choice dialog over the page instead. The state can never validate.
-  Evidence: `app-audit/screens/screen-catalog.csv` row 054 (`settings_screen`, path "Settings > Video > Bitrate matches resolution"); geometry result 0 matched / 11 unmatched; SSIM 0.7359.
-  Fix: special-case 54 before the 41..64 branch: `base.settings(SettingsPage.VIDEO, 12).copy(overrides = ScreenOverrides(bitrateMatchesResolution = false))` — the override field already exists and `SettingsScreen.kt:89` already derives the bitrate row's enabled state from it. Verify the audited scroll anchor for 054 resolves.
-  Acceptance: geometry for 054 matches > 0 elements with the H264 bitrate row enabled and no dialog present; SSIM rises materially from 0.7359.
-  Confidence: Verified
-  Effort: S
-
-- [ ] P1 — IS-26 Dialog choice lists reuse the previous dialog's scroll position — every `*_menu_middle/_lower` validation state captures the wrong list window
-  Category: correctness
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/components/AuditedDialogs.kt:141-143`
-  Problem: `rememberLazyListState(initialFirstVisibleItemIndex = request.listAnchorIndex)` is remembered positionally with no key. During the warm sequential ADB sweep (042→043, 044→045→046, 050→051→052→053, 068→069→070, 072→073) the dialog host stays in composition, so the LazyListState — and its scroll position — carries over from the previous state; `listAnchorIndex` only applies on first creation. The `input`/`selected` states directly above are correctly keyed on `request.id`; the list state was missed. This is the same warm-injection trap CLAUDE.md records for settings lists (fixed there via `key(debugScreenId, …)`).
-  Evidence: geometry results show the exact signature — 050 expects options around "0…+0.4" (audit anchor label "0", index 20) but the replica dump shows "-2…-1.6" (list top, i.e. the prior dialog's scroll); same pattern on 043, 045, 046, 051-053, 069, 070, 073.
-  Fix: wrap in `key(request.id, request.listAnchorIndex) { rememberLazyListState(...) }` inside the choice branch of `AuditedDialogHost`.
-  Acceptance: a warm sweep over 044→045→046 produces three different first-visible options matching each state's anchor; the ~10 affected states' geometry matched counts rise.
-  Confidence: Verified
-  Effort: S
-
-- [ ] P1 — IS-27 Reopening a dialog shows catalog defaults, not current values — pressing OK silently reverts saved settings
-  Category: correctness
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/settings/SettingsCatalog.kt:337-342` (static `DialogRequest` factories), `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/components/AuditedDialogs.kt:65-68` (seeds `input`/`selected` from the request), `MainViewModel.kt:84-104`
-  Problem: every catalog action embeds a static `DialogRequest` with hardcoded `initialValue`/`selectedOptions`. Concrete data-loss path: set chat font scale to 300 (row correctly shows 300 via DataStore) → reopen the dialog → field shows "220" → OK persists 220. Same for `alert_dashboard_scale`, `h264_bitrate_kbps`. Worse for `safe_margin_ratios` (CHOICE_MULTIPLE): user persists {16:9, 21:9} → reopen shows only 16:9 checked → OK persists {16:9}, silently dropping 21:9. Single-choice dialogs (resolution, FPS, etc.) re-check the catalog default instead of the current transient selection.
-  Evidence: `handleAction` (SettingsScreen.kt:131-138) passes `action.request` unmodified to `showDialog`; the dialog host seeds local state from `request.initialValue`/`request.selectedOptions` only.
-  Fix: resolve current values at show time — in `handleAction` (or a `MainViewModel.showDialog` overload), copy the request with `initialValue` from the same source `resolveSummary` uses (settings + transientValues) and `selectedOptions` from `transientValues[id] ?: persisted value ?: catalog default`. Add a MainViewModel unit test for the reopen-then-OK path.
-  Acceptance: set font scale 300, reopen → field pre-fills 300; check 21:9 in safe margins, reopen, OK → 21:9 still persisted (asserted by a new unit test).
-  Confidence: Verified
-  Effort: M
-
-- [ ] P1 — IS-28 Seven states' scroll anchors are structurally unresolvable and fall back silently to hand-guessed indices
-  Category: correctness
-  Where: `replica-app/scripts/extract_scroll_anchors.py` (records the first text node in the viewport, which can be a slider value or the app-bar title), `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/settings/SettingsScreen.kt:57-62` (label must equal `itemTitle`, else silent fallback), `app/src/main/assets/audit-scroll-anchors.json`
-  Problem: anchors for 018/019/020 record label "100" (a slider value), 038/039/040 record "On" (a choice value), 126 records "Advanced options" (the app-bar title). None can ever match a catalog item title, so `indexOfFirst` returns -1 and the state silently scrolls to the old hand-guessed `settingsScrollIndex` — exactly the error class the anchor system was built to eliminate. All seven states currently show more unmatched than matched elements in geometry (e.g. 018 misses "WiFi Weight"/"Ethernet Weight" while showing rows above them).
-  Evidence: anchors JSON inspected (20 of 108 anchors carry value-like labels; the 13 on selection dialogs resolve against option lists and are fine — the 7 settings-screen ones cannot resolve); `validation/reports/geometry/018….json` missing/extra lists confirm the wrong window.
-  Fix: two sides. Extractor: when the first viewport node's text matches no known row-title pattern (pure number / On / Off / the page title), walk forward to the first node that is a plausible title, or record an ordered candidate list. App: match anchor labels against summaries and slider value labels too, and log (debug build) whenever a non-null anchor fails to resolve so the fallback is never silent. Re-run `extract_scroll_anchors.py` and re-commit the asset.
-  Acceptance: geometry for 018-020, 038-040, 126 shows the audited rows matched (unmatched < matched); a debug log line fires on any unresolved anchor.
-  Confidence: Verified
-  Effort: M
-
 - [ ] P1 — IS-29 Emulator boot script crashes intermittently: `2>$null` under `$ErrorActionPreference='Stop'` turns adb stderr into a terminating error
   Category: reliability
   Where: `replica-app/scripts/start-headless-emulator.ps1:28,39` (dot-sources `Common.ps1`, which sets EAP Stop at line 1-2)

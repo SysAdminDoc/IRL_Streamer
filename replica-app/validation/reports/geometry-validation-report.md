@@ -1,8 +1,9 @@
 # Geometry validation report
 
-Generated: 2026-08-15 01:50:11 -04:00
-States compared: 145
+Generated: 2026-08-15 04:23:27 -04:00
+States compared: 145 of 145 with audit evidence
 Target: element origins within 2 px
+Recorded baseline: 0% within 2 px
 
 ## Method
 
@@ -21,6 +22,12 @@ not comparable between the two toolkits and are reported for information only.
 | Origins within 2 px | 34.9% |
 | Origins within 4 px | 37.4% |
 | States with >=95% of origins within 2 px | 0 / 145 |
+| States that measured nothing | 1 |
+| States with no replica dump | 0 |
+
+## Gate failures
+
+- Vacuous: 1 state(s) matched zero elements and measured nothing: 054_video_manual_bitrate_enabled
 
 ## Worst states
 

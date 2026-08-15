@@ -80,4 +80,4 @@ A screen moves to `VISUALLY_VALIDATED` only when it has all comparison artifacts
 
 ## Latest verified run
 
-The 2026-08-15 isolated-emulator run produced 145/145 complete comparison bundles. Six JVM tests and four device Compose tests passed, lint passed, and the minified release was installed and resumed as `com.irlstreamer.reconstruction/.MainActivity`. All 145 strict visual comparisons remained below 0.985; no masks or waivers were used. See `validation/reports/final-coverage-report.md` for exact metrics and `design-qa.md` for reviewed visual blockers.
+The 2026-08-15 isolated-emulator run produced 145/145 complete comparison bundles. The JVM and device Compose suites passed, lint passed, and the minified release was installed and resumed as `com.irlstreamer.reconstruction/.MainActivity`. All 145 strict visual comparisons remained below their thresholds, and no threshold was lowered or waived. Test counts and metrics are read from the run itself by `scripts/build_final_report.py`; see `validation/reports/final-coverage-report.md` and `design-qa.md` for reviewed visual blockers.

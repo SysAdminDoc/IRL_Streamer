@@ -183,11 +183,13 @@ def main() -> int:
         parser.error("--screen or --all is required")
 
     summary_rows = []
+    skipped_without_audit = []
     for sid in targets:
         audit_path = AUDIT_XML / f"{sid}.xml"
         replica_path = args.replica if (args.replica and not args.all) else args.replica_dir / f"{sid}.xml"
         if not audit_path.exists():
             print(f"{sid}: no audit XML", file=sys.stderr)
+            skipped_without_audit.append(sid)
             continue
         if not replica_path.exists():
             summary_rows.append({"screen": sid, "status": "NO_REPLICA_DUMP"})
@@ -231,6 +233,20 @@ def main() -> int:
             writer.writeheader()
             writer.writerows(summary_rows)
         print(f"wrote {args.out_csv}")
+
+    # A screen that could not be compared is not a screen that passed. The
+    # caller gates on the CSV, but a silent skip here would shrink the
+    # denominator without anything saying so.
+    if skipped_without_audit:
+        print(
+            f"{len(skipped_without_audit)} screen(s) skipped with no audit XML: "
+            + ", ".join(skipped_without_audit),
+            file=sys.stderr,
+        )
+        return 1
+    if not summary_rows:
+        print("no screens compared", file=sys.stderr)
+        return 1
     return 0
 
 

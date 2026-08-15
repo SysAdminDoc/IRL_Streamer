@@ -30,6 +30,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -138,9 +139,16 @@ fun AuditedDialogHost(
                             // The audited *_menu_middle / *_menu_lower states are scrolled
                             // choice lists; the anchor names the first option the audit
                             // hierarchy shows at the top of the list viewport.
-                            state = rememberLazyListState(
-                                initialFirstVisibleItemIndex = request.listAnchorIndex,
-                            ),
+                            //
+                            // Keyed on the request: the warm ADB sweep keeps this host in
+                            // composition between states, so an unkeyed list state carries
+                            // the previous dialog's scroll position over and the anchor
+                            // only ever applies to the first dialog of the run.
+                            state = key(request.id, request.listAnchorIndex) {
+                                rememberLazyListState(
+                                    initialFirstVisibleItemIndex = request.listAnchorIndex,
+                                )
+                            },
                         ) {
                             items(request.options, key = { it }) { option ->
                                 val checked = option in selected

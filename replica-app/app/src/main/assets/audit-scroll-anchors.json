@@ -91,63 +91,28 @@
   "surface_type": "settings_screen"
  },
  "018_bonding_link_weights": {
-  "label": "100",
+  "label": "Enable WiFi",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
   "surface_type": "settings_screen"
  },
  "019_bonding_link_weights_lower": {
-  "label": "100",
+  "label": "Enable WiFi",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
   "surface_type": "settings_screen"
  },
  "020_bonding_wifi_weight_adjusted": {
-  "label": "100",
+  "label": "Enable WiFi",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
   "surface_type": "settings_screen"
  },
  "021_connections_list_empty": {
-  "label": "Long hold to edit a connection, only one active at a time.",
-  "row_top_px": 219,
-  "scroll_offset_dp": 0.0,
-  "scroll_offset_px": 0,
-  "surface_type": "settings_screen"
- },
- "022_new_connection_protocol_menu": {
-  "label": "Quick Site Setup",
-  "row_top_px": 219,
-  "scroll_offset_dp": 0.0,
-  "scroll_offset_px": 0,
-  "surface_type": "settings_screen"
- },
- "023_new_connection_form_bottom": {
-  "label": "TWITCH.TV",
-  "row_top_px": 219,
-  "scroll_offset_dp": 0.0,
-  "scroll_offset_px": 0,
-  "surface_type": "settings_screen"
- },
- "024_new_connection_invalid_url": {
-  "label": "TWITCH.TV",
-  "row_top_px": 219,
-  "scroll_offset_dp": 0.0,
-  "scroll_offset_px": 0,
-  "surface_type": "settings_screen"
- },
- "025_new_connection_rtmp_fields": {
-  "label": "Quick Site Setup",
-  "row_top_px": 219,
-  "scroll_offset_dp": 0.0,
-  "scroll_offset_px": 0,
-  "surface_type": "settings_screen"
- },
- "026_new_connection_rtmp_advanced": {
-  "label": "TWITCH.TV",
+  "label": "New connection",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
@@ -159,13 +124,6 @@
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
   "surface_type": "selection_dialog"
- },
- "028_rtmp_authorization_fields": {
-  "label": "rtmp://198.51.100.1/live",
-  "row_top_px": 219,
-  "scroll_offset_dp": 0.0,
-  "scroll_offset_px": 0,
-  "surface_type": "settings_screen"
  },
  "029_manage_connections_empty": {
   "label": "New connection",
@@ -182,7 +140,7 @@
   "surface_type": "settings_screen"
  },
  "033_video_resolution_fps": {
-  "label": "1920x1080 (16:9)",
+  "label": "FPS",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
@@ -217,21 +175,21 @@
   "surface_type": "settings_screen"
  },
  "038_video_vendor_enhancements": {
-  "label": "On",
+  "label": "Optical image stabilization",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
   "surface_type": "settings_screen"
  },
  "039_video_adaptive_bitrate": {
-  "label": "On",
+  "label": "Noise reduction",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
   "surface_type": "settings_screen"
  },
  "040_video_adaptive_floor": {
-  "label": "On",
+  "label": "Noise reduction",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
@@ -587,20 +545,6 @@
   "scroll_offset_px": 0,
   "surface_type": "settings_screen"
  },
- "100_overlay_new_text_layer_form_actions": {
-  "label": "5",
-  "row_top_px": 219,
-  "scroll_offset_dp": 0.0,
-  "scroll_offset_px": 0,
-  "surface_type": "settings_screen"
- },
- "101_overlay_blank_save_validation": {
-  "label": "5",
-  "row_top_px": 219,
-  "scroll_offset_dp": 0.0,
-  "scroll_offset_px": 0,
-  "surface_type": "validation_state"
- },
  "102_overlay_manage_layers": {
   "label": "Timestamp",
   "row_top_px": 219,
@@ -637,7 +581,7 @@
   "surface_type": "settings_screen"
  },
  "109_web_overlay_new_form_lower": {
-  "label": "Center",
+  "label": "Z Order",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
@@ -728,14 +672,14 @@
   "surface_type": "settings_screen"
  },
  "124_advanced_webviews": {
-  "label": "USB OTG works unstable unfortunately and it's dependent on hardware capabilities. So if you enable this feature and it doesn't work, this means IRL Pro can't handle it.\n\nTap on this message to read more details on our website.",
+  "label": "WebViews",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,
   "surface_type": "settings_screen"
  },
  "125_advanced_bottommost": {
-  "label": "USB OTG works unstable unfortunately and it's dependent on hardware capabilities. So if you enable this feature and it doesn't work, this means IRL Pro can't handle it.\n\nTap on this message to read more details on our website.",
+  "label": "WebViews",
   "row_top_px": 219,
   "scroll_offset_dp": 0.0,
   "scroll_offset_px": 0,

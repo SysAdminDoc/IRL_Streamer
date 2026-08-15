@@ -24,6 +24,17 @@ None of that code is present here. This reconstruction shares no source, no asse
 - Python 3.12 with Pillow, NumPy, and scikit-image for visual comparison
 - An isolated emulator; never use the original audit phone for replica QA
 
+Pinned toolchain (Gradle and AGP are different versions and are easy to confuse):
+
+| Component | Version |
+|---|---|
+| Gradle wrapper | 8.14.4 |
+| Android Gradle Plugin | 8.13.2 |
+| Kotlin / Compose compiler plugin | 2.3.21 |
+| Compose BOM | 2026.06.01 |
+
+Do not bump the Compose BOM to 2026.08.00 or later without planning the rest: it requires compileSdk 37 and AGP 9.1.1 as a minimum, which is a toolchain migration rather than a dependency bump.
+
 Run the preflight:
 
 ```powershell
@@ -147,4 +158,4 @@ No authorized original-assets directory was supplied. The UI therefore uses Andr
 
 No live backend is connected. All telemetry, logs, network weights, connection forms, alerts, reloads, snapshots, recording controls, and overlay content remain on-device deterministic simulations. The code requests no camera, microphone, or network permission.
 
-The final installed release smoke capture is `validation/current/release-launch.png`. The signed release APK is `app/build/outputs/apk/release/app-release.apk`.
+The release verification run writes its smoke capture to `validation/current/release-launch.png` (generated evidence, not committed) and records the result in `validation/reports/release-verification.txt`. The signed release APK is built to `app/build/outputs/apk/release/app-release.apk`.

@@ -16,6 +16,8 @@ from __future__ import annotations
 import csv
 import json
 import statistics
+import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -23,13 +25,56 @@ VALIDATION = ROOT / "validation"
 REPORTS = VALIDATION / "reports"
 CATALOG = ROOT.parent / "app-audit" / "screens" / "screen-catalog.csv"
 
-# Recorded before this pass, from validation/reports/final-coverage-report.md.
-PREVIOUS = {"min": 0.436994, "median": 0.836694, "mean": 0.812113, "max": 0.930146, "passes": 0}
+# Historical comparison point, recorded 2026-08-15 from the first pass's report.
+PREVIOUS = {
+    "recorded": "2026-08-15 (first pass)",
+    "min": 0.436994,
+    "median": 0.836694,
+    "mean": 0.812113,
+    "max": 0.930146,
+    "passes": 0,
+}
 
 
 def load_surfaces() -> dict[str, str]:
     with CATALOG.open(encoding="utf-8-sig", newline="") as fh:
         return {r["screen_id"]: r["surface_type"] for r in csv.DictReader(fh)}
+
+
+def junit_totals(paths) -> tuple[int, int] | None:
+    """Return (passed, failed) read from JUnit XML, or None when none was found.
+
+    Test counts must come from the run that actually happened. Hardcoding them
+    made the behaviour gate unfailable: a regression left the report claiming
+    the same passing numbers it always had.
+    """
+    total = failed = skipped = 0
+    found = False
+    for path in paths:
+        try:
+            root = ET.parse(path).getroot()
+        except (ET.ParseError, OSError):
+            continue
+        suites = [root] if root.tag == "testsuite" else list(root.iter("testsuite"))
+        for suite in suites:
+            found = True
+            total += int(suite.get("tests", 0))
+            failed += int(suite.get("failures", 0)) + int(suite.get("errors", 0))
+            skipped += int(suite.get("skipped", 0))
+    return (total - failed - skipped, failed) if found else None
+
+
+def release_evidence() -> dict[str, str]:
+    """Key/value lines from the recorded release verification, if one exists."""
+    path = REPORTS / "release-verification.txt"
+    if not path.exists():
+        return {}
+    fields = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        key, sep, value = line.partition(":")
+        if sep and value.strip():
+            fields[key.strip()] = value.strip()
+    return fields
 
 
 def main() -> int:
@@ -65,6 +110,24 @@ def main() -> int:
     s_all = stats(ssim.values())
     s_chrome = stats(chrome.values())
 
+    if s_all is None:
+        print(
+            f"no comparison results in {VALIDATION / 'results'} - run "
+            "scripts/run-visual-validation.ps1 first",
+            file=sys.stderr,
+        )
+        return 1
+
+    # Coverage is part of the result. A report built from a partial sweep looks
+    # exactly like a report built from a complete one unless it says otherwise.
+    missing = sorted(set(surfaces) - set(results))
+    orphans = sorted(set(results) - set(surfaces))
+
+    thresholds = {v["threshold"] for v in results.values() if "threshold" in v}
+    threshold_text = (
+        f"{next(iter(thresholds)):g}" if len(thresholds) == 1 else "each state's configured threshold"
+    )
+
     by_surface = {}
     for sid, value in ssim.items():
         by_surface.setdefault(surfaces.get(sid, "?"), []).append(value)
@@ -93,7 +156,7 @@ def main() -> int:
         )
     lines.append(
         f"| Visual (strict, unmasked) | Whole-screen SSIM vs audit screenshot | "
-        f"{len(passes)}/{len(ssim)} at >= 0.985; median {s_all['median']:.6f} |"
+        f"{len(passes)}/{len(ssim)} at >= {threshold_text}; median {s_all['median']:.6f} |"
     )
     if s_chrome:
         lines.append(
@@ -109,9 +172,15 @@ def main() -> int:
         "|---|---:|---:|---:|",
         f"| Minimum SSIM | {s_all['min']:.6f} | {PREVIOUS['min']:.6f} | {s_all['min'] - PREVIOUS['min']:+.6f} |",
         f"| Median SSIM | {s_all['median']:.6f} | {PREVIOUS['median']:.6f} | {s_all['median'] - PREVIOUS['median']:+.6f} |",
+        # header note for the "Previous pass" column is emitted after the table
         f"| Mean SSIM | {s_all['mean']:.6f} | {PREVIOUS['mean']:.6f} | {s_all['mean'] - PREVIOUS['mean']:+.6f} |",
         f"| Maximum SSIM | {s_all['max']:.6f} | {PREVIOUS['max']:.6f} | {s_all['max'] - PREVIOUS['max']:+.6f} |",
-        f"| States at or above 0.985 | {len(passes)} | {PREVIOUS['passes']} | {len(passes) - PREVIOUS['passes']:+d} |",
+        f"| States at or above {threshold_text} | {len(passes)} | {PREVIOUS['passes']} | {len(passes) - PREVIOUS['passes']:+d} |",
+        "",
+        f"States compared: {len(ssim)} of {len(surfaces)} in the catalog."
+        + (f" **Missing: {', '.join(missing)}**" if missing else "")
+        + (f" **Not in catalog: {', '.join(orphans)}**" if orphans else ""),
+        f"The previous-pass column is a fixed historical baseline recorded {PREVIOUS['recorded']}.",
         "",
         "## By surface type",
         "",
@@ -148,11 +217,29 @@ def main() -> int:
         if debug_apk.exists() else "| Debug APK | not built |",
         f"| Minified release APK | `{release_apk.relative_to(ROOT)}` ({release_apk.stat().st_size:,} bytes) |"
         if release_apk.exists() else "| Minified release APK | not built |",
-        "| Release signing certificate SHA-256 | `b831eb19f068a8eb688deb65c12af6cf4160b802ee1a0ff9bddc2ef38419bac2` (repository-owned local QA identity, not a production key) |",
-        "| Release install + cold launch | verified on `emulator-5554`; top resumed activity `com.irlstreamer.reconstruction/.MainActivity`; no FATAL EXCEPTION in logcat |",
-        "| Release launch screenshot | `validation/current/release-launch.png` |",
-        "| JVM unit tests | 11 passed / 0 failed |",
-        "| On-device Compose tests | 4 passed / 0 failed |",
+    ]
+
+    unit = junit_totals((ROOT / "app" / "build" / "test-results" / "testDebugUnitTest").glob("*.xml"))
+    instrumented = junit_totals(
+        (ROOT / "app" / "build" / "outputs" / "androidTest-results").rglob("*.xml")
+    )
+    release = release_evidence()
+    cert = release.get("Certificate SHA-256")
+    launch = release.get("Cold launch")
+    lines += [
+        f"| Release signing certificate SHA-256 | `{cert}` (repository-owned local QA identity, not a production key) |"
+        if cert else "| Release signing certificate SHA-256 | not recorded |",
+        f"| Release install + cold launch | {release.get('Install', 'not recorded')} / {launch} on `{release.get('Device', 'unknown device')}`, recorded {release.get('Generated', 'undated')} |"
+        if launch else "| Release install + cold launch | not recorded |",
+        "| Release launch screenshot | written to `validation/current/release-launch.png` by the release verification run |",
+        f"| JVM unit tests | {unit[0]} passed / {unit[1]} failed |"
+        if unit else "| JVM unit tests | no results on disk - run scripts/run-unit-tests.ps1 |",
+        f"| On-device Compose tests | {instrumented[0]} passed / {instrumented[1]} failed |"
+        if instrumented else "| On-device Compose tests | no results on disk - run scripts/run-ui-tests.ps1 |",
+        "",
+        "Test counts are read from the Gradle JUnit XML of the last run, and the release",
+        "rows from `validation/reports/release-verification.txt`. A row that reads",
+        "\"not recorded\" means the evidence is absent, never that it passed.",
         "",
         "The release build is verified on device rather than inferred from the debug",
         "build, because R8 can strip reflectively-reached code that the debug build",

@@ -1,32 +1,160 @@
 {
-  "matched_elements": 2,
+  "matched_elements": 9,
   "unmatched_audit_elements": [
-    "Adaptive bitrate streaming",
-    "Fast",
-    "Mode",
-    "Noise reduction",
-    "On",
-    "Optical image stabilization",
-    "Recommended - Automatically choose the best option for the current connection type."
+    "On#6"
   ],
   "replica_only_elements": [
-    "2 sec",
-    "6000 Kbps",
-    "Bitrate H264 - HEVC is auto 66%",
-    "Bitrate matches resolution",
-    "Bitrate matches the value recommended based on resolution and frame rate.",
-    "Bitrate mode",
-    "Keyframe frequency",
-    "System default"
+    "Adaptive frame rate",
+    "Reduce frame rate related to bitrate drop in adaptive bitrate mode. However this can cause issues when it changes fps. YMMV"
   ],
   "max_abs_dleft": 45,
-  "max_abs_dtop": 35,
-  "max_abs_dwidth": 90,
+  "max_abs_dtop": 116,
+  "max_abs_dwidth": 1358,
   "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 20.5,
+  "mean_abs_origin_error_px": 41.111,
   "origins_within_2px_pct": 50.0,
   "origins_within_4px_pct": 50.0,
   "elements": [
+    {
+      "key": "Adaptive bitrate streaming",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        786,
+        2136,
+        839
+      ],
+      "replica_bounds": [
+        278,
+        670,
+        778,
+        738
+      ],
+      "dleft": 0,
+      "dtop": -116,
+      "dwidth": -1358,
+      "dheight": 15
+    },
+    {
+      "key": "On",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        327,
+        265
+      ],
+      "replica_bounds": [
+        278,
+        327,
+        330,
+        380
+      ],
+      "dleft": 0,
+      "dtop": 108,
+      "dwidth": 3,
+      "dheight": 7
+    },
+    {
+      "key": "Noise reduction",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        559,
+        595,
+        620
+      ],
+      "replica_bounds": [
+        278,
+        469,
+        616,
+        531
+      ],
+      "dleft": 0,
+      "dtop": -90,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Optical image stabilization",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        355,
+        807,
+        416
+      ],
+      "replica_bounds": [
+        278,
+        265,
+        845,
+        327
+      ],
+      "dleft": 0,
+      "dtop": -90,
+      "dwidth": 38,
+      "dheight": 1
+    },
+    {
+      "key": "Fast",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        620,
+        354,
+        673
+      ],
+      "replica_bounds": [
+        278,
+        531,
+        359,
+        584
+      ],
+      "dleft": 0,
+      "dtop": -89,
+      "dwidth": 5,
+      "dheight": 0
+    },
+    {
+      "key": "Mode",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        907,
+        392,
+        968
+      ],
+      "replica_bounds": [
+        278,
+        824,
+        398,
+        886
+      ],
+      "dleft": 0,
+      "dtop": -83,
+      "dwidth": 6,
+      "dheight": 1
+    },
+    {
+      "key": "Recommended - Automatically choose the best option for the current connection type.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        968,
+        1770,
+        1021
+      ],
+      "replica_bounds": [
+        278,
+        886,
+        1885,
+        939
+      ],
+      "dleft": 0,
+      "dtop": -82,
+      "dwidth": 115,
+      "dheight": 0
+    },
     {
       "key": "Navigate up",
       "class": "ImageButton",

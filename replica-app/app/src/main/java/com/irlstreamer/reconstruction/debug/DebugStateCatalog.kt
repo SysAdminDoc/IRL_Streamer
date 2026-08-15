@@ -50,6 +50,12 @@ object DebugStateCatalog {
             30 -> base.settings(SettingsPage.CONNECTION_FORM).withDialog(textDialog("platform_a", "Platform A", "", listOf("Username", "Stream key")))
             31 -> base.settings(SettingsPage.CONNECTION_FORM).withDialog(textDialog("platform_b", "Platform B", "", listOf("Username", "Stream URL", "Stream key")))
             in 32..40 -> base.settings(SettingsPage.VIDEO, intArrayOf(0, 3, 6, 9, 12, 15, 18, 20, 20)[number - 32])
+            // Audit evidence: 054 is a settings_screen, not a dialog - the Video
+            // page with "Bitrate matches resolution" switched off so the manual
+            // bitrate row becomes enabled. It sits inside the 41..64 dialog run
+            // and must be taken out of it.
+            54 -> base.settings(SettingsPage.VIDEO, 12)
+                .copy(overrides = ScreenOverrides(bitrateMatchesResolution = false))
             in 41..64 -> base.settings(SettingsPage.VIDEO, videoAnchor(number)).withDialog(videoDialog(number))
             65 -> base.settings(SettingsPage.AUDIO)
             in 66..70 -> base.settings(SettingsPage.AUDIO).withDialog(audioDialog(number))

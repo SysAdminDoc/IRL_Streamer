@@ -1,35 +1,217 @@
 {
-  "matched_elements": 0,
+  "matched_elements": 10,
   "unmatched_audit_elements": [
-    "2 sec",
-    "6000 Kbps",
-    "Bitrate H264 - HEVC is auto 66%",
-    "Bitrate is now defined manually.",
-    "Bitrate matches resolution",
-    "Bitrate mode",
-    "Encoder parameters",
-    "Keyframe frequency",
-    "Navigate up",
-    "System default",
-    "Video parameters"
+    "2 sec"
   ],
-  "replica_only_elements": [
-    "Automatically Select",
-    "CANCEL",
-    "Legacy - Hybrid",
-    "Legacy - Ladder ascend",
-    "Legacy - Logarithmic descend",
-    "Local bonding simulation",
-    "Mode",
-    "Selected"
+  "replica_only_elements": [],
+  "max_abs_dleft": 45,
+  "max_abs_dtop": 115,
+  "max_abs_dwidth": 1480,
+  "max_abs_dheight": 67,
+  "mean_abs_origin_error_px": 46.3,
+  "origins_within_2px_pct": 50.0,
+  "origins_within_4px_pct": 50.0,
+  "elements": [
+    {
+      "key": "6000 Kbps",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        567,
+        464,
+        620
+      ],
+      "replica_bounds": [
+        278,
+        682,
+        477,
+        735
+      ],
+      "dleft": 0,
+      "dtop": 115,
+      "dwidth": 13,
+      "dheight": 0
+    },
+    {
+      "key": "Bitrate is now defined manually.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        363,
+        828,
+        416
+      ],
+      "replica_bounds": [
+        278,
+        478,
+        873,
+        531
+      ],
+      "dleft": 0,
+      "dtop": 115,
+      "dwidth": 45,
+      "dheight": 0
+    },
+    {
+      "key": "System default",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        771,
+        539,
+        824
+      ],
+      "replica_bounds": [
+        278,
+        886,
+        559,
+        939
+      ],
+      "dleft": 0,
+      "dtop": 115,
+      "dwidth": 20,
+      "dheight": 0
+    },
+    {
+      "key": "Bitrate H264 - HEVC is auto 66%",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        506,
+        917,
+        567
+      ],
+      "replica_bounds": [
+        278,
+        620,
+        960,
+        682
+      ],
+      "dleft": 0,
+      "dtop": 114,
+      "dwidth": 43,
+      "dheight": 1
+    },
+    {
+      "key": "Bitrate matches resolution",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        302,
+        806,
+        363
+      ],
+      "replica_bounds": [
+        278,
+        416,
+        842,
+        478
+      ],
+      "dleft": 0,
+      "dtop": 114,
+      "dwidth": 36,
+      "dheight": 1
+    },
+    {
+      "key": "Bitrate mode",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        710,
+        535,
+        771
+      ],
+      "replica_bounds": [
+        278,
+        824,
+        551,
+        886
+      ],
+      "dleft": 0,
+      "dtop": 114,
+      "dwidth": 16,
+      "dheight": 1
+    },
+    {
+      "key": "Keyframe frequency",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        914,
+        679,
+        975
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        704,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 114,
+      "dwidth": 25,
+      "dheight": -9
+    },
+    {
+      "key": "Navigate up",
+      "class": "ImageButton",
+      "audit_bounds": [
+        75,
+        84,
+        233,
+        219
+      ],
+      "replica_bounds": [
+        120,
+        119,
+        188,
+        187
+      ],
+      "dleft": 45,
+      "dtop": 35,
+      "dwidth": -90,
+      "dheight": -67
+    },
+    {
+      "key": "Encoder parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        2136,
+        234
+      ],
+      "replica_bounds": [
+        278,
+        262,
+        656,
+        330
+      ],
+      "dleft": 0,
+      "dtop": 43,
+      "dwidth": -1480,
+      "dheight": 53
+    },
+    {
+      "key": "Video parameters",
+      "class": "TextView",
+      "audit_bounds": [
+        277,
+        125,
+        588,
+        178
+      ],
+      "replica_bounds": [
+        278,
+        126,
+        656,
+        179
+      ],
+      "dleft": 1,
+      "dtop": 1,
+      "dwidth": 67,
+      "dheight": 0
+    }
   ],
-  "max_abs_dleft": 0,
-  "max_abs_dtop": 0,
-  "max_abs_dwidth": 0,
-  "max_abs_dheight": 0,
-  "mean_abs_origin_error_px": 0.0,
-  "origins_within_2px_pct": 0.0,
-  "origins_within_4px_pct": 0.0,
-  "elements": [],
   "screen": "054_video_manual_bitrate_enabled"
 }
