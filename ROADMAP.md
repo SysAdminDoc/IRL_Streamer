@@ -10,13 +10,6 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P0
 
-- [ ] P0 — IS-01 Decide and record the project's software licence
-  Why: BELABOX `srtla` is AGPL-3.0; linking it makes the whole app AGPL. Every bonding item below branches on this answer, so it must be settled before any transport code is written.
-  Evidence: BELABOX/srtla LICENSE (AGPL-3.0); Moblin is MIT; libsrt is MPL-2.0 — RESEARCH.md "Security, Privacy, and Reliability".
-  Touches: `LICENSE`, `README.md`, `replica-app/docs/known-deviations.md` (D011)
-  Acceptance: repository carries an explicit licence file, and D011 states the chosen posture and what it permits for SRTLA.
-  Complexity: S
-
 - [ ] P0 — IS-02 Introduce a `BroadcastEngine` abstraction with the current simulation behind it
   Why: `MainViewModel` mutates UI state directly and `DebugStateCatalog` fabricates every value, so no real pipeline can be added without disturbing the 145-state debug harness that all validation depends on.
   Evidence: RESEARCH.md "Architecture Assessment"; `app/src/main/java/com/irlstreamer/reconstruction/MainViewModel.kt`, `.../debug/DebugStateCatalog.kt`
@@ -136,13 +129,14 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P3
 
-- [ ] P3 — IS-17 SRTLA bonding client
-  Why: the headline audited capability and the largest gap in the entire Android ecosystem — no open-source SRTLA client exists for Android. Deliberately sequenced last because it depends on the licence decision and a working single-link SRT path.
-  Evidence: no OSS Android SRTLA implementation surfaced on 2026-08-15 (re-confirm before building); Moblin (MIT) is the only permissively-licensed reference; BELABOX srtla is AGPL-3.0 and Linux-only.
-  Depends on: IS-01, IS-04
-  Touches: new native/Kotlin bonding module, connection settings, bonding page (audited screens 016-020)
-  Acceptance: two simultaneous links aggregate to a single stream at a standard SRTLA receiver, with per-link weights honouring the audited controls; the licence provenance of the implementation is documented.
-  Complexity: XL
+- [ ] P3 — IS-17 SRTLA bonding client, ported from BELABOX `srtla_send` via the NDK
+  Why: the headline audited capability, and no open-source Android SRTLA client surfaced. Build on the reference implementation rather than reimplementing the protocol: `srtla_send` is C, and Android is Linux, so the congestion/window/scheduling core compiles largely as-is.
+  Evidence: BELABOX/srtla README — `srtla_send [local_port] [receiver_ip] [receiver_port] [ips_file]`, "keeps track of the number of packets in flight ... together with a dynamic window size that tracks the capacity of each link", traffic "balanced through each link proportionally to its capacity". Moblin (iOS) remains a behavioural cross-check.
+  Depends on: IS-04
+  Touches: new `app/src/main/cpp/` (srtla core + JNI), `AndroidManifest.xml` (`CHANGE_NETWORK_STATE`), connection settings, bonding page (audited screens 016-020)
+  Acceptance: two simultaneous links aggregate to a single stream at a standard SRTLA receiver (go-irl or BELABOX Cloud), per-link weights honour the audited controls, and dropping one link degrades rather than ends the broadcast.
+  Complexity: L
+  Note — the one part that does NOT port: `srtla_send` selects links with `bind()` to a source IP and requires OS source routing, which Android cannot configure unrooted. Replace that layer with Android's own multi-network API — `ConnectivityManager.requestNetwork()` to hold a cellular link up while WiFi is default, then `android_setsocknetwork()` (`<android/multinetwork.h>`) to pin each UDP socket to its `Network`. Budget the effort here, not in the protocol.
 
 - [ ] P3 — IS-18 Thermal and sustained-load behaviour
   Why: sustained outdoor encoding is a top IRL failure mode, and the audit's ~275 MB PSS / 2.01% jank baseline was measured with no real encode running.
@@ -160,10 +154,16 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: a settings payload round-trips between two installs; secrets are excluded or re-encrypted; the deep-link grammar is this project's own and documented as a deviation, since the original's is unknown.
   Complexity: M
 
+- [ ] P3 — IS-01 Record the licence posture that follows from the dependency choices
+  Why: operator decision 2026-08-15 — pick the best tool and prefer open licences; do not gate work on licensing. That is a valid call, but it has one mechanical consequence worth writing down once: linking BELABOX `srtla` (AGPL-3.0) means the app is AGPL-3.0 when distributed, so its source must be offered to anyone who receives it. The repo is already public, so this costs nothing — it just needs stating.
+  Evidence: BELABOX/srtla LICENSE (AGPL-3.0); libsrt is MPL-2.0 (file-level copyleft, arrives via StreamPack regardless) — RESEARCH.md "Security, Privacy, and Reliability".
+  Touches: `LICENSE`, `README.md`, `replica-app/docs/known-deviations.md` (D011)
+  Acceptance: a LICENSE file exists matching the strongest obligation actually linked, and D011 records which dependency imposed it.
+  Complexity: S
+
 - [ ] P3 — IS-20 Distribution and update channel decision
   Why: the app ships with a repo-owned self-signed key and no update path, so no user can receive a fix.
   Evidence: `replica-app/README.md` signing note; RESEARCH.md "Product Map"
-  Depends on: IS-01
   Touches: release scripts, `README.md`
   Acceptance: a decision is recorded (Play, GitHub Releases with an in-app update check, or explicitly none) and the release process matches it.
   Complexity: S

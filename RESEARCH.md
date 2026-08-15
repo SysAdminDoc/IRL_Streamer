@@ -11,9 +11,9 @@ Independent corroboration: the `go-irl` SRTLA server README lists "IRL Pro (Andr
 
 Top opportunities in priority order:
 
-1. **Decide the transport licence posture before writing transport code.** BELABOX `srtla` is AGPL-3.0. Linking it into this app makes the whole app AGPL. Moblin's SRTLA implementation is MIT. This is a fork in the road, not a detail (see Security/Licensing).
+1. **Adopt the reference implementations directly.** Operator decision 2026-08-15: pick the best tool, prefer open licences, do not gate work on licensing. That resolves the one genuine fork in this plan — bonding now builds on BELABOX `srtla` itself rather than a hand-port of Moblin's Swift, and the app is simply AGPL-3.0 when it links it (the repo is already public, so the obligation costs nothing).
 2. **Adopt StreamPack (Apache-2.0) as the capture/encode/RTMP/SRT engine.** It is the only actively-maintained Android library that covers Camera2 + MediaCodec + RTMP/RTMPS/SRT under a permissive licence, and its architecture (sources → processing → endpoints) maps cleanly onto the audited settings tree.
-3. **Treat SRTLA bonding as a distinct, later milestone.** No open-source SRTLA client for Android surfaced in this pass — the references are iOS (Moblin) or Linux C (BELABOX). Treat that as the largest apparent gap in the ecosystem and the app's headline audited feature, but re-confirm before committing to build it.
+3. **Port BELABOX `srtla_send` via the NDK, budgeting the effort in the right place.** Android is Linux, so the congestion/window/scheduling core compiles largely as-is. What does *not* port is link selection: `srtla_send` uses `bind()` to a source IP and needs OS source routing, which Android cannot configure unrooted. The Android equivalent is `ConnectivityManager.requestNetwork()` plus `android_setsocknetwork()` per socket. That substitution is the real work, not the protocol.
 4. **Ship the relay/receiver story with the client.** Reddit shows users do not understand that bonding requires a server-side SRTLA→RTMP relay. Shipping a client without that guidance reproduces a known support burden.
 5. **Real chat ingest (Twitch first).** Twitch has a first-party, documented, stable surface; Kick does not.
 6. **Replace the simulated network telemetry with real per-link statistics**, which is the one live-console element that is both audited and achievable without transport work.
@@ -68,10 +68,10 @@ Top opportunities in priority order:
 
 ## Security, Privacy, and Reliability
 
-**Licensing is the dominant risk, ahead of any code defect.**
+**Licensing was the dominant open question until 2026-08-15, when the operator settled it: best tool first, prefer open licences, no gating.** What remains is one mechanical consequence to record rather than a decision to make.
 
-- `BELABOX/srtla` is **AGPL-3.0** (verified at the repository). Statically or dynamically linking it into this Android app makes the entire app AGPL-3.0, including the Compose UI. Distributing it on Play under any other terms would be a licence violation. The audited original sidesteps this with a "licensed SRTLA code" arrangement it declares on screen 129 — a route that is not available to this project by default.
-- **Moblin is MIT.** An MIT-licensed SRTLA implementation is a viable clean basis for a Kotlin/native port with attribution and no copyleft reach. This is the recommended path and it should be an explicit, recorded decision, not an accident.
+- `BELABOX/srtla` is **AGPL-3.0** (verified at the repository). Linking it makes the whole app AGPL-3.0, including the Compose UI, and obliges source disclosure to anyone who receives a build. This repository is already public, so the practical cost is a `LICENSE` file and an attribution note. It is now the recommended bonding basis, since it is the protocol's reference implementation.
+- **Moblin is MIT** and remains useful as a behavioural cross-check for SRTLA semantics, but it is no longer needed as a licence-driven porting source.
 - **libsrt (Haivision) is MPL-2.0** — file-level copyleft. Safe to link from a permissive or proprietary app provided modifications to MPL files are published. StreamPack already depends on it, so this obligation arrives regardless of the bonding decision.
 - `docs/known-deviations.md` D011 already records that SRTLA licensing is unresolved. This research converts that from "unknown" to "known and constrained"; the deviation text should be updated to match.
 
@@ -102,10 +102,9 @@ The reconstruction's boundaries are currently drawn for *rendering audited state
 
 ## Rejected Ideas
 
-- **License the Softvelum Larix SDK** — would make the project a re-skin of the audited original and re-introduce exactly the provenance question the clean-room process was run to avoid. (Source: softvelum.com/larix.)
-- **Link BELABOX `srtla` directly** — AGPL-3.0 forces the whole app copyleft; incompatible with any Play distribution the operator has not explicitly chosen. (Source: BELABOX/srtla LICENSE.)
+- **License the Softvelum Larix SDK** — still rejected, but for cost and provenance rather than licence terms: it is a paid commercial SDK, and adopting the exact engine of the app that was cleanly reconstructed would re-introduce the provenance question the process was run to avoid. (Source: softvelum.com/larix.)
 - **Adopt HaishinKit.kt as the primary engine** — Android port is RTMP-only; SRT is required. (Source: HaishinKit.kt README.)
-- **Port Moblin wholesale** — Swift/iOS with no Android version; only the protocol logic transfers. (Source: eerimoq/moblin README.)
+- **Port Moblin wholesale** — Swift/iOS with no Android version, and now redundant: BELABOX `srtla` is the reference implementation in C and ports more directly. Keep Moblin as a behavioural reference. (Source: eerimoq/moblin README.)
 - **Plugin ecosystem and multi-user/collaboration features** — consciously excluded: this is a single-operator device console reconstructed from a fixed audit, and neither appears anywhere in the 145 audited states.
 - **Build a cloud relay service** — a crowded commercial field ($10-$179/month) and orthogonal to an on-device console. Point users at go-irl/MediaMTX self-hosting instead. (Source: irltoolkit.com, belabox.net, streamable.run comparison.)
 - **Ship `srtla_rec` as the recommended receiver** — the upstream project declares it unsupported and unsuitable for production. (Source: BELABOX/srtla README.)
@@ -158,9 +157,8 @@ Project evidence
 
 ## Open Questions
 
-1. **What licence will this project ship under?** Everything downstream of bonding depends on it. AGPL-3.0 makes BELABOX `srtla` usable directly; anything else forces the MIT-derived port. This is an operator decision, not a technical one.
-2. **Is real broadcasting in scope at all, or is the deliverable a faithful interface?** The audit authorised reconstruction of *observable behaviour*; transport was explicitly out of scope and remains blocked (D005/D012). Roadmap items below are written so the answer can be "no" without wasting the earlier work.
-3. **Is there an authorised relay to test against?** Without a reachable SRTLA receiver, bonding cannot be validated end-to-end on this machine.
-4. **Does the operator intend Play distribution?** That decides foreground-service type declarations, the data-safety form, and whether AGPL is even an option.
+1. **Is real broadcasting in scope at all, or is the deliverable a faithful interface?** The audit authorised reconstruction of *observable behaviour*; transport was explicitly out of scope and remains blocked (D005/D012). Roadmap items below are written so the answer can be "no" without wasting the earlier work.
+2. **Is there an authorised relay to test against?** Without a reachable SRTLA receiver, bonding cannot be validated end-to-end on this machine.
+3. **Does the operator intend Play distribution?** That decides foreground-service type declarations and the data-safety form. AGPL is compatible with Play distribution provided source is offered; it is Play's own terms, not the licence, that would need checking.
 
 Confidence labels: library licences and capabilities above are **Verified** against primary repository sources on 2026-08-15. That the original contains Softvelum code is **Verified** (`com.wmspanel.*` classes, `larix:` scheme, on-screen SRTLA notice, corroborated by go-irl's compatibility list); the specific commercial-SDK licensing arrangement is a **Strong inference**. The absence of an Android SRTLA client is **Needs live validation** — it is an unsuccessful search, not a proven negative. Reddit findings are **Likely** sentiment signal only; the Arctic Shift backend rate-limited several queries during this pass, so community coverage is partial and should be re-run before being treated as exhaustive.
