@@ -7,6 +7,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- The final coverage report derives its evidence instead of asserting it. Test
+  counts now come from the Gradle JUnit XML of the last run, and the signing
+  certificate and cold-launch rows from the dated release verification file; a
+  missing input reads "not recorded" rather than reporting a stale pass. The
+  report also states its own coverage and refuses to run on an empty result set.
 - Debug state 054 rendered an adaptive-bitrate dialog where the audit shows the
   Video settings page with manual bitrate enabled. It matched zero elements
   against the audit hierarchy and now matches ten.

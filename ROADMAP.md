@@ -172,16 +172,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
 
 ### P1
 
-- [ ] P1 — IS-23 Final report presents hardcoded constants as file-derived gate evidence
-  Category: correctness
-  Where: `replica-app/scripts/build_final_report.py:151-155` (also 96, 110-114)
-  Problem: the generated report states "Every number below is read from a file in that tree", but the JVM test count ("11 passed / 0 failed"), on-device test count, release signing SHA-256, and "Release install + cold launch … no FATAL EXCEPTION" rows are string literals. After a test regression, re-signed APK, or crashing release build, re-running the report still prints identical "verified" evidence — behaviour gate 3 can never fail through this script.
-  Evidence: literals at the cited lines; contrast with the APK size row which is genuinely read from disk.
-  Fix: parse Gradle test-result XML under `app/build/test-results/` and `app/build/outputs/androidTest-results/`, compute the cert hash via `apksigner verify --print-certs`; any row that cannot be derived must be labelled "manually recorded YYYY-MM-DD", not presented as read-from-file.
-  Acceptance: deleting a test or breaking the build changes the report's numbers (or the report refuses to claim them); no literal test-count/hash strings remain in the script.
-  Confidence: Verified
-  Effort: M
-
 - [ ] P1 — IS-24 The geometry gate cannot fail: no threshold is enforced, exit code is always 0, and shrunken coverage passes silently
   Category: testing
   Where: `replica-app/scripts/run-geometry-validation.ps1:4,29-36` (param `-WithinPxTarget` used only in report prose), `replica-app/scripts/geometry_diff.py:234` (`main()` returns 0 unconditionally), `replica-app/scripts/run-full-validation.ps1:35-36` (only "failed to run" is an error)
@@ -302,15 +292,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: S
 
-- [ ] P2 — IS-40 `validation/masks/README.md` states "No regions are currently masked" — the opposite of the shipped policy
-  Category: docs
-  Where: `replica-app/validation/masks/README.md:5`; designated as the mask-policy source by `replica-app/docs/testing-guide.md:63`
-  Problem: the file the docs point to for mask semantics still carries the first-pass text, while `mask-register.csv` defines 3 SYSTEM_OWNED regions and every current report quotes the secondary app-chrome metric. An auditor of the masking policy is told the opposite of what the pipeline does.
-  Fix: rewrite to the current policy — strict gate unmasked, register-driven secondary metric, the three OS-owned regions with their reasons, camera preview deliberately unmasked.
-  Acceptance: the README matches `mask-register.csv` and the policy paragraph in `docs/known-deviations.md`.
-  Confidence: Verified
-  Effort: S
-
 - [ ] P2 — IS-41 `Stop-GradleDaemons` in `finally` blocks can convert a green build into a failure (or mask the real error)
   Category: reliability
   Where: `replica-app/scripts/Common.ps1:96`
@@ -322,15 +303,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Effort: S
 
 ### P3
-
-- [ ] P3 — IS-42 Stale claims from the previous pass persist in three docs
-  Category: docs
-  Where: `replica-app/docs/rebuild-plan.md:38,58`; `replica-app/docs/testing-guide.md:83`; `replica-app/README.md:138`
-  Problem: rebuild-plan says "six JVM tests" (actual 11), quotes the previous pass's median/max (0.836694/0.930146 vs current 0.869631/0.930838) and claims "the final sweep deliberately used no masks" (a mask register now exists); testing-guide also says "Six JVM tests"; README presents gitignored `validation/current/release-launch.png` as an existing deliverable.
-  Fix: update the three passages to the current numbers/policy, or point them at the generated reports the way design-qa.md does; rephrase the README pointer as "is written to".
-  Acceptance: `grep -ri "six JVM" docs/ README.md` is empty; no doc contradicts the mask register; no committed doc claims a gitignored file exists.
-  Confidence: Verified
-  Effort: S
 
 - [ ] P3 — IS-43 `update_traceability.py` run on an empty results dir wipes both committed status CSVs
   Category: reliability
@@ -535,10 +507,3 @@ From `RESEARCH.md` second pass (screenshot-testing ecosystem, competitor matrice
   Acceptance: user-defined bitrate presets appear as one-tap chips in the Network quick tab and apply live; presets persist (IS-31 rules).
   Complexity: S
 
-- [ ] P3 — IS-66 Toolchain currency notes and pin corrections
-  Why: two documented traps for the next builder: Compose BOM 2026.08.00 requires compileSdk 37 + AGP 9.1.1 (do not bump casually from 2026.06.01), and repo docs say "AGP + Gradle 8.14.4" where the truth is Gradle 8.14.4 + AGP 8.13.2 — a future session chasing a nonexistent AGP 8.14.4 wastes time.
-  Evidence: Jetpack Compose August 2026 release blog; `replica-app/build.gradle.kts:2` (AGP 8.13.2), `gradle-wrapper.properties` (Gradle 8.14.4).
-  Depends on: none
-  Touches: `CLAUDE.md`, `replica-app/README.md` toolchain section
-  Acceptance: docs state the exact split (Gradle 8.14.4 / AGP 8.13.2 / Kotlin 2.3.21) and carry the BOM-2026.08 upgrade precondition; no doc claims an AGP 8.14.x.
-  Complexity: S
