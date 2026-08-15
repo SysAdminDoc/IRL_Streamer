@@ -55,14 +55,6 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: values derive from `ConnectivityManager`/`NetworkCapabilities` per active link; the D009 fixture note is narrowed to only what remains simulated.
   Complexity: M
 
-- [ ] P1 — IS-10 Behavioural test fixtures for the engine seam
-  Why: the three validation gates all rest on screenshots and hierarchy dumps; none can observe a running pipeline, and real streaming cannot run in CI.
-  Evidence: RESEARCH.md "Architecture Assessment"; `app/src/test/.../AuditMetricsTest.kt` guards layout only.
-  Depends on: IS-02
-  Touches: `app/src/test/`, new fake transport
-  Acceptance: start/stop, reconnect, degraded and error transitions are asserted against a fake engine with no device or network.
-  Complexity: M
-
 ### P2
 
 - [ ] P2 — IS-11 Twitch chat ingest
@@ -97,14 +89,6 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
   Touches: `.../engine/`, live console status treatment
   Acceptance: sustained low bitrate raises a defined degraded state with a visible indicator and a recovery transition; thresholds are configurable.
   Complexity: M
-
-- [ ] P2 — IS-15 Ship relay/receiver guidance with the app
-  Why: Reddit shows users do not know bonding requires a server-side SRTLA→RTMP relay, so shipping without it reproduces a known support burden.
-  Evidence: r/Twitch comment thread on SRTLA→RTMP conversion; go-irl and MediaMTX as self-host options — RESEARCH.md "Sources".
-  Touches: `replica-app/README.md`, new `docs/relay-setup.md`, connection form help text
-  Acceptance: documentation explains the SRTLA→SRT→RTMP chain and names at least one self-hosted (go-irl/MediaMTX) and one hosted option, without endorsing a paid service in-app.
-  Complexity: S
-  Note (2026-08-15 pass 2): add `irlserver/irl-srt-server` (SLS fork with SRTLA built in, HTTP stats API) as a recommended self-host receiver; the confusion is confirmed at scale ("I just thought your connection automatically improved when you bonded") and IRL Pro's free hosted relay is its moat — these docs are the open answer.
 
 - [ ] P2 — IS-16 Accessibility pass over net-new surfaces
   Why: D010 records that the reconstruction deliberately improved on the original's unlabeled, sub-48 dp controls. Permission screens, chat and any engine error states are new surfaces with no audit evidence and no accessibility guarantee.
@@ -142,13 +126,6 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: a settings payload round-trips between two installs; secrets are excluded or re-encrypted; the deep-link grammar is this project's own and documented as a deviation, since the original's is unknown.
   Complexity: M
 
-- [ ] P3 — IS-01 Record the licence posture that follows from the dependency choices
-  Why: operator decision 2026-08-15 — pick the best tool and prefer open licences; do not gate work on licensing. That is a valid call, but it has one mechanical consequence worth writing down once: linking BELABOX `srtla` (AGPL-3.0) means the app is AGPL-3.0 when distributed, so its source must be offered to anyone who receives it. The repo is already public, so this costs nothing — it just needs stating.
-  Evidence: BELABOX/srtla LICENSE (AGPL-3.0); libsrt is MPL-2.0 (file-level copyleft, arrives via StreamPack regardless) — RESEARCH.md "Security, Privacy, and Reliability".
-  Touches: `LICENSE`, `README.md`, `replica-app/docs/known-deviations.md` (D011)
-  Acceptance: a LICENSE file exists matching the strongest obligation actually linked, and D011 records which dependency imposed it.
-  Complexity: S
-
 - [ ] P3 — IS-20 Distribution and update channel decision
   Why: the app ships with a repo-owned self-signed key and no update path, so no user can receive a fix.
   Evidence: `replica-app/README.md` signing note; RESEARCH.md "Product Map"
@@ -173,16 +150,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
 ### P1
 
 ### P2
-
-- [ ] P2 — IS-32 Replica reworded audited non-branded copy — undocumented deviations that also break geometry matching
-  Category: correctness
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/settings/SettingsCatalog.kt:303` ("Disable Camera2 only if camera resolutions or framerates are unavailable.") and `:304` ("Stream and record front camera as it appears in preview (mirrored).")
-  Problem: the audited strings are "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available." and "Stream and record front camera as appears in preview (mirrored)." (no "it"). Neither contains third-party marks, so D014 does not cover the rewording; the rebuild contract reproduces confirmed copy verbatim. The changed strings additionally fail label matching, contributing to state 126's unmatched count.
-  Evidence: `app-audit/evidence/ui-xml/126_preferred_camera_api_dialog.xml` contains both audited strings verbatim; geometry 126 lists them under `unmatched_audit_elements` with the replica variants under `replica_only_elements`.
-  Fix: restore the audited strings character-for-character (including the original's grammar). Sweep the catalog against the audit XMLs for other silent rewordings of non-branded copy and either restore or add a numbered deviation for each.
-  Acceptance: geometry for 126 matches both summary strings; a sweep report lists zero undocumented copy diffs on non-branded strings.
-  Confidence: Verified
-  Effort: S
 
 ### P3
 

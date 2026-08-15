@@ -110,6 +110,97 @@ class BroadcastEngineTest {
         assertEquals(first.statistics.value, second.statistics.value)
     }
 
+    /**
+     * A scriptable engine that walks the full lifecycle.
+     *
+     * None of the three validation gates can observe a running pipeline - they
+     * compare screenshots and hierarchy dumps - and real streaming cannot run in
+     * CI, so the transitions a transport must honour are pinned here instead.
+     */
+    private class ScriptedBroadcastEngine : BroadcastEngine {
+        private val _state = MutableStateFlow(BroadcastState.IDLE)
+        override val state: StateFlow<BroadcastState> = _state
+        private val _statistics = MutableStateFlow(BroadcastStatistics())
+        override val statistics: StateFlow<BroadcastStatistics> = _statistics
+        val transitions = mutableListOf<BroadcastState>()
+
+        private fun move(next: BroadcastState) {
+            _state.value = next
+            transitions += next
+        }
+
+        override suspend fun start(request: BroadcastRequest): BroadcastResult {
+            move(BroadcastState.CONNECTING)
+            move(BroadcastState.LIVE)
+            _statistics.value = BroadcastStatistics(targetBitrateKbps = 6000, currentBitrateKbps = 6000, fps = 30)
+            return BroadcastResult.Started
+        }
+
+        /** Sustained congestion: the link is up but the encoder cannot keep the target. */
+        fun degrade(toKbps: Int) {
+            move(BroadcastState.DEGRADED)
+            _statistics.value = _statistics.value.copy(currentBitrateKbps = toKbps)
+        }
+
+        /** The link dropped and the engine is retrying rather than ending the broadcast. */
+        fun loseLink() = move(BroadcastState.RECONNECTING)
+
+        fun recover() {
+            move(BroadcastState.LIVE)
+            _statistics.value = _statistics.value.copy(currentBitrateKbps = _statistics.value.targetBitrateKbps)
+        }
+
+        fun fail() = move(BroadcastState.ERROR)
+
+        override suspend fun stop() = move(BroadcastState.IDLE)
+
+        override fun release() = Unit
+    }
+
+    @Test
+    fun aDegradedLinkRecoversWithoutEndingTheBroadcast() = runBlocking {
+        val engine = ScriptedBroadcastEngine()
+
+        engine.start(BroadcastRequest("rig"))
+        engine.degrade(toKbps = 900)
+        assertEquals(BroadcastState.DEGRADED, engine.state.value)
+        assertEquals(900, engine.statistics.value.currentBitrateKbps)
+
+        engine.loseLink()
+        assertEquals(BroadcastState.RECONNECTING, engine.state.value)
+
+        engine.recover()
+        assertEquals(BroadcastState.LIVE, engine.state.value)
+        assertEquals(6000, engine.statistics.value.currentBitrateKbps)
+
+        engine.stop()
+        assertEquals(
+            listOf(
+                BroadcastState.CONNECTING,
+                BroadcastState.LIVE,
+                BroadcastState.DEGRADED,
+                BroadcastState.RECONNECTING,
+                BroadcastState.LIVE,
+                BroadcastState.IDLE,
+            ),
+            engine.transitions,
+        )
+    }
+
+    @Test
+    fun anErroredBroadcastStopsCleanly() = runBlocking {
+        val engine = ScriptedBroadcastEngine()
+        engine.start(BroadcastRequest("rig"))
+
+        engine.fail()
+        assertEquals(BroadcastState.ERROR, engine.state.value)
+
+        // Stopping from ERROR must reach IDLE rather than sticking, or the
+        // console would offer no way back to a startable state.
+        engine.stop()
+        assertEquals(BroadcastState.IDLE, engine.state.value)
+    }
+
     @Test
     fun engineContractSupportsAlternativeImplementations() = runBlocking {
         val fake = FakeBroadcastEngine()

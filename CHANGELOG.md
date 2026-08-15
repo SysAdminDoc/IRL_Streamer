@@ -107,6 +107,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `LICENSE` (MIT), matching what the application actually links today, with the
+  licence consequences of the two planned copyleft dependencies recorded rather
+  than left to be rediscovered.
+- The README explains that SRTLA bonding requires a server-side receiver and
+  names three open-source options. Users repeatedly expect bonding to improve a
+  connection by itself, which is the most common support burden in this space.
+- Behavioural fixtures for the engine seam: degraded, reconnecting and error
+  transitions are asserted against a scripted fake with no device or network,
+  which the screenshot and hierarchy gates structurally cannot observe.
 - `scripts/sync-baselines.ps1` restores the comparison baselines from the audit
   evidence, and the visual sweep calls it automatically when none are present. A
   fresh clone previously failed every documented compare command with "Image not

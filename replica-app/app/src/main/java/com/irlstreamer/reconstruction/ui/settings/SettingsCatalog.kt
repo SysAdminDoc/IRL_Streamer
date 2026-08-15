@@ -115,7 +115,7 @@ object SettingsCatalog {
             SettingItem.Toggle("dashboard_b_enabled", "Enable Dashboard B", "Enables the local activity/replay dashboard fixture"),
             SettingItem.Row("dashboard_c_key", "Dashboard C API Key", "Blank; locally simulated and never transmitted", action = SettingAction.Dialog(text("dashboard_c_key", "Dashboard C API Key"))),
             SettingItem.Section("Custom Page"),
-            SettingItem.Row("custom_page", "Custom Page", "Enter a URL for a custom page in the popup", action = SettingAction.Dialog(text("custom_page", "Custom Page"))),
+            SettingItem.Row("custom_page", "Custom Page", "Enter a url for a custom page in the popup", action = SettingAction.Dialog(text("custom_page", "Custom Page"))),
             SettingItem.Row("alert_dashboard_scale", "Alert dashboard scale", valueKey = "alert_dashboard_scale", action = SettingAction.Dialog(number("alert_dashboard_scale", "Alert dashboard scale", "280"))),
         ),
     )
@@ -297,7 +297,7 @@ object SettingsCatalog {
         title = "Import/Export Settings",
         items = listOf(
             SettingItem.Row("import", "Import settings", action = SettingAction.Dialog(textWithInitial("import_settings", "Import settings", "irlstreamer://"))),
-            SettingItem.Row("scan", "Scan QR code", "You can take a picture of a QR code with a camera app which recognizes QR.", action = SettingAction.Dialog(alert("scanner_prompt", "Install QR Scanner?", "This reconstruction can use an installed QR scanner. Would you like to open the app store?", "YES", "NO"))),
+            SettingItem.Row("scan", "Scan QR code", "You can take a picture of QR code with your camera app which recognizes QR.", action = SettingAction.Dialog(alert("scanner_prompt", "Install QR Scanner?", "This reconstruction can use an installed QR scanner. Would you like to open the app store?", "YES", "NO"))),
             SettingItem.Row("export", "Export settings", action = SettingAction.Toast("Export is a local sanitized fixture; no secrets are included")),
         ),
     )
@@ -307,9 +307,9 @@ object SettingsCatalog {
         items = listOf(
             SettingItem.Section("Misc Settings"),
             SettingItem.Toggle("show_status_broadcast", "Show status bar on broadcast page"),
-            SettingItem.Toggle("show_bonding_debug", "Show Bonding Debug"),
+            SettingItem.Toggle("show_bonding_debug", "Show SRTLA Debug"),
             SettingItem.Toggle("allow_rtmp_hevc", "Allow RTMP HEVC"),
-            SettingItem.Toggle("experimental_bonding", "Experimental Bonding Tweaks", "Enables local experimental fixtures that aren't ready yet"),
+            SettingItem.Toggle("experimental_bonding", "Experimental SRTLA Tweaks", "Enables local experimental fixtures that aren't ready yet"),
             SettingItem.Toggle("keep_streaming", "Keep streaming when not in focus.", "This is always enabled now.", enabled = false),
             SettingItem.Toggle("quit_inactive", "Quit if inactive in background", "If IRL Streamer sits in background and has no active connections, it will quit after a timeout."),
             // Audit evidence: screen 126 shows a preference category titled
@@ -340,7 +340,7 @@ object SettingsCatalog {
         items = listOf(
             SettingItem.Row("community", "Community", "External support links are intentionally omitted", action = SettingAction.Toast("No authorized external support destination was supplied")),
             SettingItem.Row("debug_details", "Send cameras debug details to developers", "Produces no share action in this privacy-safe fixture", action = SettingAction.Toast("Debug details stay on this device")),
-            SettingItem.Row("reset", "Reset app settings", action = SettingAction.Dialog(alert("reset_settings", "Reset app settings?", "This resets only the reconstruction's local preferences.", "RESET", "CANCEL"))),
+            SettingItem.Row("reset", "Reset app settings", action = SettingAction.Dialog(alert("reset_settings", "Reset app settings", "This resets only the reconstruction's local preferences.", "RESET", "CANCEL"))),
             SettingItem.Row("about", "About IRL Streamer", action = SettingAction.Dialog(DialogRequest(
                 id = "about",
                 title = "IRL Streamer",

@@ -1,0 +1,44 @@
+MIT License
+
+Copyright (c) 2026 SysAdminDoc
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Licence posture, recorded 2026-08-15
+------------------------------------
+
+This licence matches what the application actually links today. The
+reconstruction depends only on AndroidX and Jetpack Compose (Apache-2.0), so
+MIT is the strongest obligation in force and the app carries no copyleft.
+
+Two planned dependencies would change that, and the change is mechanical rather
+than a decision to revisit:
+
+- BELABOX `srtla` is AGPL-3.0. Linking it for bonding makes the distributed
+  application AGPL-3.0 as a whole, obliging an offer of source to anyone who
+  receives a build. This repository is already public, so the practical cost is
+  replacing this file and stating the obligation.
+- Haivision `libsrt` is MPL-2.0, a file-level copyleft that arrives with any SRT
+  implementation. It is satisfied by publishing modifications to MPL files and
+  does not affect the licence of the application as a whole.
+
+Neither is linked at the time of writing. See `replica-app/docs/known-deviations.md`
+(D011) and `RESEARCH.md`.

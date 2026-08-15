@@ -96,6 +96,36 @@ accuracy is in `validation/reports/geometry-validation-report.md`. Read
 `docs/measured-tokens.md` for where each layout constant came from, and
 `docs/known-deviations.md` before treating the app as audit-equivalent.
 
+## Bonding needs a receiver
+
+This is the single most common misunderstanding about SRTLA bonding, so it is
+stated here rather than left to be discovered: **bonding does not improve a
+connection on its own.** An SRTLA sender splits one stream across several links,
+and something on the far side has to reassemble them. The chain is:
+
+```
+phone (SRTLA, multiple links) --> SRTLA receiver --> SRT --> RTMP --> platform ingest
+```
+
+Without that receiver there is nothing to bond *to*. Streaming platforms accept
+RTMP and sometimes SRT; none of them accept SRTLA.
+
+Self-hosted receivers, all open source:
+
+| Project | Licence | Notes |
+|---|---|---|
+| [`irlserver/irl-srt-server`](https://github.com/irlserver/irl-srt-server) | AGPL-3.0 | SLS fork with SRTLA built in, per-stream limits and an HTTP stats API. |
+| [`e04/go-irl`](https://github.com/e04/go-irl) | AGPL-3.0 | Cross-platform native binaries; lists IRL Pro, Moblin and BELABOX as compatible clients. |
+| [`bluenviron/mediamtx`](https://github.com/bluenviron/mediamtx) | MIT | Terminates SRT and republishes to RTMP. **Does not speak SRTLA**, so it is the right target for a single-link SRT test, not for bonding. |
+
+BELABOX's own `srtla_rec` is described by its authors as unsupported and not
+suitable for production, so it is not recommended here. Hosted relays exist and
+are what the commercial services charge for; this project does not endorse or
+bundle one.
+
+Nothing in this reconstruction transmits media (deviation D005). The chain above
+is what a real transport implementation would have to target.
+
 ## Tests
 
 ```powershell
