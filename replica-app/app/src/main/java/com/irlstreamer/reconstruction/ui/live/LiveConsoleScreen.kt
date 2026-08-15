@@ -140,7 +140,8 @@ fun LiveConsoleScreen(state: AppUiState, viewModel: MainViewModel) {
             description = "Flip camera",
             modifier = Modifier.offset(x = maxWidth - 108.09.dp, y = 239.64.dp),
             visualDiameter = 48.dp,
-            selected = state.runtime.currentCameraId == 1,
+            // Both front lenses (1 and 3) count as flipped, not only id 1.
+            selected = state.runtime.currentCameraId == 1 || state.runtime.currentCameraId == 3,
             onClick = viewModel::flipCamera,
         )
 

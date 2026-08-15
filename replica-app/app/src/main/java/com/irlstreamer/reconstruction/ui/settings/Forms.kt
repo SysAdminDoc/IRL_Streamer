@@ -211,7 +211,7 @@ fun LayerFormScreen(page: SettingsPage, state: AppUiState, viewModel: MainViewMo
                     })
                 }
                 item { PreferenceRow("layer_z", "Z Order", "5", true, onClick = { viewModel.showDialog(DialogRequest("layer_z", "Z Order", DialogType.NUMBER, initialValue = "5")) }) }
-                item { InfoRow("z_help", "Layers with greater Z Order will appear at front.", enabled = true) }
+                item { InfoRow("z_help", "Layers with greater Z Order will appear at front.", emphasized = true) }
             }
             item {
                 FormFooter(
@@ -263,9 +263,9 @@ fun WebOverlayFormScreen(state: AppUiState, viewModel: MainViewModel) {
                 item { SliderPreferenceRow("v_position", "V Position", "", vertical, 0f..100f, 99, "Bottom ${vertical.toInt()} %") { vertical = it } }
             }
             item { PreferenceRow("web_z", "Z Order", "1", true, onClick = { viewModel.showDialog(DialogRequest("web_z", "Z Order", DialogType.NUMBER, initialValue = "1")) }) }
-            item { InfoRow("web_z_help", "Layers with greater Z Order will appear at front.", enabled = true) }
+            item { InfoRow("web_z_help", "Layers with greater Z Order will appear at front.", emphasized = true) }
             item { SectionHeader("WebView options") }
-            item { InfoRow("canvas_help", "Width/Height scaled to 1080p canvas", enabled = true) }
+            item { InfoRow("canvas_help", "Width/Height scaled to 1080p canvas", emphasized = true) }
             item { PreferenceRow("web_width", "Width", "1280", true, onClick = { viewModel.showDialog(DialogRequest("web_width", "Width", DialogType.NUMBER, initialValue = "1280")) }) }
             item { PreferenceRow("web_height", "Height", "720", true, onClick = { viewModel.showDialog(DialogRequest("web_height", "Height", DialogType.NUMBER, initialValue = "720")) }) }
             item { PreferenceRow("web_scale", "Scale in percents", "100", true, onClick = { viewModel.showDialog(DialogRequest("web_scale", "Scale in percents", DialogType.NUMBER, initialValue = "100")) }) }

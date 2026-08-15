@@ -1,64 +1,20 @@
 {
-  "matched_elements": 7,
+  "matched_elements": 9,
   "unmatched_audit_elements": [
-    "Advanced options#1",
-    "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available.",
     "If IRL Pro sits in background and has no active connections, it will quit after a timeout.",
     "Stream and record front camera as appears in preview (mirrored)."
   ],
   "replica_only_elements": [
-    "Disable Camera2 only if camera resolutions or framerates are unavailable.",
-    "If IRL Streamer sits in background and has no active connections, it will quit after a timeout.",
-    "Stream and record front camera as it appears in preview (mirrored)."
+    "If IRL Streamer sits in background and has no active connections, it will quit after a timeout."
   ],
   "max_abs_dleft": 45,
-  "max_abs_dtop": 127,
-  "max_abs_dwidth": 90,
+  "max_abs_dtop": 64,
+  "max_abs_dwidth": 1522,
   "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 31.143,
+  "mean_abs_origin_error_px": 20.889,
   "origins_within_2px_pct": 50.0,
   "origins_within_4px_pct": 50.0,
   "elements": [
-    {
-      "key": "Mirror front camera",
-      "class": "TextView",
-      "audit_bounds": [
-        278,
-        1004,
-        667,
-        1065
-      ],
-      "replica_bounds": [
-        278,
-        877,
-        693,
-        939
-      ],
-      "dleft": 0,
-      "dtop": -127,
-      "dwidth": 26,
-      "dheight": 1
-    },
-    {
-      "key": "Preferred camera API",
-      "class": "TextView",
-      "audit_bounds": [
-        278,
-        754,
-        703,
-        815
-      ],
-      "replica_bounds": [
-        278,
-        673,
-        731,
-        735
-      ],
-      "dleft": 0,
-      "dtop": -81,
-      "dwidth": 28,
-      "dheight": 1
-    },
     {
       "key": "This is always enabled now.",
       "class": "TextView",
@@ -120,6 +76,66 @@
       "dheight": -67
     },
     {
+      "key": "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        815,
+        2136,
+        914
+      ],
+      "replica_bounds": [
+        278,
+        859,
+        2271,
+        965
+      ],
+      "dleft": 0,
+      "dtop": 44,
+      "dwidth": 135,
+      "dheight": 7
+    },
+    {
+      "key": "Preferred camera API",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        754,
+        703,
+        815
+      ],
+      "replica_bounds": [
+        278,
+        797,
+        731,
+        859
+      ],
+      "dleft": 0,
+      "dtop": 43,
+      "dwidth": 28,
+      "dheight": 1
+    },
+    {
+      "key": "Advanced options",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        633,
+        2136,
+        686
+      ],
+      "replica_bounds": [
+        278,
+        670,
+        614,
+        738
+      ],
+      "dleft": 0,
+      "dtop": 37,
+      "dwidth": -1522,
+      "dheight": 15
+    },
+    {
       "key": "Quit if inactive in background",
       "class": "TextView",
       "audit_bounds": [
@@ -138,6 +154,26 @@
       "dtop": 36,
       "dwidth": 42,
       "dheight": 1
+    },
+    {
+      "key": "Mirror front camera",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        1004,
+        667,
+        1065
+      ],
+      "replica_bounds": [
+        278,
+        1028,
+        693,
+        1080
+      ],
+      "dleft": 0,
+      "dtop": 24,
+      "dwidth": 26,
+      "dheight": -9
     },
     {
       "key": "Advanced options",

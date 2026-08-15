@@ -22,6 +22,7 @@ import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.ui.components.AuditedAppBar
 import com.irlstreamer.reconstruction.ui.components.InfoRow
+import com.irlstreamer.reconstruction.ui.components.isSecret
 import com.irlstreamer.reconstruction.ui.components.PreferenceRow
 import com.irlstreamer.reconstruction.ui.components.SectionHeader
 import com.irlstreamer.reconstruction.ui.components.SliderPreferenceRow
@@ -74,7 +75,10 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
     }
     val initialIndex = anchorIndex
         ?: state.runtime.settingsScrollIndex.coerceIn(0, (visibleItems.size - 1).coerceAtLeast(0))
-    val listState = key(state.runtime.debugScreenId, initialIndex) {
+    // Keyed on the page as well: every catalog page renders through this one
+    // composable, so without it a positionally-remembered list state is shared
+    // across pages and Root opens at the scroll offset Video was left at.
+    val listState = key(page, state.runtime.debugScreenId, initialIndex) {
         rememberLazyListState(initialFirstVisibleItemIndex = initialIndex)
     }
 
@@ -98,7 +102,7 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
             ) { index ->
                 when (val item = visibleItems[index]) {
                     is SettingItem.Section -> SectionHeader(item.title)
-                    is SettingItem.Info -> InfoRow(item.id, item.text, item.enabled)
+                    is SettingItem.Info -> InfoRow(item.id, item.text)
                     is SettingItem.Row -> {
                         val derivedEnabled = item.enabled && !(item.id == "h264_bitrate" && state.effectiveBitrateMatch)
                         PreferenceRow(
@@ -166,7 +170,7 @@ private fun handleAction(action: SettingAction, state: AppUiState, viewModel: Ma
  * keep exactly the selection they were captured with.
  */
 internal fun withCurrentValue(request: DialogRequest, state: AppUiState): DialogRequest {
-    val transient = state.runtime.transientValues[request.id]
+    val transient = state.runtime.transientValues[request.id] ?: state.settings.choiceValues[request.id]
     return when (request.type) {
         DialogType.TEXT, DialogType.NUMBER -> {
             val current = transient ?: persistedValue(request.id, state)
@@ -212,7 +216,13 @@ private fun itemKey(item: SettingItem, index: Int): String = when (item) {
 }
 
 private fun resolveSummary(item: SettingItem.Row, state: AppUiState): String {
-    state.runtime.transientValues[item.id]?.let { return it }
+    val entered = state.runtime.transientValues[item.id] ?: state.settings.choiceValues[item.id]
+    if (entered != null) {
+        if (entered.isBlank()) return item.summary
+        // Never print a secret into a settings row. The value is held so the row
+        // can show that something is set, not so it can show what.
+        return if (isSecret(item.title)) "*".repeat(entered.length.coerceAtMost(12)) else entered
+    }
     return when (item.valueKey) {
         "chat_font_scale" -> state.settings.chatFontScale.toString()
         "alert_dashboard_scale" -> state.settings.alertDashboardScale.toString()
@@ -223,7 +233,11 @@ private fun resolveSummary(item: SettingItem.Row, state: AppUiState): String {
 }
 
 private fun booleanValue(key: String, state: AppUiState): Boolean {
+    // Debug overrides win, then the persisted value, then the audited default.
     state.runtime.transientBooleans[key]?.let { return it }
+    state.settings.extraToggles[key]?.let { persisted ->
+        if (key !in namedToggleKeys) return persisted
+    }
     return when (key) {
         "show_platform_icons" -> state.effectivePlatformIcons
         "show_bots" -> state.settings.showBots
@@ -244,6 +258,15 @@ private fun booleanValue(key: String, state: AppUiState): Boolean {
         else -> false
     }
 }
+
+/** Keys with a named field in `ReplicaSettings`; those never read the generic map. */
+private val namedToggleKeys = setOf(
+    "show_platform_icons", "show_bots", "show_commands", "show_user_count",
+    "cellular_enabled", "wifi_enabled", "ethernet_enabled",
+    "bitrate_matches_resolution", "record_stream", "split_sections",
+    "audio_meter_visible", "grid_visible", "safe_margins_visible",
+    "timestamp_active", "web_overlay_master",
+)
 
 private fun sliderValue(key: String, state: AppUiState): Float = when (key) {
     "cellular_weight" -> state.settings.cellularWeight.toFloat()

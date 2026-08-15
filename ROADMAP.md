@@ -172,37 +172,7 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
 
 ### P1
 
-- [ ] P1 — IS-24 The geometry gate cannot fail: no threshold is enforced, exit code is always 0, and shrunken coverage passes silently
-  Category: testing
-  Where: `replica-app/scripts/run-geometry-validation.ps1:4,29-36` (param `-WithinPxTarget` used only in report prose), `replica-app/scripts/geometry_diff.py:234` (`main()` returns 0 unconditionally), `replica-app/scripts/run-full-validation.ps1:35-36` (only "failed to run" is an error)
-  Problem: README/CLAUDE.md describe a three-gate validation, but geometry is reporting-only. Every element could drift 30 px and every exit code stays 0. Rows with `status -ne 'OK'` are filtered out of the stats, so if only 5 of 145 states have hierarchy dumps the report says "States compared: 5" and still exits 0. Per-state, `matched_elements: 0` yields `mean_abs_origin_error_px: 0.0` and status `OK` — a vacuous pass that reads as perfect (state 054 currently reports exactly this: 0 matched, 11 unmatched, mean 0.0). Critically, the masking policy relies on geometry *instead of* SSIM for camera-preview live-console states, so those states currently have no failing gate at all.
-  Evidence: `validation/reports/geometry-summary.csv` row `054_video_manual_bitrate_enabled,OK,0,11,0,0,0,0,0.0,0.0,0.0`; script traced end to end.
-  Fix: in `run-geometry-validation.ps1`, exit non-zero when compared-state count < catalog states with audit XML, when any state has `matched_elements == 0`, or when the within-2px aggregate is below a declared target derived from `-WithinPxTarget`; report unmatched counts in the summary stats instead of dropping them.
-  Acceptance: renaming one hierarchy dump or zeroing one state's matches makes `run-geometry-validation.ps1` (and therefore `run-full-validation.ps1`) exit non-zero.
-  Confidence: Verified
-  Effort: M
-
 ### P2
-
-- [ ] P2 — IS-30 Settings scroll position leaks between pages — opening a second settings page inherits the previous page's scroll
-  Category: correctness
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/settings/SettingsScreen.kt:63-65`
-  Problem: the LazyListState is created under `key(state.runtime.debugScreenId, initialIndex)` — the page is not in the key. In interactive use both values are (null, 0) for every page, so ROOT→VIDEO→AUDIO all reuse one LazyListState from the same call site. Scroll Video parameters to the bottom (~30 items), navigate back to Root (12 items): Root renders scrolled/clamped to its end instead of the top.
-  Evidence: code trace — `GenericSettingsScreen` is the shared `else` branch for all catalog pages, so positional memoization retains the state across page changes; item keys change wholesale so LazyColumn keeps the raw index.
-  Fix: include the page in the key: `key(page, state.runtime.debugScreenId, initialIndex) { rememberLazyListState(...) }`.
-  Acceptance: scroll Video to the bottom, back, open Root → Root starts at the top (Compose UI test or manual on emulator).
-  Confidence: Verified
-  Effort: S
-
-- [ ] P2 — IS-31 Persistence is silently partial: ~20 toggles and every choice selection are lost on process death, and "Reset app settings" does not clear the in-memory ones
-  Category: ux
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/MainViewModel.kt:162-170,193-211` (`persistedBooleanKeys` whitelist; others go to `transientBooleans`), `:84-104` (CHOICE_SINGLE results go only to `transientValues`), `:101` (`reset_settings` clears DataStore but not `transientBooleans`/`transientValues`)
-  Problem: only 15 toggle keys persist; the other ~20 catalog toggles (prefer_bluetooth, aec, noise_suppressor, mirror_front, web_debug, …) flip convincingly but reset on restart. Every single-choice selection (resolution, FPS, codec, audio source, …) is transient too — the row summary updates, implying a saved setting, then reverts. And after "Reset app settings" the UI keeps showing the transient values the reset claimed to clear, because only the DataStore is wiped.
-  Evidence: whitelist vs `SettingsCatalog` toggle inventory compared exhaustively; `confirmDialog` stores CHOICE_SINGLE only into `transientValues`; `reset()` path touches only the repository. No deviation in `docs/known-deviations.md` documents partial persistence (D005/D012 cover simulated operations, not settings retention — D012's own validation column says "Validate persistence").
-  Fix: either persist everything (extend DataStore keys to all audited toggles and add a string map for choice values — mechanical, catalog-driven) or document the boundary as a numbered deviation; in both cases make `confirmDialog("reset_settings")` also clear `transientBooleans`/`transientValues` in the same state update.
-  Acceptance: toggle "Prefer Bluetooth Mic", pick "1280x720", kill and relaunch → both retained (or a deviation row explicitly says they are not); after Reset, no row shows a pre-reset transient value.
-  Confidence: Verified
-  Effort: M
 
 - [ ] P2 — IS-32 Replica reworded audited non-branded copy — undocumented deviations that also break geometry matching
   Category: correctness
@@ -214,16 +184,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: S
 
-- [ ] P2 — IS-33 Password masking for API-key dialogs is dead code — secrets render in cleartext
-  Category: security
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/components/AuditedDialogs.kt:212-216`
-  Problem: masking triggers on `label.contains("key", true)`, but `label` is the per-field label from `request.options`, which is empty for every single-field catalog dialog — so "Dashboard A API Key", "Dashboard C API Key" and any future stream-key dialog show typed secrets unmasked. The condition only ever fires for the debug fixtures (states 030/031) whose field labels literally contain "Stream key". The check plainly intends to cover the catalog dialogs and misses them because it tests the wrong string.
-  Evidence: all catalog `text(...)` dialogs construct `DialogRequest` with `options = emptyList()` → `fields = listOf("")` → label blank; the dialog *titles* contain "API Key".
-  Fix: extend the condition to `request.title` as well (`label.contains(...) || request.title.contains("key", true) || …password…`), or add an explicit `sensitive: Boolean` to `DialogRequest` set by the catalog factories.
-  Acceptance: typing into "Dashboard A API Key" shows dots; states 030/031 still mask their key fields.
-  Confidence: Verified
-  Effort: S
-
 - [ ] P2 — IS-34 Safe-margin overlay ignores the persisted ratios setting — hardcoded to a single 16:9 rectangle
   Category: correctness
   Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/live/LiveConsoleScreen.kt:358-384` (`SafeMarginGuide`, `val ratio = 16f / 9f`)
@@ -231,16 +191,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Evidence: `SafeMarginGuide(indentPercent)` takes no ratios parameter; no other reader of `settings.safeMarginRatios` exists outside the settings row/dialog.
   Fix: pass `state.settings.safeMarginRatios` in, parse each label's parenthesised ratio (e.g. "21:9 (2.33)" → 2.33), and draw one centred rectangle per selected ratio, keeping the existing indent logic. Audit evidence (state 085) only shows the default single 16:9 — keep that as the default so validation is unchanged.
   Acceptance: selecting two ratios draws two rectangles; state 085 still validates with the default selection.
-  Confidence: Verified
-  Effort: M
-
-- [ ] P2 — IS-35 Silent no-op inputs across the app: text/number dialog entries are discarded with zero feedback
-  Category: ux
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/MainViewModel.kt:84-104` (`confirmDialog` handles only 7 ids), `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/ReplicaApp.kt:32` (folder picker result discarded)
-  Problem: OK on any unhandled dialog id silently discards the input: all TEXT dialogs (platform usernames, custom chatbox URL, dashboard API keys, custom page, `import_settings` payload) and the NUMBER dialogs `keyframe`, `section_minutes`, plus the form dialogs `refresh_interval`, `layer_z`, `web_z`, `web_width`, `web_height`, `web_scale` (typed values vanish; the row summary never changes). Entering a non-numeric value in a *handled* NUMBER dialog (`toIntOrNull()` → null) also closes silently. The Save-to folder picker launches DocumentsUI and drops the chosen tree. The QR alert asks "Would you like to open the app store?" and YES does nothing. Individually small; together the settings tree teaches the user that editing does nothing.
-  Evidence: `confirmDialog`'s `when` exhaustively traced against every `DialogRequest` id in `SettingsCatalog`/`Forms`; `rememberLauncherForActivityResult(OpenDocumentTree) { }` has an empty callback.
-  Fix: route unhandled TEXT/NUMBER confirmations into `transientValues[id]` so summaries update in-session (mirroring CHOICE_SINGLE), show the existing toast pattern for fixture-only actions ("Stored locally in this simulation"), reject non-numeric NUMBER input by keeping the dialog open or toasting, and acknowledge the folder pick (toast the chosen path or persist it as the Save-to summary). The QR alert's YES should either open the Play listing intent or the copy should stop asking.
-  Acceptance: every OK path visibly does something (summary update, toast, or validation message); no dialog discards typed input without feedback.
   Confidence: Verified
   Effort: M
 
@@ -303,15 +253,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: S
 
-- [ ] P3 — IS-47 Flip-camera treats camera 3 (front) as a flip target to camera 1 (also front), and the flip button highlights only camera 1
-  Category: correctness
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/MainViewModel.kt:130-132` (`flipCamera`: `if (id == 1) 0 else 1`), `LiveConsoleScreen.kt:143` (`selected = currentCameraId == 1`)
-  Problem: the lens fixture defines 0/2 as rear and 1/3 as front (D008). Flipping from camera 3 lands on camera 1 — front to front — and from camera 2 also lands on 1 rather than the last-used front lens; the flip button's selected tint ignores camera 3. Audit evidence covers only cameras 0/1/2, so the intended mapping for 3 is unevidenced, but front→front is wrong under any reading.
-  Fix: flip between facings: if current ∈ {1,3} go to the last-used rear (default 0), else to the last-used front (default 1); highlight when current ∈ {1,3}.
-  Acceptance: from camera 3, flip lands on a rear lens; flip highlight active for both front cameras; states 139-141 still validate.
-  Confidence: Likely (mechanism verified; audited intent for camera 3 unknown)
-  Effort: S
-
 - [ ] P3 — IS-48 Validation-state 101's error text lives in a 3.5-second system toast — capture timing can silently lose it
   Category: testing
   Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/ReplicaApp.kt:41-47` (validationError rendered via `Toast` then immediately consumed), `DebugStateCatalog.kt:86`
@@ -326,15 +267,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Where: `replica-app/scripts/build_final_report.py:65,96,110-114` (`stats()` returns None on empty input → `TypeError` instead of "no results found"; report text hardcodes "0.985" and the `PREVIOUS` pass constants rather than deriving them from `thresholds.csv`/results); `replica-app/scripts/extract_scroll_anchors.py:74-88` (selection-dialog branch requires `top >= list_top`, so a row straddling the viewport top can never anchor and `scroll_offset_px` is structurally 0 — latent today, wrong on any re-capture with a mid-row offset; screen 057, whose dump has no ListView because the IME covers it, is dropped by a bare `continue` with no message)
   Fix: early-exit with a clear message when results are empty; derive threshold text from `thresholds.csv` and assert uniformity; mirror the settings-branch filter (`bottom > list_top`); log every skipped screen.
   Acceptance: empty-dir run prints a one-line explanation and exits non-zero; extractor logs 057 as skipped-with-reason; a synthetic straddling-row XML produces a non-zero offset.
-  Confidence: Verified
-  Effort: S
-
-- [ ] P3 — IS-51 Dead code and dead parameters
-  Category: maintainability
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/components/AuditedDialogs.kt:263-270` (the `else if` button branch is unreachable — its guard can only be reached when type is CHOICE_SINGLE with dismissOnChoice, and its own condition then excludes every case); `PreferenceComponents.kt:245-256` (`InfoRow.enabled` — no caller passes true; the enabled branch is dead and its color choice inverts the disabled convention); `run-geometry-validation.ps1:3,13` (`-Serial` param and `$android` assignment unused); `replica-app/.gitignore:10-14` (`!validation/*/.gitkeep` negations can never take effect — the files don't exist and the root .gitignore ignores the dirs wholesale)
-  Problem: each misleads the next reader about behavior that cannot occur.
-  Fix: delete the unreachable branch; drop `InfoRow.enabled` or wire a real caller; remove the dead param/assignment; delete the `.gitkeep` negations or ship the scaffold they imply.
-  Acceptance: `grep` finds none of the four; build and tests stay green.
   Confidence: Verified
   Effort: S
 

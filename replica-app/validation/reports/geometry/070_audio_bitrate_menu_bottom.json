@@ -1,28 +1,115 @@
 {
-  "matched_elements": 2,
-  "unmatched_audit_elements": [
-    "128 Kbps",
-    "160 Kbps",
-    "256 Kbps",
-    "320 Kbps",
-    "96 Kbps"
-  ],
-  "replica_only_elements": [
-    "16 Kbps",
-    "24 Kbps",
-    "32 Kbps",
-    "64 Kbps",
-    "Auto",
-    "Selected"
-  ],
-  "max_abs_dleft": 30,
-  "max_abs_dtop": 39,
-  "max_abs_dwidth": 967,
-  "max_abs_dheight": 78,
-  "mean_abs_origin_error_px": 17.75,
-  "origins_within_2px_pct": 50.0,
-  "origins_within_4px_pct": 50.0,
+  "matched_elements": 7,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
+  "max_abs_dleft": 91,
+  "max_abs_dtop": 109,
+  "max_abs_dwidth": 1107,
+  "max_abs_dheight": 98,
+  "mean_abs_origin_error_px": 71.071,
+  "origins_within_2px_pct": 14.29,
+  "origins_within_4px_pct": 14.29,
   "elements": [
+    {
+      "key": "128 Kbps",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        338,
+        1767,
+        473
+      ],
+      "replica_bounds": [
+        579,
+        447,
+        777,
+        515
+      ],
+      "dleft": 91,
+      "dtop": 109,
+      "dwidth": -1081,
+      "dheight": -67
+    },
+    {
+      "key": "160 Kbps",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        473,
+        1767,
+        608
+      ],
+      "replica_bounds": [
+        579,
+        582,
+        777,
+        650
+      ],
+      "dleft": 91,
+      "dtop": 109,
+      "dwidth": -1081,
+      "dheight": -67
+    },
+    {
+      "key": "256 Kbps",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        608,
+        1767,
+        743
+      ],
+      "replica_bounds": [
+        579,
+        717,
+        777,
+        785
+      ],
+      "dleft": 91,
+      "dtop": 109,
+      "dwidth": -1081,
+      "dheight": -67
+    },
+    {
+      "key": "320 Kbps",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        743,
+        1767,
+        878
+      ],
+      "replica_bounds": [
+        579,
+        852,
+        777,
+        889
+      ],
+      "dleft": 91,
+      "dtop": 109,
+      "dwidth": -1081,
+      "dheight": -98
+    },
+    {
+      "key": "96 Kbps",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        338
+      ],
+      "replica_bounds": [
+        579,
+        312,
+        751,
+        380
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1107,
+      "dheight": 9
+    },
     {
       "key": "CANCEL",
       "class": "Button",

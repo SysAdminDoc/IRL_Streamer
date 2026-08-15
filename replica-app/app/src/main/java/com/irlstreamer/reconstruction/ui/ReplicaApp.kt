@@ -29,7 +29,14 @@ fun ReplicaApp(
     moveTaskToBackground: () -> Unit,
 ) {
     val context = LocalContext.current
-    val folderPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { }
+    // Acknowledge the chosen folder. Dropping the result made the audited
+    // "Save to" row launch the system picker and then behave as though the user
+    // had cancelled, whatever they chose.
+    val folderPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+        if (uri != null) {
+            viewModel.showToast("Recording destination set to ${uri.lastPathSegment ?: uri}")
+        }
+    }
 
     LaunchedEffect(state.runtime.requestFolderPicker) {
         if (state.runtime.requestFolderPicker) {

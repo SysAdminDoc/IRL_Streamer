@@ -242,7 +242,7 @@ fun SliderPreferenceRow(
 }
 
 @Composable
-fun InfoRow(id: String, text: String, enabled: Boolean = false) {
+fun InfoRow(id: String, text: String, emphasized: Boolean = false) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -252,7 +252,7 @@ fun InfoRow(id: String, text: String, enabled: Boolean = false) {
     ) {
         Text(
             text = text,
-            color = if (enabled) AuditColors.SecondaryText else Color(0xFFBDBDBD),
+            color = if (emphasized) AuditColors.SecondaryText else Color(0xFFBDBDBD),
             fontSize = 14.sp,
             lineHeight = 18.sp,
             maxLines = 4,

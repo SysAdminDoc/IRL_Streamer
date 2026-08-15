@@ -7,6 +7,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Security
 
+- API-key and password dialogs actually mask their input. The check tested the
+  per-field label, which is blank for every single-field catalog dialog, so it
+  only ever fired for two multi-field fixtures and left "Dashboard A API Key" and
+  similar in cleartext. Secret values are also never printed into a settings row
+  summary.
 - `Assert-ReplicaDevice` now refuses any target that does not report itself as an
   emulator. Requiring a serial was not a guard while the operator's phone and the
   emulator are both attached and the phone's serial was printed in the testing
@@ -31,6 +36,27 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Reopening a settings dialog showed the catalog default instead of the value it
   was editing, so confirming it silently reverted the saved setting - and a
   multi-select dropped every selection the default did not contain.
+- The geometry gate can now fail. It enforces coverage (every catalog state with
+  audit evidence must be compared), non-vacuity (a state that matched zero
+  elements measured nothing and is not a pass), and no regression against a
+  recorded ratchet baseline in `validation/geometry-baseline.json`. Previously it
+  computed statistics and always exited 0, so the states validated by geometry
+  rather than SSIM had no failing gate at all.
+- Settings now persist. Only fifteen toggle keys were durable; roughly twenty
+  more switches and every single-choice and text value lived in memory and reset
+  on relaunch. Toggles without a named field and all choice/text values are
+  stored generically, and "Reset app settings" clears in-session state instead of
+  leaving pre-reset values on screen.
+- Confirming a settings dialog no longer discards the input. Unhandled text and
+  number dialogs keep their value so the row they were opened from updates, a
+  non-numeric entry in a number dialog reports itself rather than closing
+  silently, and choosing a recording folder acknowledges the choice.
+- Settings pages no longer inherit each other's scroll position: every catalog
+  page renders through one composable, so the list state needed the page in its
+  key. Opening Root after scrolling Video showed Video's offset.
+- Flipping the camera switches facing rather than toggling against id 1, so
+  flipping from the second front lens no longer lands on another front lens, and
+  the console control lights up for both.
 - PowerShell harness robustness: the emulator boot poll no longer dies when adb
   writes routine "device offline" noise to stderr under the script-wide `Stop`
   preference, a wrong AVD name is reported immediately instead of after the full

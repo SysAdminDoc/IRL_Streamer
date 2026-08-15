@@ -1,46 +1,17 @@
 {
-  "matched_elements": 4,
-  "unmatched_audit_elements": [
-    "100#1",
-    "100#1",
-    "Enable Ethernet/USB Connection",
-    "Ethernet Weight",
-    "WiFi Weight"
-  ],
+  "matched_elements": 9,
+  "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Advanced Bonding Settings",
-    "Cellular Weight",
-    "Enable Cellular",
-    "Tune which links are enabled and their relative weights. The same values appear in Network quick settings."
+    "Cellular Weight"
   ],
   "max_abs_dleft": 188,
-  "max_abs_dtop": 646,
-  "max_abs_dwidth": 110,
+  "max_abs_dtop": 70,
+  "max_abs_dwidth": 1662,
   "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 180.75,
-  "origins_within_2px_pct": 37.5,
-  "origins_within_4px_pct": 37.5,
+  "mean_abs_origin_error_px": 51.5,
+  "origins_within_2px_pct": 38.89,
+  "origins_within_4px_pct": 38.89,
   "elements": [
-    {
-      "key": "Enable WiFi",
-      "class": "TextView",
-      "audit_bounds": [
-        278,
-        339,
-        511,
-        400
-      ],
-      "replica_bounds": [
-        278,
-        985,
-        527,
-        1047
-      ],
-      "dleft": 0,
-      "dtop": 646,
-      "dwidth": 16,
-      "dheight": 1
-    },
     {
       "key": "100",
       "class": "TextView",
@@ -52,14 +23,94 @@
       ],
       "replica_bounds": [
         2178,
-        749,
+        220,
         2248,
-        817
+        227
       ],
       "dleft": 188,
-      "dtop": 530,
+      "dtop": 1,
       "dwidth": -31,
-      "dheight": 53
+      "dheight": -8
+    },
+    {
+      "key": "100",
+      "class": "TextView",
+      "audit_bounds": [
+        1990,
+        566,
+        2091,
+        627
+      ],
+      "replica_bounds": [
+        2178,
+        524,
+        2248,
+        592
+      ],
+      "dleft": 188,
+      "dtop": -42,
+      "dwidth": -31,
+      "dheight": 7
+    },
+    {
+      "key": "100",
+      "class": "TextView",
+      "audit_bounds": [
+        1990,
+        959,
+        2091,
+        1020
+      ],
+      "replica_bounds": [
+        2178,
+        889,
+        2248,
+        957
+      ],
+      "dleft": 188,
+      "dtop": -70,
+      "dwidth": -31,
+      "dheight": 7
+    },
+    {
+      "key": "Enable WiFi",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        339,
+        511,
+        400
+      ],
+      "replica_bounds": [
+        278,
+        395,
+        527,
+        457
+      ],
+      "dleft": 0,
+      "dtop": 56,
+      "dwidth": 16,
+      "dheight": 1
+    },
+    {
+      "key": "WiFi Weight",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        468,
+        516,
+        529
+      ],
+      "replica_bounds": [
+        278,
+        524,
+        2178,
+        592
+      ],
+      "dleft": 0,
+      "dtop": 56,
+      "dwidth": 1662,
+      "dheight": 7
     },
     {
       "key": "Navigate up",
@@ -80,6 +131,46 @@
       "dtop": 35,
       "dwidth": -90,
       "dheight": -67
+    },
+    {
+      "key": "Enable Ethernet/USB Connection",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        732,
+        937,
+        793
+      ],
+      "replica_bounds": [
+        278,
+        760,
+        979,
+        822
+      ],
+      "dleft": 0,
+      "dtop": 28,
+      "dwidth": 42,
+      "dheight": 1
+    },
+    {
+      "key": "Ethernet Weight",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        861,
+        598,
+        922
+      ],
+      "replica_bounds": [
+        278,
+        889,
+        2178,
+        957
+      ],
+      "dleft": 0,
+      "dtop": 28,
+      "dwidth": 1580,
+      "dheight": 7
     },
     {
       "key": "Bonding and NoDrop options",

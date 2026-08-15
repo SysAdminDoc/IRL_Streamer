@@ -30,6 +30,8 @@ class MainViewModel(
     private val engine: BroadcastEngine = SimulatedBroadcastEngine(),
 ) : ViewModel() {
     private val runtime = MutableStateFlow(RuntimeUiState())
+    private var lastRearCameraId = 0
+    private var lastFrontCameraId = 1
 
     val uiState: StateFlow<AppUiState> = combine(runtime, repository.settings) { runtimeState, settings ->
         AppUiState(runtimeState, settings)
@@ -98,10 +100,22 @@ class MainViewModel(
     fun confirmDialog(value: String = "", selected: Set<String> = emptySet()) {
         val dialog = runtime.value.dialog ?: return
         if (dialog.type == DialogType.CHOICE_SINGLE && selected.isNotEmpty()) {
+            val choice = selected.first()
             runtime.value = runtime.value.copy(
-                transientValues = runtime.value.transientValues + (dialog.id to selected.first()),
+                transientValues = runtime.value.transientValues + (dialog.id to choice),
             )
+            viewModelScope.launch { repository.setChoiceValue(dialog.id, choice) }
         }
+
+        // A number dialog that cannot parse its input must say so rather than
+        // closing as though it worked.
+        if (dialog.type == DialogType.NUMBER && value.isNotBlank() && value.toIntOrNull() == null) {
+            runtime.value = runtime.value.copy(
+                validationError = "Enter a whole number for ${dialog.title.lowercase()}",
+            )
+            return
+        }
+
         when (dialog.id) {
             "chat_font_scale" -> value.toIntOrNull()?.let { setInt("chat_font_scale", it) }
             "alert_dashboard_scale" -> value.toIntOrNull()?.let { setInt("alert_dashboard_scale", it) }
@@ -112,7 +126,26 @@ class MainViewModel(
                 "Text" -> navigateTo(SettingsPage.TEXT_LAYER_FORM)
                 "Picture" -> navigateTo(SettingsPage.PICTURE_LAYER_FORM)
             }
-            "reset_settings" -> viewModelScope.launch { repository.reset() }
+            "reset_settings" -> {
+                viewModelScope.launch { repository.reset() }
+                // Clearing only the DataStore left every in-session value on
+                // screen, so a reset appeared not to have happened.
+                runtime.value = runtime.value.copy(
+                    transientValues = emptyMap(),
+                    transientBooleans = emptyMap(),
+                    overrides = com.irlstreamer.reconstruction.model.ScreenOverrides(),
+                )
+            }
+            else ->
+                // Everything else keeps its value for the session so the row it
+                // was opened from updates. Silently discarding the input taught
+                // the user that editing settings does nothing.
+                if (dialog.type == DialogType.TEXT || dialog.type == DialogType.NUMBER) {
+                    runtime.value = runtime.value.copy(
+                        transientValues = runtime.value.transientValues + (dialog.id to value),
+                    )
+                    viewModelScope.launch { repository.setChoiceValue(dialog.id, value) }
+                }
         }
         runtime.value = runtime.value.copy(dialog = null)
     }
@@ -141,8 +174,19 @@ class MainViewModel(
         runtime.value = runtime.value.copy(currentCameraId = cameraId)
     }
 
+    /**
+     * Flip between facings, not between two fixed ids.
+     *
+     * The lens fixture exposes 0 and 2 as rear and 1 and 3 as front (deviation
+     * D008). Toggling against id 1 alone meant flipping from camera 3 landed on
+     * camera 1 - front to front - and the console's flip control only lit up for
+     * one of the two front lenses.
+     */
     fun flipCamera() {
-        runtime.value = runtime.value.copy(currentCameraId = if (runtime.value.currentCameraId == 1) 0 else 1)
+        val current = runtime.value.currentCameraId
+        val target = if (current in FRONT_CAMERA_IDS) lastRearCameraId else lastFrontCameraId
+        if (current in FRONT_CAMERA_IDS) lastFrontCameraId = current else lastRearCameraId = current
+        runtime.value = runtime.value.copy(currentCameraId = target)
     }
 
     fun toggleMicrophone() {
@@ -200,13 +244,17 @@ class MainViewModel(
         runtime.value = runtime.value.copy(requestFolderPicker = true)
     }
 
+    /**
+     * Toggles persist. Keys with a named field in [ReplicaSettings] use it;
+     * everything else is stored generically. Previously only fifteen keys were
+     * durable and the rest reset on relaunch, which made roughly twenty audited
+     * switches look functional and silently forget.
+     */
     fun toggleBoolean(key: String, current: Boolean) {
         if (key in persistedBooleanKeys) {
             setBoolean(key, !current)
         } else {
-            runtime.value = runtime.value.copy(
-                transientBooleans = runtime.value.transientBooleans + (key to !current),
-            )
+            viewModelScope.launch { repository.setExtraToggle(key, !current) }
         }
     }
 
@@ -232,6 +280,9 @@ class MainViewModel(
     }
 
     private companion object {
+        /** Audit evidence: the console lens pills expose 1 and 3 as front lenses (D008). */
+        val FRONT_CAMERA_IDS = setOf(1, 3)
+
         val persistedBooleanKeys = setOf(
             "show_platform_icons",
             "show_bots",

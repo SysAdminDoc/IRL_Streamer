@@ -56,6 +56,13 @@ import com.irlstreamer.reconstruction.model.PopupBounds
 import com.irlstreamer.reconstruction.ui.theme.AuditColors
 import com.irlstreamer.reconstruction.ui.theme.AuditMetrics
 
+/** Whether a field label or dialog title names something that must not be shown. */
+internal fun isSecret(text: String): Boolean =
+    text.contains("key", ignoreCase = true) ||
+        text.contains("password", ignoreCase = true) ||
+        text.contains("token", ignoreCase = true) ||
+        text.contains("secret", ignoreCase = true)
+
 @Composable
 fun AuditedDialogHost(
     request: DialogRequest,
@@ -217,7 +224,13 @@ fun AuditedDialogHost(
                                     keyboardOptions = KeyboardOptions(
                                         keyboardType = if (request.type == DialogType.NUMBER) KeyboardType.Number else KeyboardType.Uri,
                                     ),
-                                    visualTransformation = if (label.contains("key", true) || label.contains("password", true)) {
+                                    // Mask on the field label *or* the dialog title. Every
+                                    // single-field catalog dialog has a blank label, so
+                                    // testing the label alone left "Dashboard A API Key"
+                                    // and every other single-field secret in cleartext -
+                                    // the check only ever fired for the two multi-field
+                                    // fixtures whose labels literally read "Stream key".
+                                    visualTransformation = if (isSecret(label) || isSecret(request.title)) {
                                         PasswordVisualTransformation()
                                     } else {
                                         VisualTransformation.None
@@ -261,14 +274,9 @@ fun AuditedDialogHost(
                                 Text(request.negativeLabel.uppercase(), fontSize = 14.sp, fontWeight = FontWeight.Medium)
                             }
                         }
+                        // A single-choice list that dismisses on tap confirms from the
+                        // row, so it needs no positive button; everything else does.
                         if (request.type != DialogType.CHOICE_SINGLE || !request.dismissOnChoice) {
-                            TextButton(
-                                onClick = { onConfirm(input, selected.toSet()) },
-                                colors = ButtonDefaults.textButtonColors(contentColor = AuditColors.Accent),
-                            ) {
-                                Text(request.positiveLabel.uppercase(), fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                            }
-                        } else if (request.type == DialogType.ALERT || request.type == DialogType.ABOUT || request.type == DialogType.TEXT || request.type == DialogType.NUMBER) {
                             TextButton(
                                 onClick = { onConfirm(input, selected.toSet()) },
                                 colors = ButtonDefaults.textButtonColors(contentColor = AuditColors.Accent),

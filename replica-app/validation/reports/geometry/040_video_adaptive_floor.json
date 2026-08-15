@@ -1,33 +1,55 @@
 {
-  "matched_elements": 2,
-  "unmatched_audit_elements": [
-    "Adaptive bitrate streaming",
-    "Adaptive frame rate",
-    "Fast",
-    "Mode",
-    "Noise reduction",
-    "On",
-    "Recommended - Automatically choose the best option for the current connection type.",
-    "Reduce frame rate related to bitrate drop in adaptive bitrate mode. However this can cause issues when it changes fps. YMMV"
-  ],
-  "replica_only_elements": [
-    "2 sec",
-    "Auto",
-    "Auto adjust bitrate based on format",
-    "Bitrate adjusts based on the format being used.",
-    "Bitrate mode",
-    "Format",
-    "Keyframe frequency",
-    "System default"
-  ],
+  "matched_elements": 10,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
   "max_abs_dleft": 45,
-  "max_abs_dtop": 35,
-  "max_abs_dwidth": 90,
-  "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 20.5,
-  "origins_within_2px_pct": 50.0,
-  "origins_within_4px_pct": 50.0,
+  "max_abs_dtop": 47,
+  "max_abs_dwidth": 1358,
+  "max_abs_dheight": 101,
+  "mean_abs_origin_error_px": 15.35,
+  "origins_within_2px_pct": 55.0,
+  "origins_within_4px_pct": 55.0,
   "elements": [
+    {
+      "key": "Recommended - Automatically choose the best option for the current connection type.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        732,
+        1770,
+        785
+      ],
+      "replica_bounds": [
+        278,
+        779,
+        1885,
+        832
+      ],
+      "dleft": 0,
+      "dtop": 47,
+      "dwidth": 115,
+      "dheight": 0
+    },
+    {
+      "key": "Mode",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        671,
+        392,
+        732
+      ],
+      "replica_bounds": [
+        278,
+        717,
+        398,
+        779
+      ],
+      "dleft": 0,
+      "dtop": 46,
+      "dwidth": 6,
+      "dheight": 1
+    },
     {
       "key": "Navigate up",
       "class": "ImageButton",
@@ -41,12 +63,132 @@
         120,
         119,
         188,
-        187
+        153
       ],
       "dleft": 45,
       "dtop": 35,
       "dwidth": -90,
-      "dheight": -67
+      "dheight": -101
+    },
+    {
+      "key": "Fast",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        384,
+        354,
+        437
+      ],
+      "replica_bounds": [
+        278,
+        424,
+        359,
+        477
+      ],
+      "dleft": 0,
+      "dtop": 40,
+      "dwidth": 5,
+      "dheight": 0
+    },
+    {
+      "key": "Noise reduction",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        323,
+        595,
+        384
+      ],
+      "replica_bounds": [
+        278,
+        362,
+        616,
+        424
+      ],
+      "dleft": 0,
+      "dtop": 39,
+      "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "Reduce frame rate related to bitrate drop in adaptive bitrate mode. However this can cause issues when it changes fps. YMMV",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        936,
+        1959,
+        1035
+      ],
+      "replica_bounds": [
+        278,
+        956,
+        1959,
+        1062
+      ],
+      "dleft": 0,
+      "dtop": 20,
+      "dwidth": 0,
+      "dheight": 7
+    },
+    {
+      "key": "Adaptive frame rate",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        875,
+        669,
+        936
+      ],
+      "replica_bounds": [
+        278,
+        894,
+        696,
+        956
+      ],
+      "dleft": 0,
+      "dtop": 19,
+      "dwidth": 27,
+      "dheight": 1
+    },
+    {
+      "key": "Adaptive bitrate streaming",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        550,
+        2136,
+        603
+      ],
+      "replica_bounds": [
+        278,
+        563,
+        778,
+        631
+      ],
+      "dleft": 0,
+      "dtop": 13,
+      "dwidth": -1358,
+      "dheight": 15
+    },
+    {
+      "key": "On",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        219,
+        327,
+        233
+      ],
+      "replica_bounds": [
+        278,
+        220,
+        330,
+        273
+      ],
+      "dleft": 0,
+      "dtop": 1,
+      "dwidth": 3,
+      "dheight": 39
     },
     {
       "key": "Video parameters",
@@ -61,12 +203,12 @@
         278,
         126,
         656,
-        179
+        153
       ],
       "dleft": 1,
       "dtop": 1,
       "dwidth": 67,
-      "dheight": 0
+      "dheight": -26
     }
   ],
   "screen": "040_video_adaptive_floor"

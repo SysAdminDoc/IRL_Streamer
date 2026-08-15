@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.irlstreamer.reconstruction.model.ReplicaSettings
@@ -13,6 +14,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 private val Context.replicaDataStore by preferencesDataStore(name = "irl_streamer_settings")
+
+/** Namespaces for generically persisted values, kept out of the named key space. */
+private const val TOGGLE_PREFIX = "toggle."
+private const val CHOICE_PREFIX = "choice."
 
 class ReplicaSettingsRepository(private val context: Context) {
     private object Keys {
@@ -68,6 +73,20 @@ class ReplicaSettingsRepository(private val context: Context) {
             safeMarginRatios = preferences[Keys.safeMarginRatios] ?: setOf("16:9 (1.78)"),
             timestampActive = preferences[Keys.timestampActive] ?: false,
             webOverlayMaster = preferences[Keys.webOverlayMaster] ?: true,
+            extraToggles = preferences.asMap()
+                .filterKeys { it.name.startsWith(TOGGLE_PREFIX) }
+                .entries
+                .mapNotNull { (key, value) ->
+                    (value as? Boolean)?.let { key.name.removePrefix(TOGGLE_PREFIX) to it }
+                }
+                .toMap(),
+            choiceValues = preferences.asMap()
+                .filterKeys { it.name.startsWith(CHOICE_PREFIX) }
+                .entries
+                .mapNotNull { (key, value) ->
+                    (value as? String)?.let { key.name.removePrefix(CHOICE_PREFIX) to it }
+                }
+                .toMap(),
         )
     }
 
@@ -85,6 +104,16 @@ class ReplicaSettingsRepository(private val context: Context) {
 
     suspend fun setStringSet(key: String, value: Set<String>) = context.replicaDataStore.edit { preferences ->
         preferences[stringSetKey(key)] = value
+    }
+
+    /** Persist a toggle the settings model has no named field for. */
+    suspend fun setExtraToggle(key: String, value: Boolean) = context.replicaDataStore.edit { preferences ->
+        preferences[booleanPreferencesKey("$TOGGLE_PREFIX$key")] = value
+    }
+
+    /** Persist a single-choice or text value, keyed by dialog id. */
+    suspend fun setChoiceValue(id: String, value: String) = context.replicaDataStore.edit { preferences ->
+        preferences[stringPreferencesKey("$CHOICE_PREFIX$id")] = value
     }
 
     suspend fun reset() = context.replicaDataStore.edit { it.clear() }

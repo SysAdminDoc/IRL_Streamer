@@ -37,7 +37,7 @@ sealed interface SettingItem {
         val steps: Int,
         val formatter: (Float) -> String,
     ) : SettingItem
-    data class Info(val id: String, val text: String, val enabled: Boolean = false) : SettingItem
+    data class Info(val id: String, val text: String) : SettingItem
 }
 
 sealed interface SettingAction {

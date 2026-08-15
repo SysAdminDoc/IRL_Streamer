@@ -107,6 +107,16 @@ data class ReplicaSettings(
     val safeMarginRatios: Set<String> = setOf("16:9 (1.78)"),
     val timestampActive: Boolean = false,
     val webOverlayMaster: Boolean = true,
+    /**
+     * Every other audited toggle, persisted generically.
+     *
+     * The named fields above are the ones the audit pins to a specific default
+     * or that other surfaces read. The rest used to live in memory only, so
+     * around twenty switches flipped convincingly and reset on relaunch.
+     */
+    val extraToggles: Map<String, Boolean> = emptyMap(),
+    /** Persisted single-choice and text values, keyed by dialog id. */
+    val choiceValues: Map<String, String> = emptyMap(),
 )
 
 data class ScreenOverrides(

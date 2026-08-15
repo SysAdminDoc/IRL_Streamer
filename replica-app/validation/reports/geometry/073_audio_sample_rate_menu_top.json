@@ -1,26 +1,75 @@
 {
-  "matched_elements": 3,
-  "unmatched_audit_elements": [
-    "11025",
-    "12000",
-    "16000",
-    "8000"
-  ],
-  "replica_only_elements": [
-    "24000",
-    "32000",
-    "44100",
-    "48000",
-    "Selected"
-  ],
+  "matched_elements": 7,
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
   "max_abs_dleft": 91,
-  "max_abs_dtop": 507,
-  "max_abs_dwidth": 1147,
+  "max_abs_dtop": 39,
+  "max_abs_dwidth": 1173,
   "max_abs_dheight": 78,
-  "mean_abs_origin_error_px": 111.5,
-  "origins_within_2px_pct": 33.33,
-  "origins_within_4px_pct": 33.33,
+  "mean_abs_origin_error_px": 49.357,
+  "origins_within_2px_pct": 14.29,
+  "origins_within_4px_pct": 14.29,
   "elements": [
+    {
+      "key": "11025",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        414,
+        1767,
+        549
+      ],
+      "replica_bounds": [
+        579,
+        447,
+        711,
+        515
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1147,
+      "dheight": -67
+    },
+    {
+      "key": "12000",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        549,
+        1767,
+        684
+      ],
+      "replica_bounds": [
+        579,
+        582,
+        711,
+        650
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1147,
+      "dheight": -67
+    },
+    {
+      "key": "16000",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        684,
+        1767,
+        819
+      ],
+      "replica_bounds": [
+        579,
+        717,
+        711,
+        785
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1147,
+      "dheight": -67
+    },
     {
       "key": "22050",
       "class": "CheckedTextView",
@@ -32,14 +81,34 @@
       ],
       "replica_bounds": [
         579,
-        312,
+        852,
         711,
+        889
+      ],
+      "dleft": 91,
+      "dtop": 33,
+      "dwidth": -1147,
+      "dheight": -22
+    },
+    {
+      "key": "8000",
+      "class": "CheckedTextView",
+      "audit_bounds": [
+        488,
+        279,
+        1767,
+        414
+      ],
+      "replica_bounds": [
+        579,
+        312,
+        685,
         380
       ],
       "dleft": 91,
-      "dtop": -507,
-      "dwidth": -1147,
-      "dheight": 9
+      "dtop": 33,
+      "dwidth": -1173,
+      "dheight": -67
     },
     {
       "key": "CANCEL",

@@ -1,0 +1,8 @@
+{
+  "recorded": "2026-08-15",
+  "within_2px_pct": 33.796,
+  "within_4px_pct": 36.226,
+  "mean_origin_error_px": 45.876,
+  "states_compared": 145,
+  "note": "Ratchet baseline for the geometry gate. Raise it by fixing layout, never by lowering this file."
+}
