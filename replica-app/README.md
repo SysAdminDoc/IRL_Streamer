@@ -4,6 +4,18 @@ IRL Streamer is an independent, authorized clean-room reconstruction of the obse
 
 The implementation recreates the audited landscape live console, settings hierarchy, dialogs, forms, overlays, quick settings, validation states, and lifecycle-facing navigation with deterministic local fixtures. Broadcasting, bonding transport, remote chat, remote dashboards, camera capture, recording, and arbitrary WebView execution are deliberately safe simulations because no authorized backend or transport specification was supplied.
 
+## Provenance of the audited original
+
+The audit left the original's streaming engine recorded as unknown. It is identifiable from evidence the audit already collected, so it is stated here rather than left for the next reader to re-derive:
+
+- Every class in the audited package carries the `com.wmspanel.streamer.*` prefix, the deep-link scheme is `larix:`, and the About screen declares "Includes licensed SRTLA code" (`../app-audit/app/application-identity.md`, `../app-audit/app/components-and-intents.md`).
+- `com.wmspanel` is Softvelum, whose own published application is `com.wmspanel.larix_broadcaster`.
+- The `go-irl` SRTLA server lists IRL Pro (Android) among its compatible clients, so the original speaks standard, interoperable SRTLA rather than a private variant.
+
+The audited original therefore runs Softvelum Larix broadcaster code with BELABOX SRTLA bonding added. The Softvelum code is **verified** from the class prefix and deep-link scheme; the specific commercial licensing arrangement behind it is a **strong inference**, not a verified fact.
+
+None of that code is present here. This reconstruction shares no source, no assets, and no signing identity with the original, is not affiliated with or endorsed by Softvelum, BELABOX, or the authors of IRL Pro, and does not present itself as the official application.
+
 ## Requirements
 
 - Windows 10/11 with PowerShell 5.1 or newer

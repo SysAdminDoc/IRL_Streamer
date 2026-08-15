@@ -8,15 +8,6 @@ Item IDs use the `IS-nn` scheme. Continue numbering from the highest existing ID
 
 Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded there.
 
-### P0
-
-- [ ] P0 — IS-03 Record the confirmed engine provenance of the audited original
-  Why: the audit's P0 unknown Q06/Q26 is now answered from evidence — the original runs Softvelum Larix broadcaster code with BELABOX SRTLA. Leaving it documented as "unknown" makes the next reader re-research it.
-  Evidence: `app-audit/app/application-identity.md` (`com.wmspanel.streamer.*`, `larix:` scheme, "Includes licensed SRTLA code"); go-irl lists IRL Pro as a compatible SRTLA client.
-  Touches: `replica-app/docs/known-deviations.md`, `replica-app/README.md`, `CLAUDE.md` `## Learned`
-  Acceptance: provenance is stated with its evidence, and the reconstruction's non-affiliation is restated alongside it.
-  Complexity: S
-
 ### P1
 
 - [ ] P1 — IS-04 Adopt StreamPack as the capture/encode engine behind `BroadcastEngine`

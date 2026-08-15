@@ -12,10 +12,26 @@
 | D008 | Camera list/capabilities | The local fixture exposes the four audited lens choices regardless of emulator hardware; no physical Camera2 parity is claimed. | The reference device camera matrix is device-specific and unavailable on the AVD. | Validate deterministic selected states and labels; hardware output is blocked. | ACCEPTED |
 | D009 | Telemetry/log content | Telemetry and log lines are deterministic, sanitized fixtures. | Live device diagnostics are dynamic and may contain device-specific/private details. | Values were not masked in the final sweep; positions and formatting are reviewed in combined evidence. | ACCEPTED_WITH_VISUAL_GAP |
 | D010 | Accessibility | Core icon controls receive accessible names, state descriptions, and 48 dp semantic targets. | The audit confirms unlabeled/sub-48 dp source controls; reproducing those defects is not required. | Record as an intentional accessibility improvement. | ACCEPTED |
-| D011 | About/help/legal text | Author, version, licensed-code, and official support destinations are replaced with reconstruction disclosures and local explanations. | Original identity, author claim, URLs, and SRTLA licensing are not authorized. | Validate modal structure and action behavior, not protected claims. | ACCEPTED |
+| D011 | About/help/legal text | Author, version, licensed-code, and official support destinations are replaced with reconstruction disclosures and local explanations. | Original identity, author claim, and URLs are not authorized. The original's engine provenance is now known (see below) and its SRTLA licensing is a strong inference, but neither is reproduced here. | Validate modal structure and action behavior, not protected claims. | ACCEPTED |
 | D012 | Lifecycle service | The replica keeps local UI/session state but does not run a camera/microphone streaming foreground service. | A real capture/transport pipeline would exceed the authorized local simulation scope. | Validate persistence, background/relaunch restoration, and no unintended transmission. | BLOCKED_EXTERNAL |
 | D013 | Soft keyboard on screens 055, 057, 077 | The replica focuses the field and raises the AVD's IME; the audit screenshots show the Samsung IME's landscape fullscreen extract-edit window covering the app. | The IME is a separate system-owned application. The audit UI hierarchy proves the app dialog is present underneath, and that dialog is reproduced. | Keyboard *behaviour* is validated (field focused, IME raised). The IME window pixels are excluded from the secondary app-chrome metric and remain in the strict unmasked gate. | ACCEPTED_WITH_VISUAL_GAP |
 | D014 | Third-party service names | Audited labels naming specific streaming platforms are replaced with neutral equivalents (for example "Twitch, Kick, etc." becomes "Platform A, Platform B, etc."). | Third-party marks were not authorized for reuse. | Row geometry and behaviour are validated; the substituted string differs in width and is excluded from label matching. | ACCEPTED |
+
+## Provenance of the audited original
+
+Recorded 2026-08-15 from evidence already in the audit, so it is not re-derived each pass.
+
+Every audited class carries the `com.wmspanel.streamer.*` prefix, the deep-link scheme is
+`larix:`, and the About screen declares "Includes licensed SRTLA code"
+(`app-audit/app/application-identity.md`, `app-audit/app/components-and-intents.md`).
+`com.wmspanel` is Softvelum, whose own application is `com.wmspanel.larix_broadcaster`, and
+the `go-irl` SRTLA server lists IRL Pro (Android) as a compatible client. The original runs
+**Softvelum Larix broadcaster code with BELABOX SRTLA bonding** — verified for the Softvelum
+code, a strong inference for the commercial licensing route.
+
+This changes nothing in the reconstruction: no Softvelum or BELABOX code is present, and the
+non-affiliation stated in `README.md` and D001 stands. It matters only because it makes the
+audit's engine question answered rather than open.
 
 ## Final validation disposition
 
