@@ -5,6 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.irlstreamer.reconstruction.data.ReplicaSettingsRepository
 import com.irlstreamer.reconstruction.debug.DebugStateCatalog
+import com.irlstreamer.reconstruction.engine.BroadcastEngine
+import com.irlstreamer.reconstruction.engine.BroadcastFailure
+import com.irlstreamer.reconstruction.engine.BroadcastRequest
+import com.irlstreamer.reconstruction.engine.BroadcastResult
+import com.irlstreamer.reconstruction.engine.SimulatedBroadcastEngine
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.AppUiState
 import com.irlstreamer.reconstruction.model.DialogRequest
@@ -20,12 +25,21 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: ReplicaSettingsRepository) : ViewModel() {
+class MainViewModel(
+    private val repository: ReplicaSettingsRepository,
+    private val engine: BroadcastEngine = SimulatedBroadcastEngine(),
+) : ViewModel() {
     private val runtime = MutableStateFlow(RuntimeUiState())
 
     val uiState: StateFlow<AppUiState> = combine(runtime, repository.settings) { runtimeState, settings ->
         AppUiState(runtimeState, settings)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), AppUiState(settings = ReplicaSettings()))
+
+    init {
+        // Keep the engine's view of the durable settings current, so bonding
+        // weights and encoder targets cannot drift from the settings tree.
+        viewModelScope.launch { repository.settings.collect(engine::configure) }
+    }
 
     fun navigateTo(page: SettingsPage) {
         runtime.value = runtime.value.let { current ->
@@ -135,8 +149,35 @@ class MainViewModel(private val repository: ReplicaSettingsRepository) : ViewMod
         runtime.value = runtime.value.copy(microphoneMuted = !runtime.value.microphoneMuted)
     }
 
-    fun showNoConnectionGuard() {
-        runtime.value = runtime.value.copy(dialog = DebugStateCatalog.noConnectionDialog())
+    /**
+     * Start the broadcast through the engine seam.
+     *
+     * No connection is configurable yet, so the simulation always refuses with
+     * [BroadcastFailure.NoActiveConnection] and the audited guard dialog is
+     * raised (screen 142). The refusal is the engine's decision, not the UI's,
+     * so a real engine changes this behaviour without touching Compose.
+     */
+    fun startBroadcast(connectionName: String? = null) {
+        viewModelScope.launch {
+            when (val result = engine.start(BroadcastRequest(connectionName))) {
+                is BroadcastResult.Started -> Unit
+                is BroadcastResult.Rejected -> when (val failure = result.failure) {
+                    BroadcastFailure.NoActiveConnection ->
+                        runtime.value = runtime.value.copy(dialog = DebugStateCatalog.noConnectionDialog())
+                    is BroadcastFailure.TransportUnavailable ->
+                        runtime.value = runtime.value.copy(toastMessage = failure.reason)
+                }
+            }
+        }
+    }
+
+    fun stopBroadcast() {
+        viewModelScope.launch { engine.stop() }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        engine.release()
     }
 
     fun reload() {

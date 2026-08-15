@@ -159,7 +159,7 @@ fun LiveConsoleScreen(state: AppUiState, viewModel: MainViewModel) {
 
         StartButton(
             modifier = Modifier.offset(x = 334.4.dp, y = maxHeight - 48.dp),
-            onClick = viewModel::showNoConnectionGuard,
+            onClick = { viewModel.startBroadcast() },
         )
 
         LensSelector(

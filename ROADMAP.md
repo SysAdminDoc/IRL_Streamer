@@ -10,13 +10,6 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P0
 
-- [ ] P0 — IS-02 Introduce a `BroadcastEngine` abstraction with the current simulation behind it
-  Why: `MainViewModel` mutates UI state directly and `DebugStateCatalog` fabricates every value, so no real pipeline can be added without disturbing the 145-state debug harness that all validation depends on.
-  Evidence: RESEARCH.md "Architecture Assessment"; `app/src/main/java/com/irlstreamer/reconstruction/MainViewModel.kt`, `.../debug/DebugStateCatalog.kt`
-  Touches: new `.../engine/BroadcastEngine.kt`, `.../engine/SimulatedBroadcastEngine.kt`, `MainViewModel.kt`
-  Acceptance: all 145 debug states render identically (geometry + visual gates unchanged) with the simulation reached only through the interface; unit tests cover start/stop/state transitions against a fake.
-  Complexity: M
-
 - [ ] P0 — IS-03 Record the confirmed engine provenance of the audited original
   Why: the audit's P0 unknown Q06/Q26 is now answered from evidence — the original runs Softvelum Larix broadcaster code with BELABOX SRTLA. Leaving it documented as "unknown" makes the next reader re-research it.
   Evidence: `app-audit/app/application-identity.md` (`com.wmspanel.streamer.*`, `larix:` scheme, "Includes licensed SRTLA code"); go-irl lists IRL Pro as a compatible SRTLA client.
