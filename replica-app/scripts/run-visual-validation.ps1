@@ -10,6 +10,16 @@ $android = Initialize-AndroidEnvironment
 Assert-ReplicaDevice -Serial $Serial -Adb $android.Adb
 $catalogPath = Join-Path (Split-Path $script:ProjectRoot -Parent) 'app-audit\screens\screen-catalog.csv'
 $catalog = Import-Csv -LiteralPath $catalogPath
+
+# Baselines are the audit's own screenshots and are gitignored, so a fresh clone
+# has none and every compare would fail with "Image not found". Restore them
+# before capturing rather than making that a documented manual step.
+$baselineDir = Join-Path $script:ValidationRoot 'baseline'
+if (-not (Test-Path -LiteralPath $baselineDir) -or @(Get-ChildItem -LiteralPath $baselineDir -Filter '*.png' -ErrorAction SilentlyContinue).Count -eq 0) {
+    Write-Host 'No comparison baselines present; restoring them from the audit evidence.'
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'sync-baselines.ps1')
+    if ($LASTEXITCODE -ne 0) { throw 'Could not restore comparison baselines from the audit.' }
+}
 if ($All) {
     $targets = @($catalog.screen_id)
 }

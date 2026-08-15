@@ -45,6 +45,13 @@ if ($booted -ne '1') { throw "Emulator $serial did not complete boot." }
 foreach ($settingArgs in @(
     @('shell', 'wm', 'size', '1080x2316'),
     @('shell', 'wm', 'density', '450'),
+    # Animations are the largest remaining source of capture-to-capture pixel
+    # noise: a screenshot taken while a transition is in flight differs from the
+    # same screen at rest. All three scales must be zero; setting only one leaves
+    # the others running.
+    @('shell', 'settings', 'put', 'global', 'window_animation_scale', '0'),
+    @('shell', 'settings', 'put', 'global', 'transition_animation_scale', '0'),
+    @('shell', 'settings', 'put', 'global', 'animator_duration_scale', '0'),
     @('shell', 'settings', 'put', 'system', 'accelerometer_rotation', '0'),
     @('shell', 'settings', 'put', 'system', 'user_rotation', '1'),
     @('shell', 'settings', 'put', 'system', 'font_scale', '1.0'),
@@ -66,4 +73,11 @@ if ($densityReport -notmatch '450') {
     throw "Emulator $serial reports '$densityReport' instead of the audited density 450."
 }
 Write-Host "Display verified: $sizeReport / $densityReport"
+
+# SystemUI demo mode (a frozen clock and battery) is deliberately NOT enabled.
+# It would stabilise the status bar across runs, but the strict gate compares
+# unmasked whole screens against a Samsung phone that was not in demo mode, so
+# it would move every settings capture further from its baseline for no parity
+# gain. The status bar is instead excluded from the secondary app-chrome metric
+# only (validation/masks/mask-register.csv).
 Write-Host "HEADLESS_EMULATOR_SERIAL=$serial"

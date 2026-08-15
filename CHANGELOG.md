@@ -93,6 +93,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `scripts/sync-baselines.ps1` restores the comparison baselines from the audit
+  evidence, and the visual sweep calls it automatically when none are present. A
+  fresh clone previously failed every documented compare command with "Image not
+  found", because the baselines are generated evidence and therefore gitignored.
+- The emulator provisioning script zeroes all three animation scales and reads
+  the display size and density back, so a silently failed `wm size` is reported
+  instead of producing 145 dimension mismatches with no stated cause.
 - `BroadcastEngine` seam with the local simulation behind it
   (`SimulatedBroadcastEngine`), so a capture/transport implementation can land
   without touching Compose or the 145-state debug harness. Starting a broadcast

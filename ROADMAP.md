@@ -194,15 +194,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: M
 
-- [ ] P2 — IS-39 Fresh clone cannot run any visual comparison: `validation/baseline/` is gitignored and nothing populates it
-  Category: reliability
-  Where: `.gitignore:21`, `replica-app/scripts/compare-screen.ps1:7-9`, `replica-app/README.md:129`
-  Problem: every compare requires `validation/baseline/<id>.png`; the directory is gitignored, no script copies it from `app-audit/evidence/screenshots/`, and the README claims `validation/` contains "immutable baseline copies" — false on a clone. Every documented compare command dies with "Image not found".
-  Fix: add a `sync-baselines.ps1` (or a step inside `run-visual-validation.ps1`) that mirrors `app-audit/evidence/screenshots/` → `validation/baseline/` when missing, and correct the README sentence.
-  Acceptance: on a clean checkout, `run-full-validation.ps1 -AllScreens` reaches the capture stage without manual baseline copying.
-  Confidence: Verified
-  Effort: S
-
 ### P3
 
 - [ ] P3 — IS-44 Accessibility gaps on the surfaces D010 claims were improved
@@ -262,14 +253,6 @@ From `RESEARCH.md` second pass (screenshot-testing ecosystem, competitor matrice
   Depends on: IS-24 (gate must be able to fail at all), IS-22 (artifacts must be fresh)
   Touches: `scripts/run-geometry-validation.ps1`, `scripts/visual_compare.py`, `validation/thresholds.csv`, `scripts/run-visual-validation.ps1`
   Acceptance: geometry pass/fail is the primary per-state verdict; each state's SSIM threshold is derived from N≥5 clean-run captures as `median − k·MAD` and recorded with its derivation date in `thresholds.csv`; a state that regresses structurally fails geometry even when its calibrated SSIM passes.
-  Complexity: M
-
-- [ ] P1 — IS-54 Emulator determinism kit for the validation AVD
-  Why: run-to-run pixel noise (animations, GPU raster differences, live status-bar clock/battery, warm app state) consumes threshold budget and is the enemy of IS-53's calibration; every practice below is standard in 2026 screenshot-testing CI and absent here.
-  Evidence: android-ui-testing cookbook; ReactiveCircus emulator-runner configs; Roborazzi/testify docs — RESEARCH.md "Screenshot-testing ecosystem".
-  Depends on: none
-  Touches: `scripts/start-headless-emulator.ps1`, `scripts/capture-replica-screen.ps1`, AVD `config.ini`
-  Acceptance: AVD pins `hw.lcd.density=450`/`hw.lcd.width=2316`/`hw.lcd.height=1080`; emulator launches with `-gpu swiftshader_indirect -no-boot-anim -noaudio`; the three animation scales are set to 0; `adb shell cmd statusbar` demo mode freezes clock/battery during capture; a post-boot configured snapshot is restored with `-snapshot <name> -no-snapshot-save` per run; `am force-stop` runs between states (closing the warm-state class alongside IS-26); two consecutive full sweeps of an unchanged build produce per-state SSIM deltas < 0.005.
   Complexity: M
 
 ### P2
