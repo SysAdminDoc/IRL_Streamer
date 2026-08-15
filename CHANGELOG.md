@@ -3,7 +3,13 @@
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [0.2.0] - 2026-08-15
+
+First pass over the audit findings (IS-22..IS-51) and the earlier research
+roadmap. The theme is gate integrity: the three validation gates could report a
+stale pass, could not fail on geometry at all, and printed evidence that was
+hardcoded rather than measured. Fixing them exposed four real reconstruction
+defects that the blunted gates had been hiding.
 
 ### Security
 

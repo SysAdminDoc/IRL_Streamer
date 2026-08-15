@@ -134,7 +134,7 @@ object DebugStateCatalog {
                 id = "about",
                 title = "IRL Streamer",
                 type = DialogType.ABOUT,
-                message = "Independent build - Version 0.1.0\nLocal simulation; no licensed transport code",
+                message = "Independent build - Version 0.2.0\nLocal simulation; no licensed transport code",
                 positiveLabel = "OK",
             ))
             in 130..138 -> liveQuickPreset(base, number)

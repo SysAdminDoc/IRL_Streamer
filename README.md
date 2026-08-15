@@ -4,6 +4,10 @@
 
 # IRL_Streamer
 
+[![Version](https://img.shields.io/badge/version-0.2.0-80CBC4)](CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Android%209%2B%20(API%2028--36)-3DDC84)](replica-app/)
+
 IRL_Streamer is an independent Android live-streaming console reconstructed from an authorized, observable-behavior audit. The project preserves the audited workflow map while replacing the original app identity, artwork, and implementation with clean-room Kotlin and Jetpack Compose code.
 
 The working Android project is in [`replica-app`](replica-app/). The immutable 145-state behavior and screen audit is in [`app-audit`](app-audit/).
