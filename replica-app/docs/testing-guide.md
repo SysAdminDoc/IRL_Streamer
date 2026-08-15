@@ -2,7 +2,7 @@
 
 ## Isolation rule
 
-All replica commands require a serial. Use only an isolated emulator serial such as `emulator-5554`; never pass the original phone serial `R5CT139QJ5F`. The scripts do not inspect, launch, clear, or modify the original package.
+All replica commands require a serial, and `Assert-ReplicaDevice` in `scripts/Common.ps1` refuses any target that does not report itself as an emulator (serial prefixed `emulator-`, or `ro.kernel.qemu=1`). Use an isolated emulator serial such as `emulator-5554`. The original audit phone is never a valid target: the guard rejects it, and the physical serial is deliberately not written down here so it cannot be copied out of the docs by mistake. `-AllowPhysicalDevice` exists as an explicit, authorized escape hatch only. The scripts do not inspect, launch, clear, or modify the original package.
 
 Start the configured emulator without a visible window:
 

@@ -13,13 +13,16 @@ Status ladder used here:
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 VALIDATION = ROOT / "validation"
 DOCS = ROOT / "docs"
+CATALOG = ROOT.parent / "app-audit" / "screens" / "screen-catalog.csv"
 
 
 def load_results() -> dict[str, dict]:
@@ -67,7 +70,7 @@ def classify(sid: str, results: dict, geometry: dict) -> tuple[str, str]:
 
 
 def rewrite(path: Path, status_field: str, note_field: str, id_field: str,
-            results: dict, geometry: dict, extra) -> dict[str, int]:
+            results: dict, geometry: dict, extra, keep_missing: bool = False) -> dict[str, int]:
     with path.open(encoding="utf-8-sig", newline="") as fh:
         reader = csv.DictReader(fh)
         fieldnames = reader.fieldnames
@@ -76,6 +79,11 @@ def rewrite(path: Path, status_field: str, note_field: str, id_field: str,
     counts: dict[str, int] = {}
     for row in rows:
         sid = row[id_field]
+        if keep_missing and sid not in results:
+            # Leave the recorded status alone rather than downgrading a state
+            # this run simply did not capture.
+            counts[row[status_field]] = counts.get(row[status_field], 0) + 1
+            continue
         status, note = classify(sid, results, geometry)
         row[status_field] = status
         row[note_field] = note
@@ -91,8 +99,35 @@ def rewrite(path: Path, status_field: str, note_field: str, id_field: str,
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--allow-partial",
+        action="store_true",
+        help="Rewrite statuses even when the results on disk do not cover the whole catalog.",
+    )
+    args = parser.parse_args()
+
     results = load_results()
     geometry = load_geometry()
+
+    # These CSVs are committed evidence. Rewriting them from a partial or empty
+    # results directory - a fresh clone, or the default 16-screen sweep - marks
+    # every uncovered state NOT_STARTED and destroys the recorded status. The
+    # default sweep is exactly the case that would do it silently.
+    with CATALOG.open(encoding="utf-8-sig", newline="") as fh:
+        catalog_ids = {row["screen_id"] for row in csv.DictReader(fh)}
+    missing = sorted(catalog_ids - set(results))
+    if missing and not args.allow_partial:
+        print(
+            f"refusing to rewrite: {len(missing)} of {len(catalog_ids)} catalog states have no "
+            f"result on disk (first: {', '.join(missing[:5])}). Run a full sweep "
+            "(run-visual-validation.ps1 -All) or pass --allow-partial to update only the "
+            "states that do.",
+            file=sys.stderr,
+        )
+        return 1
+    if missing:
+        print(f"partial update: {len(missing)} state(s) without results keep their recorded status")
 
     def status_extra(row, sid, result, geo):
         if result is not None:
@@ -102,11 +137,11 @@ def main() -> int:
 
     counts_status = rewrite(
         DOCS / "implementation-status.csv", "status", "notes", "audit_screen_id",
-        results, geometry, status_extra,
+        results, geometry, status_extra, keep_missing=bool(missing),
     )
     counts_matrix = rewrite(
         DOCS / "audit-traceability-matrix.csv", "current_status", "reason_for_deviation", "audit_screen_id",
-        results, geometry, None,
+        results, geometry, None, keep_missing=bool(missing),
     )
 
     print("implementation-status.csv:", dict(sorted(counts_status.items())))

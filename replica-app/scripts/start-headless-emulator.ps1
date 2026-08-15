@@ -17,24 +17,53 @@ $deadline = (Get-Date).AddSeconds($BootTimeoutSeconds)
 $serial = $null
 while ((Get-Date) -lt $deadline -and $null -eq $serial) {
     Start-Sleep -Seconds 2
-    $devices = @(& $android.Adb devices | Select-String '^emulator-\d+\s+device' | ForEach-Object { ($_ -split '\s+')[0] })
+    # A wrong -Avd name exits within seconds. Without this the script would block
+    # for the whole timeout and then blame the timeout rather than the emulator.
+    if ($process.HasExited) {
+        throw "Emulator process exited with code $($process.ExitCode) before reporting a serial. Check $errorLog (a wrong -Avd name is the usual cause; this run used '$Avd')."
+    }
+    $devices = @(Get-NativeOutput -FilePath $android.Adb -Arguments @('devices') |
+        Select-String '^emulator-\d+\s+device' | ForEach-Object { ($_ -split '\s+')[0] })
     $serial = $devices | Where-Object { $before -notcontains $_ } | Select-Object -First 1
 }
 if ($null -eq $serial) { throw "Headless emulator did not become ready within $BootTimeoutSeconds seconds. Logs: $log" }
 
 $bootDeadline = (Get-Date).AddSeconds($BootTimeoutSeconds)
+$booted = ''
 do {
     Start-Sleep -Seconds 2
-    $booted = (& $android.Adb -s $serial shell getprop sys.boot_completed 2>$null).Trim()
+    if ($process.HasExited) {
+        throw "Emulator process exited with code $($process.ExitCode) during boot. Check $errorLog."
+    }
+    # adb writes "error: device offline"/"error: closed" to stderr during this
+    # window. Get-NativeOutput keeps that from becoming a terminating error and
+    # returns '' rather than $null, so the comparison below is always safe.
+    $booted = Get-NativeOutput -FilePath $android.Adb -Arguments @('-s', $serial, 'shell', 'getprop', 'sys.boot_completed')
 } while ($booted -ne '1' -and (Get-Date) -lt $bootDeadline)
 if ($booted -ne '1') { throw "Emulator $serial did not complete boot." }
 
-& $android.Adb -s $serial shell wm size 1080x2316 | Out-Null
-& $android.Adb -s $serial shell wm density 450 | Out-Null
-& $android.Adb -s $serial shell settings put system accelerometer_rotation 0 | Out-Null
-& $android.Adb -s $serial shell settings put system user_rotation 1 | Out-Null
-& $android.Adb -s $serial shell settings put system font_scale 1.0 | Out-Null
-& $android.Adb -s $serial shell settings put secure immersive_mode_confirmations confirmed | Out-Null
-& $android.Adb -s $serial shell cmd uimode night yes | Out-Null
-& $android.Adb -s $serial shell cmd overlay enable com.android.internal.systemui.navbar.threebutton 2>$null | Out-Null
+foreach ($settingArgs in @(
+    @('shell', 'wm', 'size', '1080x2316'),
+    @('shell', 'wm', 'density', '450'),
+    @('shell', 'settings', 'put', 'system', 'accelerometer_rotation', '0'),
+    @('shell', 'settings', 'put', 'system', 'user_rotation', '1'),
+    @('shell', 'settings', 'put', 'system', 'font_scale', '1.0'),
+    @('shell', 'settings', 'put', 'secure', 'immersive_mode_confirmations', 'confirmed'),
+    @('shell', 'cmd', 'uimode', 'night', 'yes'),
+    @('shell', 'cmd', 'overlay', 'enable', 'com.android.internal.systemui.navbar.threebutton')
+)) {
+    Get-NativeOutput -FilePath $android.Adb -Arguments (@('-s', $serial) + $settingArgs) | Out-Null
+}
+
+# Read the display back. A silently failed `wm size` produces 145 dimension
+# mismatches downstream with nothing pointing at the cause.
+$sizeReport = Get-NativeOutput -FilePath $android.Adb -Arguments @('-s', $serial, 'shell', 'wm', 'size')
+$densityReport = Get-NativeOutput -FilePath $android.Adb -Arguments @('-s', $serial, 'shell', 'wm', 'density')
+if ($sizeReport -notmatch '1080x2316') {
+    throw "Emulator $serial reports '$sizeReport' instead of the audited 1080x2316. Captures would not match the baselines."
+}
+if ($densityReport -notmatch '450') {
+    throw "Emulator $serial reports '$densityReport' instead of the audited density 450."
+}
+Write-Host "Display verified: $sizeReport / $densityReport"
 Write-Host "HEADLESS_EMULATOR_SERIAL=$serial"

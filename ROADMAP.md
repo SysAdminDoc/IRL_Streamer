@@ -182,16 +182,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: M
 
-- [ ] P1 — IS-29 Emulator boot script crashes intermittently: `2>$null` under `$ErrorActionPreference='Stop'` turns adb stderr into a terminating error
-  Category: reliability
-  Where: `replica-app/scripts/start-headless-emulator.ps1:28,39` (dot-sources `Common.ps1`, which sets EAP Stop at line 1-2)
-  Problem: in PS 5.1 with EAP Stop, `& adb … 2>$null` throws on the first stderr line. The boot poll at line 28 runs immediately after the serial appears, exactly when adb emits `error: closed`/`error: device offline` — killing the script mid-wait. When adb errors, stdout is `$null` and the subsequent `.Trim()` is a second terminating error. Line 39 has the same trap after boot, which can orphan a running headless emulator after the wait succeeded but before the serial is printed. This is the entry point of the whole validation pipeline.
-  Evidence: mechanics empirically verified on this host's PS 5.1 (stderr redirect under EAP Stop throws; `$null.Trim()` throws).
-  Fix: wrap the poll body in try/catch (treat any throw as "not booted yet"), null-guard with `"$booted".Trim()`, and lower EAP around the post-boot `cmd overlay`/`wm` calls the way `Invoke-Checked` (Common.ps1:59-61) already does.
-  Acceptance: the script survives an `adb: device offline` window during boot and always either prints `HEADLESS_EMULATOR_SERIAL` or kills the emulator process it started.
-  Confidence: Verified
-  Effort: S
-
 ### P2
 
 - [ ] P2 — IS-30 Settings scroll position leaks between pages — opening a second settings page inherits the previous page's scroll
@@ -274,15 +264,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: S
 
-- [ ] P2 — IS-38 Device guard accepts the operator's physical phone; the docs print its serial next to the commands
-  Category: reliability
-  Where: `replica-app/scripts/Common.ps1:80-92` (`Assert-ReplicaDevice` checks only connected + non-empty), `replica-app/docs/testing-guide.md:5` (prints the physical device serial verbatim)
-  Problem: the repo's standing rule is that validation never touches the attached Samsung phone, but nothing enforces it — a single paste slip of the phone serial (conveniently displayed in the testing guide) passes the guard and installs/launches/`pm clear`s on the phone. All adb calls are `-s`-targeted (verified), so the only hole is serial choice — which is exactly the hole.
-  Fix: in `Assert-ReplicaDevice`, require `$Serial -like 'emulator-*'` or `adb -s $Serial shell getprop ro.kernel.qemu` returning 1, with an explicit `-AllowPhysicalDevice` switch as the escape hatch; remove the real serial from testing-guide.md.
-  Acceptance: passing the phone's serial to any validation script aborts with a clear message unless the escape hatch is given.
-  Confidence: Verified
-  Effort: S
-
 - [ ] P2 — IS-39 Fresh clone cannot run any visual comparison: `validation/baseline/` is gitignored and nothing populates it
   Category: reliability
   Where: `.gitignore:21`, `replica-app/scripts/compare-screen.ps1:7-9`, `replica-app/README.md:129`
@@ -292,26 +273,7 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: S
 
-- [ ] P2 — IS-41 `Stop-GradleDaemons` in `finally` blocks can convert a green build into a failure (or mask the real error)
-  Category: reliability
-  Where: `replica-app/scripts/Common.ps1:96`
-  Problem: `& gradle --stop … 2>&1 | Out-Null` runs under script-wide EAP Stop; any JVM stderr noise (`Picked up _JAVA_OPTIONS`, deprecation warnings) becomes a terminating error inside the `finally` of every build/test wrapper — a successful build exits non-zero, and if the `try` had already thrown, the finally's exception replaces the real error. `Invoke-Checked` (lines 59-61) already lowers EAP around its own redirect for exactly this reason.
-  Evidence: `2>&1 | Out-Null` under EAP Stop empirically verified to throw on stderr output on this host's PS 5.1.
-  Fix: set `$ErrorActionPreference = 'Continue'` locally inside `Stop-GradleDaemons` (it is intentionally best-effort).
-  Acceptance: a build run with `_JAVA_OPTIONS` set to emit a warning still exits 0.
-  Confidence: Verified
-  Effort: S
-
 ### P3
-
-- [ ] P3 — IS-43 `update_traceability.py` run on an empty results dir wipes both committed status CSVs
-  Category: reliability
-  Where: `replica-app/scripts/update_traceability.py:27-29,44-48,62-63`
-  Problem: the script treats whatever is in `validation/results/` as the truth. On a fresh clone (results gitignored/empty) it rewrites all 145 rows of `docs/audit-traceability-matrix.csv` and `docs/implementation-status.csv` to `NOT_STARTED "No capture on disk."`, destroying committed status; with a partial (default 16-screen) sweep it mixes passes into the "current" columns.
-  Fix: refuse to run (with a clear message) when results count < catalog count unless `--allow-partial` is passed; on partial runs touch only the refreshed rows.
-  Acceptance: running the script on a clean clone exits non-zero without modifying the CSVs.
-  Confidence: Verified
-  Effort: S
 
 - [ ] P3 — IS-44 Accessibility gaps on the surfaces D010 claims were improved
   Category: a11y
@@ -358,15 +320,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Acceptance: repeated captures of state 101 deterministically contain the error text (verify with 5 consecutive captures).
   Confidence: Needs-repro (mechanism verified in code; flake not yet observed)
   Effort: S
-
-- [ ] P3 — IS-49 PowerShell harness robustness: StrictMode `.Count`, unset `$output`, dead-emulator wait, unverified `wm size`
-  Category: reliability
-  Where: `replica-app/scripts/run-geometry-validation.ps1:29-30` (`$rows.Count` throws under StrictMode 2.0 when Where-Object yields 0 or 1 rows — the "no rows" guard can never print its own message); `Common.ps1:62-64` (missing `py.exe` leaves `$output` unassigned → misleading "variable not set" error); `start-headless-emulator.ps1:16-38` (wait loop never checks `$process.HasExited`, so a bad `-Avd` name blocks the full 240 s; `wm size`/`wm density` results are piped to Out-Null unchecked — a failure yields 145 DIMENSION_MISMATCH results with no root-cause hint)
-  Problem: all four fail in degraded scenarios with wrong or absent messages — exactly when diagnostics matter.
-  Fix: `$rows = @(Import-Csv … | Where-Object …)`; initialize `$output = @()` or `Get-Command $FilePath` upfront; poll `HasExited` in the wait loop and surface `.err.log`; read back `wm size`/`wm density` after setting them and abort on mismatch.
-  Acceptance: each degraded scenario (0 OK rows; py.exe absent; typo'd AVD; failed wm size) produces its intended, specific error message.
-  Confidence: Verified (first two empirically; latter two by code path)
-  Effort: M
 
 - [ ] P3 — IS-50 Python harness robustness: crash on empty results, threshold text hardcoded, anchor extractor's latent filter and silent skip
   Category: maintainability

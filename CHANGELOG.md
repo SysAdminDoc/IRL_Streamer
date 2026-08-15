@@ -5,6 +5,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Security
+
+- `Assert-ReplicaDevice` now refuses any target that does not report itself as an
+  emulator. Requiring a serial was not a guard while the operator's phone and the
+  emulator are both attached and the phone's serial was printed in the testing
+  guide: one paste slip would install, launch and clear data on the phone.
+  `-AllowPhysicalDevice` is the explicit escape hatch, and the physical serial is
+  no longer written down in the docs.
+
 ### Fixed
 
 - The final coverage report derives its evidence instead of asserting it. Test
@@ -22,6 +31,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Reopening a settings dialog showed the catalog default instead of the value it
   was editing, so confirming it silently reverted the saved setting - and a
   multi-select dropped every selection the default did not contain.
+- PowerShell harness robustness: the emulator boot poll no longer dies when adb
+  writes routine "device offline" noise to stderr under the script-wide `Stop`
+  preference, a wrong AVD name is reported immediately instead of after the full
+  timeout, and `wm size` / `wm density` are read back so a silent failure cannot
+  produce 145 dimension mismatches with no stated cause. `Stop-GradleDaemons` can
+  no longer fail a green build (or mask a real error) from a `finally` block, and
+  a missing executable reports itself instead of surfacing as an unset variable.
+- `update_traceability.py` refuses to rewrite the committed status CSVs from a
+  partial or empty results directory, which previously marked every uncovered
+  state `NOT_STARTED` and destroyed the recorded status. `--allow-partial`
+  updates only the states that have results.
 - Seven scroll anchors recorded a slider value or the page title instead of a row
   title and could never resolve, silently falling back to the hand-guessed
   indices the anchors were built to replace. Anchors now come from the row's own
