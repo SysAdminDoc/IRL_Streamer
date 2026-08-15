@@ -170,18 +170,6 @@ Deep audit pass over `replica-app/` (app source, validation harness, scripts, do
 Baseline at audit time: debug build green, 11/11 JVM unit tests green, no pre-existing
 build/test failures. IDs continue the `IS-nn` scheme from IS-21.
 
-### P0
-
-- [ ] P0 — IS-22 Validation artifacts are never invalidated between runs — a state that fails to capture keeps its previous result, including PASS
-  Category: correctness
-  Where: `replica-app/scripts/run-visual-validation.ps1:30-45`, `replica-app/scripts/capture-replica-screen.ps1:45-54`, `replica-app/scripts/run-geometry-validation.ps1:16-30`
-  Problem: three compounding freshness holes. (a) `run-visual-validation.ps1` assigns `$compareExit` but never uses it; each row's status is read solely from `validation\results\$id.json`, which is never deleted before capture — if capture fails (`$captureExit -ne 0`) or `compare-screen.ps1` throws before `visual_compare.py` writes the JSON, the *previous run's* result (including PASS) is reported and the script can exit 0. (b) `capture-replica-screen.ps1` swallows `uiautomator dump` failure with only a `Write-Warning` while `validation/hierarchy/` retains all 145 dumps between runs, so the geometry pass silently scores a stale hierarchy as current (`NO_REPLICA_DUMP` can never fire — a file always exists). (c) Nothing compares artifact mtimes against capture start. A screen that can no longer even be captured stays green indefinitely, and `run-full-validation.ps1:38` then prints "Full validation passed."
-  Evidence: code paths traced; `validation/results/` and `validation/hierarchy/` verified on disk to hold all 145 files from the prior run; the comment at capture-replica-screen.ps1:50 ("the screenshot is the gating artifact") predates the geometry gate.
-  Fix: delete `results\$id.json`, `current\$id.png` and `hierarchy\$id.xml` at the start of each state's capture; on `$captureExit -ne 0` or compare failure emit an explicit `ERROR` row that increments `$failed`; optionally embed capture timestamps in result JSONs and have `run-geometry-validation.ps1` reject dumps older than the matching current PNG.
-  Acceptance: killing adb mid-sweep (or renaming one baseline) produces ERROR/NO_REPLICA_DUMP rows and a non-zero exit, never a PASS carried over from the previous run.
-  Confidence: Verified
-  Effort: M
-
 ### P1
 
 - [ ] P1 — IS-23 Final report presents hardcoded constants as file-derived gate evidence

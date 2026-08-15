@@ -35,8 +35,19 @@ foreach ($id in $targets) {
         $compareExit = $LASTEXITCODE
     }
 
+    # Trust the result JSON only when this run actually produced it. The capture
+    # step deletes the previous artifacts up front, so a missing file here means
+    # this run failed rather than that a previous run passed.
+    # visual_compare.py exits 0 (PASS), 2 (below threshold) and 3 (dimension
+    # mismatch) after writing a result; any other code means it never got there.
     $resultPath = Join-Path $script:ValidationRoot "results\$id.json"
-    if (Test-Path -LiteralPath $resultPath -PathType Leaf) {
+    if ($captureExit -ne 0) {
+        $rows += [pscustomobject]@{ Screen = $id; Status = 'CAPTURE_FAILED'; SSIM = 0.0; Threshold = 0.985; Shift = '-' }
+    }
+    elseif ($compareExit -notin @(0, 2, 3)) {
+        $rows += [pscustomobject]@{ Screen = $id; Status = 'COMPARE_FAILED'; SSIM = 0.0; Threshold = 0.985; Shift = '-' }
+    }
+    elseif (Test-Path -LiteralPath $resultPath -PathType Leaf) {
         $result = Get-Content -LiteralPath $resultPath -Raw | ConvertFrom-Json
         $rows += [pscustomobject]@{ Screen = $id; Status = $result.status; SSIM = [double]$result.ssim; Threshold = [double]$result.threshold; Shift = "$($result.alignment.dx),$($result.alignment.dy)" }
     }
