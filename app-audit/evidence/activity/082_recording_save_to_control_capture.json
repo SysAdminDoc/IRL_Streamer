@@ -1,0 +1,18 @@
+{
+  "screen_id": "082_recording_save_to_control",
+  "captured_at_utc": "2026-08-15T00:59:50.5050647Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "com.google.android.documentsui",
+  "activity": "com.android.documentsui.picker.PickActivity",
+  "navigation_path": "Settings > Recording > Save to",
+  "required_starting_state": "Recording storage destination control opened; no destination changed",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/082_recording_save_to_control.png",
+  "ui_xml": "evidence/ui-xml/082_recording_save_to_control.xml",
+  "activity_dump": "evidence/activity/082_recording_save_to_control_activity-top.txt",
+  "window_dump": "evidence/activity/082_recording_save_to_control_window.txt",
+  "input_method_dump": "evidence/activity/082_recording_save_to_control_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_082_recording_save_to_control_20260815T005947319Z.xml"
+  ]
+}

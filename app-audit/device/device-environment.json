@@ -1,0 +1,32 @@
+{
+  "classification": "CONFIRMED",
+  "captured_at_utc": "2026-08-15T00:17:19.3765443Z",
+  "adb_serial": "R5CT139QJ5F",
+  "manufacturer": "samsung",
+  "model": "SM-S908U1",
+  "device_code_name": "b0q",
+  "android_release": "16",
+  "sdk_level": 36,
+  "build_id": "BP2A.250605.031.A3",
+  "build_fingerprint": "samsung/b0quew/b0q:16/BP2A.250605.031.A3/S908U1UESAGZE3:user/release-keys",
+  "locale": "en-US",
+  "time_zone": "America/New_York",
+  "display": {
+    "width_px": 1080,
+    "height_px": 2316,
+    "density_dpi": 450,
+    "width_dp": 384.0,
+    "height_dp": 823.47,
+    "orientation": "portrait",
+    "font_scale": 1.0,
+    "user_rotation": "0",
+    "accelerometer_rotation": "1",
+    "navigation_mode_setting": "0",
+    "night_mode": "Night mode: yes"
+  },
+  "raw_evidence": {
+    "display_dump": "evidence/measurements/dumpsys-display.txt",
+    "window_dump": "evidence/measurements/dumpsys-window.txt",
+    "input_method_dump": "evidence/measurements/dumpsys-input-method.txt"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "screen_id": "013_alert_dashboard_scale_dialog",
+  "captured_at_utc": "2026-08-15T00:25:26.9404016Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "011 streamer options bottom > Alert dashboard scale > hide keyboard",
+  "required_starting_state": "Alert dashboard scale edit dialog open with existing value preserved",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/013_alert_dashboard_scale_dialog.png",
+  "ui_xml": "evidence/ui-xml/013_alert_dashboard_scale_dialog.xml",
+  "activity_dump": "evidence/activity/013_alert_dashboard_scale_dialog_activity-top.txt",
+  "window_dump": "evidence/activity/013_alert_dashboard_scale_dialog_window.txt",
+  "input_method_dump": "evidence/activity/013_alert_dashboard_scale_dialog_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_013_alert_dashboard_scale_dialog_20260815T002523759Z.xml"
+  ]
+}

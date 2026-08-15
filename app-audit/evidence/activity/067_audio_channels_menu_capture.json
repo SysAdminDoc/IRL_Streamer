@@ -1,0 +1,18 @@
+{
+  "screen_id": "067_audio_channels_menu",
+  "captured_at_utc": "2026-08-15T00:52:48.7275300Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Audio > Audio channels",
+  "required_starting_state": "Audio settings; current Stereo",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/067_audio_channels_menu.png",
+  "ui_xml": "evidence/ui-xml/067_audio_channels_menu.xml",
+  "activity_dump": "evidence/activity/067_audio_channels_menu_activity-top.txt",
+  "window_dump": "evidence/activity/067_audio_channels_menu_window.txt",
+  "input_method_dump": "evidence/activity/067_audio_channels_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_067_audio_channels_menu_20260815T005245420Z.xml"
+  ]
+}

@@ -1,0 +1,12 @@
+Privacy-filtered target-package activity evidence. Full device task history intentionally not retained.
+ACTIVITY MANAGER ACTIVITIES (dumpsys activity activities)
+ [Min] Requested ( refreshRate=30.000002 w=Window{4713c65 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Min] Requested ( refreshRate=30.000002 w=Window{e8ccd8a u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Min] Requested ( refreshRate=30.000002 w=Window{a338090 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Min] Requested ( refreshRate=30.000002 w=Window{5edab06 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Max] Requested ( refreshRate=60.0 w=Window{4713c65 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Max] Requested ( refreshRate=60.0 w=Window{e8ccd8a u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Max] Requested ( refreshRate=60.0 w=Window{a338090 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Max] Requested ( refreshRate=60.0 w=Window{5edab06 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+        source=ActivityRecord{194798782 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity t254} SCREEN_ORIENTATION_LANDSCAPE
+        source=ActivityRecord{256602003 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity t258} SCREEN_ORIENTATION_LANDSCAPE

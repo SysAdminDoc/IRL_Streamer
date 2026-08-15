@@ -1,0 +1,18 @@
+{
+  "screen_id": "019_bonding_link_weights_lower",
+  "captured_at_utc": "2026-08-15T00:28:22.6248061Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "018 bonding settings > swipe upward",
+  "required_starting_state": "Bonding Wi-Fi and Ethernet weights visible",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/019_bonding_link_weights_lower.png",
+  "ui_xml": "evidence/ui-xml/019_bonding_link_weights_lower.xml",
+  "activity_dump": "evidence/activity/019_bonding_link_weights_lower_activity-top.txt",
+  "window_dump": "evidence/activity/019_bonding_link_weights_lower_window.txt",
+  "input_method_dump": "evidence/activity/019_bonding_link_weights_lower_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_019_bonding_link_weights_lower_20260815T002819418Z.xml"
+  ]
+}

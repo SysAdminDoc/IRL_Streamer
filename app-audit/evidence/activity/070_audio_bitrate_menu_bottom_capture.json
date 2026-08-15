@@ -1,0 +1,18 @@
+{
+  "screen_id": "070_audio_bitrate_menu_bottom",
+  "captured_at_utc": "2026-08-15T00:53:49.7067177Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Audio > Bitrate > bottom",
+  "required_starting_state": "Audio bitrate chooser open; no value changed",
+  "settle_milliseconds": 600,
+  "screenshot": "evidence/screenshots/070_audio_bitrate_menu_bottom.png",
+  "ui_xml": "evidence/ui-xml/070_audio_bitrate_menu_bottom.xml",
+  "activity_dump": "evidence/activity/070_audio_bitrate_menu_bottom_activity-top.txt",
+  "window_dump": "evidence/activity/070_audio_bitrate_menu_bottom_window.txt",
+  "input_method_dump": "evidence/activity/070_audio_bitrate_menu_bottom_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_070_audio_bitrate_menu_bottom_20260815T005346585Z.xml"
+  ]
+}

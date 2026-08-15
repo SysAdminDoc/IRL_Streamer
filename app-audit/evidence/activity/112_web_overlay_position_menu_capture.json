@@ -1,0 +1,18 @@
+{
+  "screen_id": "112_web_overlay_position_menu",
+  "captured_at_utc": "2026-08-15T01:16:47.0316636Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Web Overlays > New web overlay > Position",
+  "required_starting_state": "New web overlay draft; current Center; no record saved",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/112_web_overlay_position_menu.png",
+  "ui_xml": "evidence/ui-xml/112_web_overlay_position_menu.xml",
+  "activity_dump": "evidence/activity/112_web_overlay_position_menu_activity-top.txt",
+  "window_dump": "evidence/activity/112_web_overlay_position_menu_window.txt",
+  "input_method_dump": "evidence/activity/112_web_overlay_position_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_112_web_overlay_position_menu_20260815T011643744Z.xml"
+  ]
+}

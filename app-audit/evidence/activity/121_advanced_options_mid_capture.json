@@ -1,0 +1,18 @@
+{
+  "screen_id": "121_advanced_options_mid",
+  "captured_at_utc": "2026-08-15T01:22:57.6983336Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Main > Settings > Advanced options > scroll",
+  "required_starting_state": "Advanced options defaults, middle section",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/121_advanced_options_mid.png",
+  "ui_xml": "evidence/ui-xml/121_advanced_options_mid.xml",
+  "activity_dump": "evidence/activity/121_advanced_options_mid_activity-top.txt",
+  "window_dump": "evidence/activity/121_advanced_options_mid_window.txt",
+  "input_method_dump": "evidence/activity/121_advanced_options_mid_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_121_advanced_options_mid_20260815T012254526Z.xml"
+  ]
+}

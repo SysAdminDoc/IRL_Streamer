@@ -1,0 +1,18 @@
+{
+  "screen_id": "097_overlay_layer_type_menu",
+  "captured_at_utc": "2026-08-15T01:10:07.4553513Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Text/Picture Overlays > New layer > Type",
+  "required_starting_state": "New layer form; default Picture; no record saved",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/097_overlay_layer_type_menu.png",
+  "ui_xml": "evidence/ui-xml/097_overlay_layer_type_menu.xml",
+  "activity_dump": "evidence/activity/097_overlay_layer_type_menu_activity-top.txt",
+  "window_dump": "evidence/activity/097_overlay_layer_type_menu_window.txt",
+  "input_method_dump": "evidence/activity/097_overlay_layer_type_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_097_overlay_layer_type_menu_20260815T011004306Z.xml"
+  ]
+}

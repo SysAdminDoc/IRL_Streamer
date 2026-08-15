@@ -1,0 +1,18 @@
+{
+  "loading": {
+    "launch_extra": "replica_state=loading",
+    "expected": "Live console initialization treatment"
+  },
+  "empty": {
+    "launch_extra": "replica_state=empty",
+    "expected": "Outgoing connections empty state"
+  },
+  "network_error": {
+    "launch_extra": "replica_state=network_error",
+    "expected": "Network quick panel with local-unavailable feedback"
+  },
+  "validation_error": {
+    "launch_extra": "replica_state=validation_error",
+    "expected": "Blank overlay save validation feedback"
+  }
+}

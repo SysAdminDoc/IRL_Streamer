@@ -1,0 +1,18 @@
+{
+  "screen_id": "083_display_settings",
+  "captured_at_utc": "2026-08-15T01:00:28.4687184Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Display",
+  "required_starting_state": "Display settings persisted/default state",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/083_display_settings.png",
+  "ui_xml": "evidence/ui-xml/083_display_settings.xml",
+  "activity_dump": "evidence/activity/083_display_settings_activity-top.txt",
+  "window_dump": "evidence/activity/083_display_settings_window.txt",
+  "input_method_dump": "evidence/activity/083_display_settings_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_083_display_settings_20260815T010025311Z.xml"
+  ]
+}

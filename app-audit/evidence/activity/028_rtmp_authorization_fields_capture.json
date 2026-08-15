@@ -1,0 +1,18 @@
+{
+  "screen_id": "028_rtmp_authorization_fields",
+  "captured_at_utc": "2026-08-15T00:34:09.1086150Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.ConnectionWizard",
+  "navigation_path": "RTMP connection form > Target type > RTMP authorization > swipe to fields",
+  "required_starting_state": "Safe unsaved RTMP form; blank authorization fields",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/028_rtmp_authorization_fields.png",
+  "ui_xml": "evidence/ui-xml/028_rtmp_authorization_fields.xml",
+  "activity_dump": "evidence/activity/028_rtmp_authorization_fields_activity-top.txt",
+  "window_dump": "evidence/activity/028_rtmp_authorization_fields_window.txt",
+  "input_method_dump": "evidence/activity/028_rtmp_authorization_fields_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_028_rtmp_authorization_fields_20260815T003405563Z.xml"
+  ]
+}

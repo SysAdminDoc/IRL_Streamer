@@ -1,0 +1,18 @@
+{
+  "screen_id": "027_rtmp_target_type_menu",
+  "captured_at_utc": "2026-08-15T00:33:48.6873532Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.ConnectionWizard",
+  "navigation_path": "RTMP connection form > Target type dropdown",
+  "required_starting_state": "Safe RTMP form; dropdown open; no target type changed; form not submitted",
+  "settle_milliseconds": 1000,
+  "screenshot": "evidence/screenshots/027_rtmp_target_type_menu.png",
+  "ui_xml": "evidence/ui-xml/027_rtmp_target_type_menu.xml",
+  "activity_dump": "evidence/activity/027_rtmp_target_type_menu_activity-top.txt",
+  "window_dump": "evidence/activity/027_rtmp_target_type_menu_window.txt",
+  "input_method_dump": "evidence/activity/027_rtmp_target_type_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_027_rtmp_target_type_menu_20260815T003345155Z.xml"
+  ]
+}

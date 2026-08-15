@@ -1,0 +1,18 @@
+{
+  "screen_id": "102_overlay_manage_layers",
+  "captured_at_utc": "2026-08-15T01:12:38.3890585Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Text/Picture Overlays > Manage layers",
+  "required_starting_state": "Manage text/picture layers; only built-in Timestamp present; no record changed",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/102_overlay_manage_layers.png",
+  "ui_xml": "evidence/ui-xml/102_overlay_manage_layers.xml",
+  "activity_dump": "evidence/activity/102_overlay_manage_layers_activity-top.txt",
+  "window_dump": "evidence/activity/102_overlay_manage_layers_window.txt",
+  "input_method_dump": "evidence/activity/102_overlay_manage_layers_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_102_overlay_manage_layers_20260815T011235153Z.xml"
+  ]
+}

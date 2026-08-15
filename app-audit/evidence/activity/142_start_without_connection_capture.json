@@ -1,0 +1,18 @@
+{
+  "screen_id": "142_start_without_connection",
+  "captured_at_utc": "2026-08-15T01:29:42.4082917Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Main > Start broadcast",
+  "required_starting_state": "Idle live console; no outgoing connection configured",
+  "settle_milliseconds": 0,
+  "screenshot": "evidence/screenshots/142_start_without_connection.png",
+  "ui_xml": "evidence/ui-xml/142_start_without_connection.xml",
+  "activity_dump": "evidence/activity/142_start_without_connection_activity-top.txt",
+  "window_dump": "evidence/activity/142_start_without_connection_window.txt",
+  "input_method_dump": "evidence/activity/142_start_without_connection_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_142_start_without_connection_20260815T012938451Z.xml"
+  ]
+}

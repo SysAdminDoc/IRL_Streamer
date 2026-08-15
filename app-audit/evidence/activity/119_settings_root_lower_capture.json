@@ -1,0 +1,18 @@
+{
+  "screen_id": "119_settings_root_lower",
+  "captured_at_utc": "2026-08-15T01:22:20.5468894Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Main > Settings > scroll",
+  "required_starting_state": "Settings root, lower categories visible",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/119_settings_root_lower.png",
+  "ui_xml": "evidence/ui-xml/119_settings_root_lower.xml",
+  "activity_dump": "evidence/activity/119_settings_root_lower_activity-top.txt",
+  "window_dump": "evidence/activity/119_settings_root_lower_window.txt",
+  "input_method_dump": "evidence/activity/119_settings_root_lower_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_119_settings_root_lower_20260815T012217353Z.xml"
+  ]
+}

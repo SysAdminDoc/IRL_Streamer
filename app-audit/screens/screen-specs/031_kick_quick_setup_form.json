@@ -1,0 +1,425 @@
+{
+  "screen_id": "031_kick_quick_setup_form",
+  "screen_name": "Kick Quick Setup Form",
+  "state_name": "kick quick setup form",
+  "surface_type": "dialog",
+  "classification": "CONFIRMED",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.ConnectionWizard",
+  "entry_conditions": [
+    "No connection saved; quick-setup form open; blank fields"
+  ],
+  "navigation_path": [
+    "New outgoing connection",
+    "KICK.COM"
+  ],
+  "evidence": {
+    "screenshot": "evidence/screenshots/031_kick_quick_setup_form.png",
+    "ui_xml": "evidence/ui-xml/031_kick_quick_setup_form.xml",
+    "activity_dump": "evidence/activity/031_kick_quick_setup_form_activity-top.txt",
+    "recording": ""
+  },
+  "display": {
+    "width_px": 2316,
+    "height_px": 1080,
+    "density_dpi": 450,
+    "width_dp": 823.47,
+    "height_dp": 384.0,
+    "orientation": "landscape",
+    "edge_to_edge": false
+  },
+  "system_bars": {
+    "settings_status_bar": {
+      "position": "top",
+      "height_px": 74,
+      "height_dp": 26.31,
+      "color": "#000000",
+      "note": "Visible on settings/system surfaces"
+    },
+    "broadcast_status_bar": {
+      "visible": false,
+      "note": "Hidden on live console with default advanced setting"
+    },
+    "navigation_bar": {
+      "position": "right",
+      "width_px": 135,
+      "width_dp": 48.0,
+      "mode": "Samsung three-button navigation"
+    },
+    "left_landscape_inset": {
+      "width_px": 75,
+      "width_dp": 26.67,
+      "reason": "display cutout/rounded-corner safe inset"
+    }
+  },
+  "layout_regions": [
+    {
+      "name": "modal_surface",
+      "bounds_px": {
+        "left": 443,
+        "top": 159,
+        "right": 1812,
+        "bottom": 1004,
+        "width": 1369,
+        "height": 845
+      },
+      "bounds_dp": {
+        "left": 157.51,
+        "top": 56.53,
+        "right": 644.27,
+        "bottom": 356.98,
+        "width": 486.76,
+        "height": 300.44
+      }
+    }
+  ],
+  "elements": [
+    {
+      "element_id": "e001",
+      "resource_id": "",
+      "visible_label": "Enter your Kick username",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "text_field",
+      "class": "android.widget.EditText",
+      "bounds_px": {
+        "left": 533,
+        "top": 362,
+        "right": 1722,
+        "bottom": 488,
+        "width": 1189,
+        "height": 126
+      },
+      "bounds_dp": {
+        "left": 189.51,
+        "top": 128.71,
+        "right": 612.27,
+        "bottom": 173.51,
+        "width": 422.76,
+        "height": 44.8
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": true,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/031_kick_quick_setup_form.xml"
+    },
+    {
+      "element_id": "e002",
+      "resource_id": "",
+      "visible_label": "Enter your Kick Stream URL",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "text_field",
+      "class": "android.widget.EditText",
+      "bounds_px": {
+        "left": 533,
+        "top": 519,
+        "right": 1722,
+        "bottom": 645,
+        "width": 1189,
+        "height": 126
+      },
+      "bounds_dp": {
+        "left": 189.51,
+        "top": 184.53,
+        "right": 612.27,
+        "bottom": 229.33,
+        "width": 422.76,
+        "height": 44.8
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": true,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/031_kick_quick_setup_form.xml"
+    },
+    {
+      "element_id": "e003",
+      "resource_id": "",
+      "visible_label": "Enter your Kick Stream Key",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "text_field",
+      "class": "android.widget.EditText",
+      "bounds_px": {
+        "left": 533,
+        "top": 676,
+        "right": 1722,
+        "bottom": 802,
+        "width": 1189,
+        "height": 126
+      },
+      "bounds_dp": {
+        "left": 189.51,
+        "top": 240.36,
+        "right": 612.27,
+        "bottom": 285.16,
+        "width": 422.76,
+        "height": 44.8
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": true,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/031_kick_quick_setup_form.xml"
+    },
+    {
+      "element_id": "e004",
+      "resource_id": "android:id/button2",
+      "visible_label": "CANCEL",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "button",
+      "class": "android.widget.Button",
+      "bounds_px": {
+        "left": 1340,
+        "top": 813,
+        "right": 1553,
+        "bottom": 948,
+        "width": 213,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 476.44,
+        "top": 289.07,
+        "right": 552.18,
+        "bottom": 337.07,
+        "width": 75.73,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/031_kick_quick_setup_form.xml"
+    },
+    {
+      "element_id": "e005",
+      "resource_id": "android:id/button1",
+      "visible_label": "OK",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "button",
+      "class": "android.widget.Button",
+      "bounds_px": {
+        "left": 1553,
+        "top": 813,
+        "right": 1733,
+        "bottom": 948,
+        "width": 180,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 552.18,
+        "top": 289.07,
+        "right": 616.18,
+        "bottom": 337.07,
+        "width": 64.0,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/031_kick_quick_setup_form.xml"
+    }
+  ],
+  "visible_text": [
+    "Kick.com",
+    "Enter your Kick username",
+    "Enter your Kick Stream URL",
+    "Enter your Kick Stream Key",
+    "CANCEL",
+    "OK"
+  ],
+  "interactions": [
+    {
+      "element_id": "e001",
+      "control_label": "Enter your Kick username",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Node is long-clickable; exact effect is UNKNOWN unless stated in the behavior specification.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/031_kick_quick_setup_form.xml"
+      ]
+    },
+    {
+      "element_id": "e002",
+      "control_label": "Enter your Kick Stream URL",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Node is long-clickable; exact effect is UNKNOWN unless stated in the behavior specification.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/031_kick_quick_setup_form.xml"
+      ]
+    },
+    {
+      "element_id": "e003",
+      "control_label": "Enter your Kick Stream Key",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Node is long-clickable; exact effect is UNKNOWN unless stated in the behavior specification.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/031_kick_quick_setup_form.xml"
+      ]
+    },
+    {
+      "element_id": "e004",
+      "control_label": "CANCEL",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Dismisses/cancels the current dialog or form; tested drafts were discarded.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "Unsaved draft only; no committed record.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Prior surface restored.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/031_kick_quick_setup_form.xml"
+      ]
+    },
+    {
+      "element_id": "e005",
+      "control_label": "OK",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/031_kick_quick_setup_form.xml"
+      ]
+    }
+  ],
+  "states": [],
+  "transitions": [
+    {
+      "gesture": "Back",
+      "result": "Dismiss modal or return to previous settings level; from live console, background the task",
+      "classification": "CONFIRMED across representative paths"
+    }
+  ],
+  "validation": [],
+  "loading_behavior": [],
+  "error_behavior": [],
+  "persistence_behavior": [],
+  "accessibility": {
+    "ui_automator_available": true,
+    "actionable_or_adjustable_nodes": 5,
+    "directly_unlabeled_actionable_nodes": 0,
+    "explicit_uiautomator_naf_nodes": 0,
+    "potential_sub_48dp_targets": 3,
+    "scrollable_regions": [],
+    "limitations": "TalkBack was not enabled. Labels and bounds reflect UI Automator only; Canvas/video content is sparsely represented."
+  },
+  "design_measurements": {
+    "px_per_dp": 2.8125,
+    "usable_content_bounds_px": {
+      "left": 75,
+      "top": 0,
+      "right": 2181,
+      "bottom": 1080
+    },
+    "usable_content_size_dp": {
+      "width": 748.8,
+      "height": 384.0
+    },
+    "root_bounds_px": {
+      "left": 443,
+      "top": 159,
+      "right": 1812,
+      "bottom": 1004,
+      "width": 1369,
+      "height": 845
+    }
+  },
+  "inferences": [
+    {
+      "classification": "STRONG INFERENCE",
+      "finding": "Most settings surfaces use Android/AppCompat preference and alert-dialog primitives based on repeated geometry and hierarchy classes."
+    }
+  ],
+  "unknowns": [
+    "Exact TalkBack announcements and focus order were not tested."
+  ],
+  "notes": "kick quick setup form"
+}

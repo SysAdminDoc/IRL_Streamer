@@ -1,0 +1,16 @@
+Privacy-filtered keyboard-state evidence. Input contents and unrelated applications intentionally not retained.
+      fallbackInputConnection=RemoteInputConnectionImpl{connection=android.view.inputmethod.BaseInputConnection@9d348e1 mDeactivateRequested=false mServedView=null}
+        packageName=app.irlpro.android autofillId=0 fieldId=0 fieldName=null
+      targetWin=android.os.BinderProxy@1dd8f53 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=11
+      targetWin=android.os.BinderProxy@a92315c [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=29
+      targetWin=android.os.BinderProxy@dd8d01 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=32
+      targetWin=android.os.BinderProxy@99a512a [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=33
+      #20 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:94397a16 (2ms):
+      #56 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:46aa6529 (2ms):
+      #63 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:cf8198be (1ms):
+      #65 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:6c3b33de (8ms):
+      mImeWindowVis=0
+      mInputShown=false
+  mFallbackInputConnection=RemoteInputConnectionImpl{connection=android.view.inputmethod.BaseInputConnection@4dec0c6 mDeactivateRequested=false mServedView=null}
+  mServedView=com.android.internal.policy.DecorView{edda0a5 V.E...... R....... 0,0-2241,1080 aid=3}[SettingsActivity]
+    packageName=app.irlpro.android autofillId=0 fieldId=0 fieldName=null

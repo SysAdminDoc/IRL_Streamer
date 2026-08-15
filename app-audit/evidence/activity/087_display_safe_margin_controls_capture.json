@@ -1,0 +1,18 @@
+{
+  "screen_id": "087_display_safe_margin_controls",
+  "captured_at_utc": "2026-08-15T01:03:11.8323435Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Display > Show safe margins",
+  "required_starting_state": "Safe margins temporarily enabled; reveals ratio and indent controls; audio meter temporarily off",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/087_display_safe_margin_controls.png",
+  "ui_xml": "evidence/ui-xml/087_display_safe_margin_controls.xml",
+  "activity_dump": "evidence/activity/087_display_safe_margin_controls_activity-top.txt",
+  "window_dump": "evidence/activity/087_display_safe_margin_controls_window.txt",
+  "input_method_dump": "evidence/activity/087_display_safe_margin_controls_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_087_display_safe_margin_controls_20260815T010308278Z.xml"
+  ]
+}

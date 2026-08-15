@@ -1,0 +1,18 @@
+{
+  "screen_id": "011_streamer_settings_final",
+  "captured_at_utc": "2026-08-15T00:23:58.4765607Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "010 streamer settings > swipe upward",
+  "required_starting_state": "Streamer options near bottom",
+  "settle_milliseconds": 1000,
+  "screenshot": "evidence/screenshots/011_streamer_settings_final.png",
+  "ui_xml": "evidence/ui-xml/011_streamer_settings_final.xml",
+  "activity_dump": "evidence/activity/011_streamer_settings_final_activity-top.txt",
+  "window_dump": "evidence/activity/011_streamer_settings_final_window.txt",
+  "input_method_dump": "evidence/activity/011_streamer_settings_final_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_011_streamer_settings_final_20260815T002354957Z.xml"
+  ]
+}

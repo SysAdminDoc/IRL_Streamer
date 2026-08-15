@@ -1,0 +1,18 @@
+{
+  "screen_id": "024_new_connection_invalid_url",
+  "captured_at_utc": "2026-08-15T00:30:22.9650383Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.ConnectionWizard",
+  "navigation_path": "New outgoing connection > enter test name and malformed URL > hide keyboard",
+  "required_starting_state": "Blank form; safe non-secret test values; form not submitted",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/024_new_connection_invalid_url.png",
+  "ui_xml": "evidence/ui-xml/024_new_connection_invalid_url.xml",
+  "activity_dump": "evidence/activity/024_new_connection_invalid_url_activity-top.txt",
+  "window_dump": "evidence/activity/024_new_connection_invalid_url_window.txt",
+  "input_method_dump": "evidence/activity/024_new_connection_invalid_url_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_024_new_connection_invalid_url_20260815T003019583Z.xml"
+  ]
+}

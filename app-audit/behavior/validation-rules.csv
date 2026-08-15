@@ -1,0 +1,14 @@
+rule_id,surface,field_or_action,trigger,observed_result,message,classification,evidence
+V001,"New outgoing connection","URL / Save","URL is empty","Save is disabled before submit","None",CONFIRMED,"screen 024"
+V002,"Text overlay editor","HTML code / Save","HTML code is empty and Save tapped","Draft remains open; toast appears","Please input non-empty text/html code",CONFIRMED,"screen 101"
+V003,"Live console","Start broadcast","No active outgoing connections","Blocking modal; no broadcast starts","You don't have any active connections, please add one.",CONFIRMED,"screen 142"
+V004,"Import settings","Import text","Dialog opened","Field is prefilled with larix://; Cancel/OK available","None",CONFIRMED,"screen 117"
+V005,"QR scanning","Scan QR","Required external scanner absent","Install prompt; No/Yes","This application requires Barcode Scanner. Would you like to install it?",CONFIRMED,"screen 118"
+V006,"Web/Text overlay form","Z order","Higher numeric value","Higher layer renders in front","Layers with greater Z Order will appear at front.",CONFIRMED copy / effect not fully exercised,"screens 099-100 and 109"
+V007,"Web overlays","Overlay count","User considers adding overlays","Performance advisory shown","For perf, no more than 3–4 web overlays are recommended",CONFIRMED,"screen 107"
+V008,"Recording","Battery critically low","During recording","UI warns recording will stop, usually near 7%","WARNING: Recording will stop when the battery level is critically low, usually ~7%.",CONFIRMED warning / runtime UNTESTED,"screen 076"
+V009,"RTMP form","URL scheme recognized","RTMP URL entered","RTMP-specific help and target type appear","RTMP URL schema is rtmp://server/application/streamkey…",CONFIRMED,"screens 025-028"
+V010,"Preferred camera API","Device capability/state","Current test device","Preference is disabled; no choice dialog","Camera2 explanatory summary",CONFIRMED,"screen 126"
+V011,"USB Camera","No supported UVC hardware detected","Advanced screen opened","Switch is disabled","Take picture from USB UVC camera.",CONFIRMED current device / other hardware UNKNOWN,"screen 123"
+V012,"Reload","Reload button tapped","Idle live console","Asynchronous status toast; console remains usable","Reloading chat and all web overlays, please wait a few seconds…",CONFIRMED,"screen 143"
+

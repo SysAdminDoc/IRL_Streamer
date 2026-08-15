@@ -1,0 +1,18 @@
+{
+  "screen_id": "127_volume_keys_dialog",
+  "captured_at_utc": "2026-08-15T01:24:59.5910001Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Main > Settings > Advanced options > Volume keys",
+  "required_starting_state": "Volume key action selection dialog, current default unchanged",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/127_volume_keys_dialog.png",
+  "ui_xml": "evidence/ui-xml/127_volume_keys_dialog.xml",
+  "activity_dump": "evidence/activity/127_volume_keys_dialog_activity-top.txt",
+  "window_dump": "evidence/activity/127_volume_keys_dialog_window.txt",
+  "input_method_dump": "evidence/activity/127_volume_keys_dialog_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_127_volume_keys_dialog_20260815T012456247Z.xml"
+  ]
+}

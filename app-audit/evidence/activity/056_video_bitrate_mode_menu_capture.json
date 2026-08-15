@@ -1,0 +1,18 @@
+{
+  "screen_id": "056_video_bitrate_mode_menu",
+  "captured_at_utc": "2026-08-15T00:48:30.2149196Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Video > Bitrate mode",
+  "required_starting_state": "Automatic bitrate restored on; Bitrate mode current System default",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/056_video_bitrate_mode_menu.png",
+  "ui_xml": "evidence/ui-xml/056_video_bitrate_mode_menu.xml",
+  "activity_dump": "evidence/activity/056_video_bitrate_mode_menu_activity-top.txt",
+  "window_dump": "evidence/activity/056_video_bitrate_mode_menu_window.txt",
+  "input_method_dump": "evidence/activity/056_video_bitrate_mode_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_056_video_bitrate_mode_menu_20260815T004826914Z.xml"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "screen_id": "077_recording_section_duration_editor",
+  "captured_at_utc": "2026-08-15T00:58:01.7102810Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Recording > Sections duration",
+  "required_starting_state": "Recording sections enabled; current 30 minutes; no edit submitted",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/077_recording_section_duration_editor.png",
+  "ui_xml": "evidence/ui-xml/077_recording_section_duration_editor.xml",
+  "activity_dump": "evidence/activity/077_recording_section_duration_editor_activity-top.txt",
+  "window_dump": "evidence/activity/077_recording_section_duration_editor_window.txt",
+  "input_method_dump": "evidence/activity/077_recording_section_duration_editor_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_077_recording_section_duration_editor_20260815T005758536Z.xml"
+  ]
+}

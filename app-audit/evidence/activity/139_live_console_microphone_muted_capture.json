@@ -1,0 +1,18 @@
+{
+  "screen_id": "139_live_console_microphone_muted",
+  "captured_at_utc": "2026-08-15T01:28:46.4038234Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Main > microphone toggle",
+  "required_starting_state": "Idle live console; microphone toggled from unmuted to muted",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/139_live_console_microphone_muted.png",
+  "ui_xml": "evidence/ui-xml/139_live_console_microphone_muted.xml",
+  "activity_dump": "evidence/activity/139_live_console_microphone_muted_activity-top.txt",
+  "window_dump": "evidence/activity/139_live_console_microphone_muted_window.txt",
+  "input_method_dump": "evidence/activity/139_live_console_microphone_muted_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_139_live_console_microphone_muted_20260815T012842668Z.xml"
+  ]
+}

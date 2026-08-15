@@ -1,0 +1,18 @@
+{
+  "screen_id": "123_advanced_options_bottom",
+  "captured_at_utc": "2026-08-15T01:23:13.4710112Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Main > Settings > Advanced options > scroll bottom",
+  "required_starting_state": "Advanced options defaults, bottom section",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/123_advanced_options_bottom.png",
+  "ui_xml": "evidence/ui-xml/123_advanced_options_bottom.xml",
+  "activity_dump": "evidence/activity/123_advanced_options_bottom_activity-top.txt",
+  "window_dump": "evidence/activity/123_advanced_options_bottom_window.txt",
+  "input_method_dump": "evidence/activity/123_advanced_options_bottom_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_123_advanced_options_bottom_20260815T012310368Z.xml"
+  ]
+}

@@ -1,0 +1,37 @@
+# Android / Gradle output
+**/.gradle/
+**/.kotlin/
+**/build/
+**/local.properties
+*.apk
+*.aab
+
+# IDE and operating-system files
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Python caches
+**/__pycache__/
+*.py[cod]
+
+# Generated visual-validation evidence. The compact reports and thresholds
+# remain versioned; the immutable audit evidence lives under app-audit/.
+replica-app/validation/baseline/
+replica-app/validation/current/
+replica-app/validation/diffs/
+replica-app/validation/logs/
+replica-app/validation/overlays/
+replica-app/validation/results/
+replica-app/validation/self-test/
+replica-app/validation/side-by-side/
+
+# Local scratch output
+tmp/
+output/
+
+# Superseded local logo-working files
+branding/irl-streamer-mark.png
+branding/irl-streamer-app-icon.png
+replica-app/app/src/main/res/drawable-nodpi/irl_streamer_logo_foreground.png

@@ -1,0 +1,18 @@
+{
+  "screen_id": "126_preferred_camera_api_dialog",
+  "captured_at_utc": "2026-08-15T01:24:27.2045185Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Main > Settings > Advanced options > Preferred camera API",
+  "required_starting_state": "Preferred camera API selection dialog",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/126_preferred_camera_api_dialog.png",
+  "ui_xml": "evidence/ui-xml/126_preferred_camera_api_dialog.xml",
+  "activity_dump": "evidence/activity/126_preferred_camera_api_dialog_activity-top.txt",
+  "window_dump": "evidence/activity/126_preferred_camera_api_dialog_window.txt",
+  "input_method_dump": "evidence/activity/126_preferred_camera_api_dialog_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_126_preferred_camera_api_dialog_20260815T012424022Z.xml"
+  ]
+}

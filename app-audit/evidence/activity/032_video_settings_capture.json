@@ -1,0 +1,18 @@
+{
+  "screen_id": "032_video_settings",
+  "captured_at_utc": "2026-08-15T00:36:42.9200377Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings root > Video",
+  "required_starting_state": "Settings root at top; no video preference changed",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/032_video_settings.png",
+  "ui_xml": "evidence/ui-xml/032_video_settings.xml",
+  "activity_dump": "evidence/activity/032_video_settings_activity-top.txt",
+  "window_dump": "evidence/activity/032_video_settings_window.txt",
+  "input_method_dump": "evidence/activity/032_video_settings_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_032_video_settings_20260815T003639522Z.xml"
+  ]
+}

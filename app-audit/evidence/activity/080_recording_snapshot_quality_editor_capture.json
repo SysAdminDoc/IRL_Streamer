@@ -1,0 +1,18 @@
+{
+  "screen_id": "080_recording_snapshot_quality_editor",
+  "captured_at_utc": "2026-08-15T00:59:07.7808417Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Recording > Snapshot quality",
+  "required_starting_state": "Recording settings; current 90; no edit submitted",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/080_recording_snapshot_quality_editor.png",
+  "ui_xml": "evidence/ui-xml/080_recording_snapshot_quality_editor.xml",
+  "activity_dump": "evidence/activity/080_recording_snapshot_quality_editor_activity-top.txt",
+  "window_dump": "evidence/activity/080_recording_snapshot_quality_editor_window.txt",
+  "input_method_dump": "evidence/activity/080_recording_snapshot_quality_editor_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_080_recording_snapshot_quality_editor_20260815T005904628Z.xml"
+  ]
+}

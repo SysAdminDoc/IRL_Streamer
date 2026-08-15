@@ -1,0 +1,5 @@
+Target-package matches only; no unrelated scheduler state retained.
+    10348:app.irlpro.android=false
+    TopAppTimer{<0>app.irlpro.android} started at 5340073 (125074ms ago)
+      <0>app.irlpro.android: ShrinkableDebits { debit tally: 0, bucket: 0 }
+  10348: {app.irlpro.android}

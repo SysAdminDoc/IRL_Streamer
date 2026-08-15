@@ -1,0 +1,810 @@
+{
+  "screen_id": "139_live_console_microphone_muted",
+  "screen_name": "Live console",
+  "state_name": "Microphone muted; restored unmuted",
+  "surface_type": "live_console_state",
+  "classification": "CONFIRMED",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "entry_conditions": [
+    "Idle live console; microphone toggled from unmuted to muted"
+  ],
+  "navigation_path": [
+    "Main",
+    "microphone toggle"
+  ],
+  "evidence": {
+    "screenshot": "evidence/screenshots/139_live_console_microphone_muted.png",
+    "ui_xml": "evidence/ui-xml/139_live_console_microphone_muted.xml",
+    "activity_dump": "evidence/activity/139_live_console_microphone_muted_activity-top.txt",
+    "recording": ""
+  },
+  "display": {
+    "width_px": 2316,
+    "height_px": 1080,
+    "density_dpi": 450,
+    "width_dp": 823.47,
+    "height_dp": 384.0,
+    "orientation": "landscape",
+    "edge_to_edge": false
+  },
+  "system_bars": {
+    "settings_status_bar": {
+      "position": "top",
+      "height_px": 74,
+      "height_dp": 26.31,
+      "color": "#000000",
+      "note": "Visible on settings/system surfaces"
+    },
+    "broadcast_status_bar": {
+      "visible": false,
+      "note": "Hidden on live console with default advanced setting"
+    },
+    "navigation_bar": {
+      "position": "right",
+      "width_px": 135,
+      "width_dp": 48.0,
+      "mode": "Samsung three-button navigation"
+    },
+    "left_landscape_inset": {
+      "width_px": 75,
+      "width_dp": 26.67,
+      "reason": "display cutout/rounded-corner safe inset"
+    }
+  },
+  "layout_regions": [
+    {
+      "name": "camera_preview",
+      "bounds_px": {
+        "left": 75,
+        "top": 0,
+        "right": 2181,
+        "bottom": 1080
+      },
+      "notes": "Surface/video content; hierarchy exposes only overlay controls"
+    },
+    {
+      "name": "left_audio_meter",
+      "bounds_px": {
+        "left": 75,
+        "top": 550,
+        "right": 140,
+        "bottom": 1040
+      }
+    },
+    {
+      "name": "right_control_rail",
+      "bounds_px": {
+        "left": 1944,
+        "top": 18,
+        "right": 2147,
+        "bottom": 1046
+      }
+    },
+    {
+      "name": "bottom_status_controls",
+      "bounds_px": {
+        "left": 680,
+        "top": 843,
+        "right": 1910,
+        "bottom": 1047
+      }
+    }
+  ],
+  "elements": [
+    {
+      "element_id": "e001",
+      "resource_id": "app.irlpro.android:id/btn_settings",
+      "visible_label": "",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "settings",
+      "element_type": "icon_button",
+      "class": "android.widget.ImageButton",
+      "bounds_px": {
+        "left": 86,
+        "top": 106,
+        "right": 199,
+        "bottom": 219,
+        "width": 113,
+        "height": 113
+      },
+      "bounds_dp": {
+        "left": 30.58,
+        "top": 37.69,
+        "right": 70.76,
+        "bottom": 77.87,
+        "width": 40.18,
+        "height": 40.18
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e002",
+      "resource_id": "app.irlpro.android:id/btn_reload",
+      "visible_label": "",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "reload",
+      "element_type": "icon_button",
+      "class": "android.widget.ImageButton",
+      "bounds_px": {
+        "left": 2046,
+        "top": 18,
+        "right": 2113,
+        "bottom": 85,
+        "width": 67,
+        "height": 67
+      },
+      "bounds_dp": {
+        "left": 727.47,
+        "top": 6.4,
+        "right": 751.29,
+        "bottom": 30.22,
+        "width": 23.82,
+        "height": 23.82
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e003",
+      "resource_id": "app.irlpro.android:id/btn_quick_settings",
+      "visible_label": "",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "quick settings",
+      "element_type": "icon_button",
+      "class": "android.widget.ImageButton",
+      "bounds_px": {
+        "left": 2023,
+        "top": 118,
+        "right": 2136,
+        "bottom": 231,
+        "width": 113,
+        "height": 113
+      },
+      "bounds_dp": {
+        "left": 719.29,
+        "top": 41.96,
+        "right": 759.47,
+        "bottom": 82.13,
+        "width": 40.18,
+        "height": 40.18
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e004",
+      "resource_id": "app.irlpro.android:id/btn_shoot",
+      "visible_label": "",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "shoot",
+      "element_type": "icon_button",
+      "class": "android.widget.ImageButton",
+      "bounds_px": {
+        "left": 2023,
+        "top": 533,
+        "right": 2136,
+        "bottom": 646,
+        "width": 113,
+        "height": 113
+      },
+      "bounds_dp": {
+        "left": 719.29,
+        "top": 189.51,
+        "right": 759.47,
+        "bottom": 229.69,
+        "width": 40.18,
+        "height": 40.18
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": false,
+      "safety_note": "UNTESTED: potentially destructive, privacy-sensitive, or externally consequential",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e005",
+      "resource_id": "app.irlpro.android:id/btn_flip",
+      "visible_label": "",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "flip",
+      "element_type": "icon_button",
+      "class": "android.widget.ImageButton",
+      "bounds_px": {
+        "left": 2012,
+        "top": 674,
+        "right": 2147,
+        "bottom": 809,
+        "width": 135,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 715.38,
+        "top": 239.64,
+        "right": 763.38,
+        "bottom": 287.64,
+        "width": 48.0,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e006",
+      "resource_id": "app.irlpro.android:id/btn_capture",
+      "visible_label": "",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "capture",
+      "element_type": "button",
+      "class": "android.widget.Button",
+      "bounds_px": {
+        "left": 1038,
+        "top": 979,
+        "right": 1218,
+        "bottom": 1047,
+        "width": 180,
+        "height": 68
+      },
+      "bounds_dp": {
+        "left": 369.07,
+        "top": 348.09,
+        "right": 433.07,
+        "bottom": 372.27,
+        "width": 64.0,
+        "height": 24.18
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": true,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": false,
+      "safety_note": "UNTESTED: potentially destructive, privacy-sensitive, or externally consequential",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e007",
+      "resource_id": "",
+      "visible_label": "61°",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "clickable_row",
+      "class": "android.widget.TextView",
+      "bounds_px": {
+        "left": 1638,
+        "top": 863,
+        "right": 1767,
+        "bottom": 942,
+        "width": 129,
+        "height": 79
+      },
+      "bounds_dp": {
+        "left": 582.4,
+        "top": 306.84,
+        "right": 628.27,
+        "bottom": 334.93,
+        "width": 45.87,
+        "height": 28.09
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e008",
+      "resource_id": "",
+      "visible_label": "67°",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "clickable_row",
+      "class": "android.widget.TextView",
+      "bounds_px": {
+        "left": 1781,
+        "top": 863,
+        "right": 1910,
+        "bottom": 942,
+        "width": 129,
+        "height": 79
+      },
+      "bounds_dp": {
+        "left": 633.24,
+        "top": 306.84,
+        "right": 679.11,
+        "bottom": 334.93,
+        "width": 45.87,
+        "height": 28.09
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e009",
+      "resource_id": "",
+      "visible_label": "73°",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "clickable_row",
+      "class": "android.widget.TextView",
+      "bounds_px": {
+        "left": 1638,
+        "top": 956,
+        "right": 1767,
+        "bottom": 1035,
+        "width": 129,
+        "height": 79
+      },
+      "bounds_dp": {
+        "left": 582.4,
+        "top": 339.91,
+        "right": 628.27,
+        "bottom": 368.0,
+        "width": 45.87,
+        "height": 28.09
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e010",
+      "resource_id": "",
+      "visible_label": "103°",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "clickable_row",
+      "class": "android.widget.TextView",
+      "bounds_px": {
+        "left": 1781,
+        "top": 956,
+        "right": 1910,
+        "bottom": 1035,
+        "width": 129,
+        "height": 79
+      },
+      "bounds_dp": {
+        "left": 633.24,
+        "top": 339.91,
+        "right": 679.11,
+        "bottom": 368.0,
+        "width": 45.87,
+        "height": 28.09
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    },
+    {
+      "element_id": "e011",
+      "resource_id": "app.irlpro.android:id/btn_mute",
+      "visible_label": "",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "mute",
+      "element_type": "icon_button",
+      "class": "android.widget.ImageButton",
+      "bounds_px": {
+        "left": 1944,
+        "top": 843,
+        "right": 2147,
+        "bottom": 1046,
+        "width": 203,
+        "height": 203
+      },
+      "bounds_dp": {
+        "left": 691.2,
+        "top": 299.73,
+        "right": 763.38,
+        "bottom": 371.91,
+        "width": 72.18,
+        "height": 72.18
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/139_live_console_microphone_muted.xml"
+    }
+  ],
+  "visible_text": [
+    "-183 mA",
+    "-739 mW",
+    "34.7 °C",
+    "30 fps",
+    "FRONT",
+    "61°",
+    "67°",
+    "BACK",
+    "73°",
+    "103°"
+  ],
+  "interactions": [
+    {
+      "element_id": "e001",
+      "control_label": "settings",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Opens Settings root.",
+      "destination_screen_ids": [
+        "002_settings_root"
+      ],
+      "data_or_state_changed": "No persisted data change.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Opens Settings root.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e002",
+      "control_label": "reload",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Reloads chat and all web overlays and shows a non-blocking status toast.",
+      "destination_screen_ids": [
+        "143_live_console_refresh"
+      ],
+      "data_or_state_changed": "Ephemeral reload command.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Reloads chat and all web overlays and shows a non-blocking status toast.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e003",
+      "control_label": "quick settings",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Opens or closes the in-place live quick-settings panel.",
+      "destination_screen_ids": [
+        "130_live_console_overflow"
+      ],
+      "data_or_state_changed": "Ephemeral panel visibility.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Opens or closes the in-place live quick-settings panel.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e004",
+      "control_label": "shoot",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED intent / runtime UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "Intended snapshot action; media output was not created.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNTESTED user-media creation.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Intended snapshot action; media output was not created.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": false,
+      "safety_note": "UNTESTED: potentially destructive, privacy-sensitive, or externally consequential",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e005",
+      "control_label": "flip",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Switches between front and rear camera selections; restored to rear 73 degrees.",
+      "destination_screen_ids": [
+        "140_live_console_front_camera",
+        "001_streamer_home_default"
+      ],
+      "data_or_state_changed": "Current physical camera.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Switches between front and rear camera selections; restored to rear 73 degrees.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e006",
+      "control_label": "capture",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "With zero active connections, opens the Start Broadcast guard dialog; real Start is UNTESTED.",
+      "destination_screen_ids": [
+        "142_start_without_connection"
+      ],
+      "data_or_state_changed": "No broadcast in the observed guard path.",
+      "long_press_behavior": "Node is long-clickable; exact effect is UNKNOWN unless stated in the behavior specification.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "With zero active connections, opens the Start Broadcast guard dialog; real Start is UNTESTED.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": false,
+      "safety_note": "UNTESTED: potentially destructive, privacy-sensitive, or externally consequential",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e007",
+      "control_label": "61°",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e008",
+      "control_label": "67°",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Selects the physical camera represented by the 67° lens pill.",
+      "destination_screen_ids": [
+        "140_live_console_front_camera"
+      ],
+      "data_or_state_changed": "Current physical camera for the runtime preview.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Camera state captured as 140_live_console_front_camera.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e009",
+      "control_label": "73°",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Selects the physical camera represented by the 73° lens pill.",
+      "destination_screen_ids": [
+        "001_streamer_home_default"
+      ],
+      "data_or_state_changed": "Current physical camera for the runtime preview.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Camera state captured as 001_streamer_home_default.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e010",
+      "control_label": "103°",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Selects the physical camera represented by the 103° lens pill.",
+      "destination_screen_ids": [
+        "141_live_console_rear_ultrawide"
+      ],
+      "data_or_state_changed": "Current physical camera for the runtime preview.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Camera state captured as 141_live_console_rear_ultrawide.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    },
+    {
+      "element_id": "e011",
+      "control_label": "mute",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Toggles microphone mute; meter becomes gray while muted and was restored active.",
+      "destination_screen_ids": [
+        "139_live_console_microphone_muted",
+        "001_streamer_home_default"
+      ],
+      "data_or_state_changed": "Runtime microphone mute state.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Toggles microphone mute; meter becomes gray while muted and was restored active.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/139_live_console_microphone_muted.xml"
+      ]
+    }
+  ],
+  "states": [],
+  "transitions": [
+    {
+      "gesture": "Back",
+      "result": "Dismiss modal or return to previous settings level; from live console, background the task",
+      "classification": "CONFIRMED across representative paths"
+    }
+  ],
+  "validation": [],
+  "loading_behavior": [],
+  "error_behavior": [],
+  "persistence_behavior": [],
+  "accessibility": {
+    "ui_automator_available": true,
+    "actionable_or_adjustable_nodes": 11,
+    "directly_unlabeled_actionable_nodes": 7,
+    "explicit_uiautomator_naf_nodes": 7,
+    "potential_sub_48dp_targets": 9,
+    "scrollable_regions": [],
+    "limitations": "TalkBack was not enabled. Labels and bounds reflect UI Automator only; Canvas/video content is sparsely represented."
+  },
+  "design_measurements": {
+    "px_per_dp": 2.8125,
+    "usable_content_bounds_px": {
+      "left": 75,
+      "top": 0,
+      "right": 2181,
+      "bottom": 1080
+    },
+    "usable_content_size_dp": {
+      "width": 748.8,
+      "height": 384.0
+    },
+    "root_bounds_px": {
+      "left": 75,
+      "top": 0,
+      "right": 2316,
+      "bottom": 1080,
+      "width": 2241,
+      "height": 1080
+    }
+  },
+  "inferences": [
+    {
+      "classification": "STRONG INFERENCE",
+      "finding": "Most settings surfaces use Android/AppCompat preference and alert-dialog primitives based on repeated geometry and hierarchy classes."
+    }
+  ],
+  "unknowns": [
+    "Exact TalkBack announcements and focus order were not tested.",
+    "Some icon-only controls have no exposed name; intended semantics are inferred from resource IDs and observed effects."
+  ],
+  "notes": "Microphone muted; restored unmuted"
+}

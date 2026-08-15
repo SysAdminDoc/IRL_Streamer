@@ -1,0 +1,18 @@
+{
+  "screen_id": "095_streamer_home_timestamp_overlay",
+  "captured_at_utc": "2026-08-15T01:07:42.7121990Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Settings > Overlays > Text/Picture Overlays > Timestamp; return to streamer",
+  "required_starting_state": "Built-in Timestamp layer temporarily enabled; restored after capture",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/095_streamer_home_timestamp_overlay.png",
+  "ui_xml": "evidence/ui-xml/095_streamer_home_timestamp_overlay.xml",
+  "activity_dump": "evidence/activity/095_streamer_home_timestamp_overlay_activity-top.txt",
+  "window_dump": "evidence/activity/095_streamer_home_timestamp_overlay_window.txt",
+  "input_method_dump": "evidence/activity/095_streamer_home_timestamp_overlay_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_095_streamer_home_timestamp_overlay_20260815T010739429Z.xml"
+  ]
+}

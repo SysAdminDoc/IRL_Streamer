@@ -1,0 +1,18 @@
+{
+  "screen_id": "057_video_keyframe_frequency_menu",
+  "captured_at_utc": "2026-08-15T00:48:47.4281292Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Video > Keyframe frequency",
+  "required_starting_state": "Video encoder settings; current 2 sec",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/057_video_keyframe_frequency_menu.png",
+  "ui_xml": "evidence/ui-xml/057_video_keyframe_frequency_menu.xml",
+  "activity_dump": "evidence/activity/057_video_keyframe_frequency_menu_activity-top.txt",
+  "window_dump": "evidence/activity/057_video_keyframe_frequency_menu_window.txt",
+  "input_method_dump": "evidence/activity/057_video_keyframe_frequency_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_057_video_keyframe_frequency_menu_20260815T004844092Z.xml"
+  ]
+}

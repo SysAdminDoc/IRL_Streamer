@@ -1,0 +1,18 @@
+{
+  "screen_id": "093_text_picture_overlay_layers",
+  "captured_at_utc": "2026-08-15T01:06:31.2957971Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Text/Picture Overlays > scroll",
+  "required_starting_state": "Text/picture overlay layer list; no records modified",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/093_text_picture_overlay_layers.png",
+  "ui_xml": "evidence/ui-xml/093_text_picture_overlay_layers.xml",
+  "activity_dump": "evidence/activity/093_text_picture_overlay_layers_activity-top.txt",
+  "window_dump": "evidence/activity/093_text_picture_overlay_layers_window.txt",
+  "input_method_dump": "evidence/activity/093_text_picture_overlay_layers_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_093_text_picture_overlay_layers_20260815T010628256Z.xml"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "collected_at_utc": "2026-08-15T01:33:26.2908073Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "process_id_at_capture": 30963,
+  "state": "foreground, idle live console, camera and audio preview active, no broadcast or recording",
+  "privacy": "PID-scoped logcat; URLs, email addresses, and credential-like values sanitized. Notification, job, and alarm files contain target-matching context only.",
+  "evidence": {
+    "meminfo": "evidence/measurements/meminfo-idle-camera.txt",
+    "gfxinfo": "evidence/measurements/gfxinfo-idle-camera.txt",
+    "notification": "evidence/measurements/notification-target-snippet.txt",
+    "jobscheduler": "evidence/measurements/jobscheduler-target-snippet.txt",
+    "alarm": "evidence/measurements/alarm-target-snippet.txt",
+    "logcat": "evidence/logs/pid-scoped-sanitized.log"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "screen_id": "094_overlay_timestamp_editor",
+  "captured_at_utc": "2026-08-15T01:07:23.9374583Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Text/Picture Overlays > Timestamp checkbox",
+  "required_starting_state": "Built-in Timestamp layer temporarily enabled; restored after preview capture",
+  "settle_milliseconds": 1200,
+  "screenshot": "evidence/screenshots/094_overlay_timestamp_editor.png",
+  "ui_xml": "evidence/ui-xml/094_overlay_timestamp_editor.xml",
+  "activity_dump": "evidence/activity/094_overlay_timestamp_editor_activity-top.txt",
+  "window_dump": "evidence/activity/094_overlay_timestamp_editor_window.txt",
+  "input_method_dump": "evidence/activity/094_overlay_timestamp_editor_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_094_overlay_timestamp_editor_20260815T010720611Z.xml"
+  ]
+}

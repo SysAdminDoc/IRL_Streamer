@@ -1,0 +1,18 @@
+{
+  "screen_id": "128_help_support",
+  "captured_at_utc": "2026-08-15T01:25:37.4830559Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Main > Settings > Help & support",
+  "required_starting_state": "Help & support root; no external actions invoked",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/128_help_support.png",
+  "ui_xml": "evidence/ui-xml/128_help_support.xml",
+  "activity_dump": "evidence/activity/128_help_support_activity-top.txt",
+  "window_dump": "evidence/activity/128_help_support_window.txt",
+  "input_method_dump": "evidence/activity/128_help_support_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_128_help_support_20260815T012534303Z.xml"
+  ]
+}

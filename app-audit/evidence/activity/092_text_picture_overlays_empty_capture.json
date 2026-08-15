@@ -1,0 +1,18 @@
+{
+  "screen_id": "092_text_picture_overlays_empty",
+  "captured_at_utc": "2026-08-15T01:06:05.8954817Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Text/Picture Overlays",
+  "required_starting_state": "Text/picture overlay list; no user overlay records present",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/092_text_picture_overlays_empty.png",
+  "ui_xml": "evidence/ui-xml/092_text_picture_overlays_empty.xml",
+  "activity_dump": "evidence/activity/092_text_picture_overlays_empty_activity-top.txt",
+  "window_dump": "evidence/activity/092_text_picture_overlays_empty_window.txt",
+  "input_method_dump": "evidence/activity/092_text_picture_overlays_empty_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_092_text_picture_overlays_empty_20260815T010602732Z.xml"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "screen_id": "048_video_white_balance_menu",
+  "captured_at_utc": "2026-08-15T00:43:44.8586942Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Video parameters > White balance",
+  "required_starting_state": "Observed value Auto; no selection changed",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/048_video_white_balance_menu.png",
+  "ui_xml": "evidence/ui-xml/048_video_white_balance_menu.xml",
+  "activity_dump": "evidence/activity/048_video_white_balance_menu_activity-top.txt",
+  "window_dump": "evidence/activity/048_video_white_balance_menu_window.txt",
+  "input_method_dump": "evidence/activity/048_video_white_balance_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_048_video_white_balance_menu_20260815T004341768Z.xml"
+  ]
+}

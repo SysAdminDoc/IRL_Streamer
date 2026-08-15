@@ -1,0 +1,59 @@
+Privacy-filtered keyboard-state evidence. Input contents and unrelated applications intentionally not retained.
+      fallbackInputConnection=RemoteInputConnectionImpl{connection=android.view.inputmethod.BaseInputConnection@9d348e1 mDeactivateRequested=false mServedView=null}
+        packageName=app.irlpro.android autofillId=1073741824 fieldId=2131296439 fieldName=null
+      targetWin=android.os.BinderProxy@a92315c [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=29
+      targetWin=android.os.BinderProxy@dd8d01 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=32
+      targetWin=android.os.BinderProxy@99a512a [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=33
+      targetWin=android.os.BinderProxy@dd8d01 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=34
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=35
+      targetWin=android.os.BinderProxy@ca38de4 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=36
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=37
+      targetWin=android.os.BinderProxy@1f0b6bd [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=38
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=39
+      targetWin=android.os.BinderProxy@f2c8455 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=40
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=41
+      targetWin=android.os.BinderProxy@dbe9193 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=42
+      targetWin=android.os.BinderProxy@dbe9193 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=43
+      focusedWindowName=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      requestWindowName=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeControlTargetName=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeTargetNameFromWm=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeSurfaceParentName=Surface(name=ActivityRecord{63552105 u0 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity t259})/@0x2ebe111
+      focusedWindowName=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      requestWindowName=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeControlTargetName=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeTargetNameFromWm=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      focusedWindowName=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      requestWindowName=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeControlTargetName=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeTargetNameFromWm=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      focusedWindowName=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      requestWindowName=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeControlTargetName=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeTargetNameFromWm=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeSurfaceParentName=Surface(name=ActivityRecord{157815645 u0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard t259})/@0x107e3da
+      #20 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:94397a16 (2ms):
+      #56 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:46aa6529 (2ms):
+      #63 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:cf8198be (1ms):
+      #65 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:6c3b33de (8ms):
+      #68 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:d4039544 (4ms):
+      #70 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:15855c11 (1ms):
+      #72 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:732306c0 (1ms):
+      #73 TYPE_SHOW - STATUS_FAIL - app.irlpro.android:46baed76 (3ms):
+        requestWindowName=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      #81 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:a107f38a (1ms):
+      #83 TYPE_SHOW - STATUS_CANCEL - app.irlpro.android:e364e357 (10ms):
+        requestWindowName=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      #90 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:1039bd42 (3ms):
+      #92 TYPE_SHOW - STATUS_CANCEL - app.irlpro.android:78c169cc (10ms):
+        requestWindowName=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      #99 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:71086976 (5ms):
+      #101 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:79d3b9eb (1ms):
+      #103 TYPE_SHOW - STATUS_SUCCESS - app.irlpro.android:f8b396e8 (122ms):
+        requestWindowName=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      mImeWindowVis=0
+      mInputShown=false
+  mFallbackInputConnection=RemoteInputConnectionImpl{connection=android.view.inputmethod.BaseInputConnection@4dec0c6 mDeactivateRequested=false mServedView=null}
+  mServedView=androidx.appcompat.widget.AppCompatEditText{f540146 VFED..CL. .F...... 0,0-2106,126 #7f0900b7 app:id/conn_name aid=1073741824}
+    packageName=app.irlpro.android autofillId=1073741824 fieldId=2131296439 fieldName=null
+  mServedInputConnection=RemoteInputConnectionImpl{connection=COm3.c@1cb360d mDeactivateRequested=false mServedView=androidx.appcompat.widget.AppCompatEditText{f540146 VFED..CL. .F...... 0,0-2106,126 #7f0900b7 app:id/conn_name aid=1073741824}}

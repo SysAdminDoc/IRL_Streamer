@@ -1,0 +1,83 @@
+flowchart LR
+    Launch["LaunchActivity / larix: deep link"] --> Console["Live console\nStreamerServiceActivity"]
+    Console -->|Gear| Settings["Settings root\nSettingsActivity"]
+    Console -->|Overflow| Quick["Quick settings overlay"]
+    Console -->|Start with no connection| NoConnection["Start Broadcast? dialog"]
+    NoConnection -->|Create connection| Connections
+    NoConnection -->|Cancel / Back| Console
+
+    Quick --> QCamera["Camera tab"]
+    Quick --> QNetwork["Network tab"]
+    Quick --> QDisplay["Display tab"]
+    Quick --> QOverlays["Overlays tab"]
+    Quick --> QAudio["Audio tab"]
+    Quick --> QLog["Log tab"]
+
+    Settings --> Streamer["Streamer options"]
+    Settings --> Bonding["Bonding and NoDrop options"]
+    Settings --> Connections["Outgoing connections"]
+    Settings --> Video["Video parameters"]
+    Settings --> Audio["Audio parameters"]
+    Settings --> Recording["Recording options"]
+    Settings --> Display["Display"]
+    Settings --> Overlays["Overlays"]
+    Settings --> ImportExport["Import/Export Settings"]
+    Settings --> Advanced["Advanced options"]
+    Settings --> Help["Help & support"]
+
+    Streamer --> Chat["Chat/usernames/layout"]
+    Streamer --> Dashboards["Alert dashboards/API-key fields"]
+    Streamer --> CustomPage["Custom page URL"]
+    Streamer --> ScaleDialogs["Chat and dashboard scale dialogs"]
+
+    Bonding --> BondModes["Own SRTLA server / connection bonding"]
+    Bonding --> BondLinks["Cellular/Wi-Fi/Ethernet toggles and weights"]
+
+    Connections --> EmptyConnections["Empty list / Manage connections"]
+    Connections --> NewConnection["New outgoing connection form"]
+    NewConnection --> ProtocolFields["Protocol-specific URL fields"]
+    ProtocolFields --> TargetType["RTMP target type dialog"]
+    TargetType --> Authorization["Login/password fields"]
+    NewConnection --> Twitch["Twitch quick setup dialog"]
+    NewConnection --> Kick["Kick quick setup dialog"]
+
+    Video --> CameraVideo["Camera, resolution, FPS, orientation"]
+    Video --> LensDefaults["Focus/WB/anti-flicker/exposure"]
+    Video --> Encoder["Bitrate/mode/keyframe/format/profiles"]
+    Video --> Enhancements["EIS/OIS/noise reduction"]
+    Video --> Adaptive["Adaptive bitrate and frame rate"]
+
+    Audio --> AudioCapture["Bluetooth/source/channels/bitrate/sample rate"]
+    Audio --> AudioProcessing["Input gain/AEC/noise suppression"]
+
+    Recording --> RecordSplit["Record/split/duration"]
+    Recording --> Snapshot["Format/quality"]
+    Recording --> Storage["SAF and Save to"]
+    Storage --> DocumentsUI["Android folder picker"]
+
+    Display --> MeterGrid["Audio meter and 3×3 grid"]
+    Display --> Margins["Safe-margin ratios and indent"]
+
+    Overlays --> TextPicture["Text/Picture overlays"]
+    Overlays --> Web["Web overlays"]
+    TextPicture --> LayerList["Timestamp / New / Manage"]
+    LayerList --> TextEditor["Text HTML layer editor"]
+    LayerList --> StandbyPause["Standby and Pause selectors"]
+    Web --> WebEditor["URL/CSS/mode/position/z/size/scale"]
+    Web --> WebManager["Manage web overlays empty state"]
+
+    ImportExport --> ImportDialog["Import settings larix:// dialog"]
+    ImportExport --> QRPrompt["Barcode Scanner install prompt"]
+    ImportExport --> Export["Export settings — UNTESTED"]
+
+    Advanced --> Misc["Status bar/SRTLA/HEVC/experimental"]
+    Advanced --> Background["Background and camera controls"]
+    Advanced --> Platform["Network/camera timestamps/buffer"]
+    Advanced --> USB["USB camera capability/help"]
+    Advanced --> WebViews["Debug/geo/clear cookies"]
+
+    Help --> Discord["Discord — UNTESTED external"]
+    Help --> DebugShare["Camera debug details — UNTESTED"]
+    Help --> Reset["Reset app settings — UNTESTED"]
+    Help --> About["About IRL Pro dialog"]
+

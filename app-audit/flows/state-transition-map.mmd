@@ -1,0 +1,49 @@
+stateDiagram-v2
+    [*] --> ProcessStopped
+    ProcessStopped --> Launching: LaunchActivity after force-stop
+    Launching --> InitializingPreview: activity drawn / black preview
+    InitializingPreview --> IdleRear73: codec-resolution toast; camera/audio pipelines start
+
+    IdleRear73 --> SettingsOpen: tap Settings
+    SettingsOpen --> IdleRear73: navigate up / Back
+    SettingsOpen --> PreferenceDraft: open editor or form
+    PreferenceDraft --> SettingsOpen: Cancel / Back
+    PreferenceDraft --> ValidationBlocked: required value absent
+    ValidationBlocked --> PreferenceDraft: remain on form
+    PreferenceDraft --> SettingsOpen: Save valid reversible setting
+
+    IdleRear73 --> QuickSettingsOpen: tap overflow
+    QuickSettingsOpen --> IdleRear73: tap overflow / Back
+    QuickSettingsOpen --> QuickSettingsOpen: change tab or scroll
+
+    IdleRear73 --> Muted: tap microphone
+    Muted --> IdleRear73: tap microphone
+    IdleRear73 --> Front67: tap Flip
+    Front67 --> IdleRear73: tap Flip
+    IdleRear73 --> Rear103: tap 103-degree lens
+    Rear103 --> IdleRear73: tap 73-degree lens
+
+    IdleRear73 --> ReloadingWebContent: tap Reload
+    ReloadingWebContent --> IdleRear73: asynchronous completion; toast expires
+
+    IdleRear73 --> NoConnectionDialog: tap Start with zero active connections
+    NoConnectionDialog --> IdleRear73: Cancel / Back
+    NoConnectionDialog --> NewConnectionDraft: Create connection
+    NewConnectionDraft --> IdleRear73: Cancel through settings stack
+
+    IdleRear73 --> TimestampActive: enable built-in Timestamp
+    TimestampActive --> IdleRear73: disable Timestamp
+
+    IdleRear73 --> BackgroundTask: Back or Home
+    BackgroundTask --> IdleRear73: relaunch / task brought to front
+    BackgroundTask --> ProcessStopped: force-stop or inactive timeout (timeout itself UNTESTED)
+
+    note right of ProcessStopped
+      Saved preferences survive force-stop.
+      App data was never cleared.
+    end note
+    note right of BackgroundTask
+      Back showed the Samsung launcher while
+      the foreground-service process remained.
+    end note
+

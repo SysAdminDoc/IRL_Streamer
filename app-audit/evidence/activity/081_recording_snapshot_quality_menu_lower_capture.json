@@ -1,0 +1,18 @@
+{
+  "screen_id": "081_recording_snapshot_quality_menu_lower",
+  "captured_at_utc": "2026-08-15T00:59:28.8247527Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Recording > Snapshot quality > scroll",
+  "required_starting_state": "Snapshot quality chooser open; no value changed",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/081_recording_snapshot_quality_menu_lower.png",
+  "ui_xml": "evidence/ui-xml/081_recording_snapshot_quality_menu_lower.xml",
+  "activity_dump": "evidence/activity/081_recording_snapshot_quality_menu_lower_activity-top.txt",
+  "window_dump": "evidence/activity/081_recording_snapshot_quality_menu_lower_window.txt",
+  "input_method_dump": "evidence/activity/081_recording_snapshot_quality_menu_lower_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_081_recording_snapshot_quality_menu_lower_20260815T005925433Z.xml"
+  ]
+}

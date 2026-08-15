@@ -1,0 +1,18 @@
+{
+  "screen_id": "021_connections_list_empty",
+  "captured_at_utc": "2026-08-15T00:29:20.3577052Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings root > Connections",
+  "required_starting_state": "Settings root at top; no destination modified",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/021_connections_list_empty.png",
+  "ui_xml": "evidence/ui-xml/021_connections_list_empty.xml",
+  "activity_dump": "evidence/activity/021_connections_list_empty_activity-top.txt",
+  "window_dump": "evidence/activity/021_connections_list_empty_window.txt",
+  "input_method_dump": "evidence/activity/021_connections_list_empty_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_021_connections_list_empty_20260815T002917211Z.xml"
+  ]
+}

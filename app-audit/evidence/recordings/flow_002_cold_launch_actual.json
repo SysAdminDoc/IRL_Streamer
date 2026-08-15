@@ -1,0 +1,16 @@
+{
+  "classification": "CONFIRMED",
+  "flow_id": "flow_002_cold_launch_actual",
+  "file": "evidence/recordings/flow_002_cold_launch_actual.mp4",
+  "description": "True force-stop cold launch with preserved app data. The retained segment contains only the target app; the preceding personal launcher portion was removed for privacy.",
+  "duration_seconds": 7.233333,
+  "encoded_width_px": 1080,
+  "encoded_height_px": 2316,
+  "codec": "H.264 High",
+  "average_frame_rate": 42.1659,
+  "file_size_bytes": 2181344,
+  "sha256": "18FF258358026342EB201CBCEEC988FCCBAD8525BD256153EF67800BDE2FFA60",
+  "audio_present": false,
+  "privacy_processing": "Trimmed and re-encoded after capture; no launcher frames retained.",
+  "timing_note": "ADB am start -W for the matching launch reported LaunchState COLD, TotalTime 330 ms, WaitTime 347 ms. Recording timing is illustrative, not a benchmark trace."
+}

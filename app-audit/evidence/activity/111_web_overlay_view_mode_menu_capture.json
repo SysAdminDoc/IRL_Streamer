@@ -1,0 +1,18 @@
+{
+  "screen_id": "111_web_overlay_view_mode_menu",
+  "captured_at_utc": "2026-08-15T01:16:24.4839799Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Web Overlays > New web overlay > View mode",
+  "required_starting_state": "New web overlay draft; current Preview + stream; no record saved",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/111_web_overlay_view_mode_menu.png",
+  "ui_xml": "evidence/ui-xml/111_web_overlay_view_mode_menu.xml",
+  "activity_dump": "evidence/activity/111_web_overlay_view_mode_menu_activity-top.txt",
+  "window_dump": "evidence/activity/111_web_overlay_view_mode_menu_window.txt",
+  "input_method_dump": "evidence/activity/111_web_overlay_view_mode_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_111_web_overlay_view_mode_menu_20260815T011621386Z.xml"
+  ]
+}

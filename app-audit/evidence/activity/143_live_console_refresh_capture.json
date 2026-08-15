@@ -1,0 +1,18 @@
+{
+  "screen_id": "143_live_console_refresh",
+  "captured_at_utc": "2026-08-15T01:29:59.0441615Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Main > refresh control",
+  "required_starting_state": "Idle live console; refresh/reload control activated once",
+  "settle_milliseconds": 150,
+  "screenshot": "evidence/screenshots/143_live_console_refresh.png",
+  "ui_xml": "evidence/ui-xml/143_live_console_refresh.xml",
+  "activity_dump": "evidence/activity/143_live_console_refresh_activity-top.txt",
+  "window_dump": "evidence/activity/143_live_console_refresh_window.txt",
+  "input_method_dump": "evidence/activity/143_live_console_refresh_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_143_live_console_refresh_20260815T012955160Z.xml"
+  ]
+}

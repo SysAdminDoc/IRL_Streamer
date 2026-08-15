@@ -1,0 +1,18 @@
+{
+  "screen_id": "002_settings_root",
+  "captured_at_utc": "2026-08-15T00:20:30.9784020Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "001 streamer home > Settings gear",
+  "required_starting_state": "Camera console open; tap settings gear",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/002_settings_root.png",
+  "ui_xml": "evidence/ui-xml/002_settings_root.xml",
+  "activity_dump": "evidence/activity/002_settings_root_activity-top.txt",
+  "window_dump": "evidence/activity/002_settings_root_window.txt",
+  "input_method_dump": "evidence/activity/002_settings_root_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_002_settings_root_20260815T002027726Z.xml"
+  ]
+}

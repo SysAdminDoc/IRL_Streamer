@@ -1,0 +1,14 @@
+.gradle/
+.idea/
+local.properties
+**/build/
+validation/current/*.png
+validation/diffs/*.png
+validation/overlays/*.png
+validation/reports/*.json
+validation/logs/*.log
+!validation/current/.gitkeep
+!validation/diffs/.gitkeep
+!validation/overlays/.gitkeep
+!validation/reports/.gitkeep
+!validation/logs/.gitkeep

@@ -1,0 +1,18 @@
+{
+  "screen_id": "053_video_exposure_compensation_menu_bottom",
+  "captured_at_utc": "2026-08-15T00:47:14.1858873Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Video > Exposure compensation > bottom",
+  "required_starting_state": "Exposure compensation chooser open; no value changed",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/053_video_exposure_compensation_menu_bottom.png",
+  "ui_xml": "evidence/ui-xml/053_video_exposure_compensation_menu_bottom.xml",
+  "activity_dump": "evidence/activity/053_video_exposure_compensation_menu_bottom_activity-top.txt",
+  "window_dump": "evidence/activity/053_video_exposure_compensation_menu_bottom_window.txt",
+  "input_method_dump": "evidence/activity/053_video_exposure_compensation_menu_bottom_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_053_video_exposure_compensation_menu_bottom_20260815T004710861Z.xml"
+  ]
+}

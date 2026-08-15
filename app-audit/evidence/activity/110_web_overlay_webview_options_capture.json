@@ -1,0 +1,18 @@
+{
+  "screen_id": "110_web_overlay_webview_options",
+  "captured_at_utc": "2026-08-15T01:15:52.9346833Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Web Overlays > New web overlay > WebView options",
+  "required_starting_state": "New web overlay draft; no record saved",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/110_web_overlay_webview_options.png",
+  "ui_xml": "evidence/ui-xml/110_web_overlay_webview_options.xml",
+  "activity_dump": "evidence/activity/110_web_overlay_webview_options_activity-top.txt",
+  "window_dump": "evidence/activity/110_web_overlay_webview_options_window.txt",
+  "input_method_dump": "evidence/activity/110_web_overlay_webview_options_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_110_web_overlay_webview_options_20260815T011549801Z.xml"
+  ]
+}

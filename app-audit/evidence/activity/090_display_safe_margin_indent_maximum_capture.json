@@ -1,0 +1,18 @@
+{
+  "screen_id": "090_display_safe_margin_indent_maximum",
+  "captured_at_utc": "2026-08-15T01:05:00.6620254Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Display > Safe margin indent",
+  "required_starting_state": "Safe margin indent temporarily moved from 5% to maximum 20%; restored after capture",
+  "settle_milliseconds": 600,
+  "screenshot": "evidence/screenshots/090_display_safe_margin_indent_maximum.png",
+  "ui_xml": "evidence/ui-xml/090_display_safe_margin_indent_maximum.xml",
+  "activity_dump": "evidence/activity/090_display_safe_margin_indent_maximum_activity-top.txt",
+  "window_dump": "evidence/activity/090_display_safe_margin_indent_maximum_window.txt",
+  "input_method_dump": "evidence/activity/090_display_safe_margin_indent_maximum_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_090_display_safe_margin_indent_maximum_20260815T010457525Z.xml"
+  ]
+}

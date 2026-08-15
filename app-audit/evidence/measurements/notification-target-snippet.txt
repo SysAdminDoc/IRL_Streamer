@@ -1,0 +1,87 @@
+    NotificationRecord(0x05a3e4b6: pkg=app.irlpro.android user=UserHandle{0} id=101 tag=null importance=2 key=0|app.irlpro.android|101|null|10348: Notification(channel=com.wmspanel.streamer.channel.foreground_service shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|NO_CLEAR|FOREGROUND_SERVICE color=0x00000000 category=service actions=2 vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0))
+      uid=10348 userId=0
+      opPkg=app.irlpro.android
+      icon=Icon(typ=RESOURCE pkg=app.irlpro.android id=0x7f080088)
+      flags=ONGOING_EVENT|NO_CLEAR|FOREGROUND_SERVICE
+      originalFlags=ONGOING_EVENT|FOREGROUND_SERVICE
+      pri=0
+      key=0|app.irlpro.android|101|null|10348
+      seen=false
+      groupKey=0|app.irlpro.android|101|null|10348
+      notification=
+            fullscreenIntent=null
+            contentIntent=PendingIntent{13c05b7: PendingIntentRecord{41f2f0a app.irlpro.android startActivity (allowlist: ff24211:+30s0ms/0/NOTIFICATION_SERVICE/NotificationManagerService)}}
+            deleteIntent=null
+            number=0
+            groupAlertBehavior=0
+            when=1786757480362/1786757480362
+            tickerText=null
+            vis=0
+            contentView=null
+            bigContentView=null
+            headsUpContentView=null
+            color=0x00000000
+            timeout=PT72H
+            parcelDataSize=4832
+            mAllowSystemGeneratedContextualActions=true
+            actions={
+                [0] "Start" -> PendingIntent{2d66124: PendingIntentRecord{37ea6cd app.irlpro.android startService (allowlist: ff24211:+30s0ms/0/NOTIFICATION_SERVICE/NotificationManagerService)}}
+                [1] "Exit" -> PendingIntent{cb8848d: PendingIntentRecord{b2a464 app.irlpro.android startService (allowlist: ff24211:+30s0ms/0/NOTIFICATION_SERVICE/NotificationManagerService)}}
+              }
+            extras={
+                android.title=null
+                android.reduced.images=Boolean (true)
+                android.subText=null
+                android.template=String (android.app.Notification$BigTextStyle)
+                android.showChronometer=Boolean (false)
+                android.text=SpannableString [length=23]
+                android.progress=Integer (0)
+                androidx.core.app.extra.COMPAT_TEMPLATE=String [length=9]
+                android.progressMax=Integer (0)
+                android.appInfo=ApplicationInfo (ApplicationInfo{5019642 app.irlpro.android})
+                android.showWhen=Boolean (true)
+                android.largeIcon=null
+                android.bigText=SpannableString [length=23]
+                android.infoText=null
+                android.progressIndeterminate=Boolean (false)
+                android.remoteInputHistory=null
+            }
+      publicNotification=
+            None
+      stats=SingleNotificationStats{posttimeElapsedMs=5304576, posttimeToFirstClickMs=-1, posttimeToDismissMs=-1, airtimeCount=0, airtimeMs=0, currentAirtimeStartElapsedMs=-1, airtimeExpandedMs=0, posttimeToFirstVisibleExpansionMs=-1, currentAirtimeExpandedStartElapsedMs=-1, requestedImportance=3, naturalImportance=2, isNoisy=true}
+      mContactAffinity=0.0
+      mRecentlyIntrusive=false
+      mPackagePriority=0
+      mPackageVisibility=-1000
+      mSystemImportance=UNSPECIFIED
+      mAsstImportance=UNSPECIFIED
+      mImportance=LOW
+      mImportanceExplanation=app
+      mProposedImportance=UNSPECIFIED
+      mIsAppImportanceLocked=true
+      mSensitiveContent=false
+      mCanceledAfterLifetimeExtension=false
+      mIntercept=false
+      mHidden==false
+      mGlobalSortKey=crtcl=0x0002:intrsv=2:grnk=0x0000:gsmry=1:nsk:rnk=0x0000
+      mRankingTimeMs=1786757480362(2026-08-14 21:31:20.362-0400)
+      mCreationTimeMs=1786757445322(2026-08-14 21:30:45.322-0400)
+      mVisibleSinceMs=0(1969-12-31 19:00:00.000-0500)
+      mUpdateTimeMs=1786757480364(2026-08-14 21:31:20.364-0400)
+      mInterruptionTimeMs=1786757480364(2026-08-14 21:31:20.364-0400)
+      mSuppressedVisualEffects= 0
+      mSound= content://settings/system/notification_sound
+      mVibration= null
+      mAttributes= AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null
+      mLight= null
+      mShowBadge=false
+      mColorized=false
+      mAllowBubble=false
+      isBubble=false
+      mIsInterruptive=false
+      effectiveNotificationChannel=NotificationChannel{mId='com.wmspanel.streamer.channel.foreground_service', mName=Foreground service, mDescription=hasDescription , mImportance=2, mBypassDnd=false, mLockscreenVisibility=-1000, mSound=content://settings/system/notification_sound, mLights=false, mLightColor=0, mVibrationPattern=null, mVibrationEffect=null, mUserLockedFields=0, mUserVisibleTaskShown=true, mVibrationEnabled=false, mShowBadge=false, mDeleted=false, mDeletedTimeMs=-1, mGroup='null', mAudioAttributes=AudioAttributes: usage=USAGE_NOTIFICATION content=CONTENT_TYPE_SONIFICATION flags=0x800 tags= bundle=null, mBlockableSystem=false, mAllowBubbles=-1, mImportanceLockedByOEM=false, mImportanceLockedDefaultApp=false, mOriginalImp=2, mParent=null, mConversationId=null, mDemoted=false, mImportantConvo=false, mLastNotificationUpdateTimeMs=0, mSoundMissingReason=0}
+      mAdjustments=[]
+      shortcut=null found valid? false
+      mUserVisOverride=-1000
+      hasSummarization=false
+      mSuggestionsGeneratedByAssistant=false

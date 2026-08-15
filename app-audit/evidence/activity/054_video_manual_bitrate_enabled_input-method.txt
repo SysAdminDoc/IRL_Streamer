@@ -1,0 +1,112 @@
+Privacy-filtered keyboard-state evidence. Input contents and unrelated applications intentionally not retained.
+      fallbackInputConnection=RemoteInputConnectionImpl{connection=android.view.inputmethod.BaseInputConnection@9d348e1 mDeactivateRequested=false mServedView=null}
+        packageName=app.irlpro.android autofillId=0 fieldId=0 fieldName=null
+      targetWin=android.os.BinderProxy@ca38de4 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=36
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=37
+      targetWin=android.os.BinderProxy@1f0b6bd [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=38
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=39
+      targetWin=android.os.BinderProxy@f2c8455 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=40
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=41
+      targetWin=android.os.BinderProxy@dbe9193 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=42
+      targetWin=android.os.BinderProxy@dbe9193 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=43
+      targetWin=android.os.BinderProxy@dbe9193 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=44
+      targetWin=android.os.BinderProxy@dbe9193 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=45
+      targetWin=android.os.BinderProxy@dbe9193 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=46
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=47
+      targetWin=android.os.BinderProxy@39aa7b2 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=48
+      targetWin=android.os.BinderProxy@39aa7b2 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=49
+      targetWin=android.os.BinderProxy@39aa7b2 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=50
+      targetWin=android.os.BinderProxy@39aa7b2 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=51
+      targetWin=android.os.BinderProxy@39aa7b2 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=52
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=53
+      targetWin=android.os.BinderProxy@a02fe0 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=54
+      targetWin=android.os.BinderProxy@ad1651a [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=55
+      targetWin=android.os.BinderProxy@ad1651a [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=56
+      targetWin=android.os.BinderProxy@a02fe0 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=57
+      targetWin=android.os.BinderProxy@632b384 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=58
+      targetWin=android.os.BinderProxy@a02fe0 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=59
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=60
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=61
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=62
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=63
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=64
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=65
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=66
+      targetWin=android.os.BinderProxy@a060d9e [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=67
+      focusedWindowName=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      requestWindowName=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeControlTargetName=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeTargetNameFromWm=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeSurfaceParentName=Surface(name=ActivityRecord{63552105 u0 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity t259})/@0x2ebe111
+      focusedWindowName=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      requestWindowName=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeControlTargetName=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeTargetNameFromWm=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      focusedWindowName=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      requestWindowName=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeControlTargetName=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      imeTargetNameFromWm=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      focusedWindowName=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      requestWindowName=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeControlTargetName=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeTargetNameFromWm=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeSurfaceParentName=Surface(name=ActivityRecord{157815645 u0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard t259})/@0x107e3da
+      focusedWindowName=d9dd303 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      requestWindowName=d9dd303 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeControlTargetName=d9dd303 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeTargetNameFromWm=d9dd303 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeSurfaceParentName=Surface(name=ActivityRecord{54124365 u0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard t259})/@0xda99198
+      focusedWindowName=412284b app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      requestWindowName=412284b app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeControlTargetName=412284b app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeTargetNameFromWm=412284b app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      imeSurfaceParentName=Surface(name=ActivityRecord{95462828 u0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard t259})/@0xab3f25b
+      #63 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:cf8198be (1ms):
+      #65 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:6c3b33de (8ms):
+      #68 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:d4039544 (4ms):
+      #70 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:15855c11 (1ms):
+      #72 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:732306c0 (1ms):
+      #73 TYPE_SHOW - STATUS_FAIL - app.irlpro.android:46baed76 (3ms):
+        requestWindowName=937124d app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      #81 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:a107f38a (1ms):
+      #83 TYPE_SHOW - STATUS_CANCEL - app.irlpro.android:e364e357 (10ms):
+        requestWindowName=e5994b2 app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      #90 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:1039bd42 (3ms):
+      #92 TYPE_SHOW - STATUS_CANCEL - app.irlpro.android:78c169cc (10ms):
+        requestWindowName=5046e6a app.irlpro.android/com.wmspanel.streamer.preference.SettingsActivity
+      #99 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:71086976 (5ms):
+      #101 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:79d3b9eb (1ms):
+      #103 TYPE_SHOW - STATUS_SUCCESS - app.irlpro.android:f8b396e8 (122ms):
+        requestWindowName=530f5d0 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      #108 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:e8167057 (2ms):
+      #109 TYPE_SHOW - STATUS_SUCCESS - app.irlpro.android:bc926b2c (182ms):
+      #113 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:d092f719 (1ms):
+      #115 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:8bd0a343 (1ms):
+      #117 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:6c0dd3fa (2ms):
+      #119 TYPE_SHOW - STATUS_SUCCESS - app.irlpro.android:25407330 (95ms):
+        requestWindowName=d9dd303 app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      #124 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:5e079c9f (1ms):
+      #125 TYPE_SHOW - STATUS_SUCCESS - app.irlpro.android:1d36fe4d (117ms):
+      #130 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:8ecf3db4 (5ms):
+      #131 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:87a863ea (2ms):
+      #133 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:480afe01 (4ms):
+      #135 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:5f9b0d25 (3ms):
+      #137 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:f5605539 (1ms):
+      #139 TYPE_SHOW - STATUS_SUCCESS - app.irlpro.android:a813c521 (126ms):
+        requestWindowName=412284b app.irlpro.android/com.wmspanel.streamer.preference.ConnectionWizard
+      #146 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:931268e8 (4ms):
+      #148 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:e392672b (1ms):
+      #151 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:b3542c47 (4ms):
+      #154 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:95be3944 (1ms):
+      #156 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:3dc41373 (2ms):
+      #157 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:1541e8af (1ms):
+      #158 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:31dd382c (2ms):
+      #159 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:f72a2bd4 (2ms):
+      #160 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:f4423a70 (9ms):
+      #161 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:11c58d12 (1ms):
+      #162 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:29033924 (3ms):
+      mImeWindowVis=0
+      mInputShown=false
+  mFallbackInputConnection=RemoteInputConnectionImpl{connection=android.view.inputmethod.BaseInputConnection@4dec0c6 mDeactivateRequested=false mServedView=null}
+  mServedView=com.android.internal.policy.DecorView{6d87998 V.E...... R....... 0,0-2241,1080 aid=4}[SettingsActivity]
+    packageName=app.irlpro.android autofillId=0 fieldId=0 fieldName=null

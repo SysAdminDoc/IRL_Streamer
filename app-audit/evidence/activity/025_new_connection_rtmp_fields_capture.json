@@ -1,0 +1,18 @@
+{
+  "screen_id": "025_new_connection_rtmp_fields",
+  "captured_at_utc": "2026-08-15T00:32:40.1094858Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.ConnectionWizard",
+  "navigation_path": "New outgoing connection > enter reserved-host RTMP URL > hide keyboard",
+  "required_starting_state": "Safe non-secret test values; form not submitted",
+  "settle_milliseconds": 1000,
+  "screenshot": "evidence/screenshots/025_new_connection_rtmp_fields.png",
+  "ui_xml": "evidence/ui-xml/025_new_connection_rtmp_fields.xml",
+  "activity_dump": "evidence/activity/025_new_connection_rtmp_fields_activity-top.txt",
+  "window_dump": "evidence/activity/025_new_connection_rtmp_fields_window.txt",
+  "input_method_dump": "evidence/activity/025_new_connection_rtmp_fields_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_025_new_connection_rtmp_fields_20260815T003236751Z.xml"
+  ]
+}

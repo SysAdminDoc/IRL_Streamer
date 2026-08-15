@@ -1,0 +1,18 @@
+{
+  "screen_id": "039_video_adaptive_bitrate",
+  "captured_at_utc": "2026-08-15T00:39:10.2650930Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "038 video parameters > swipe upward",
+  "required_starting_state": "Vendor enhancements and adaptive bitrate section; no preference changed",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/039_video_adaptive_bitrate.png",
+  "ui_xml": "evidence/ui-xml/039_video_adaptive_bitrate.xml",
+  "activity_dump": "evidence/activity/039_video_adaptive_bitrate_activity-top.txt",
+  "window_dump": "evidence/activity/039_video_adaptive_bitrate_window.txt",
+  "input_method_dump": "evidence/activity/039_video_adaptive_bitrate_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_039_video_adaptive_bitrate_20260815T003907139Z.xml"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "screen_id": "124_advanced_webviews",
+  "captured_at_utc": "2026-08-15T01:23:43.1791069Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Main > Settings > Advanced options > scroll near bottom",
+  "required_starting_state": "Advanced options defaults, WebViews section",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/124_advanced_webviews.png",
+  "ui_xml": "evidence/ui-xml/124_advanced_webviews.xml",
+  "activity_dump": "evidence/activity/124_advanced_webviews_activity-top.txt",
+  "window_dump": "evidence/activity/124_advanced_webviews_window.txt",
+  "input_method_dump": "evidence/activity/124_advanced_webviews_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_124_advanced_webviews_20260815T012340057Z.xml"
+  ]
+}

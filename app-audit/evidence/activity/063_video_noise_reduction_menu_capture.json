@@ -1,0 +1,18 @@
+{
+  "screen_id": "063_video_noise_reduction_menu",
+  "captured_at_utc": "2026-08-15T00:50:54.0248131Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Video > Noise reduction",
+  "required_starting_state": "Vendor video enhancements; current Fast",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/063_video_noise_reduction_menu.png",
+  "ui_xml": "evidence/ui-xml/063_video_noise_reduction_menu.xml",
+  "activity_dump": "evidence/activity/063_video_noise_reduction_menu_activity-top.txt",
+  "window_dump": "evidence/activity/063_video_noise_reduction_menu_window.txt",
+  "input_method_dump": "evidence/activity/063_video_noise_reduction_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_063_video_noise_reduction_menu_20260815T005050898Z.xml"
+  ]
+}

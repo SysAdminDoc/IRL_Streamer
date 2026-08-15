@@ -1,0 +1,18 @@
+{
+  "screen_id": "055_video_bitrate_editor",
+  "captured_at_utc": "2026-08-15T00:48:06.3408785Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Video > Bitrate H264/HEVC",
+  "required_starting_state": "Manual bitrate temporarily enabled; current value 6000 Kbps; no edit submitted",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/055_video_bitrate_editor.png",
+  "ui_xml": "evidence/ui-xml/055_video_bitrate_editor.xml",
+  "activity_dump": "evidence/activity/055_video_bitrate_editor_activity-top.txt",
+  "window_dump": "evidence/activity/055_video_bitrate_editor_window.txt",
+  "input_method_dump": "evidence/activity/055_video_bitrate_editor_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_055_video_bitrate_editor_20260815T004803234Z.xml"
+  ]
+}

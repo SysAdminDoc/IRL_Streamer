@@ -1,0 +1,30 @@
+{
+  "classification": "CONFIRMED",
+  "captured_visual_states": 145,
+  "logical_screen_names": 119,
+  "dialogs": 15,
+  "selection_dialogs_or_menus": 37,
+  "bottom_sheets": 0,
+  "system_intent_surfaces": 1,
+  "quick_settings_overlay_states": 9,
+  "interactive_control_instances": 1145,
+  "deduplicated_control_signatures": 378,
+  "directly_unlabeled_actionable_instances": 542,
+  "explicit_uiautomator_naf_instances": 141,
+  "screens_with_explicit_naf": 21,
+  "potential_sub_48dp_target_instances": 427,
+  "element_type_counts": {
+    "button": 114,
+    "checkbox": 3,
+    "clickable_row": 407,
+    "dropdown": 2,
+    "icon_button": 193,
+    "radio_button": 6,
+    "scroll_container": 103,
+    "selectable_option": 170,
+    "slider": 30,
+    "switch": 92,
+    "text_field": 25
+  },
+  "method": "Counts derive from the 145 captured UI Automator trees. Repeated controls across states count as instances; signatures deduplicate resource-id/label/type tuples."
+}

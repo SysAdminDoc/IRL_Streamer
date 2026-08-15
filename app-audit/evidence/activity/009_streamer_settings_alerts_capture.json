@@ -1,0 +1,18 @@
+{
+  "screen_id": "009_streamer_settings_alerts",
+  "captured_at_utc": "2026-08-15T00:23:25.3970380Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "008 streamer settings > swipe upward",
+  "required_starting_state": "Streamer options around Other/Alert Dashboard sections",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/009_streamer_settings_alerts.png",
+  "ui_xml": "evidence/ui-xml/009_streamer_settings_alerts.xml",
+  "activity_dump": "evidence/activity/009_streamer_settings_alerts_activity-top.txt",
+  "window_dump": "evidence/activity/009_streamer_settings_alerts_window.txt",
+  "input_method_dump": "evidence/activity/009_streamer_settings_alerts_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_009_streamer_settings_alerts_20260815T002321993Z.xml"
+  ]
+}

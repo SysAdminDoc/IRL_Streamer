@@ -1,0 +1,18 @@
+{
+  "screen_id": "033_video_resolution_fps",
+  "captured_at_utc": "2026-08-15T00:37:12.3925101Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "032 video parameters > swipe upward",
+  "required_starting_state": "Video settings at top; no preference changed",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/033_video_resolution_fps.png",
+  "ui_xml": "evidence/ui-xml/033_video_resolution_fps.xml",
+  "activity_dump": "evidence/activity/033_video_resolution_fps_activity-top.txt",
+  "window_dump": "evidence/activity/033_video_resolution_fps_window.txt",
+  "input_method_dump": "evidence/activity/033_video_resolution_fps_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_033_video_resolution_fps_20260815T003708236Z.xml"
+  ]
+}

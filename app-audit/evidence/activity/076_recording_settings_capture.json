@@ -1,0 +1,18 @@
+{
+  "screen_id": "076_recording_settings",
+  "captured_at_utc": "2026-08-15T00:57:42.6707264Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Recording",
+  "required_starting_state": "Recording settings persisted/default state",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/076_recording_settings.png",
+  "ui_xml": "evidence/ui-xml/076_recording_settings.xml",
+  "activity_dump": "evidence/activity/076_recording_settings_activity-top.txt",
+  "window_dump": "evidence/activity/076_recording_settings_window.txt",
+  "input_method_dump": "evidence/activity/076_recording_settings_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_076_recording_settings_20260815T005739266Z.xml"
+  ]
+}

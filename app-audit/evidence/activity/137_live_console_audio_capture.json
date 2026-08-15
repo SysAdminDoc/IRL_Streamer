@@ -1,0 +1,18 @@
+{
+  "screen_id": "137_live_console_audio",
+  "captured_at_utc": "2026-08-15T01:27:59.0170290Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Main > overflow > Audio",
+  "required_starting_state": "Idle live console; audio capture active; microphone unmuted",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/137_live_console_audio.png",
+  "ui_xml": "evidence/ui-xml/137_live_console_audio.xml",
+  "activity_dump": "evidence/activity/137_live_console_audio_activity-top.txt",
+  "window_dump": "evidence/activity/137_live_console_audio_window.txt",
+  "input_method_dump": "evidence/activity/137_live_console_audio_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_137_live_console_audio_20260815T012755452Z.xml"
+  ]
+}

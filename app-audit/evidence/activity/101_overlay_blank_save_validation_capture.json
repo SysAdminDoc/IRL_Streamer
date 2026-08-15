@@ -1,0 +1,18 @@
+{
+  "screen_id": "101_overlay_blank_save_validation",
+  "captured_at_utc": "2026-08-15T01:12:06.8898705Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Text/Picture Overlays > New layer > Save",
+  "required_starting_state": "Blank Text layer draft; validation attempted; no record saved",
+  "settle_milliseconds": 250,
+  "screenshot": "evidence/screenshots/101_overlay_blank_save_validation.png",
+  "ui_xml": "evidence/ui-xml/101_overlay_blank_save_validation.xml",
+  "activity_dump": "evidence/activity/101_overlay_blank_save_validation_activity-top.txt",
+  "window_dump": "evidence/activity/101_overlay_blank_save_validation_window.txt",
+  "input_method_dump": "evidence/activity/101_overlay_blank_save_validation_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_101_overlay_blank_save_validation_20260815T011203751Z.xml"
+  ]
+}

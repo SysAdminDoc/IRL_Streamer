@@ -1,0 +1,18 @@
+{
+  "screen_id": "078_recording_settings_lower",
+  "captured_at_utc": "2026-08-15T00:58:30.8022881Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Recording > scroll",
+  "required_starting_state": "Recording format/storage settings; persisted defaults",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/078_recording_settings_lower.png",
+  "ui_xml": "evidence/ui-xml/078_recording_settings_lower.xml",
+  "activity_dump": "evidence/activity/078_recording_settings_lower_activity-top.txt",
+  "window_dump": "evidence/activity/078_recording_settings_lower_window.txt",
+  "input_method_dump": "evidence/activity/078_recording_settings_lower_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_078_recording_settings_lower_20260815T005827461Z.xml"
+  ]
+}

@@ -1,0 +1,96 @@
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  User 0 active services:
+  * ServiceRecord{9fd1a1e u0 app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0 c:app.irlpro.android}
+    intent={cmp=app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0}
+    packageName=app.irlpro.android
+    processName=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0
+    targetSdkVersion=36
+    baseDir=/data/app/~~uNMEVV4retIqnLuPKnTHtA==/com.google.android.webview-4N79gmNfvvoqN5KPqen63A==/base.apk
+    dataDir=/data/user/0/com.google.android.webview
+    app=ProcessRecord{6cba715 9908:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a348i0}
+    isolationHostProc=ProcessRecord{6cba715 9908:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a348i0}
+    useNewWiuLogic_forCapabilities()=false
+    useNewWiuLogic_forStart()=false
+    useNewBfslLogic()=false
+    mAllowWiu_noBinding=DENIED
+    mAllowWiu_inBindService=PROC_STATE_TOP
+    mAllowWiu_byBindings=DENIED
+    getFgsAllowWiu_legacy=PROC_STATE_TOP
+    getFgsAllowWiu_new=DENIED
+    getFgsAllowWiu_forStart=PROC_STATE_TOP
+    getFgsAllowWiu_forCapabilities=PROC_STATE_TOP
+    allowUiJobScheduling=false
+    recentCallingPackage=app.irlpro.android
+    recentCallingUid=10348
+    mAllowStart_noBinding=DENIED
+    mAllowStart_inBindService=PROC_STATE_TOP
+    mAllowStart_byBindings=DENIED
+    getFgsAllowStart_legacy=PROC_STATE_TOP
+    getFgsAllowStart_new=DENIED
+    getFgsAllowStart=PROC_STATE_TOP
+    startForegroundCount=0
+    infoAllowStartForeground=[callingPackage: app.irlpro.android; callingUid: 10348; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0 (has extras) }; code:PROC_STATE_TOP; tempAllowListReason:<null>; allowWiu:12; targetSdkVersion:36; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+    serviceDelayed=false
+    createTime=-13m36s939ms startingBgTimeout=--
+    lastActivity=-8m47s719ms restartTime=-13m36s898ms createdFromFg=true
+    Bindings:
+    * IntentBindRecord{f33495c CREATE}:
+      intent={xflg=0x4 cmp=app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0}
+      binder=android.os.BinderProxy@2587465
+      requested=true received=true hasBound=true doRebind=false
+      * Client AppBindRecord{e3e853a ProcessRecord{22b854f 9811:app.irlpro.android/u0a348}}
+        Per-process Connections:
+          ConnectionRecord{530401b u0 CR WPRI app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0:@dcba2a flags=0x80000021}
+          ConnectionRecord{f3e39e1 u0 CR IMP app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0:@bf0748 flags=0x80000041}
+    All Connections:
+      ConnectionRecord{f3e39e1 u0 CR IMP app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0:@bf0748 flags=0x80000041}
+      ConnectionRecord{530401b u0 CR WPRI app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0:@dcba2a flags=0x80000021}
+
+  * ServiceRecord{3882624 u0 app.irlpro.android/com.wmspanel.streamer.StreamerService c:app.irlpro.android}
+    intent={cmp=app.irlpro.android/com.wmspanel.streamer.StreamerService}
+    packageName=app.irlpro.android
+    processName=app.irlpro.android
+    targetSdkVersion=34
+    baseDir=/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/base.apk
+    dataDir=/data/user/0/app.irlpro.android
+    app=ProcessRecord{22b854f 9811:app.irlpro.android/u0a348}
+    useNewWiuLogic_forCapabilities()=false
+    useNewWiuLogic_forStart()=false
+    useNewBfslLogic()=false
+    mAllowWiu_noBinding=PROC_STATE_TOP
+    mAllowWiu_inBindService=PROC_STATE_TOP
+    mAllowWiu_byBindings=DENIED
+    getFgsAllowWiu_legacy=PROC_STATE_TOP
+    getFgsAllowWiu_new=PROC_STATE_TOP
+    getFgsAllowWiu_forStart=PROC_STATE_TOP
+    getFgsAllowWiu_forCapabilities=PROC_STATE_TOP
+    allowUiJobScheduling=true
+    recentCallingPackage=app.irlpro.android
+    recentCallingUid=10348
+    mAllowStart_noBinding=PROC_STATE_TOP
+    mAllowStart_inBindService=PROC_STATE_TOP
+    mAllowStart_byBindings=DENIED
+    getFgsAllowStart_legacy=PROC_STATE_TOP
+    getFgsAllowStart_new=PROC_STATE_TOP
+    getFgsAllowStart=PROC_STATE_TOP
+    startForegroundCount=1
+    infoAllowStartForeground=[callingPackage: app.irlpro.android; callingUid: 10348; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=app.irlpro.android/com.wmspanel.streamer.StreamerService }; code:PROC_STATE_TOP; tempAllowListReason:<null>; allowWiu:12; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+    serviceDelayed=false
+    isForeground=true foregroundId=101 types=0x000000C0 foregroundNoti=Notification(channel=com.wmspanel.streamer.channel.foreground_service shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|NO_CLEAR|FOREGROUND_SERVICE color=0x00000000 category=service vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0)
+    createTime=-13m36s701ms startingBgTimeout=--
+    lastActivity=-8m47s728ms restartTime=-13m36s700ms createdFromFg=true
+    startRequested=true delayedStop=false stopIfKilled=false callStart=true lastStartId=2
+ startCommandResult=1
+    Bindings:
+    * IntentBindRecord{21295eb}:
+      intent={xflg=0x4 cmp=app.irlpro.android/com.wmspanel.streamer.StreamerService}
+      binder=android.os.BinderProxy@a599f48
+      requested=true received=true hasBound=false doRebind=false
+
+  Connection bindings to services:
+  * ConnectionRecord{f3e39e1 u0 CR IMP app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0:@bf0748 flags=0x80000041}
+    binding=AppBindRecord{e3e853a app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0:app.irlpro.android}
+    conn=android.os.BinderProxy@bf0748 flags=0x80000041
+  * ConnectionRecord{530401b u0 CR WPRI app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0:@dcba2a flags=0x80000021}
+    binding=AppBindRecord{e3e853a app.irlpro.android/org.chromium.content.app.SandboxedProcessService0:0:app.irlpro.android}
+    conn=android.os.BinderProxy@dcba2a flags=0x80000021

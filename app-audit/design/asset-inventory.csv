@@ -1,0 +1,18 @@
+asset_id,asset_or_family,observed_location,classification,reuse_status,reconstruction_action,evidence
+A001,"IRL Pro app icon: magenta rounded square with white camera glyph","Android toast",CONFIRMED,"Authorization required","Use authorized identity or create an original replacement; do not extract from APK","screen 143"
+A002,"IRL Pro word mark/name","Settings/About/Play listing",CONFIRMED,"Trademark authorization required","Confirm naming rights or rename","screens 002 and 129"
+A003,"Camera preview imagery","Live console background",CONFIRMED,"Evidence only; never reuse","Render real camera frames at runtime and use synthetic fixtures in tests","screens 001, 084–086, 095, 130–145"
+A004,"Settings/back icon","Top app bars",CONFIRMED,"Replaceable","Use a licensed icon library and match observed geometry","screens 002–129"
+A005,"Reload icon","Live console",CONFIRMED,"Replaceable","Use licensed refresh/replay icon; label Reload chat and overlays","screens 001 and 143"
+A006,"Overflow icon","Live console",CONFIRMED,"Replaceable","Use licensed vertical-more icon and accessible label","screens 001 and 130"
+A007,"Snapshot aperture icon","Live console",CONFIRMED,"Replaceable","Use licensed camera/shutter icon; do not copy raster evidence","screen 001"
+A008,"Flip-camera icon","Live console",CONFIRMED,"Replaceable","Use licensed camera-switch icon","screens 001 and 140"
+A009,"Microphone/muted icon","Live console",CONFIRMED,"Replaceable","Use licensed mic-off/mic icon with state description","screens 001 and 139"
+A010,"Battery bar/lightning glyph","Live console telemetry",CONFIRMED,"Potential custom drawing","Recreate independently from the functional concept","screens 001 and 130–145"
+A011,"Audio level bars","Live console",CONFIRMED,"Potential custom drawing","Recreate independently using sampled green/muted states","screens 001 and 139"
+A012,"Grid and safe-margin guides","Live console",CONFIRMED,"Functional geometry","Recreate from measured rules; no asset extraction needed","screens 084 and 085"
+A013,"Timestamp HTML template","Built-in overlay",CONFIRMED,"Text/template may be copyrightable","Recreate behavior with an independently written safe template","screens 093, 095, 103"
+A014,"Twitch/Kick/Streamlabs/Streamelements/Toonation names","Settings and connection forms",CONFIRMED,"Third-party marks/terms apply","Use text and brand assets only under applicable integration/brand terms","screens 006–010 and 023–031"
+A015,"System sans-serif font","All surfaces",STRONG INFERENCE,"System-provided","Use Android system typography; do not bundle copied font files","screenshot set"
+A016,"SRTLA licensed code behavior","About/Bonding",CONFIRMED notice,"Code/license required","Obtain compatible license or implement an independent lawful alternative","screens 016 and 129"
+

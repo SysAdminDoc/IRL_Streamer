@@ -1,0 +1,18 @@
+{
+  "screen_id": "040_video_adaptive_floor",
+  "captured_at_utc": "2026-08-15T00:39:54.2960739Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "039 video parameters > attempted swipe at list end",
+  "required_starting_state": "Adaptive bitrate controls remain visible; no preference changed",
+  "settle_milliseconds": 1800,
+  "screenshot": "evidence/screenshots/040_video_adaptive_floor.png",
+  "ui_xml": "evidence/ui-xml/040_video_adaptive_floor.xml",
+  "activity_dump": "evidence/activity/040_video_adaptive_floor_activity-top.txt",
+  "window_dump": "evidence/activity/040_video_adaptive_floor_window.txt",
+  "input_method_dump": "evidence/activity/040_video_adaptive_floor_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_040_video_adaptive_floor_20260815T003951135Z.xml"
+  ]
+}

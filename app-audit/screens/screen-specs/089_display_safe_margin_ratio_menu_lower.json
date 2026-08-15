@@ -1,0 +1,651 @@
+{
+  "screen_id": "089_display_safe_margin_ratio_menu_lower",
+  "screen_name": "Display Safe Margin Ratio Menu Lower",
+  "state_name": "display safe margin ratio menu lower",
+  "surface_type": "selection_dialog",
+  "classification": "CONFIRMED",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "entry_conditions": [
+    "Safe margin ratio multi-select open; no changes submitted"
+  ],
+  "navigation_path": [
+    "Settings",
+    "Display",
+    "Safe margins ratios",
+    "scroll"
+  ],
+  "evidence": {
+    "screenshot": "evidence/screenshots/089_display_safe_margin_ratio_menu_lower.png",
+    "ui_xml": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml",
+    "activity_dump": "evidence/activity/089_display_safe_margin_ratio_menu_lower_activity-top.txt",
+    "recording": ""
+  },
+  "display": {
+    "width_px": 2316,
+    "height_px": 1080,
+    "density_dpi": 450,
+    "width_dp": 823.47,
+    "height_dp": 384.0,
+    "orientation": "landscape",
+    "edge_to_edge": false
+  },
+  "system_bars": {
+    "settings_status_bar": {
+      "position": "top",
+      "height_px": 74,
+      "height_dp": 26.31,
+      "color": "#000000",
+      "note": "Visible on settings/system surfaces"
+    },
+    "broadcast_status_bar": {
+      "visible": false,
+      "note": "Hidden on live console with default advanced setting"
+    },
+    "navigation_bar": {
+      "position": "right",
+      "width_px": 135,
+      "width_dp": 48.0,
+      "mode": "Samsung three-button navigation"
+    },
+    "left_landscape_inset": {
+      "width_px": 75,
+      "width_dp": 26.67,
+      "reason": "display cutout/rounded-corner safe inset"
+    }
+  },
+  "layout_regions": [
+    {
+      "name": "modal_surface",
+      "bounds_px": {
+        "left": 443,
+        "top": 84,
+        "right": 1812,
+        "bottom": 1080,
+        "width": 1369,
+        "height": 996
+      },
+      "bounds_dp": {
+        "left": 157.51,
+        "top": 29.87,
+        "right": 644.27,
+        "bottom": 384.0,
+        "width": 486.76,
+        "height": 354.13
+      }
+    }
+  ],
+  "elements": [
+    {
+      "element_id": "e001",
+      "resource_id": "app.irlpro.android:id/select_dialog_listview",
+      "visible_label": "14:9 (1.56)",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "select dialog listview",
+      "element_type": "scroll_container",
+      "class": "android.widget.ListView",
+      "bounds_px": {
+        "left": 488,
+        "top": 279,
+        "right": 1767,
+        "bottom": 878,
+        "width": 1279,
+        "height": 599
+      },
+      "bounds_dp": {
+        "left": 173.51,
+        "top": 99.2,
+        "right": 628.27,
+        "bottom": 312.18,
+        "width": 454.76,
+        "height": 212.98
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": false,
+      "long_clickable": false,
+      "scrollable": true,
+      "minimum_48dp_target_met": null,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+    },
+    {
+      "element_id": "e002",
+      "resource_id": "android:id/text1",
+      "visible_label": "14:9 (1.56)",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "selectable_option",
+      "class": "android.widget.CheckedTextView",
+      "bounds_px": {
+        "left": 488,
+        "top": 279,
+        "right": 1767,
+        "bottom": 407,
+        "width": 1279,
+        "height": 128
+      },
+      "bounds_dp": {
+        "left": 173.51,
+        "top": 99.2,
+        "right": 628.27,
+        "bottom": 144.71,
+        "width": 454.76,
+        "height": 45.51
+      },
+      "enabled": true,
+      "checked": false,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+    },
+    {
+      "element_id": "e003",
+      "resource_id": "android:id/text1",
+      "visible_label": "16:9 (1.78)",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "selectable_option",
+      "class": "android.widget.CheckedTextView",
+      "bounds_px": {
+        "left": 488,
+        "top": 407,
+        "right": 1767,
+        "bottom": 542,
+        "width": 1279,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 173.51,
+        "top": 144.71,
+        "right": 628.27,
+        "bottom": 192.71,
+        "width": 454.76,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": true,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+    },
+    {
+      "element_id": "e004",
+      "resource_id": "android:id/text1",
+      "visible_label": "2:1 (2.0)",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "selectable_option",
+      "class": "android.widget.CheckedTextView",
+      "bounds_px": {
+        "left": 488,
+        "top": 542,
+        "right": 1767,
+        "bottom": 677,
+        "width": 1279,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 173.51,
+        "top": 192.71,
+        "right": 628.27,
+        "bottom": 240.71,
+        "width": 454.76,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": false,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+    },
+    {
+      "element_id": "e005",
+      "resource_id": "android:id/text1",
+      "visible_label": "19.5:9 (2.17)",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "selectable_option",
+      "class": "android.widget.CheckedTextView",
+      "bounds_px": {
+        "left": 488,
+        "top": 677,
+        "right": 1767,
+        "bottom": 812,
+        "width": 1279,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 173.51,
+        "top": 240.71,
+        "right": 628.27,
+        "bottom": 288.71,
+        "width": 454.76,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": false,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+    },
+    {
+      "element_id": "e006",
+      "resource_id": "android:id/text1",
+      "visible_label": "21:9 (2.33)",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "selectable_option",
+      "class": "android.widget.CheckedTextView",
+      "bounds_px": {
+        "left": 488,
+        "top": 812,
+        "right": 1767,
+        "bottom": 878,
+        "width": 1279,
+        "height": 66
+      },
+      "bounds_dp": {
+        "left": 173.51,
+        "top": 288.71,
+        "right": 628.27,
+        "bottom": 312.18,
+        "width": 454.76,
+        "height": 23.47
+      },
+      "enabled": true,
+      "checked": false,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": false,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+    },
+    {
+      "element_id": "e007",
+      "resource_id": "android:id/button2",
+      "visible_label": "CANCEL",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "button",
+      "class": "android.widget.Button",
+      "bounds_px": {
+        "left": 1340,
+        "top": 889,
+        "right": 1553,
+        "bottom": 1024,
+        "width": 213,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 476.44,
+        "top": 316.09,
+        "right": 552.18,
+        "bottom": 364.09,
+        "width": 75.73,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+    },
+    {
+      "element_id": "e008",
+      "resource_id": "android:id/button1",
+      "visible_label": "OK",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "button",
+      "class": "android.widget.Button",
+      "bounds_px": {
+        "left": 1553,
+        "top": 889,
+        "right": 1733,
+        "bottom": 1024,
+        "width": 180,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 552.18,
+        "top": 316.09,
+        "right": 616.18,
+        "bottom": 364.09,
+        "width": 64.0,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+    }
+  ],
+  "visible_text": [
+    "Safe margins ratios",
+    "14:9 (1.56)",
+    "16:9 (1.78)",
+    "2:1 (2.0)",
+    "19.5:9 (2.17)",
+    "21:9 (2.33)",
+    "CANCEL",
+    "OK"
+  ],
+  "interactions": [
+    {
+      "element_id": "e001",
+      "control_label": "14:9 (1.56)",
+      "gesture": "scroll",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Scrolls the current list/panel; captured adjacent states document reachable content.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "Scroll position only; cross-process persistence is UNKNOWN.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "Vertical scrolling is exposed; adjacent scroll-state captures document the observed extent.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Additional controls become visible.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+      ]
+    },
+    {
+      "element_id": "e002",
+      "control_label": "14:9 (1.56)",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+      ]
+    },
+    {
+      "element_id": "e003",
+      "control_label": "16:9 (1.78)",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+      ]
+    },
+    {
+      "element_id": "e004",
+      "control_label": "2:1 (2.0)",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+      ]
+    },
+    {
+      "element_id": "e005",
+      "control_label": "19.5:9 (2.17)",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+      ]
+    },
+    {
+      "element_id": "e006",
+      "control_label": "21:9 (2.33)",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+      ]
+    },
+    {
+      "element_id": "e007",
+      "control_label": "CANCEL",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Dismisses/cancels the current dialog or form; tested drafts were discarded.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "Unsaved draft only; no committed record.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Prior surface restored.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+      ]
+    },
+    {
+      "element_id": "e008",
+      "control_label": "OK",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/089_display_safe_margin_ratio_menu_lower.xml"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "element_id": "e002",
+      "enabled": true,
+      "checked": false,
+      "selected": false
+    },
+    {
+      "element_id": "e003",
+      "enabled": true,
+      "checked": true,
+      "selected": false
+    },
+    {
+      "element_id": "e004",
+      "enabled": true,
+      "checked": false,
+      "selected": false
+    },
+    {
+      "element_id": "e005",
+      "enabled": true,
+      "checked": false,
+      "selected": false
+    },
+    {
+      "element_id": "e006",
+      "enabled": true,
+      "checked": false,
+      "selected": false
+    }
+  ],
+  "transitions": [
+    {
+      "gesture": "Back",
+      "result": "Dismiss modal or return to previous settings level; from live console, background the task",
+      "classification": "CONFIRMED across representative paths"
+    }
+  ],
+  "validation": [],
+  "loading_behavior": [],
+  "error_behavior": [],
+  "persistence_behavior": [],
+  "accessibility": {
+    "ui_automator_available": true,
+    "actionable_or_adjustable_nodes": 8,
+    "directly_unlabeled_actionable_nodes": 0,
+    "explicit_uiautomator_naf_nodes": 0,
+    "potential_sub_48dp_targets": 2,
+    "scrollable_regions": [
+      {
+        "type": "scroll_container",
+        "bounds_px": {
+          "left": 488,
+          "top": 279,
+          "right": 1767,
+          "bottom": 878,
+          "width": 1279,
+          "height": 599
+        },
+        "bounds_dp": {
+          "left": 173.51,
+          "top": 99.2,
+          "right": 628.27,
+          "bottom": 312.18,
+          "width": 454.76,
+          "height": 212.98
+        }
+      }
+    ],
+    "limitations": "TalkBack was not enabled. Labels and bounds reflect UI Automator only; Canvas/video content is sparsely represented."
+  },
+  "design_measurements": {
+    "px_per_dp": 2.8125,
+    "usable_content_bounds_px": {
+      "left": 75,
+      "top": 0,
+      "right": 2181,
+      "bottom": 1080
+    },
+    "usable_content_size_dp": {
+      "width": 748.8,
+      "height": 384.0
+    },
+    "root_bounds_px": {
+      "left": 443,
+      "top": 84,
+      "right": 1812,
+      "bottom": 1080,
+      "width": 1369,
+      "height": 996
+    }
+  },
+  "inferences": [
+    {
+      "classification": "STRONG INFERENCE",
+      "finding": "Most settings surfaces use Android/AppCompat preference and alert-dialog primitives based on repeated geometry and hierarchy classes."
+    }
+  ],
+  "unknowns": [
+    "Exact TalkBack announcements and focus order were not tested."
+  ],
+  "notes": "display safe margin ratio menu lower"
+}

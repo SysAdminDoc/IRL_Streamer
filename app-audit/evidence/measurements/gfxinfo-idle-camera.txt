@@ -1,0 +1,139 @@
+Applications Graphics Acceleration Info:
+Uptime: 5464343 Realtime: 5464343
+
+** Graphics info for pid 30963 [app.irlpro.android] **
+
+Stats since: 5303951977454ns
+Total frames rendered: 1766
+Janky frames: 29 (1.64%)
+Janky frames (legacy): 303 (17.16%)
+50th percentile: 5ms
+90th percentile: 10ms
+95th percentile: 12ms
+99th percentile: 18ms
+Number Missed Vsync: 7
+Number High input latency: 11
+Number Slow UI thread: 23
+Number Slow bitmap uploads: 2
+Number Slow issue draw commands: 4
+Number Frame deadline missed: 29
+Number Frame deadline missed (legacy): 302
+HISTOGRAM: 5ms=1080 6ms=163 7ms=147 8ms=116 9ms=68 10ms=56 11ms=37 12ms=24 13ms=21 14ms=9 15ms=12 16ms=4 17ms=9 18ms=5 19ms=3 20ms=1 21ms=1 22ms=2 23ms=1 24ms=0 25ms=0 26ms=0 27ms=0 28ms=0 29ms=0 30ms=0 31ms=0 32ms=0 34ms=1 36ms=0 38ms=1 40ms=0 42ms=0 44ms=0 46ms=1 48ms=0 53ms=1 57ms=0 61ms=1 65ms=0 69ms=0 73ms=0 77ms=1 81ms=0 85ms=0 89ms=0 93ms=0 97ms=0 101ms=0 105ms=0 109ms=0 113ms=0 117ms=0 121ms=0 125ms=1 129ms=0 133ms=0 150ms=0 200ms=0 250ms=0 300ms=0 350ms=0 400ms=0 450ms=0 500ms=0 550ms=0 600ms=0 650ms=0 700ms=0 750ms=0 800ms=0 850ms=0 900ms=0 950ms=0 1000ms=0 1050ms=0 1100ms=0 1150ms=0 1200ms=0 1250ms=0 1300ms=0 1350ms=0 1400ms=0 1450ms=0 1500ms=0 1550ms=0 1600ms=0 1650ms=0 1700ms=0 1750ms=0 1800ms=0 1850ms=0 1900ms=0 1950ms=0 2000ms=0 2050ms=0 2100ms=0 2150ms=0 2200ms=0 2250ms=0 2300ms=0 2350ms=0 2400ms=0 2450ms=0 2500ms=0 2550ms=0 2600ms=0 2650ms=0 2700ms=0 2750ms=0 2800ms=0 2850ms=0 2900ms=0 2950ms=0 3000ms=0 3050ms=0 3100ms=0 3150ms=0 3200ms=0 3250ms=0 3300ms=0 3350ms=0 3400ms=0 3450ms=0 3500ms=0 3550ms=0 3600ms=0 3650ms=0 3700ms=0 3750ms=0 3800ms=0 3850ms=0 3900ms=0 3950ms=0 4000ms=0 4050ms=0 4100ms=0 4150ms=0 4200ms=0 4250ms=0 4300ms=0 4350ms=0 4400ms=0 4450ms=0 4500ms=0 4550ms=0 4600ms=0 4650ms=0 4700ms=0 4750ms=0 4800ms=0 4850ms=0 4900ms=0 4950ms=0
+50th gpu percentile: 2ms
+90th gpu percentile: 3ms
+95th gpu percentile: 3ms
+99th gpu percentile: 4ms
+GPU HISTOGRAM: 1ms=345 2ms=1127 3ms=259 4ms=24 5ms=9 6ms=1 7ms=1 8ms=0 9ms=0 10ms=0 11ms=0 12ms=0 13ms=0 14ms=0 15ms=0 16ms=0 17ms=0 18ms=0 19ms=0 20ms=0 21ms=0 22ms=0 23ms=0 24ms=0 25ms=0 4950ms=0
+
+Pipeline=Skia (OpenGL)
+Memory policy:
+  Max surface area: 2501280
+  Max resource usage: 120.06MB (x48)
+  Background retention: 50% (altUiHidden = true)
+  GPU Context timeout: 10
+Contexts: 1 (stopped = 0)
+CPU Caches:
+  Glyph Cache: 47.39 KB (1 entry)
+  Glyph Count: 14 
+Total CPU memory usage:
+  48531 bytes, 47.39 KB (0.00 bytes is purgeable)
+GPU Caches:
+  Other:
+    TextBlobCache: 5.16 KB (1 entry)
+    Buffer Object: 2.05 KB (2 entries)
+  Image:
+    Texture: 225.19 KB (19 entries)
+  Scratch:
+    RenderTarget: 1.44 MB (17 entries)
+    Texture: 2.00 MB (1 entry)
+    Buffer Object: 78.00 KB (2 entries)
+Total GPU memory usage:
+  3922328 bytes, 3.74 MB (531.24 KB is purgeable)
+
+GraphicBufferAllocator buffers:
+            Handle |         Size |     W (Stride) x H | Layers |   Format |      Usage | Requestor
+      0x6ff9d03580 |  8100.00 KiB | 1920 (1920) x 1080 |      1 |        1 | 0x10000010410300 | GraphicBufferSource
+      0x6ff9d1aa70 |  8950.50 KiB | 1080 (1088) x 2106 |      1 |        1 | 0x10000900 | 40dcf1a SurfaceView[app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity]@0#5(BLAST Consumer)5
+      0x6ff9d1f6f0 |  8160.00 KiB | 1080 (1088) x 1920 |      1 |        1 | 0x10000900 | 40dcf1a SurfaceView[app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity]@0#5(BLAST Consumer)5
+      0x6ff9d21790 |  9524.25 KiB | 1080 (1088) x 2241 |      1 |        1 | 0x10000900 | VRI[StreamerServiceActivity]@44cb25d#4(BLAST Consumer)4
+      0x6ff9d29fb0 |  9720.00 KiB | 2241 (2304) x 1080 |      1 |        1 | 0x10000900 | VRI[StreamerServiceActivity]@44cb25d#4(BLAST Consumer)4
+      0x6ff9d2b870 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d36250 |  8160.00 KiB | 1080 (1088) x 1920 |      1 |        1 | 0x10000900 | 40dcf1a SurfaceView[app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity]@0#5(BLAST Consumer)5
+      0x6ff9d4e160 |  9524.25 KiB | 1080 (1088) x 2241 |      1 |        1 | 0x10000900 | VRI[StreamerServiceActivity]@44cb25d#4(BLAST Consumer)4
+      0x6ff9d50ef0 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d58c60 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d58d80 |  9524.25 KiB | 1080 (1088) x 2241 |      1 |        1 | 0x10000900 | VRI[StreamerServiceActivity]@44cb25d#4(BLAST Consumer)4
+      0x6ff9d5d8e0 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d5dd60 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d5e1e0 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d5f230 |  8100.00 KiB | 1920 (1920) x 1080 |      1 |        1 | 0x10000010410300 | GraphicBufferSource
+      0x6ff9d5f350 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d5fa10 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d60550 |      unknown | 1920 (1920) x 1080 |      1 |       22 | 0x   20100 | SurfaceTexture-1-30963-0
+      0x6ff9d64c30 |  8160.00 KiB | 1080 (1088) x 1920 |      1 |        1 | 0x10000900 | 40dcf1a SurfaceView[app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity]@0#5(BLAST Consumer)5
+Total allocated by GraphicBufferAllocator (estimate): 87923.25 KB
+Imported gralloc buffers:
++ name:VRI[StreamerServiceActivity]@44cb25d#4(BLAST Consumer)4, id:1847, size:9660.00KiB, w/h:1080x2241, usage: 0x10000900, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1080x2241, stride:4352 bytes, size:9891840
++ name:VRI[StreamerServiceActivity]@44cb25d#4(BLAST Consumer)4, id:1844, size:9660.00KiB, w/h:1080x2241, usage: 0x10000900, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1080x2241, stride:4352 bytes, size:9891840
++ name:VRI[StreamerServiceActivity]@44cb25d#4(BLAST Consumer)4, id:1842, size:9844.00KiB, w/h:2241x1080, usage: 0x10000900, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:2241x1080, stride:9216 bytes, size:10080256
++ name:40dcf1a SurfaceView[app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity]@0#5(BLAST Consumer)5, id:1841, size:8220.00KiB, w/h:1080x1920, usage: 0x10000900, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1080x1920, stride:4352 bytes, size:8417280
++ name:40dcf1a SurfaceView[app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity]@0#5(BLAST Consumer)5, id:1833, size:9044.00KiB, w/h:1080x2106, usage: 0x10000900, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1080x2106, stride:4352 bytes, size:9261056
++ name:VRI[StreamerServiceActivity]@44cb25d#4(BLAST Consumer)4, id:1828, size:9660.00KiB, w/h:1080x2241, usage: 0x10000900, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1080x2241, stride:4352 bytes, size:9891840
++ name:SurfaceTexture-1-30963-0, id:1775, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
++ name:40dcf1a SurfaceView[app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity]@0#5(BLAST Consumer)5, id:1843, size:8220.00KiB, w/h:1080x1920, usage: 0x10000900, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1080x1920, stride:4352 bytes, size:8417280
++ name:GraphicBufferSource, id:1753, size:8196.00KiB, w/h:1920x1080, usage: 0x10000010410300, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1920x1080, stride:7680 bytes, size:8392704
++ name:SurfaceTexture-1-30963-0, id:1752, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
++ name:SurfaceTexture-1-30963-0, id:1751, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
++ name:SurfaceTexture-1-30963-0, id:1750, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
++ name:SurfaceTexture-1-30963-0, id:1748, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
++ name:SurfaceTexture-1-30963-0, id:1747, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
++ name:SurfaceTexture-1-30963-0, id:1757, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
++ name:SurfaceTexture-1-30963-0, id:1746, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
++ name:40dcf1a SurfaceView[app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity]@0#5(BLAST Consumer)5, id:1848, size:8220.00KiB, w/h:1080x1920, usage: 0x10000900, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1080x1920, stride:4352 bytes, size:8417280
++ name:GraphicBufferSource, id:1776, size:8196.00KiB, w/h:1920x1080, usage: 0x10000010410300, req fmt:1, fourcc/mod:875708993/0, dataspace: 0x0, compressed: true
+	planes: R/G/B/A:	 w/h:1920x1080, stride:7680 bytes, size:8392704
++ name:SurfaceTexture-1-30963-0, id:1749, size:3060.00KiB, w/h:1920x1080, usage: 0x20100, req fmt:2141391876, fourcc/mod:842094158/0, dataspace: 0x8c20000, compressed: false
+	planes: Y:	 w/h:1920x1080, stride:1920 bytes, size:2088960
+	        Cb/Cr:	 w/h:960x540, stride:1920 bytes, size:1044480
+Total imported by gralloc: 116460.00KiB
+
+Profile data in ms:
+
+	app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity/android.view.ViewRootImpl@2e3606e (visibility=0)
+View hierarchy:
+
+  app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity/android.view.ViewRootImpl@2e3606e
+  250 views, 349.15 kB of render nodes
+
+
+Total ViewRootImpl   : 1
+Total attached Views : 250
+Total RenderNode     : 349.15 kB (used) / 530.91 kB (capacity)
+
+  ProcessConfig={1.0 ?mcc0mnc [en_US] ldltr sw384dp w749dp h354dp 450dpi nrml long land night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 2316, 1080) mAppBounds=Rect(75, 0 - 2181, 1080) mMaxBounds=Rect(0, 0 - 2316, 1080) mDisplayRotation=ROTATION_90 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90 mStageConfig=undefined mEmbedActivityMode=undefined mPopOver=off mOverlappingWithCutout=false} s.816 fontWeightAdjustment=0 ff=0 bf=-1 bts=0 cst=1.0 nightDim=0 themeSeq=0}
+  Application ResourcesConfig={1.0 ?mcc0mnc [en_US] ldltr sw384dp w749dp h354dp 450dpi nrml long land night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 2316, 1080) mAppBounds=Rect(75, 0 - 2181, 1080) mMaxBounds=Rect(0, 0 - 2316, 1080) mDisplayRotation=ROTATION_90 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90 mStageConfig=undefined mEmbedActivityMode=undefined mPopOver=off mOverlappingWithCutout=false} s.816 fontWeightAdjustment=0 ff=0 bf=-1 bts=0 cst=1.0 nightDim=0 themeSeq=0}

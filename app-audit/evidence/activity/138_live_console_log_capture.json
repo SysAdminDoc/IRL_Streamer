@@ -1,0 +1,18 @@
+{
+  "screen_id": "138_live_console_log",
+  "captured_at_utc": "2026-08-15T01:28:11.1640694Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Main > overflow > Log",
+  "required_starting_state": "Idle live console; no stream attempt in this session",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/138_live_console_log.png",
+  "ui_xml": "evidence/ui-xml/138_live_console_log.xml",
+  "activity_dump": "evidence/activity/138_live_console_log_activity-top.txt",
+  "window_dump": "evidence/activity/138_live_console_log_window.txt",
+  "input_method_dump": "evidence/activity/138_live_console_log_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_138_live_console_log_20260815T012807023Z.xml"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "screen_id": "051_video_exposure_compensation_menu_scrolled",
+  "captured_at_utc": "2026-08-15T00:46:33.1462202Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Video > Exposure compensation > scroll",
+  "required_starting_state": "Exposure compensation chooser open; no value changed",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/051_video_exposure_compensation_menu_scrolled.png",
+  "ui_xml": "evidence/ui-xml/051_video_exposure_compensation_menu_scrolled.xml",
+  "activity_dump": "evidence/activity/051_video_exposure_compensation_menu_scrolled_activity-top.txt",
+  "window_dump": "evidence/activity/051_video_exposure_compensation_menu_scrolled_window.txt",
+  "input_method_dump": "evidence/activity/051_video_exposure_compensation_menu_scrolled_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_051_video_exposure_compensation_menu_scrolled_20260815T004629997Z.xml"
+  ]
+}

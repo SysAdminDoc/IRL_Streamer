@@ -1,0 +1,18 @@
+{
+  "screen_id": "017_bonding_mode_controls",
+  "captured_at_utc": "2026-08-15T00:27:43.1948653Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "016 bonding settings > swipe upward",
+  "required_starting_state": "Bonding settings at top",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/017_bonding_mode_controls.png",
+  "ui_xml": "evidence/ui-xml/017_bonding_mode_controls.xml",
+  "activity_dump": "evidence/activity/017_bonding_mode_controls_activity-top.txt",
+  "window_dump": "evidence/activity/017_bonding_mode_controls_window.txt",
+  "input_method_dump": "evidence/activity/017_bonding_mode_controls_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_017_bonding_mode_controls_20260815T002740022Z.xml"
+  ]
+}

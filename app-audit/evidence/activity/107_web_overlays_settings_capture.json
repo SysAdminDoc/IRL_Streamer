@@ -1,0 +1,18 @@
+{
+  "screen_id": "107_web_overlays_settings",
+  "captured_at_utc": "2026-08-15T01:14:50.1556944Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Web Overlays",
+  "required_starting_state": "Web overlay settings persisted/default state",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/107_web_overlays_settings.png",
+  "ui_xml": "evidence/ui-xml/107_web_overlays_settings.xml",
+  "activity_dump": "evidence/activity/107_web_overlays_settings_activity-top.txt",
+  "window_dump": "evidence/activity/107_web_overlays_settings_window.txt",
+  "input_method_dump": "evidence/activity/107_web_overlays_settings_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_107_web_overlays_settings_20260815T011447100Z.xml"
+  ]
+}

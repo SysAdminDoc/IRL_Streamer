@@ -1,0 +1,18 @@
+{
+  "screen_id": "113_web_overlay_custom_position_fields",
+  "captured_at_utc": "2026-08-15T01:17:39.0874111Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Web Overlays > New web overlay > Position > Custom",
+  "required_starting_state": "New web overlay draft; custom position selected only in unsaved draft",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/113_web_overlay_custom_position_fields.png",
+  "ui_xml": "evidence/ui-xml/113_web_overlay_custom_position_fields.xml",
+  "activity_dump": "evidence/activity/113_web_overlay_custom_position_fields_activity-top.txt",
+  "window_dump": "evidence/activity/113_web_overlay_custom_position_fields_window.txt",
+  "input_method_dump": "evidence/activity/113_web_overlay_custom_position_fields_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_113_web_overlay_custom_position_fields_20260815T011735956Z.xml"
+  ]
+}

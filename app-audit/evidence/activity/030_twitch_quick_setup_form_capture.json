@@ -1,0 +1,18 @@
+{
+  "screen_id": "030_twitch_quick_setup_form",
+  "captured_at_utc": "2026-08-15T00:34:59.4545913Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.ConnectionWizard",
+  "navigation_path": "Manage connections > New connection > TWITCH.TV",
+  "required_starting_state": "No connection saved; quick-setup form opened only",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/030_twitch_quick_setup_form.png",
+  "ui_xml": "evidence/ui-xml/030_twitch_quick_setup_form.xml",
+  "activity_dump": "evidence/activity/030_twitch_quick_setup_form_activity-top.txt",
+  "window_dump": "evidence/activity/030_twitch_quick_setup_form_window.txt",
+  "input_method_dump": "evidence/activity/030_twitch_quick_setup_form_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_030_twitch_quick_setup_form_20260815T003456183Z.xml"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "screen_id": "085_streamer_home_safe_margins_enabled",
+  "captured_at_utc": "2026-08-15T01:02:00.9903620Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Settings > Display > Show safe margins; return to streamer",
+  "required_starting_state": "Grid restored off; safe margins temporarily enabled; restored after capture",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/085_streamer_home_safe_margins_enabled.png",
+  "ui_xml": "evidence/ui-xml/085_streamer_home_safe_margins_enabled.xml",
+  "activity_dump": "evidence/activity/085_streamer_home_safe_margins_enabled_activity-top.txt",
+  "window_dump": "evidence/activity/085_streamer_home_safe_margins_enabled_window.txt",
+  "input_method_dump": "evidence/activity/085_streamer_home_safe_margins_enabled_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_085_streamer_home_safe_margins_enabled_20260815T010157702Z.xml"
+  ]
+}

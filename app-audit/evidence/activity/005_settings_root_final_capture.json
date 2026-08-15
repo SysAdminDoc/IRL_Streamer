@@ -1,0 +1,18 @@
+{
+  "screen_id": "005_settings_root_final",
+  "captured_at_utc": "2026-08-15T00:21:55.7415039Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "004 settings root bottom > swipe upward",
+  "required_starting_state": "Settings root at final scroll position",
+  "settle_milliseconds": 1800,
+  "screenshot": "evidence/screenshots/005_settings_root_final.png",
+  "ui_xml": "evidence/ui-xml/005_settings_root_final.xml",
+  "activity_dump": "evidence/activity/005_settings_root_final_activity-top.txt",
+  "window_dump": "evidence/activity/005_settings_root_final_window.txt",
+  "input_method_dump": "evidence/activity/005_settings_root_final_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_005_settings_root_final_20260815T002152305Z.xml"
+  ]
+}

@@ -1,0 +1,259 @@
+Activity Resolver Table:
+  Schemes:
+      larix:
+        95d9baf app.irlpro.android/com.wmspanel.streamer.LaunchActivity filter da63745
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+          Category: "android.intent.category.BROWSABLE"
+          Scheme: "larix"
+          Authority: "": -1 WILD
+
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        95d9baf app.irlpro.android/com.wmspanel.streamer.LaunchActivity filter aa4cbbc
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Domain verification status:
+
+Registered ContentProviders:
+  app.irlpro.android/androidx.startup.InitializationProvider:
+    Provider{ed32cdf app.irlpro.android/androidx.startup.InitializationProvider}
+
+ContentProvider Authorities:
+  [app.irlpro.android.androidx-startup]:
+    Provider{ed32cdf app.irlpro.android/androidx.startup.InitializationProvider}
+      applicationInfo=ApplicationInfo{b103d2c app.irlpro.android}
+
+Key Set Manager:
+  [app.irlpro.android]
+      Signing KeySets: 108
+
+Packages:
+  Package [app.irlpro.android] (60422d1):
+    appId=10348
+    pkg=Package{495a3f5 app.irlpro.android}
+    codePath=/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==
+    resourcePath=/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==
+    legacyNativeLibraryDir=/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/lib
+    extractNativeLibs=false
+    primaryCpuAbi=arm64-v8a
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=305230 minSdk=28 targetSdk=34
+    minExtensionVersions=[]
+    versionName=3.5.23
+    hiddenApiEnforcementPolicy=2
+    usesNonSdkApi=false
+    splits=[base, config.arm64_v8a, config.en, config.xxhdpi]
+    apkSigningVersion=3
+    flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE ]
+    forceQueryable=false
+    pageSizeCompat=0
+    queriesPackages=[com.google.zxing.client.android]
+    scannedAsStoppedSystemApp=false
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    usesOptionalLibraries:
+      androidx.window.extensions
+      androidx.window.sidecar
+    usesLibraryFiles:
+      /system_ext/framework/androidx.window.extensions.jar
+      /system_ext/framework/androidx.window.sidecar.jar
+    timeStamp=2026-08-14 20:03:03
+    lastUpdateTime=2026-08-14 20:03:03
+    installerPackageName=com.android.vending
+    installerPackageUid=10268
+    initiatingPackageName=com.android.vending
+    originatingPackageName=null
+    updateOwnerPackageName=com.android.vending
+    category=manifest: -1, override: 4, by user: -1
+    packageSource=0
+    appMetadataFilePath=/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/app.metadata
+    appMetadataSource=2
+    signatures=PackageSignatures{29a58a version:3, signatures:[8699c06], past signatures:[]}
+    installPermissionsFixed=false
+    pkgFlags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE ]
+    apexModuleName=null
+    componentsDeclared=11
+    requested permissions:
+      android.permission.FOREGROUND_SERVICE_CAMERA
+      android.permission.POST_NOTIFICATIONS
+      android.permission.ACCESS_FINE_LOCATION
+      android.permission.MODIFY_AUDIO_SETTINGS
+      android.permission.CHANGE_NETWORK_STATE
+      android.permission.FOREGROUND_SERVICE
+      android.permission.BLUETOOTH
+      android.permission.INTERNET
+      android.permission.ACCESS_COARSE_LOCATION
+      android.permission.BROADCAST_STICKY
+      android.permission.CHANGE_WIFI_STATE
+      android.permission.ACCESS_NETWORK_STATE
+      android.permission.CAMERA
+      android.permission.FOREGROUND_SERVICE_MICROPHONE
+      android.permission.ACCESS_WIFI_STATE
+      android.permission.RECORD_AUDIO
+    install permissions:
+      android.permission.FOREGROUND_SERVICE_CAMERA: granted=true
+      android.permission.MODIFY_AUDIO_SETTINGS: granted=true
+      android.permission.CHANGE_NETWORK_STATE: granted=true
+      android.permission.FOREGROUND_SERVICE: granted=true
+      android.permission.BLUETOOTH: granted=true
+      android.permission.INTERNET: granted=true
+      android.permission.BROADCAST_STICKY: granted=true
+      android.permission.CHANGE_WIFI_STATE: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+      android.permission.FOREGROUND_SERVICE_MICROPHONE: granted=true
+      android.permission.ACCESS_WIFI_STATE: granted=true
+    User 0: ceDataInode=72677 deDataInode=72680 installed=true hidden=false suspended=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false quarantined=false
+      installReason=4
+      dataDir=/data/user/0/app.irlpro.android
+      firstInstallTime=2026-08-14 20:03:03
+      uninstallReason=0
+      lastDisabledCaller: com.android.vending
+      gids=[3002, 3003]
+      runtime permissions:
+        android.permission.POST_NOTIFICATIONS: granted=true, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.ACCESS_FINE_LOCATION: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.ACCESS_COARSE_LOCATION: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.CAMERA: granted=true, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.RECORD_AUDIO: granted=true, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+  queries via component:
+    [app id 10065 not installed]:
+      app.irlpro.android
+    com.android.settings.intelligence:
+      app.irlpro.android
+    [app id 10244 not installed]:
+      app.irlpro.android
+    [app id 10261 not installed]:
+      app.irlpro.android
+    [app id 10265 not installed]:
+      app.irlpro.android
+    [app id 10267 not installed]:
+      app.irlpro.android
+    com.zhiliaoapp.musically:
+      app.irlpro.android
+    com.samruston.buzzkill:
+      app.irlpro.android
+  queryable via interaction:
+    User 0:
+      [com.samsung.android.knox.mpos,com.sec.android.app.hwmoduletest,com.samsung.android.knox.zt.framework,com.samsung.android.provider.filterprovider,com.android.keychain,com.samsung.android.emergency,com.sec.android.emergencylauncher,com.sec.bcservice,com.android.providers.settings,com.sec.android.app.setupwizard,android,com.samsung.android.ese,com.sec.imslogger,com.samsung.euicc,com.samsung.android.dck.timesync,com.samsung.android.app.omcagent,com.android.server.telecom,com.sec.facatfunction,com.android.inputdevices,com.samsung.android.knox.pushmanager,com.sec.android.app.wlantest,com.samsung.sdm,com.sec.android.app.SecSetupWizard,com.qti.snapdragon.qdcm_ff,com.android.localtransport,com.skms.android.agent,com.sec.usbsettings,com.sec.android.app.servicemodeapp,com.sec.epdg,com.samsung.android.app.esimkeystring,com.sec.modem.settings,com.samsung.oda.service,com.samsung.android.knox.attestation,com.samsung.InputEventApp,com.samsung.android.simagent,com.samsung.android.themecenter,com.samsung.android.biometrics.app.setting,com.sec.automation,com.sec.android.app.RilPhoneNumberService,com.sec.app.RilErrorNotifier,com.sec.android.diagmonagent,com.sec.sve,com.samsung.unifiedtp,com.sec.android.app.quicktool,com.sec.mhs.smarttethering,com.sec.imsservice,com.sec.android.smartfpsadjuster,com.samsung.android.fmm,com.samsung.accessibility,com.sec.android.app.parser,com.qualcomm.qti.services.systemhelper,com.sec.android.CcInfo,com.samsung.aasaservice,com.sec.factory.camera,com.sem.factoryapp,com.android.settings,com.android.location.fused,com.samsung.android.brightnessbackupservice,com.sec.android.app.uwbtest,com.samsung.SMT,com.sec.android.soagent,com.sec.android.app.factorykeystring,com.android.dynsystem,com.samsung.ts43authservice,com.sec.android.iaft,com.samsung.android.wifi.ai,com.sec.android.sdhms,com.samsung.android.providers.factory]:
+        app.irlpro.android
+      com.android.systemui:
+        app.irlpro.android
+      com.sec.android.app.launcher:
+        app.irlpro.android
+      com.samsung.android.honeyboard:
+        app.irlpro.android
+      com.google.android.gms:
+        app.irlpro.android
+      com.google.android.webview:
+        app.irlpro.android
+      com.google.android.providers.media.module:
+        app.irlpro.android
+      com.google.android.ext.services:
+        app.irlpro.android
+      com.google.android.permissioncontroller:
+        app.irlpro.android
+      app.irlpro.android:
+        com.google.android.webview
+  queryable via uses-library:
+
+Dexopt state:
+  [app.irlpro.android]
+    path: /data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/base.apk
+      arm64: [status=verify] [reason=vdex-dm] [primary-abi]
+        [location is primary.vdex mapped directly in memory from /data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/base.dm]
+
+SPEG state:
+  Event #13: 08-08-2026 22:13:25.756 Success com.sysadmindoc.viptrack took 2264 ms
+  Event #12: 29-07-2026 13:16:18.102 Success com.novacut.editor took 2276 ms
+  Event #11: 29-07-2026 12:57:45.295 Success com.novacut.editor took 2303 ms
+  Event #10: 29-07-2026 12:57:25.225 Success com.novacut.editor took 2282 ms
+  Event #9: 29-07-2026 08:43:52.817 Success com.sysadmindoc.alarmclock took 2323 ms
+  Event #8: 29-07-2026 08:28:05.241 Success com.opentasker.app took 2227 ms
+  Event #7: 25-06-2026 21:31:29.823 Success org.woheller69.whisper took 2200 ms
+  Event #6: 25-06-2026 18:11:19.438 Success com.novacut.editor took 2276 ms
+  Event #5: 14-06-2026 23:55:20.282 Success com.sysadmindoc.snapcrop took 2258 ms
+  Event #4: 13-06-2026 20:56:43.846 Success com.hostshield took 2324 ms
+  Event #3: 13-06-2026 20:47:58.626 Success com.hostshield took 2330 ms
+  Event #2: 16-05-2026 10:43:00.416 Success com.openlumen took 2310 ms
+  Event #1: 14-05-2026 12:36:42.090 Success com.hostshield took 2287 ms
+  Event #0: 14-05-2026 11:44:30.401 Success org.fdroid.fdroid took 2297 ms
+
+Profile utilization state:
+  Current state:
+    Version: 2.1.1
+    Start reason: boot-no-update
+    Start time: not started
+    Finish time: not finished
+    PU_StatusWatcher:
+      Initial thermal status: 0
+      Thermal status: 0
+      Screen off: false
+      Low battery: true
+    PU_DexoptTrigger:
+      Dexopt concurrency: 4
+      Dexopting: false
+    PU_Storage:
+      Stored apps:
+        com.hostshield 44
+        com.samsung.android.app.contacts 45
+        com.samsung.android.dialer 45
+        com.android.settings 46
+        com.android.vending 49
+    Stored PU state:
+      Service:
+        Version: 2.1.1
+        Start reason: boot-after-mainline-update
+        Start time: Thu Aug 06 10:57:21 EDT 2026 ts=1786028241506
+        Finish time: Thu Aug 06 10:57:23 EDT 2026 ts=1786028243858
+        Took time 2sec
+      Watcher:
+        Initial thermal status: 0
+        Thermal status: 0
+        Screen off: true
+        Low battery: false
+      Metrics:
+        Predicted and launched apps: 0
+        Predicted apps: 5
+        Launched apps: 0
+        Best f1Score: 0.0, prefixCount: 0, precision: 0.0, recall: 0.0
+      Trigger:
+        Dexopt concurrency: 4
+        Dexopting: false
+        Hot apps list:
+          com.hostshield, w=44, s=REMOVED, optTimeMs=1786028237252, cancelCount=0
+          com.samsung.android.app.contacts, w=45, s=OPTIMIZED, optTimeMs=1786028238333, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=978, filter=speed-profile]
+          com.samsung.android.dialer, w=45, s=OPTIMIZED, optTimeMs=1786028237322, cancelCount=0, dexopt=SKIPPED, [primaryDex=true, reason=boot-after-mainline-update, dex2oatTimeMs=0, filter=speed-profile]
+          com.android.settings, w=46, s=OPTIMIZED, optTimeMs=1786028238222, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=916, filter=speed-profile]
+          com.android.vending, w=49, s=OPTIMIZED, optTimeMs=1786028243858, cancelCount=0, dexopt=PERFORMED, [primaryDex=true, reason=profile-utilization, dex2oatTimeMs=6385, filter=speed-profile]
+    Stored SCPM state:
+      packages-9a07:
+        [                                            ]
+      disable-2bb4:
+        [                                            ]
+
+Compiler stats:
+  [app.irlpro.android]
+    (No recorded stats)
+
+HeimdAllFS state:
+  [app.irlpro.android]
+    path: /data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/base.apk
+    Compressed? False
+    path: /data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/split_config.arm64_v8a.apk
+    Compressed? False
+    path: /data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/split_config.en.apk
+    Compressed? False
+    path: /data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/split_config.xxhdpi.apk
+    Compressed? False
+  [ Summary ]
+    # of packages: 1 / # of packages in DATA: 1 (4)
+    Compressed apks info - sum of orig size: 3737 / sum of compr size : 3737

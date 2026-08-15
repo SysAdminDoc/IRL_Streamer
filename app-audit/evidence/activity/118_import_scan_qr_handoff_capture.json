@@ -1,0 +1,18 @@
+{
+  "screen_id": "118_import_scan_qr_handoff",
+  "captured_at_utc": "2026-08-15T01:20:18.1370633Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Import/Export Settings > Scan QR code",
+  "required_starting_state": "QR scan handoff opened; no QR scanned or settings imported",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/118_import_scan_qr_handoff.png",
+  "ui_xml": "evidence/ui-xml/118_import_scan_qr_handoff.xml",
+  "activity_dump": "evidence/activity/118_import_scan_qr_handoff_activity-top.txt",
+  "window_dump": "evidence/activity/118_import_scan_qr_handoff_window.txt",
+  "input_method_dump": "evidence/activity/118_import_scan_qr_handoff_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_118_import_scan_qr_handoff_20260815T012015067Z.xml"
+  ]
+}

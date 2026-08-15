@@ -1,0 +1,18 @@
+{
+  "screen_id": "086_streamer_home_audio_meter_hidden",
+  "captured_at_utc": "2026-08-15T01:02:32.5785325Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Settings > Display > Show audio level meter; return to streamer",
+  "required_starting_state": "Safe margins restored off; audio level meter temporarily hidden; restored after capture",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/086_streamer_home_audio_meter_hidden.png",
+  "ui_xml": "evidence/ui-xml/086_streamer_home_audio_meter_hidden.xml",
+  "activity_dump": "evidence/activity/086_streamer_home_audio_meter_hidden_activity-top.txt",
+  "window_dump": "evidence/activity/086_streamer_home_audio_meter_hidden_window.txt",
+  "input_method_dump": "evidence/activity/086_streamer_home_audio_meter_hidden_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_086_streamer_home_audio_meter_hidden_20260815T010229227Z.xml"
+  ]
+}

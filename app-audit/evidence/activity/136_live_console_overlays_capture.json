@@ -1,0 +1,18 @@
+{
+  "screen_id": "136_live_console_overlays",
+  "captured_at_utc": "2026-08-15T01:27:47.5926709Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Main > overflow > Overlays",
+  "required_starting_state": "Idle live console; Timestamp and all custom layers inactive",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/136_live_console_overlays.png",
+  "ui_xml": "evidence/ui-xml/136_live_console_overlays.xml",
+  "activity_dump": "evidence/activity/136_live_console_overlays_activity-top.txt",
+  "window_dump": "evidence/activity/136_live_console_overlays_window.txt",
+  "input_method_dump": "evidence/activity/136_live_console_overlays_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_136_live_console_overlays_20260815T012744103Z.xml"
+  ]
+}

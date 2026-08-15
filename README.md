@@ -1,0 +1,23 @@
+<p align="center">
+  <img src="branding/irl-streamer-app-icon-v2.png" width="180" alt="IRL Streamer logo">
+</p>
+
+# IRL_Streamer
+
+IRL_Streamer is an independent Android live-streaming console reconstructed from an authorized, observable-behavior audit. The project preserves the audited workflow map while replacing the original app identity, artwork, and implementation with clean-room Kotlin and Jetpack Compose code.
+
+The working Android project is in [`replica-app`](replica-app/). The immutable 145-state behavior and screen audit is in [`app-audit`](app-audit/).
+
+## Current status
+
+- Native Android application targeting API 36, with API 28 minimum support
+- Forced landscape live console, settings, dialogs, forms, overlays, and debug-addressable audit states
+- Deterministic local simulations for broadcasting, bonding, recording, camera, chat, and remote services
+- JVM tests, device Compose tests, lint, release build, signature verification, and visual-comparison tooling
+- Original IRL_Streamer logo and adaptive launcher icon generated specifically for this project
+
+See [`replica-app/README.md`](replica-app/README.md) for setup, build, test, and validation instructions.
+
+## Clean-room notice
+
+This is not the official IRL Pro application. It contains no decompiled source, production signing material, private user data, or original artwork. Audit screenshots are retained only as reconstruction evidence and are never rendered by the app.

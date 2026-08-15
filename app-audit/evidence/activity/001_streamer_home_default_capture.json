@@ -1,0 +1,19 @@
+{
+  "screen_id": "001_streamer_home_default",
+  "captured_at_utc": "2026-08-15T00:19:30.6131946Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Android launcher > IRL Pro",
+  "required_starting_state": "Existing signed-in/configured app data preserved; app launched normally",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/001_streamer_home_default.png",
+  "ui_xml": "evidence/ui-xml/001_streamer_home_default.xml",
+  "activity_dump": "evidence/activity/001_streamer_home_default_activity-top.txt",
+  "window_dump": "evidence/activity/001_streamer_home_default_window.txt",
+  "input_method_dump": "evidence/activity/001_streamer_home_default_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_001_streamer_home_default_20260815T001926417Z.xml"
+  ],
+  "capture_note": "Visible package/activity corrected from the target UI hierarchy and target window/activity record. The original generic activity-top parser selected an earlier launcher record from the mixed top dump."
+}

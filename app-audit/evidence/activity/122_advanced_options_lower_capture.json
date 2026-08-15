@@ -1,0 +1,18 @@
+{
+  "screen_id": "122_advanced_options_lower",
+  "captured_at_utc": "2026-08-15T01:23:02.2518495Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Main > Settings > Advanced options > scroll lower",
+  "required_starting_state": "Advanced options defaults, lower section",
+  "settle_milliseconds": 300,
+  "screenshot": "evidence/screenshots/122_advanced_options_lower.png",
+  "ui_xml": "evidence/ui-xml/122_advanced_options_lower.xml",
+  "activity_dump": "evidence/activity/122_advanced_options_lower_activity-top.txt",
+  "window_dump": "evidence/activity/122_advanced_options_lower_window.txt",
+  "input_method_dump": "evidence/activity/122_advanced_options_lower_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_122_advanced_options_lower_20260815T012259250Z.xml"
+  ]
+}

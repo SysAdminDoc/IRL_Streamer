@@ -1,0 +1,18 @@
+{
+  "screen_id": "020_bonding_wifi_weight_adjusted",
+  "captured_at_utc": "2026-08-15T00:28:55.7637043Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Bonding settings > adjust Wi-Fi weight slider to midpoint",
+  "required_starting_state": "Wi-Fi weight observed at 100; reversible slider test",
+  "settle_milliseconds": 600,
+  "screenshot": "evidence/screenshots/020_bonding_wifi_weight_adjusted.png",
+  "ui_xml": "evidence/ui-xml/020_bonding_wifi_weight_adjusted.xml",
+  "activity_dump": "evidence/activity/020_bonding_wifi_weight_adjusted_activity-top.txt",
+  "window_dump": "evidence/activity/020_bonding_wifi_weight_adjusted_window.txt",
+  "input_method_dump": "evidence/activity/020_bonding_wifi_weight_adjusted_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_020_bonding_wifi_weight_adjusted_20260815T002852710Z.xml"
+  ]
+}

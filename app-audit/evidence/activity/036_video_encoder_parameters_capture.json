@@ -1,0 +1,18 @@
+{
+  "screen_id": "036_video_encoder_parameters",
+  "captured_at_utc": "2026-08-15T00:38:15.2334565Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "035 video parameters > swipe upward",
+  "required_starting_state": "Lens defaults and encoder section visible; no preference changed",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/036_video_encoder_parameters.png",
+  "ui_xml": "evidence/ui-xml/036_video_encoder_parameters.xml",
+  "activity_dump": "evidence/activity/036_video_encoder_parameters_activity-top.txt",
+  "window_dump": "evidence/activity/036_video_encoder_parameters_window.txt",
+  "input_method_dump": "evidence/activity/036_video_encoder_parameters_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_036_video_encoder_parameters_20260815T003812072Z.xml"
+  ]
+}

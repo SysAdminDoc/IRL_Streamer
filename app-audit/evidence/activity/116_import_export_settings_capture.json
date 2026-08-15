@@ -1,0 +1,18 @@
+{
+  "screen_id": "116_import_export_settings",
+  "captured_at_utc": "2026-08-15T01:19:05.6450676Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Import/Export Settings",
+  "required_starting_state": "Import/export controls; no import or export performed",
+  "settle_milliseconds": 800,
+  "screenshot": "evidence/screenshots/116_import_export_settings.png",
+  "ui_xml": "evidence/ui-xml/116_import_export_settings.xml",
+  "activity_dump": "evidence/activity/116_import_export_settings_activity-top.txt",
+  "window_dump": "evidence/activity/116_import_export_settings_window.txt",
+  "input_method_dump": "evidence/activity/116_import_export_settings_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_116_import_export_settings_20260815T011902467Z.xml"
+  ]
+}

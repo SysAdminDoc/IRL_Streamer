@@ -1,0 +1,74 @@
+Privacy-filtered window baseline. Full device-wide window list intentionally not retained.
+WINDOW MANAGER LAST ANR (dumpsys window lastanr)
+WINDOW MANAGER POLICY STATE (dumpsys window policy)
+WINDOW MANAGER ANIMATOR STATE (dumpsys window animator)
+WINDOW MANAGER SESSIONS (dumpsys window sessions)
+    numWindow=0 mCanAddInternalSystemWindow=false mAlertWindows={} mClientDead=false    mPackageName=app.irlpro.android
+WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
+    initCutout=DisplayCutout{insets=Rect(0, 56 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(519, 0 - 561, 56), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2316 physicalDisplayWidth=1440 physicalDisplayHeight=3088 density={2.8125} cutoutSpec={M 0,0 H -10 V 26.66666666666667 H 10 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={0.75}}} sideOverrides={}}
+    baseCutout=DisplayCutout{insets=Rect(0, 75 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(512, 0 - 568, 75), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2316 physicalDisplayWidth=1080 physicalDisplayHeight=2316 density={2.8125} cutoutSpec={M 0,0 H -10 V 26.66666666666667 H 10 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}} sideOverrides={}}
+  overrideConfig={1.0 ?mcc0mnc [en_US] ldltr sw384dp w384dp h823dp 450dpi nrml long port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 2316) mAppBounds=Rect(0, 0 - 1080, 2316) mMaxBounds=Rect(0, 0 - 1080, 2316) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mStageConfig=undefined mEmbedActivityMode=undefined mPopOver=undefined mOverlappingWithCutout=false} s.237 fontWeightAdjustment=0 ff=0 bf=-1 bts=0 cst=1.0 nightDim=0 themeSeq=0}
+  mCurrentFocus=Window{c3b73ef u0 com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity}
+  mFocusedApp=ActivityRecord{175796716 u0 com.sec.android.app.launcher/.activities.LauncherActivity t252}
+    * HideDisplayCutout:32:35
+      * HideDisplayCutout:26:31
+      * HideDisplayCutout:18:23
+      * HideDisplayCutout:16:16
+      * HideDisplayCutout:0:14
+      overrideConfig={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined mStageConfig=undefined mEmbedActivityMode=undefined mPopOver=undefined mOverlappingWithCutout=false} ?fontWeightAdjustment ff=0 bf=-1 bts=-1 cst=0.0 nightDim=-1 themeSeq=0}
+      mDisplayCutoutTouchableRegionSize=34
+    {1.0 ?mcc0mnc [en_US] ldltr sw384dp w384dp h823dp 450dpi nrml long port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 2316) mAppBounds=Rect(0, 0 - 1080, 2316) mMaxBounds=Rect(0, 0 - 1080, 2316) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mStageConfig=undefined mEmbedActivityMode=undefined mPopOver=undefined mOverlappingWithCutout=false} s.12 fontWeightAdjustment=0 ff=0 bf=-1 bts=0 cst=1.0 nightDim=0 themeSeq=0}
+ [Min] Requested ( refreshRate=30.000002 w=Window{4713c65 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Min] Requested ( refreshRate=30.000002 w=Window{e8ccd8a u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Min] Requested ( refreshRate=30.000002 w=Window{a338090 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Min] Requested ( refreshRate=30.000002 w=Window{5edab06 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Max] Requested ( refreshRate=60.0 w=Window{4713c65 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Max] Requested ( refreshRate=60.0 w=Window{e8ccd8a u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Max] Requested ( refreshRate=60.0 w=Window{a338090 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+ [Max] Requested ( refreshRate=60.0 w=Window{5edab06 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity})
+        source=ActivityRecord{194798782 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity t254} SCREEN_ORIENTATION_LANDSCAPE
+        source=ActivityRecord{256602003 u0 app.irlpro.android/com.wmspanel.streamer.StreamerServiceActivity t258} SCREEN_ORIENTATION_LANDSCAPE
+      mDisplayCutout=DisplayCutout{insets=Rect(0, 75 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(512, 0 - 568, 75), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2316 physicalDisplayWidth=1080 physicalDisplayHeight=2316 density={2.8125} cutoutSpec={M 0,0 H -10 V 26.66666666666667 H 10 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}} sideOverrides={}}
+        InsetsSource id=27 type=displayCutout frame=[0,0][1080,75] visible=true flags= sideHint=TOP boundingRects=null
+        InsetsSource id=4afc0001 type=navigationBars frame=[0,2181][1080,2316] visible=true flags= sideHint=BOTTOM boundingRects=null
+        InsetsSource id=58a20000 type=statusBars frame=[0,0][1080,75] visible=true flags= sideHint=TOP boundingRects=null
+        InsetsSourceControl: {4afc0001 mType=navigationBars initiallyVisible mSurfacePosition=Point(0, 2181) mInsetsHint=Insets{left=0, top=0, right=0, bottom=135}}
+        InsetsSourceControl: {58a20000 mType=statusBars initiallyVisible mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=75, right=0, bottom=0}}
+        mSource=InsetsSource id=58a20000 type=statusBars frame=[0,0][1080,75] visible=true flags= sideHint=TOP boundingRects=null
+        mControl=InsetsSourceControl mId=58a20000 mType=statusBars mLeash=Surface(name=Surface(name=6b149be StatusBar)/@0x3237586 - animation-leash of insets_animation)/@0x235fab6 mInitiallyVisible=true mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=75, right=0, bottom=0} mSkipAnimationOnce=false mImeStatsToken=null mControlledByPolicy=false
+        mSource=InsetsSource id=4afc0001 type=navigationBars frame=[0,2181][1080,2316] visible=true flags= sideHint=BOTTOM boundingRects=null
+        mControl=InsetsSourceControl mId=4afc0001 mType=navigationBars mLeash=Surface(name=Surface(name=9d2dc81 NavigationBar0)/@0x17147e3 - animation-leash of insets_animation)/@0x7fd6724 mInitiallyVisible=true mSurfacePosition=Point(0, 2181) mInsetsHint=Insets{left=0, top=0, right=0, bottom=135} mSkipAnimationOnce=false mImeStatsToken=null mControlledByPolicy=false
+WINDOW MANAGER TOKENS (dumpsys window tokens)
+WINDOW MANAGER WINDOWS (dumpsys window windows)
+    mAttrs={(0,0)(fillxfill) sim={adjust=pan} layoutInDisplayCutoutMode=always ty=DRAG fmt=TRANSLUCENT
+    mAttrs={(0,0)(fillx135) gr=BOTTOM CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=NAVIGATION_BAR fmt=TRANSLUCENT
+        InsetsFrameProvider: {id=#4afc0004, index=0, type=systemGestures, source=DISPLAY, flags=[], insetsSize=Insets{left=0, top=0, right=0, bottom=0}, mMinimalInsetsSizeInDisplayCutoutSafe=Insets{left=0, top=0, right=0, bottom=0}}
+        InsetsFrameProvider: {id=#4afc0024, index=1, type=systemGestures, source=DISPLAY, flags=[], insetsSize=Insets{left=0, top=0, right=0, bottom=0}, mMinimalInsetsSizeInDisplayCutoutSafe=Insets{left=0, top=0, right=0, bottom=0}}
+        ROTATION_0={(0,0)(fillx135) gr=BOTTOM CENTER_VERTICAL layoutInDisplayCutoutMode=always ty=NAVIGATION_BAR fmt=TRANSLUCENT
+            InsetsFrameProvider: {id=#4afc0004, index=0, type=systemGestures, source=DISPLAY, flags=[], insetsSize=Insets{left=0, top=0, right=0, bottom=0}, mMinimalInsetsSizeInDisplayCutoutSafe=Insets{left=0, top=0, right=0, bottom=0}}
+            InsetsFrameProvider: {id=#4afc0024, index=1, type=systemGestures, source=DISPLAY, flags=[], insetsSize=Insets{left=0, top=0, right=0, bottom=0}, mMinimalInsetsSizeInDisplayCutoutSafe=Insets{left=0, top=0, right=0, bottom=0}}
+        ROTATION_90={(0,0)(135xfill) gr=RIGHT CENTER_HORIZONTAL layoutInDisplayCutoutMode=always ty=NAVIGATION_BAR fmt=TRANSLUCENT
+        ROTATION_180={(0,0)(fillx135) gr=BOTTOM CENTER_VERTICAL layoutInDisplayCutoutMode=always ty=NAVIGATION_BAR fmt=TRANSLUCENT
+        ROTATION_270={(0,0)(135xfill) gr=LEFT CENTER_HORIZONTAL layoutInDisplayCutoutMode=always ty=NAVIGATION_BAR fmt=TRANSLUCENT
+    mAttrs={(0,0)(fillx0) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=shortEdges ty=KEYGUARD_DIALOG fmt=TRANSLUCENT if=INPUT_FEATURE_DISABLE_USER_ACTIVITY userActivityTimeout=10000
+    mAttrs={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE_WIDGET fmt=TRANSLUCENT
+    mAttrs={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE fmt=TRANSLUCENT
+    mAttrs={(0,0)(fillx75) gr=TOP CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=STATUS_BAR fmt=TRANSLUCENT
+        InsetsFrameProvider: {id=#58a20005, index=0, type=mandatorySystemGestures, source=FRAME, flags=[], mMinimalInsetsSizeInDisplayCutoutSafe=Insets{left=0, top=34, right=0, bottom=0}}
+        ROTATION_0={(0,0)(fillx75) gr=TOP CENTER_VERTICAL layoutInDisplayCutoutMode=always ty=STATUS_BAR fmt=TRANSLUCENT
+            InsetsFrameProvider: {id=#58a20005, index=0, type=mandatorySystemGestures, source=FRAME, flags=[], insetsSize=Insets{left=0, top=75, right=0, bottom=0}, mMinimalInsetsSizeInDisplayCutoutSafe=Insets{left=0, top=34, right=0, bottom=0}}
+        ROTATION_90={(0,0)(fillx84) gr=TOP CENTER_VERTICAL layoutInDisplayCutoutMode=always ty=STATUS_BAR fmt=TRANSLUCENT
+            InsetsFrameProvider: {id=#58a20005, index=0, type=mandatorySystemGestures, source=FRAME, flags=[], insetsSize=Insets{left=0, top=84, right=0, bottom=0}, mMinimalInsetsSizeInDisplayCutoutSafe=Insets{left=0, top=34, right=0, bottom=0}}
+        ROTATION_180={(0,0)(fillx75) gr=TOP CENTER_VERTICAL layoutInDisplayCutoutMode=always ty=STATUS_BAR fmt=TRANSLUCENT
+        ROTATION_270={(0,0)(fillx84) gr=TOP CENTER_VERTICAL layoutInDisplayCutoutMode=always ty=STATUS_BAR fmt=TRANSLUCENT
+    mAttrs={(0,0)(1x1) gr=BOTTOM CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=TRANSIENT_LAUNCH_OVERLAY fmt=TRANSLUCENT if=INPUT_FEATURE_NO_INPUT_CHANNEL
+    mAttrs={(0,0)(fillxfill) sim={adjust=nothing forwardNavigation} layoutInDisplayCutoutMode=always ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x1030306
+    mAttrs={(0,0)(fillxfill) sim={adjust=pan forwardNavigation} layoutInDisplayCutoutMode=always ty=BASE_APPLICATION wanim=0x1030317
+    mAttrs={(0,0)(fillxfill) sim={adjust=pan} layoutInDisplayCutoutMode=always ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x1030306
+    mAttrs={(0,0)(fillxfill) gr=TOP START CENTER layoutInDisplayCutoutMode=always ty=WALLPAPER fmt=RGBX_8888 wanim=0x1030328
+  mGlobalConfiguration={1.0 ?mcc0mnc [en_US] ldltr sw384dp w384dp h823dp 450dpi nrml long port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 2316) mAppBounds=Rect(0, 0 - 1080, 2316) mMaxBounds=Rect(0, 0 - 1080, 2316) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mStageConfig=undefined mEmbedActivityMode=undefined mPopOver=undefined mOverlappingWithCutout=false} s.237 fontWeightAdjustment=0 ff=0 bf=-1 bts=0 cst=1.0 nightDim=0 themeSeq=0}
+WINDOW MANAGER EXTENSION (dumpsys window extension)
+WINDOW MANAGER TRACE (dumpsys window trace)
+WINDOW MANAGER LOGGING (dumpsys window logging)
+WINDOW MANAGER HIGH REFRESH RATE BLACKLIST (dumpsys window refresh)
+WINDOW MANAGER CONSTANTS (dumpsys window constants):

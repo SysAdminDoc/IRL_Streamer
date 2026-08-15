@@ -1,0 +1,18 @@
+{
+  "screen_id": "074_audio_input_gain_maximum",
+  "captured_at_utc": "2026-08-15T00:56:31.4069228Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Audio > Input gain",
+  "required_starting_state": "Input gain temporarily moved from 0.0 dB to maximum +10.0; restored after capture",
+  "settle_milliseconds": 600,
+  "screenshot": "evidence/screenshots/074_audio_input_gain_maximum.png",
+  "ui_xml": "evidence/ui-xml/074_audio_input_gain_maximum.xml",
+  "activity_dump": "evidence/activity/074_audio_input_gain_maximum_activity-top.txt",
+  "window_dump": "evidence/activity/074_audio_input_gain_maximum_window.txt",
+  "input_method_dump": "evidence/activity/074_audio_input_gain_maximum_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_074_audio_input_gain_maximum_20260815T005628295Z.xml"
+  ]
+}

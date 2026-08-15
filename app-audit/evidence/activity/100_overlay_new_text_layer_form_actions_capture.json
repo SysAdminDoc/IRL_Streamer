@@ -1,0 +1,18 @@
+{
+  "screen_id": "100_overlay_new_text_layer_form_actions",
+  "captured_at_utc": "2026-08-15T01:11:49.6019080Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Overlays > Text/Picture Overlays > New layer > Text > bottom",
+  "required_starting_state": "New Text layer draft; Cancel and Save actions visible; no record saved",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/100_overlay_new_text_layer_form_actions.png",
+  "ui_xml": "evidence/ui-xml/100_overlay_new_text_layer_form_actions.xml",
+  "activity_dump": "evidence/activity/100_overlay_new_text_layer_form_actions_activity-top.txt",
+  "window_dump": "evidence/activity/100_overlay_new_text_layer_form_actions_window.txt",
+  "input_method_dump": "evidence/activity/100_overlay_new_text_layer_form_actions_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_100_overlay_new_text_layer_form_actions_20260815T011146413Z.xml"
+  ]
+}

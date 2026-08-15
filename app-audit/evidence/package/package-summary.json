@@ -1,0 +1,19 @@
+{
+  "package_name": "app.irlpro.android",
+  "device_serial": "R5CT139QJ5F",
+  "captured_at_utc": "2026-08-15T00:17:19.3880540Z",
+  "version_name": "3.5.23",
+  "version_code": 305230,
+  "target_sdk": 34,
+  "min_sdk": 28,
+  "installer_package": "com.android.vending",
+  "evidence": {
+    "dumpsys_package": "evidence/package/dumpsys-package.txt",
+    "appops": "evidence/package/appops.txt",
+    "resolve_activity": "evidence/package/resolve-activity.txt",
+    "split_apk_paths": "evidence/package/split-apk-paths.txt",
+    "activities": "evidence/package/activity-activities.txt",
+    "services": "evidence/package/activity-services.txt",
+    "jobscheduler": "evidence/measurements/jobscheduler-target-snippet.txt"
+  }
+}

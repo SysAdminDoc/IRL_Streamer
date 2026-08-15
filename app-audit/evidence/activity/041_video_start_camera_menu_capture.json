@@ -1,0 +1,18 @@
+{
+  "screen_id": "041_video_start_camera_menu",
+  "captured_at_utc": "2026-08-15T00:40:39.2451599Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Video parameters > Start app with",
+  "required_starting_state": "Observed value Rear camera (0); no selection changed",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/041_video_start_camera_menu.png",
+  "ui_xml": "evidence/ui-xml/041_video_start_camera_menu.xml",
+  "activity_dump": "evidence/activity/041_video_start_camera_menu_activity-top.txt",
+  "window_dump": "evidence/activity/041_video_start_camera_menu_window.txt",
+  "input_method_dump": "evidence/activity/041_video_start_camera_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_041_video_start_camera_menu_20260815T004036001Z.xml"
+  ]
+}

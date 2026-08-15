@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "classification": "Observed raw values are CONFIRMED unless a token says estimated; normalized names are reconstruction recommendations.",
+    "referenceViewportPx": { "width": 2316, "height": 1080 },
+    "referenceViewportDp": { "width": 823.47, "height": 384.0 },
+    "densityDpi": 450,
+    "pxPerDp": 2.8125
+  },
+  "color": {
+    "background": { "value": "#303030", "observed": true },
+    "appBar": { "value": "#212121", "observed": true },
+    "dialog": { "value": "#424242", "observed": true },
+    "quickPanel": { "value": "#020202", "observed": true },
+    "systemBar": { "value": "#000000", "observed": true },
+    "accent": { "value": "#80CBC4", "observed": true },
+    "textPrimary": { "value": "#FFFFFF", "observed": true },
+    "textSecondary": { "value": "#C7C7C7", "observed": true, "estimated": true },
+    "textDisabled": { "value": "#7A7A7A", "observedRange": "#6A6A6A-#959595", "estimated": true },
+    "divider": { "value": "#4A4A4A", "observed": true, "estimated": true },
+    "audioActive": { "value": "#1F8B4D", "observed": true },
+    "audioMuted": { "value": "#7F8C8D", "observed": true, "estimated": true },
+    "timestampDefault": { "value": "#66FF66", "observed": true },
+    "safeMargin": { "value": "#FF0000", "observed": true, "estimated": true }
+  },
+  "dimensionDp": {
+    "settingsAppBarHeight": 51.56,
+    "dialogOptionHeight": 48.0,
+    "preferenceRowCompact": 53.69,
+    "preferenceRowWithSummary": 72.53,
+    "preferenceContentStart": 72.18,
+    "systemStatusBarPortrait": 26.67,
+    "systemNavigationBar": 48.0,
+    "landscapeCutoutSafeInset": 26.67,
+    "minimumTouchTargetRecommended": 48.0,
+    "liveMuteDiameter": 72.18,
+    "quickPanelWidth": 320.0
+  },
+  "typographySp": {
+    "appBarTitle": { "value": 20, "confidence": "strong inference" },
+    "preferenceTitle": { "value": 16, "confidence": "strong inference" },
+    "preferenceSummary": { "value": 14, "confidence": "strong inference" },
+    "sectionHeader": { "value": 14, "confidence": "strong inference" },
+    "dialogTitle": { "value": 20, "confidence": "strong inference" },
+    "dialogBody": { "value": 16, "confidence": "strong inference" },
+    "button": { "value": 14, "confidence": "strong inference" },
+    "telemetry": { "value": 12, "confidence": "visual estimate" }
+  },
+  "shape": {
+    "preferenceSurfaceRadiusDp": 0,
+    "dialogRadiusDp": { "value": 2, "estimated": true },
+    "pillRadius": "50%",
+    "circleRadius": "50%"
+  },
+  "motionMs": {
+    "settingsNavigation": { "value": 200, "estimated": true },
+    "dialogEnterExit": { "value": 150, "estimated": true },
+    "toastDuration": { "value": 2500, "estimated": true },
+    "cameraSwitchSettle": { "value": 900, "observedTestWait": true }
+  }
+}
+

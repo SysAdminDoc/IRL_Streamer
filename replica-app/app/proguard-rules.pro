@@ -1,0 +1,3 @@
+-keepattributes *Annotation*
+-keep class com.irlstreamer.reconstruction.model.** { *; }
+-dontwarn org.jetbrains.annotations.**

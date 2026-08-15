@@ -1,0 +1,18 @@
+{
+  "screen_id": "059_video_h264_profile_menu",
+  "captured_at_utc": "2026-08-15T00:49:32.2388350Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Settings > Video > H.264 profile",
+  "required_starting_state": "Video encoder settings; current System default",
+  "settle_milliseconds": 700,
+  "screenshot": "evidence/screenshots/059_video_h264_profile_menu.png",
+  "ui_xml": "evidence/ui-xml/059_video_h264_profile_menu.xml",
+  "activity_dump": "evidence/activity/059_video_h264_profile_menu_activity-top.txt",
+  "window_dump": "evidence/activity/059_video_h264_profile_menu_window.txt",
+  "input_method_dump": "evidence/activity/059_video_h264_profile_menu_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_059_video_h264_profile_menu_20260815T004929076Z.xml"
+  ]
+}

@@ -1,0 +1,4 @@
+package:/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/base.apk
+package:/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/split_config.arm64_v8a.apk
+package:/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/split_config.en.apk
+package:/data/app/~~bScr1NoP4O1xGFGNj6Em4g==/app.irlpro.android-R1W209CBOgg8DD8vEpUpZQ==/split_config.xxhdpi.apk

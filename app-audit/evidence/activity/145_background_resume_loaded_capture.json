@@ -1,0 +1,18 @@
+{
+  "screen_id": "145_background_resume_loaded",
+  "captured_at_utc": "2026-08-15T01:31:11.9746051Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "navigation_path": "Main > Home/background > relaunch",
+  "required_starting_state": "App warm in background; no active stream",
+  "settle_milliseconds": 200,
+  "screenshot": "evidence/screenshots/145_background_resume_loaded.png",
+  "ui_xml": "evidence/ui-xml/145_background_resume_loaded.xml",
+  "activity_dump": "evidence/activity/145_background_resume_loaded_activity-top.txt",
+  "window_dump": "evidence/activity/145_background_resume_loaded_window.txt",
+  "input_method_dump": "evidence/activity/145_background_resume_loaded_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_145_background_resume_loaded_20260815T013108678Z.xml"
+  ]
+}

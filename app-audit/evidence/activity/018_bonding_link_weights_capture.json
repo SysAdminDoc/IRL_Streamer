@@ -1,0 +1,18 @@
+{
+  "screen_id": "018_bonding_link_weights",
+  "captured_at_utc": "2026-08-15T00:28:05.3092480Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "017 bonding settings > swipe upward",
+  "required_starting_state": "Bonding mode and cellular control visible",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/018_bonding_link_weights.png",
+  "ui_xml": "evidence/ui-xml/018_bonding_link_weights.xml",
+  "activity_dump": "evidence/activity/018_bonding_link_weights_activity-top.txt",
+  "window_dump": "evidence/activity/018_bonding_link_weights_window.txt",
+  "input_method_dump": "evidence/activity/018_bonding_link_weights_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_018_bonding_link_weights_20260815T002802072Z.xml"
+  ]
+}

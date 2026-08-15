@@ -1,0 +1,18 @@
+{
+  "screen_id": "045_video_fps_menu_middle",
+  "captured_at_utc": "2026-08-15T00:42:29.7006250Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "FPS dialog > swipe upward",
+  "required_starting_state": "FPS picker open; no selection changed",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/045_video_fps_menu_middle.png",
+  "ui_xml": "evidence/ui-xml/045_video_fps_menu_middle.xml",
+  "activity_dump": "evidence/activity/045_video_fps_menu_middle_activity-top.txt",
+  "window_dump": "evidence/activity/045_video_fps_menu_middle_window.txt",
+  "input_method_dump": "evidence/activity/045_video_fps_menu_middle_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_045_video_fps_menu_middle_20260815T004226316Z.xml"
+  ]
+}

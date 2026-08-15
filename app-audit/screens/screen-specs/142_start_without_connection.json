@@ -1,0 +1,268 @@
+{
+  "screen_id": "142_start_without_connection",
+  "screen_name": "Start Broadcast dialog",
+  "state_name": "No active connections validation",
+  "surface_type": "dialog",
+  "classification": "CONFIRMED",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.StreamerServiceActivity",
+  "entry_conditions": [
+    "Idle live console; no outgoing connection configured"
+  ],
+  "navigation_path": [
+    "Main",
+    "Start broadcast"
+  ],
+  "evidence": {
+    "screenshot": "evidence/screenshots/142_start_without_connection.png",
+    "ui_xml": "evidence/ui-xml/142_start_without_connection.xml",
+    "activity_dump": "evidence/activity/142_start_without_connection_activity-top.txt",
+    "recording": ""
+  },
+  "display": {
+    "width_px": 2316,
+    "height_px": 1080,
+    "density_dpi": 450,
+    "width_dp": 823.47,
+    "height_dp": 384.0,
+    "orientation": "landscape",
+    "edge_to_edge": false
+  },
+  "system_bars": {
+    "settings_status_bar": {
+      "position": "top",
+      "height_px": 74,
+      "height_dp": 26.31,
+      "color": "#000000",
+      "note": "Visible on settings/system surfaces"
+    },
+    "broadcast_status_bar": {
+      "visible": false,
+      "note": "Hidden on live console with default advanced setting"
+    },
+    "navigation_bar": {
+      "position": "right",
+      "width_px": 135,
+      "width_dp": 48.0,
+      "mode": "Samsung three-button navigation"
+    },
+    "left_landscape_inset": {
+      "width_px": 75,
+      "width_dp": 26.67,
+      "reason": "display cutout/rounded-corner safe inset"
+    }
+  },
+  "layout_regions": [
+    {
+      "name": "modal_surface",
+      "bounds_px": {
+        "left": 443,
+        "top": 285,
+        "right": 1812,
+        "bottom": 794,
+        "width": 1369,
+        "height": 509
+      },
+      "bounds_dp": {
+        "left": 157.51,
+        "top": 101.33,
+        "right": 644.27,
+        "bottom": 282.31,
+        "width": 486.76,
+        "height": 180.98
+      }
+    }
+  ],
+  "elements": [
+    {
+      "element_id": "e001",
+      "resource_id": "android:id/button2",
+      "visible_label": "CANCEL",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "button",
+      "class": "android.widget.Button",
+      "bounds_px": {
+        "left": 1057,
+        "top": 603,
+        "right": 1270,
+        "bottom": 738,
+        "width": 213,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 375.82,
+        "top": 214.4,
+        "right": 451.56,
+        "bottom": 262.4,
+        "width": 75.73,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": "evidence/ui-xml/142_start_without_connection.xml"
+    },
+    {
+      "element_id": "e002",
+      "resource_id": "android:id/button1",
+      "visible_label": "CREATE CONNECTION",
+      "accessibility_label": "",
+      "inferred_name_from_resource_id": "",
+      "element_type": "button",
+      "class": "android.widget.Button",
+      "bounds_px": {
+        "left": 1270,
+        "top": 603,
+        "right": 1733,
+        "bottom": 738,
+        "width": 463,
+        "height": 135
+      },
+      "bounds_dp": {
+        "left": 451.56,
+        "top": 214.4,
+        "right": 616.18,
+        "bottom": 262.4,
+        "width": 164.62,
+        "height": 48.0
+      },
+      "enabled": true,
+      "checked": null,
+      "selected": false,
+      "clickable": true,
+      "long_clickable": false,
+      "scrollable": false,
+      "minimum_48dp_target_met": true,
+      "safe_to_test": false,
+      "safety_note": "UNTESTED: potentially destructive, privacy-sensitive, or externally consequential",
+      "evidence": "evidence/ui-xml/142_start_without_connection.xml"
+    }
+  ],
+  "visible_text": [
+    "Start Broadcast?",
+    "You don't have any active connections, please add one.",
+    "CANCEL",
+    "CREATE CONNECTION"
+  ],
+  "interactions": [
+    {
+      "element_id": "e001",
+      "control_label": "CANCEL",
+      "gesture": "tap",
+      "outcome_classification": "CONFIRMED",
+      "test_status": "TESTED",
+      "observed_destination_or_effect": "Dismisses/cancels the current dialog or form; tested drafts were discarded.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "Unsaved draft only; no committed record.",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "Prior surface restored.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": true,
+      "safety_note": "Safe interaction within the observed test state",
+      "evidence": [
+        "evidence/ui-xml/142_start_without_connection.xml"
+      ]
+    },
+    {
+      "element_id": "e002",
+      "control_label": "CREATE CONNECTION",
+      "gesture": "tap",
+      "outcome_classification": "UNKNOWN",
+      "test_status": "UNTESTED",
+      "observed_destination_or_effect": "No distinct paired outcome was safely exercised for this exact node; control presence, bounds, and current state are confirmed.",
+      "destination_screen_ids": [],
+      "data_or_state_changed": "UNKNOWN",
+      "long_press_behavior": "Not exposed as long-clickable by UI Automator.",
+      "swipe_behavior": "No swipe action exposed for this node.",
+      "validation_behavior": "None directly paired for this element; see this screen's validation array and behavior/validation-rules.csv.",
+      "loading_behavior": "None directly paired; remote/media loading states remain UNKNOWN unless stated in this screen spec.",
+      "success_result": "UNKNOWN unless an observed destination/effect is listed above.",
+      "failure_result": "UNKNOWN unless listed in this screen's validation/error arrays.",
+      "back_button_behavior": "Back dismisses the current modal or returns one settings level; from the live console it backgrounds the task.",
+      "safe_to_test": false,
+      "safety_note": "UNTESTED: potentially destructive, privacy-sensitive, or externally consequential",
+      "evidence": [
+        "evidence/ui-xml/142_start_without_connection.xml"
+      ]
+    }
+  ],
+  "states": [],
+  "transitions": [
+    {
+      "gesture": "Back",
+      "result": "Dismiss modal or return to previous settings level; from live console, background the task",
+      "classification": "CONFIRMED across representative paths"
+    }
+  ],
+  "validation": [
+    {
+      "classification": "CONFIRMED",
+      "trigger": "Start broadcast with no active outgoing connection",
+      "timing": "on Start",
+      "result": "Modal blocks broadcast and offers Cancel/Create connection",
+      "message": "You don't have any active connections, please add one."
+    }
+  ],
+  "loading_behavior": [],
+  "error_behavior": [
+    {
+      "classification": "CONFIRMED",
+      "trigger": "Start broadcast with no active outgoing connection",
+      "timing": "on Start",
+      "result": "Modal blocks broadcast and offers Cancel/Create connection",
+      "message": "You don't have any active connections, please add one."
+    }
+  ],
+  "persistence_behavior": [],
+  "accessibility": {
+    "ui_automator_available": true,
+    "actionable_or_adjustable_nodes": 2,
+    "directly_unlabeled_actionable_nodes": 0,
+    "explicit_uiautomator_naf_nodes": 0,
+    "potential_sub_48dp_targets": 0,
+    "scrollable_regions": [],
+    "limitations": "TalkBack was not enabled. Labels and bounds reflect UI Automator only; Canvas/video content is sparsely represented."
+  },
+  "design_measurements": {
+    "px_per_dp": 2.8125,
+    "usable_content_bounds_px": {
+      "left": 75,
+      "top": 0,
+      "right": 2181,
+      "bottom": 1080
+    },
+    "usable_content_size_dp": {
+      "width": 748.8,
+      "height": 384.0
+    },
+    "root_bounds_px": {
+      "left": 443,
+      "top": 285,
+      "right": 1812,
+      "bottom": 794,
+      "width": 1369,
+      "height": 509
+    }
+  },
+  "inferences": [
+    {
+      "classification": "STRONG INFERENCE",
+      "finding": "Most settings surfaces use Android/AppCompat preference and alert-dialog primitives based on repeated geometry and hierarchy classes."
+    }
+  ],
+  "unknowns": [
+    "Exact TalkBack announcements and focus order were not tested."
+  ],
+  "notes": "No active connections validation"
+}

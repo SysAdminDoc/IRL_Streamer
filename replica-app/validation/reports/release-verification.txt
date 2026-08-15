@@ -1,0 +1,25 @@
+IRL Streamer release verification
+Generated: 2026-08-15 00:08 America/New_York
+Device: emulator-5554 (issue-sweep-api36, Android 16)
+
+APK: app/build/outputs/apk/release/app-release.apk
+APK size: 3992134 bytes
+Build: PASS (minifyEnabled/resource shrinking/R8/lintVital)
+Install: PASS
+Cold launch: PASS (TotalTime 1077 ms; WaitTime 1079 ms)
+Foreground component: com.irlstreamer.reconstruction/.MainActivity
+Package versionCode: 1
+Package versionName: 0.1.0
+Release screenshot: validation/current/release-launch.png
+
+APK signer verification: PASS (V2)
+Certificate DN: CN=IRL Streamer Local, OU=Clean Room Reconstruction, O=Local Development, L=Local, ST=Local, C=US
+Certificate SHA-256: b831eb19f068a8eb688deb65c12af6cf4160b802ee1a0ff9bddc2ef38419bac2
+Certificate SHA-1: 13f79090c3e643d1d099716f89d1a37ea05699e3
+
+Supporting logs:
+- validation/logs/build-release-20260815-000651.log
+- validation/logs/install-release-20260815-000824.log
+- validation/logs/launch-replica-20260815-000825.log
+
+Isolation: every command used explicit replica serial emulator-5554. The attached physical audit phone was not targeted.

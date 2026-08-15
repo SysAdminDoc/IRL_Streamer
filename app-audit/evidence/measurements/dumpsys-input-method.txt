@@ -1,0 +1,8 @@
+Privacy-filtered input-method baseline. Input contents and unrelated application details intentionally not retained.
+      targetWin=android.os.BinderProxy@1dd8f53 [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=11
+      targetWin=android.os.BinderProxy@a92315c [app.irlpro.android] targetUserId=0 targetDisplayId=0 clientBindSeq=29
+      #20 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:94397a16 (2ms):
+      #56 TYPE_HIDE - STATUS_CANCEL - app.irlpro.android:46aa6529 (2ms):
+      mImeWindowVis=0
+      mInputShown=false
+Input method service state for com.samsung.android.honeyboard.service.HoneyBoardService@a5fcbaf:

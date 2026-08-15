@@ -1,0 +1,18 @@
+{
+  "screen_id": "029_manage_connections_empty",
+  "captured_at_utc": "2026-08-15T00:34:38.7779133Z",
+  "device_serial": "R5CT139QJ5F",
+  "package_name": "app.irlpro.android",
+  "activity": "com.wmspanel.streamer.preference.SettingsActivity",
+  "navigation_path": "Connections > Manage connections",
+  "required_starting_state": "No outgoing connection saved during audit",
+  "settle_milliseconds": 900,
+  "screenshot": "evidence/screenshots/029_manage_connections_empty.png",
+  "ui_xml": "evidence/ui-xml/029_manage_connections_empty.xml",
+  "activity_dump": "evidence/activity/029_manage_connections_empty_activity-top.txt",
+  "window_dump": "evidence/activity/029_manage_connections_empty_window.txt",
+  "input_method_dump": "evidence/activity/029_manage_connections_empty_input-method.txt",
+  "ui_automator_messages": [
+    "Attempt 1: UI hierchary dumped to: /sdcard/Download/codex_audit_029_manage_connections_empty_20260815T003434866Z.xml"
+  ]
+}
