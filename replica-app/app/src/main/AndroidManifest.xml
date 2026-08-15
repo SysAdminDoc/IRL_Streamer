@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:allowBackup="true"
+        android:resizeableActivity="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IRLStreamer">
+        <!--
+            Android 16 (targetSdk 36) ignores android:screenOrientation on
+            displays at least 600dp wide, so the forced-landscape console would
+            render portrait on tablets and unfolded foldables. This property opts
+            back into respecting the declared orientation until the console has a
+            layout that works in portrait.
+        -->
+        <property
+            android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_ORIENTATION"
+            android:value="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -17,12 +28,10 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="irlstreamer" />
-            </intent-filter>
+            <!--
+                The browsable irlstreamer:// filter lives in src/debug: only the
+                debug build has a handler for it. See app/src/debug/AndroidManifest.xml.
+            -->
         </activity>
     </application>
 </manifest>

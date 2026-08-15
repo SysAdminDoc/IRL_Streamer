@@ -184,16 +184,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: S
 
-- [ ] P2 — IS-34 Safe-margin overlay ignores the persisted ratios setting — hardcoded to a single 16:9 rectangle
-  Category: correctness
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/live/LiveConsoleScreen.kt:358-384` (`SafeMarginGuide`, `val ratio = 16f / 9f`)
-  Problem: "Safe margins ratios" is a persisted multi-select (DataStore `safe_margin_ratios`, nine options), but the console overlay draws exactly one 16:9 rectangle regardless. Selecting 21:9 — or several ratios — changes nothing on the live console, making a persisted, validated setting a no-op.
-  Evidence: `SafeMarginGuide(indentPercent)` takes no ratios parameter; no other reader of `settings.safeMarginRatios` exists outside the settings row/dialog.
-  Fix: pass `state.settings.safeMarginRatios` in, parse each label's parenthesised ratio (e.g. "21:9 (2.33)" → 2.33), and draw one centred rectangle per selected ratio, keeping the existing indent logic. Audit evidence (state 085) only shows the default single 16:9 — keep that as the default so validation is unchanged.
-  Acceptance: selecting two ratios draws two rectangles; state 085 still validates with the default selection.
-  Confidence: Verified
-  Effort: M
-
 ### P3
 
 - [ ] P3 — IS-44 Accessibility gaps on the surfaces D010 claims were improved
@@ -205,25 +195,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: M
 
-- [ ] P3 — IS-45 Live-console telemetry fixture pins state 001's values on all nine live states
-  Category: visual
-  Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/live/LiveConsoleScreen.kt:222-231` (`TelemetryBlock` hardcodes -283 mA / -1144 mW / 31.6 °C)
-  Problem: each audited live state carries its own telemetry (132: -512 mA / -2106 mW / 33.3 °C; 138: -482 mA / -1947 mW / 34.7 °C). The fixture always renders 001's values, so eight states mismatch both text and glyph geometry. D009 accepts sanitized values, but the repo already pins per-state values elsewhere via `ScreenOverrides` (e.g. wifiWeight=50 for 020), so per-state fidelity is the established pattern.
-  Evidence: audit XMLs for 132/138 vs the hardcoded strings; geometry lists the audited readings as unmatched.
-  Fix: add telemetry fields to `ScreenOverrides` (or a small per-state map in `DebugStateCatalog`) populated from the audited values for 130-145; default stays the 001 fixture.
-  Acceptance: geometry for 132/134/138 matches the audited telemetry strings.
-  Confidence: Verified
-  Effort: S
-
-- [ ] P3 — IS-46 Release build ships a browsable `irlstreamer://` intent filter whose handler is debug-only
-  Category: maintainability
-  Where: `replica-app/app/src/main/AndroidManifest.xml` (VIEW/BROWSABLE filter, scheme `irlstreamer`), `MainActivity.kt:65-66` (`handleDebugIntent` returns immediately unless `ENABLE_DEBUG_STATE_SELECTOR`, which is false in release)
-  Problem: any `irlstreamer://` link launches the release app to no effect — a dead deep-link surface that also squats on the scheme IS-19 will later define. In debug it is intentional (state injection).
-  Fix: move the VIEW intent filter to `src/debug/AndroidManifest.xml` so release manifests omit it until IS-19 defines the real import grammar.
-  Acceptance: `adb shell am start -a android.intent.action.VIEW -d "irlstreamer://x"` resolves to the app only in debug builds.
-  Confidence: Verified
-  Effort: S
-
 - [ ] P3 — IS-48 Validation-state 101's error text lives in a 3.5-second system toast — capture timing can silently lose it
   Category: testing
   Where: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/ui/ReplicaApp.kt:41-47` (validationError rendered via `Toast` then immediately consumed), `DebugStateCatalog.kt:86`
@@ -232,6 +203,15 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Acceptance: repeated captures of state 101 deterministically contain the error text (verify with 5 consecutive captures).
   Confidence: Needs-repro (mechanism verified in code; flake not yet observed)
   Effort: S
+
+## Findings from the 2026-08-15 drain
+
+- [ ] P2 — IS-67 Quick settings panel covers the console telemetry block
+  Why: on every panel-open state (130-138) the replica's telemetry readings disappear behind the quick panel, while the audit hierarchy for the same states lists all three readings as present. The panel is therefore too wide, too far left, or drawn at the wrong z-order relative to the telemetry.
+  Evidence: replica hierarchy for `132_live_console_network` contains `-512 mA` but not `-2106 mW` or `33.3 °C`; the audit dump for the same state contains all three. Panel is placed at `maxWidth - 428.1.dp` with width 320 dp (`LiveConsoleScreen.kt`), spanning to `maxWidth - 108 dp`; the telemetry block sits at `maxWidth - 214.14.dp` with width 100 dp, entirely inside that span. Non-panel states (001, 141) render all three readings correctly.
+  Touches: `.../ui/live/LiveConsoleScreen.kt` (`TelemetryBlock`, `QuickSettingsPanel` placement)
+  Acceptance: geometry for 132 and 138 matches the audited mW and temperature readings; the panel and telemetry do not overlap in the captured hierarchy.
+  Complexity: S
 
 ## Research-Driven Additions — 2026-08-15 (pass 2)
 
@@ -306,14 +286,6 @@ From `RESEARCH.md` second pass (screenshot-testing ecosystem, competitor matrice
   Touches: connection form (`Forms.kt`), engine SRT socket options
   Acceptance: presets set latency + peer-latency with a one-line explanation of what to configure on the receiver; a custom value remains available; the chosen value is applied to the SRT socket (verified in the receiver's stats).
   Complexity: S
-
-- [ ] P3 — IS-61 Large-screen orientation compliance (targetSdk 36)
-  Why: Android 16 ignores `android:screenOrientation="landscape"` on displays ≥600 dp, so the forced-landscape console will render portrait on tablets/foldables with no handling today — clipped or broken layout on a real device class, silently.
-  Evidence: developer.android.com/about/versions/16/behavior-changes-16 (orientation/resizability restrictions ignored on large screens); `AndroidManifest.xml` `screenOrientation="landscape"`.
-  Depends on: none
-  Touches: `AndroidManifest.xml`, `MainActivity.kt`, possibly a minimal portrait/letterboxed layout
-  Acceptance: on a ≥600 dp device or resizable-emulator profile, the app either letterboxes gracefully or presents a usable layout in portrait; no audited-state validation is affected (AVD is phone-profile).
-  Complexity: M
 
 - [ ] P3 — IS-62 Night streaming: Low Light Boost and Android 16 camera keys
   Why: night IRL is a differentiator the audited "Vendor-specific video enhancements" section is shaped for; Android 15 adds Low Light Boost AE (brightens the live preview/stream, not stills), Android 16 adds hybrid AE priority and precise CCT white balance — all Camera2 keys StreamPack can reach and CameraX lags on.

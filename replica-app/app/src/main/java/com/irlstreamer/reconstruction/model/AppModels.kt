@@ -129,6 +129,20 @@ data class ScreenOverrides(
     val safeMarginsVisible: Boolean? = null,
     val safeMarginIndentPercent: Int? = null,
     val timestampActive: Boolean? = null,
+    /**
+     * Audited console telemetry for this state (deviation D009 fixtures).
+     * Each live capture recorded its own reading - screen 132 shows -512 mA /
+     * -2106 mW / 33.3 C where screen 001 shows -283 mA - so pinning one state's
+     * values across all of them mismatched both the text and its glyph geometry.
+     */
+    val telemetry: ConsoleTelemetry? = null,
+)
+
+/** One live-console telemetry sample, exactly as the audit recorded it. */
+data class ConsoleTelemetry(
+    val currentMilliamps: Int,
+    val powerMilliwatts: Int,
+    val temperatureCelsius: String,
 )
 
 data class RuntimeUiState(
@@ -174,4 +188,8 @@ data class AppUiState(
         get() = runtime.overrides.safeMarginIndentPercent ?: settings.safeMarginIndentPercent
     val effectiveTimestamp: Boolean
         get() = runtime.overrides.timestampActive ?: settings.timestampActive
+
+    /** Audit evidence: screen 001 reads -283 mA / -1144 mW / 31.6 C. */
+    val effectiveTelemetry: ConsoleTelemetry
+        get() = runtime.overrides.telemetry ?: ConsoleTelemetry(-283, -1144, "31.6")
 }

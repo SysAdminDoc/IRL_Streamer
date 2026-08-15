@@ -1,24 +1,22 @@
 {
-  "matched_elements": 14,
+  "matched_elements": 15,
   "unscored_audit_elements": 13,
   "unmatched_audit_elements": [
     "-2106 mw",
-    "-512 ma",
     "103\u00b0",
     "33.3 \u00b0c",
     "61\u00b0",
     "67\u00b0",
     "73\u00b0",
     "back",
-    "camera#6",
-    "display#9",
+    "camera#7",
+    "display#10",
     "enable cellular",
     "front",
-    "network#11",
-    "overlays#13"
+    "network#12",
+    "overlays#14"
   ],
   "replica_only_elements": [
-    "-283 ma",
     "battery 73 percent",
     "flip camera",
     "mute microphone",
@@ -32,9 +30,9 @@
   "max_abs_dtop": 20,
   "max_abs_dwidth": 795,
   "max_abs_dheight": 39,
-  "mean_abs_origin_error_px": 65.643,
-  "origins_within_2px_pct": 53.57,
-  "origins_within_4px_pct": 57.14,
+  "mean_abs_origin_error_px": 61.367,
+  "origins_within_2px_pct": 53.33,
+  "origins_within_4px_pct": 60.0,
   "elements": [
     {
       "key": "off",
@@ -195,6 +193,26 @@
       "dtop": 20,
       "dwidth": -23,
       "dheight": -39
+    },
+    {
+      "key": "-512 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1889,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1892,
+        79,
+        1995,
+        96
+      ],
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": -21
     },
     {
       "key": "6.0mbps",

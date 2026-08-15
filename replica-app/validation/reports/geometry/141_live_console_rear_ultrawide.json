@@ -1,15 +1,8 @@
 {
-  "matched_elements": 7,
+  "matched_elements": 10,
   "unscored_audit_elements": 9,
-  "unmatched_audit_elements": [
-    "-16 mw",
-    "-4 ma",
-    "35.9 \u00b0c"
-  ],
+  "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "-1144 mw",
-    "-283 ma",
-    "31.6 \u00b0c",
     "battery 73 percent",
     "flip camera",
     "mute microphone",
@@ -24,9 +17,9 @@
   "max_abs_dtop": 26,
   "max_abs_dwidth": 72,
   "max_abs_dheight": 35,
-  "mean_abs_origin_error_px": 22.357,
-  "origins_within_2px_pct": 0.0,
-  "origins_within_4px_pct": 21.43,
+  "mean_abs_origin_error_px": 16.4,
+  "origins_within_2px_pct": 15.0,
+  "origins_within_4px_pct": 40.0,
   "elements": [
     {
       "key": "61\u00b0",
@@ -167,6 +160,66 @@
       "dtop": 3,
       "dwidth": -49,
       "dheight": -5
+    },
+    {
+      "key": "35.9 \u00b0c",
+      "class": "TextView",
+      "audit_bounds": [
+        1905,
+        161,
+        1995,
+        199
+      ],
+      "replica_bounds": [
+        1905,
+        155,
+        1995,
+        193
+      ],
+      "dleft": 0,
+      "dtop": -6,
+      "dwidth": 0,
+      "dheight": 0
+    },
+    {
+      "key": "-16 mw",
+      "class": "TextView",
+      "audit_bounds": [
+        1898,
+        120,
+        1995,
+        158
+      ],
+      "replica_bounds": [
+        1902,
+        117,
+        1995,
+        155
+      ],
+      "dleft": 4,
+      "dtop": -3,
+      "dwidth": -4,
+      "dheight": 0
+    },
+    {
+      "key": "-4 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1921,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1923,
+        79,
+        1995,
+        117
+      ],
+      "dleft": 2,
+      "dtop": 0,
+      "dwidth": -2,
+      "dheight": 0
     }
   ],
   "screen": "141_live_console_rear_ultrawide"

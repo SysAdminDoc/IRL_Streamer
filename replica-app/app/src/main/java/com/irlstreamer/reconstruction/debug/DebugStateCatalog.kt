@@ -1,6 +1,7 @@
 package com.irlstreamer.reconstruction.debug
 
 import com.irlstreamer.reconstruction.model.AppRoute
+import com.irlstreamer.reconstruction.model.ConsoleTelemetry
 import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.PopupBounds
@@ -18,6 +19,12 @@ object DebugStateCatalog {
         val number = rawScreenId.take(3).toIntOrNull() ?: 1
         val canonicalId = canonicalId(number, rawScreenId)
         val base = RuntimeUiState(debugScreenId = canonicalId)
+        // Telemetry is applied after the state resolves: several branches replace
+        // the whole ScreenOverrides object, which would discard it if set on base.
+        return resolveState(number, base).withAuditedTelemetry(number)
+    }
+
+    private fun resolveState(number: Int, base: RuntimeUiState): RuntimeUiState {
         return when (number) {
             1 -> base
             in 2..5 -> base.settings(SettingsPage.ROOT, intArrayOf(0, 0, 3, 6, 6)[number - 1])
@@ -295,4 +302,38 @@ object DebugStateCatalog {
     )
 
     private fun canonicalId(number: Int, raw: String) = if (raw.length > 3) raw else "%03d".format(number)
+
+    /**
+     * Audited console telemetry per live state (deviation D009).
+     *
+     * Every live capture recorded its own battery reading, so a single fixture
+     * reproduced only screen 001 and mismatched the other nineteen in both text
+     * and glyph geometry. States absent here use the screen 001 default.
+     */
+    private val telemetryByNumber: Map<Int, ConsoleTelemetry> = mapOf(
+        84 to ConsoleTelemetry(341, 1371, "34.0"),
+        85 to ConsoleTelemetry(-1544, -6315, "32.1"),
+        86 to ConsoleTelemetry(-1092, -4360, "33.0"),
+        95 to ConsoleTelemetry(86, 343, "33.0"),
+        130 to ConsoleTelemetry(-513, -2110, "33.3"),
+        131 to ConsoleTelemetry(-612, -2517, "33.3"),
+        132 to ConsoleTelemetry(-512, -2106, "33.3"),
+        133 to ConsoleTelemetry(-410, -1645, "33.9"),
+        134 to ConsoleTelemetry(-332, -1332, "33.9"),
+        135 to ConsoleTelemetry(-301, -1208, "33.9"),
+        136 to ConsoleTelemetry(-1432, -5784, "34.7"),
+        137 to ConsoleTelemetry(-630, -2545, "34.7"),
+        138 to ConsoleTelemetry(-482, -1947, "34.7"),
+        139 to ConsoleTelemetry(-183, -739, "34.7"),
+        140 to ConsoleTelemetry(-293, -1193, "35.9"),
+        141 to ConsoleTelemetry(-4, -16, "35.9"),
+        143 to ConsoleTelemetry(-577, -2348, "35.9"),
+        144 to ConsoleTelemetry(-569, -2303, "37.1"),
+        145 to ConsoleTelemetry(-520, -2104, "37.1"),
+    )
+
+    private fun RuntimeUiState.withAuditedTelemetry(number: Int): RuntimeUiState {
+        val telemetry = telemetryByNumber[number] ?: return this
+        return copy(overrides = overrides.copy(telemetry = telemetry))
+    }
 }

@@ -1,21 +1,19 @@
 {
-  "matched_elements": 9,
+  "matched_elements": 10,
   "unscored_audit_elements": 11,
   "unmatched_audit_elements": [
     "-1947 mw",
-    "-482 ma",
     "34.7 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "audio#4",
-    "display#6",
+    "audio#5",
+    "display#7",
     "front",
-    "log#7",
+    "log#8",
     "not writing to file\ngo to record settings to toggle writing\n9:25:52 pm {type=mic, audiosource=5, channelcount=2, samplerate=44100, bitrate=96000, aec=false, agc=false, ns=false}\n9:25:52 pm {mime=video/avc, bitrate=6000000, fps=30.0, keyframeinterval=2, videosize=1920x1080, bitratemode=-1, keyframeinterval=2}\n9:25:52 pm {cameraid=0, physicalcameraid=null, fpsrange=null, videosize=1920x1080}\n9:25:52 pm {cameraid=1, physicalcameraid=null, fpsrange=null, videosize=1920x1080}\n9:25:52 pm {cameraid=2, physicalcameraid=null, fpsrange=null, videosize=1920x1080}\n9:25:52 pm {cameraid=3, physicalcameraid=null, fpsrange=null, videosize=1920x1080}\n9:25:52 pm h.264, 1920x1080\n9:25:52 pm c2.android.aac.encoder\n9:25:52 pm {sample-rate=44100, mime=audio/mp4a-latm, channel-count=2, aac-profile=2, bitrate=96000}\n9:25:52 pm c2.qti.avc.encoder\n9:25:52 pm {capture-rate=30.0, i-frame-interval=2, mime=video/avc, width=1920, bitrate=6000000, frame-rate=30.0, height=1080}\n9:25:52 pm open camera#0[null]\n9:25:52 pm t: adjusting web views\n9:25:52 pm onopened#0[null]\n9:25:52 pm onaudiocapturestatechanged, state=started\n9:25:52 pm onconfigured\n9:25:52 pm onready\n9:25:53 pm {max-bitrate=7879680, crop-right=1919, mime=video/avc, profile=8, bitrate=7879680, priority=0, intra-refresh-period=0, color-standard=1, feature-secure-playback=0, csd-1=java.nio.heapbytebuffer[pos=0 lim=9 cap=9], color-transfer=3, crop-bottom=1079, vendor.qti-ext-enc-content-adaptive-mode.value=0, prepend-sps-pps-to-idr-frames=0, video-qp-average=0, crop-left=0, width=1920, bitrate-mode=1, color-range=2, crop-top=0, frame-rate=30, height=1080, csd-0=java.nio.heapbytebuffer[pos=0 lim=23 cap=23]}\n9:25:53 pm onvideocapturestatechanged, state=started",
-    "overlays#9"
+    "overlays#10"
   ],
   "replica_only_elements": [
-    "-283 ma",
     "battery 73 percent",
     "flip camera",
     "mute microphone",
@@ -31,9 +29,9 @@
   "max_abs_dtop": 26,
   "max_abs_dwidth": 125,
   "max_abs_dheight": 39,
-  "mean_abs_origin_error_px": 39.167,
-  "origins_within_2px_pct": 5.56,
-  "origins_within_4px_pct": 16.67,
+  "mean_abs_origin_error_px": 35.4,
+  "origins_within_2px_pct": 10.0,
+  "origins_within_4px_pct": 25.0,
   "elements": [
     {
       "key": "display",
@@ -214,6 +212,26 @@
       "dtop": 20,
       "dwidth": 63,
       "dheight": -39
+    },
+    {
+      "key": "-482 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1889,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1892,
+        79,
+        1995,
+        96
+      ],
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": -21
     }
   ],
   "screen": "138_live_console_log"

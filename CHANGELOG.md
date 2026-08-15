@@ -36,6 +36,20 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Reopening a settings dialog showed the catalog default instead of the value it
   was editing, so confirming it silently reverted the saved setting - and a
   multi-select dropped every selection the default did not contain.
+- The safe-margin overlay honours the persisted ratios setting. "Safe margins
+  ratios" is a nine-option multi-select, but the console drew one hardcoded 16:9
+  rectangle, so selecting 21:9 or several ratios changed nothing on screen.
+- Live-console telemetry is per state rather than pinned to screen 001's reading.
+  Each audited live capture recorded its own battery values, so one fixture
+  mismatched nineteen states in both text and glyph geometry.
+- The browsable `irlstreamer://` intent filter is debug-only. The release build
+  has no handler for it, so shipping it advertised a scheme that did nothing and
+  squatted on the one the settings import flow will define. Verified against the
+  built APKs: absent from release, present in debug.
+- The forced-landscape console declares
+  `PROPERTY_COMPAT_ALLOW_RESTRICTED_ORIENTATION`. Android 16 ignores
+  `screenOrientation` on displays 600dp and wider, so the console would have
+  rendered portrait on tablets and unfolded foldables with no layout for it.
 - The difference heat maps rendered the worst pixel errors as near-black. The red
   channel was multiplied as `uint8`, so it wrapped modulo 256 and any difference
   at or above 86 came out darker than a small one - in exactly the images the

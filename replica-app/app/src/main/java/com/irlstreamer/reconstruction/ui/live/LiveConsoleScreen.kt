@@ -32,6 +32,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -57,6 +58,7 @@ import androidx.compose.ui.zIndex
 import com.irlstreamer.reconstruction.MainViewModel
 import com.irlstreamer.reconstruction.R
 import com.irlstreamer.reconstruction.model.AppUiState
+import com.irlstreamer.reconstruction.model.ConsoleTelemetry
 import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.ui.theme.AuditColors
 
@@ -78,7 +80,9 @@ fun LiveConsoleScreen(state: AppUiState, viewModel: MainViewModel) {
         }
 
         if (state.effectiveGrid) GridGuide()
-        if (state.effectiveSafeMargins) SafeMarginGuide(state.effectiveSafeMarginIndent)
+        if (state.effectiveSafeMargins) {
+            SafeMarginGuide(state.effectiveSafeMarginIndent, state.settings.safeMarginRatios)
+        }
         if (state.effectiveTimestamp) {
             Text(
                 text = "Aug 14, 21:07:39",
@@ -124,6 +128,7 @@ fun LiveConsoleScreen(state: AppUiState, viewModel: MainViewModel) {
         )
 
         TelemetryBlock(
+            telemetry = state.effectiveTelemetry,
             modifier = Modifier.offset(x = maxWidth - 214.14.dp, y = 8.dp),
         )
 
@@ -220,14 +225,15 @@ private fun ConsoleIconButton(
 }
 
 @Composable
-private fun TelemetryBlock(modifier: Modifier = Modifier) {
+private fun TelemetryBlock(telemetry: ConsoleTelemetry, modifier: Modifier = Modifier) {
     Column(modifier = modifier.width(100.dp), horizontalAlignment = Alignment.End) {
         Icon(Icons.Default.BatteryChargingFull, "Battery 73 percent", tint = Color(0xFF15942D), modifier = Modifier.size(width = 42.dp, height = 20.dp))
-        // Audit evidence: screen 001 telemetry read -283 mA / -1144 mW / 31.6 °C.
-        // These are deterministic sanitised fixtures, not live device readings.
-        Text("-283 mA", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
-        Text("-1144 mW", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
-        Text("31.6 °C", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
+        // Deterministic sanitised fixtures, not live device readings (D009). Each
+        // audited live capture recorded its own values, so they come from the
+        // state rather than being pinned to screen 001's reading.
+        Text("${telemetry.currentMilliamps} mA", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
+        Text("${telemetry.powerMilliwatts} mW", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
+        Text("${telemetry.temperatureCelsius} °C", color = Color(0xFF767676), fontSize = 9.sp, lineHeight = 13.5.sp)
     }
 }
 
@@ -355,8 +361,17 @@ private fun GridGuide() {
     )
 }
 
+/**
+ * Draws one guide per selected safe-margin ratio.
+ *
+ * "Safe margins ratios" is a persisted multi-select with nine options, but the
+ * overlay used to draw a single hardcoded 16:9 rectangle, so choosing 21:9 or
+ * several ratios changed nothing on the console. The default selection is a
+ * single 16:9 entry, which is what the audited captures show.
+ */
 @Composable
-private fun SafeMarginGuide(indentPercent: Int) {
+private fun SafeMarginGuide(indentPercent: Int, ratios: Set<String>) {
+    val aspects = remember(ratios) { ratios.mapNotNull(::parseAspectRatio).ifEmpty { listOf(16f / 9f) } }
     Spacer(
         modifier = Modifier
             .fillMaxSize()
@@ -364,22 +379,34 @@ private fun SafeMarginGuide(indentPercent: Int) {
                 val inset = size.minDimension * (indentPercent / 100f)
                 val availableWidth = size.width - inset * 2f
                 val availableHeight = size.height - inset * 2f
-                val ratio = 16f / 9f
-                val rectWidth: Float
-                val rectHeight: Float
-                if (availableWidth / availableHeight > ratio) {
-                    rectHeight = availableHeight
-                    rectWidth = rectHeight * ratio
-                } else {
-                    rectWidth = availableWidth
-                    rectHeight = rectWidth / ratio
+                aspects.forEach { ratio: Float ->
+                    val rectWidth: Float
+                    val rectHeight: Float
+                    if (availableWidth / availableHeight > ratio) {
+                        rectHeight = availableHeight
+                        rectWidth = rectHeight * ratio
+                    } else {
+                        rectWidth = availableWidth
+                        rectHeight = rectWidth / ratio
+                    }
+                    drawRect(
+                        color = AuditColors.SafeMargin,
+                        topLeft = Offset((size.width - rectWidth) / 2f, (size.height - rectHeight) / 2f),
+                        size = Size(rectWidth, rectHeight),
+                        style = Stroke(width = 1.dp.toPx()),
+                    )
                 }
-                drawRect(
-                    color = AuditColors.SafeMargin,
-                    topLeft = Offset((size.width - rectWidth) / 2f, (size.height - rectHeight) / 2f),
-                    size = Size(rectWidth, rectHeight),
-                    style = Stroke(width = 1.dp.toPx()),
-                )
             },
     )
+}
+
+/** "21:9 (2.33)" -> 2.33. The parenthesised decimal is the audited label's own value. */
+internal fun parseAspectRatio(label: String): Float? {
+    val decimal = label.substringAfter('(', "").substringBefore(')').toFloatOrNull()
+    if (decimal != null && decimal > 0f) return decimal
+    val parts = label.substringBefore('(').trim().split(':')
+    if (parts.size != 2) return null
+    val width = parts[0].trim().toFloatOrNull() ?: return null
+    val height = parts[1].trim().toFloatOrNull() ?: return null
+    return if (height > 0f) width / height else null
 }
