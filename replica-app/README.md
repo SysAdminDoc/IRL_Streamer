@@ -78,16 +78,23 @@ remove about 97% of a live-console screen and leave a meaningless number.
 
 **3. Behaviour — JVM and on-device Compose tests.**
 
-Current measured outcome (all 145 states, one build, `emulator-5554`):
+Measured 2026-08-15 on v0.2.0 (all 145 states, one build, `emulator-5554`). These
+numbers drift with every change; `validation/reports/final-coverage-report.md` is
+generated from the run itself and is authoritative.
 
 | Gate | Result |
 |---|---|
-| Geometry | mean element-origin error 50.88 px; 34.9% of origins within 2 px; 62 of 145 states have at least half their origins within 2 px |
-| Visual (strict, unmasked) | 0 of 145 at SSIM 0.985; median 0.869631 (previous pass 0.836694) |
-| Visual (app-chrome, secondary) | median 0.896448 |
-| JVM unit tests | 11 passed |
+| Geometry | 1103 element origins matched against the audit hierarchy, 174 unmatched; mean origin error 48.78 px; 33.6% of origins within 2 px |
+| Visual (strict, unmasked) | 0 of 145 at SSIM 0.985; median 0.869499 |
+| Visual (app-chrome, secondary) | median 0.899487 |
+| JVM unit tests | 25 passed |
 | On-device Compose tests | 4 passed |
 | Minified release | built, installed, cold-launched and screenshotted on device |
+
+The geometry gate is enforced: it fails on missing coverage, on any state that
+matched zero elements, and on a drop below the ratchet baseline in
+`validation/geometry-baseline.json`. Lowering that baseline requires a stated
+reason and evidence that coverage went up.
 
 The strict pixel gate is **not** met and no threshold was lowered to make it pass.
 Full numbers, per-surface medians, the ten weakest states, and build/release

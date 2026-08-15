@@ -1,6 +1,3 @@
 "Screen","Status","SSIM","Threshold","Shift"
-"001_streamer_home_default","FAIL","0.6184988482594502","0.985","-1,0"
-"132_live_console_network","FAIL","0.6759594770106302","0.985","-1,0"
-"138_live_console_log","FAIL","0.5752409366992501","0.985","-1,1"
-"085_streamer_home_safe_margins_enabled","FAIL","0.5846291552180828","0.985","0,0"
-"141_live_console_rear_ultrawide","FAIL","0.43714601810481085","0.985","-1,1"
+"002_settings_root","FAIL","0.897824230959249","0.985","-1,-2"
+"129_about_irl_pro","FAIL","0.8882700969389363","0.985","-2,1"

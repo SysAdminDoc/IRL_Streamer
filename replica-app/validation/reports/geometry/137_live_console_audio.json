@@ -1,20 +1,18 @@
 {
-  "matched_elements": 12,
+  "matched_elements": 13,
   "unscored_audit_elements": 12,
   "unmatched_audit_elements": [
     "-2545 mw",
-    "-630 ma",
     "34.7 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "audio#5",
-    "display#7",
+    "audio#6",
+    "display#8",
     "front",
-    "log#10",
-    "overlays#12"
+    "log#11",
+    "overlays#13"
   ],
   "replica_only_elements": [
-    "-283 ma",
     "battery 73 percent",
     "flip camera",
     "mute microphone",
@@ -29,9 +27,9 @@
   "max_abs_dtop": 26,
   "max_abs_dwidth": 666,
   "max_abs_dheight": 39,
-  "mean_abs_origin_error_px": 29.5,
-  "origins_within_2px_pct": 29.17,
-  "origins_within_4px_pct": 37.5,
+  "mean_abs_origin_error_px": 27.346,
+  "origins_within_2px_pct": 30.77,
+  "origins_within_4px_pct": 42.31,
   "elements": [
     {
       "key": "display",
@@ -212,6 +210,26 @@
       "dtop": 20,
       "dwidth": 63,
       "dheight": -39
+    },
+    {
+      "key": "-630 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1889,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1892,
+        79,
+        1995,
+        96
+      ],
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": -21
     },
     {
       "key": "0.0db",

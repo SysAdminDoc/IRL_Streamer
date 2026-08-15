@@ -1,19 +1,15 @@
 {
-  "matched_elements": 5,
+  "matched_elements": 6,
   "unscored_audit_elements": 6,
-  "unmatched_audit_elements": [
-    "you can take a picture of qr code with your camera app which recognizes qr."
-  ],
-  "replica_only_elements": [
-    "you can take a picture of a qr code with a camera app which recognizes qr."
-  ],
+  "unmatched_audit_elements": [],
+  "replica_only_elements": [],
   "max_abs_dleft": 45,
   "max_abs_dtop": 89,
-  "max_abs_dwidth": 91,
+  "max_abs_dwidth": 104,
   "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 17.3,
-  "origins_within_2px_pct": 70.0,
-  "origins_within_4px_pct": 70.0,
+  "mean_abs_origin_error_px": 21.75,
+  "origins_within_2px_pct": 66.67,
+  "origins_within_4px_pct": 66.67,
   "elements": [
     {
       "key": "export settings",
@@ -34,6 +30,26 @@
       "dtop": -89,
       "dwidth": 20,
       "dheight": 1
+    },
+    {
+      "key": "you can take a picture of qr code with your camera app which recognizes qr.",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        566,
+        1625,
+        619
+      ],
+      "replica_bounds": [
+        278,
+        478,
+        1729,
+        531
+      ],
+      "dleft": 0,
+      "dtop": -88,
+      "dwidth": 104,
+      "dheight": 0
     },
     {
       "key": "navigate up",

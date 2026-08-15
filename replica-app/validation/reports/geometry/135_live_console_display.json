@@ -1,21 +1,19 @@
 {
-  "matched_elements": 13,
+  "matched_elements": 14,
   "unscored_audit_elements": 11,
   "unmatched_audit_elements": [
     "-1208 mw",
-    "-301 ma",
     "33.9 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "audio#4",
-    "camera#7",
-    "display#8",
+    "audio#5",
+    "camera#8",
+    "display#9",
     "front",
-    "network#11",
-    "overlays#12"
+    "network#12",
+    "overlays#13"
   ],
   "replica_only_elements": [
-    "-283 ma",
     "battery 73 percent",
     "flip camera",
     "mute microphone",
@@ -30,9 +28,9 @@
   "max_abs_dtop": 69,
   "max_abs_dwidth": 132,
   "max_abs_dheight": 42,
-  "mean_abs_origin_error_px": 20.577,
-  "origins_within_2px_pct": 19.23,
-  "origins_within_4px_pct": 26.92,
+  "mean_abs_origin_error_px": 19.214,
+  "origins_within_2px_pct": 21.43,
+  "origins_within_4px_pct": 32.14,
   "elements": [
     {
       "key": "block all screen touches, useful in water or rain situations.",
@@ -293,6 +291,26 @@
       "dtop": -10,
       "dwidth": -132,
       "dheight": -42
+    },
+    {
+      "key": "-301 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1889,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1892,
+        79,
+        1995,
+        96
+      ],
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": -21
     }
   ],
   "screen": "135_live_console_display"

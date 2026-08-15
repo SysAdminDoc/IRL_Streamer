@@ -1,15 +1,8 @@
 {
-  "matched_elements": 7,
+  "matched_elements": 10,
   "unscored_audit_elements": 9,
-  "unmatched_audit_elements": [
-    "33.0 \u00b0c",
-    "343 mw",
-    "86 ma"
-  ],
+  "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "-1144 mw",
-    "-283 ma",
-    "31.6 \u00b0c",
     "aug 14, 21:07:39",
     "battery 73 percent",
     "flip camera",
@@ -25,9 +18,9 @@
   "max_abs_dtop": 26,
   "max_abs_dwidth": 72,
   "max_abs_dheight": 35,
-  "mean_abs_origin_error_px": 22.357,
-  "origins_within_2px_pct": 0.0,
-  "origins_within_4px_pct": 21.43,
+  "mean_abs_origin_error_px": 16.5,
+  "origins_within_2px_pct": 10.0,
+  "origins_within_4px_pct": 35.0,
   "elements": [
     {
       "key": "61\u00b0",
@@ -168,6 +161,66 @@
       "dtop": 3,
       "dwidth": -49,
       "dheight": -5
+    },
+    {
+      "key": "33.0 \u00b0c",
+      "class": "TextView",
+      "audit_bounds": [
+        1905,
+        161,
+        1995,
+        199
+      ],
+      "replica_bounds": [
+        1905,
+        155,
+        1995,
+        193
+      ],
+      "dleft": 0,
+      "dtop": -6,
+      "dwidth": 0,
+      "dheight": 0
+    },
+    {
+      "key": "343 mw",
+      "class": "TextView",
+      "audit_bounds": [
+        1890,
+        120,
+        1995,
+        158
+      ],
+      "replica_bounds": [
+        1895,
+        117,
+        1995,
+        155
+      ],
+      "dleft": 5,
+      "dtop": -3,
+      "dwidth": -5,
+      "dheight": 0
+    },
+    {
+      "key": "86 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1913,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1916,
+        79,
+        1995,
+        117
+      ],
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": 0
     }
   ],
   "screen": "095_streamer_home_timestamp_overlay"

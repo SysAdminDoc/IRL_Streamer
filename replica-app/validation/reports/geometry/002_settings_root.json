@@ -5,7 +5,7 @@
     "version 3.5.23 build 305230"
   ],
   "replica_only_elements": [
-    "version 0.1.0 \u00b7 clean-room reconstruction"
+    "version 0.2.0 \u00b7 clean-room reconstruction"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 35,

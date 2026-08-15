@@ -1,5 +1,5 @@
 {
-  "matched_elements": 15,
+  "matched_elements": 16,
   "unscored_audit_elements": 13,
   "unmatched_audit_elements": [
     "-2106 mw",
@@ -11,10 +11,9 @@
     "back",
     "camera#7",
     "display#10",
-    "enable cellular",
     "front",
-    "network#12",
-    "overlays#14"
+    "network#13",
+    "overlays#15"
   ],
   "replica_only_elements": [
     "battery 73 percent",
@@ -30,9 +29,9 @@
   "max_abs_dtop": 20,
   "max_abs_dwidth": 795,
   "max_abs_dheight": 39,
-  "mean_abs_origin_error_px": 61.367,
-  "origins_within_2px_pct": 53.33,
-  "origins_within_4px_pct": 60.0,
+  "mean_abs_origin_error_px": 57.531,
+  "origins_within_2px_pct": 56.25,
+  "origins_within_4px_pct": 62.5,
   "elements": [
     {
       "key": "off",
@@ -328,6 +327,26 @@
         747,
         1989,
         846
+      ],
+      "dleft": 0,
+      "dtop": 0,
+      "dwidth": 0,
+      "dheight": 0
+    },
+    {
+      "key": "enable cellular",
+      "class": "Switch",
+      "audit_bounds": [
+        1135,
+        933,
+        1989,
+        939
+      ],
+      "replica_bounds": [
+        1135,
+        933,
+        1989,
+        939
       ],
       "dleft": 0,
       "dtop": 0,

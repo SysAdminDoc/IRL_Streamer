@@ -1,22 +1,18 @@
 {
-  "matched_elements": 5,
+  "matched_elements": 7,
   "unscored_audit_elements": 12,
   "unmatched_audit_elements": [
-    "enables any tweaks i'm testing that aren't ready yet",
-    "experimental srtla tweaks",
-    "show srtla debug"
+    "enables any tweaks i'm testing that aren't ready yet"
   ],
   "replica_only_elements": [
     "enables local experimental fixtures that aren't ready yet",
-    "experimental bonding tweaks",
-    "keep streaming when not in focus.",
-    "show bonding debug"
+    "keep streaming when not in focus."
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 35,
   "max_abs_dwidth": 1601,
   "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 12.3,
+  "mean_abs_origin_error_px": 9.929,
   "origins_within_2px_pct": 50.0,
   "origins_within_4px_pct": 50.0,
   "elements": [
@@ -78,6 +74,46 @@
       "dleft": 0,
       "dtop": 8,
       "dwidth": 21,
+      "dheight": 1
+    },
+    {
+      "key": "experimental srtla tweaks",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        861,
+        849,
+        922
+      ],
+      "replica_bounds": [
+        278,
+        869,
+        884,
+        931
+      ],
+      "dleft": 0,
+      "dtop": 8,
+      "dwidth": 35,
+      "dheight": 1
+    },
+    {
+      "key": "show srtla debug",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        559,
+        675,
+        620
+      ],
+      "replica_bounds": [
+        278,
+        567,
+        697,
+        629
+      ],
+      "dleft": 0,
+      "dtop": 8,
+      "dwidth": 22,
       "dheight": 1
     },
     {

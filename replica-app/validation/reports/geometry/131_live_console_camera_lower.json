@@ -1,21 +1,19 @@
 {
-  "matched_elements": 17,
+  "matched_elements": 18,
   "unscored_audit_elements": 13,
   "unmatched_audit_elements": [
     "-2517 mw",
-    "-612 ma",
     "0",
     "33.3 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "camera#7",
-    "display#8",
+    "camera#8",
+    "display#9",
     "front",
-    "network#12",
-    "overlays#13"
+    "network#13",
+    "overlays#14"
   ],
   "replica_only_elements": [
-    "-283 ma",
     "0.0",
     "battery 73 percent",
     "exposure compensation",
@@ -29,73 +27,13 @@
     "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 51,
-  "max_abs_dtop": 56,
+  "max_abs_dtop": 44,
   "max_abs_dwidth": 748,
   "max_abs_dheight": 42,
-  "mean_abs_origin_error_px": 20.647,
-  "origins_within_2px_pct": 26.47,
-  "origins_within_4px_pct": 35.29,
+  "mean_abs_origin_error_px": 18.5,
+  "origins_within_2px_pct": 27.78,
+  "origins_within_4px_pct": 38.89,
   "elements": [
-    {
-      "key": "anti-flicker",
-      "class": "Switch",
-      "audit_bounds": [
-        1135,
-        539,
-        1989,
-        592
-      ],
-      "replica_bounds": [
-        1135,
-        595,
-        1857,
-        646
-      ],
-      "dleft": 0,
-      "dtop": 56,
-      "dwidth": -132,
-      "dheight": -2
-    },
-    {
-      "key": "focus mode",
-      "class": "Switch",
-      "audit_bounds": [
-        1135,
-        387,
-        1989,
-        440
-      ],
-      "replica_bounds": [
-        1135,
-        443,
-        1857,
-        477
-      ],
-      "dleft": 0,
-      "dtop": 56,
-      "dwidth": -132,
-      "dheight": -19
-    },
-    {
-      "key": "white balance",
-      "class": "Switch",
-      "audit_bounds": [
-        1135,
-        463,
-        1989,
-        516
-      ],
-      "replica_bounds": [
-        1135,
-        519,
-        1857,
-        553
-      ],
-      "dleft": 0,
-      "dtop": 56,
-      "dwidth": -132,
-      "dheight": -19
-    },
     {
       "key": "tap settings",
       "class": "TextView",
@@ -155,6 +93,66 @@
       "dtop": 44,
       "dwidth": -748,
       "dheight": -2
+    },
+    {
+      "key": "anti-flicker",
+      "class": "Switch",
+      "audit_bounds": [
+        1135,
+        539,
+        1989,
+        592
+      ],
+      "replica_bounds": [
+        1135,
+        582,
+        1989,
+        658
+      ],
+      "dleft": 0,
+      "dtop": 43,
+      "dwidth": 0,
+      "dheight": 23
+    },
+    {
+      "key": "focus mode",
+      "class": "Switch",
+      "audit_bounds": [
+        1135,
+        387,
+        1989,
+        440
+      ],
+      "replica_bounds": [
+        1135,
+        430,
+        1989,
+        506
+      ],
+      "dleft": 0,
+      "dtop": 43,
+      "dwidth": 0,
+      "dheight": 23
+    },
+    {
+      "key": "white balance",
+      "class": "Switch",
+      "audit_bounds": [
+        1135,
+        463,
+        1989,
+        516
+      ],
+      "replica_bounds": [
+        1135,
+        506,
+        1989,
+        582
+      ],
+      "dleft": 0,
+      "dtop": 43,
+      "dwidth": 0,
+      "dheight": 23
     },
     {
       "key": "73\u00b0",
@@ -355,6 +353,26 @@
       "dtop": -9,
       "dwidth": -132,
       "dheight": -42
+    },
+    {
+      "key": "-612 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1889,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1892,
+        79,
+        1995,
+        96
+      ],
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": -21
     },
     {
       "key": "focus",

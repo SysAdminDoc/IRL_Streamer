@@ -1,20 +1,18 @@
 {
-  "matched_elements": 15,
+  "matched_elements": 16,
   "unscored_audit_elements": 15,
   "unmatched_audit_elements": [
     "-1332 mw",
-    "-332 ma",
     "33.9 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "camera#5",
-    "display#7",
+    "camera#6",
+    "display#8",
     "front",
-    "network#12",
-    "overlays#13"
+    "network#13",
+    "overlays#14"
   ],
   "replica_only_elements": [
-    "-283 ma",
     "100",
     "battery 73 percent",
     "flip camera",
@@ -27,12 +25,12 @@
     "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 51,
-  "max_abs_dtop": 30,
+  "max_abs_dtop": 26,
   "max_abs_dwidth": 757,
   "max_abs_dheight": 70,
-  "mean_abs_origin_error_px": 17.7,
-  "origins_within_2px_pct": 23.33,
-  "origins_within_4px_pct": 30.0,
+  "mean_abs_origin_error_px": 15.875,
+  "origins_within_2px_pct": 25.0,
+  "origins_within_4px_pct": 34.38,
   "elements": [
     {
       "key": "stats",
@@ -135,26 +133,6 @@
       "dheight": -70
     },
     {
-      "key": "enable ethernet/usb connection",
-      "class": "Switch",
-      "audit_bounds": [
-        1135,
-        580,
-        1989,
-        656
-      ],
-      "replica_bounds": [
-        1135,
-        610,
-        1857,
-        661
-      ],
-      "dleft": 0,
-      "dtop": 30,
-      "dwidth": -132,
-      "dheight": -25
-    },
-    {
       "key": "network",
       "class": "LinearLayout",
       "audit_bounds": [
@@ -173,26 +151,6 @@
       "dtop": 20,
       "dwidth": -58,
       "dheight": -70
-    },
-    {
-      "key": "enable wifi",
-      "class": "Switch",
-      "audit_bounds": [
-        1135,
-        377,
-        1989,
-        453
-      ],
-      "replica_bounds": [
-        1135,
-        405,
-        1857,
-        456
-      ],
-      "dleft": 0,
-      "dtop": 28,
-      "dwidth": -132,
-      "dheight": -25
     },
     {
       "key": "103\u00b0",
@@ -275,6 +233,26 @@
       "dheight": -2
     },
     {
+      "key": "enable ethernet/usb connection",
+      "class": "Switch",
+      "audit_bounds": [
+        1135,
+        580,
+        1989,
+        656
+      ],
+      "replica_bounds": [
+        1135,
+        597,
+        1989,
+        673
+      ],
+      "dleft": 0,
+      "dtop": 17,
+      "dwidth": 0,
+      "dheight": 0
+    },
+    {
       "key": "wifi weight",
       "class": "TextView",
       "audit_bounds": [
@@ -293,6 +271,26 @@
       "dtop": 16,
       "dwidth": -633,
       "dheight": -2
+    },
+    {
+      "key": "enable wifi",
+      "class": "Switch",
+      "audit_bounds": [
+        1135,
+        377,
+        1989,
+        453
+      ],
+      "replica_bounds": [
+        1135,
+        392,
+        1989,
+        468
+      ],
+      "dleft": 0,
+      "dtop": 15,
+      "dwidth": 0,
+      "dheight": 0
     },
     {
       "key": "cellular weight",
@@ -315,6 +313,26 @@
       "dheight": -2
     },
     {
+      "key": "-332 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1889,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1892,
+        79,
+        1995,
+        96
+      ],
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": -21
+    },
+    {
       "key": "enable cellular",
       "class": "Switch",
       "audit_bounds": [
@@ -326,13 +344,13 @@
       "replica_bounds": [
         1135,
         208,
-        1857,
-        251
+        1989,
+        263
       ],
       "dleft": 0,
       "dtop": 0,
-      "dwidth": -132,
-      "dheight": 1
+      "dwidth": 0,
+      "dheight": 13
     }
   ],
   "screen": "134_live_console_network_stats"

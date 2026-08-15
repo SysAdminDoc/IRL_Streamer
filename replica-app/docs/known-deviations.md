@@ -40,23 +40,24 @@ All 145 states have complete current, hierarchy, result, overlay, diff and
 side-by-side artifacts, captured from a single build.
 
 The configured SSIM threshold remains 0.985. No threshold was lowered and the
-strict gate is computed on unmasked whole screens, so the masks introduced in
-this pass cannot convert a failure into a pass. The result is **0 strict passes
-and 145 retained failures**, with median SSIM 0.869631 (previous pass 0.836694)
-and maximum 0.930838.
+strict gate is computed on unmasked whole screens, so masks cannot convert a
+failure into a pass. As of v0.2.0 (2026-08-15) the result is **0 strict passes
+and 145 retained failures**, with median SSIM 0.869499. Exact current figures are
+generated into `validation/reports/final-coverage-report.md` rather than restated
+here, because a hand-copied number goes stale silently.
 
 Masks exclude only operating-system-owned pixels — the status bar, the Samsung
 navigation strip, and the IME window on screens 055, 057 and 077 — each declared
 with a category and reason in `validation/masks/mask-register.csv`. They feed a
-clearly labelled secondary app-chrome metric, whose median is 0.896448. The
+clearly labelled secondary app-chrome metric, whose median is 0.899487. The
 camera preview is deliberately not masked.
 
 Element-level accuracy is reported separately because whole-screen SSIM cannot
-localise a fault: mean origin error 50.88 px, 34.9% of matched origins within
-2 px, and 62 of 145 states with at least half their origins within 2 px. The
-remaining error is concentrated in list content and scroll state rather than in
-component geometry — the tokens themselves are locked to the audit evidence by
-`AuditMetricsTest`.
+localise a fault: 1103 element origins matched against the audit hierarchy with
+174 unmatched, mean origin error 48.78 px, and 33.6% of matched origins within
+2 px. The remaining error is concentrated in list content and scroll state rather
+than in component geometry - the tokens themselves are locked to the audit
+evidence by `AuditMetricsTest`.
 
 Production streaming and capture behaviour remains blocked by D005 and D012.
 Pixel-equivalent reconstruction remains blocked by D001-D004, D006-D009, D011,

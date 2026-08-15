@@ -1,21 +1,19 @@
 {
-  "matched_elements": 16,
+  "matched_elements": 17,
   "unscored_audit_elements": 12,
   "unmatched_audit_elements": [
     "-2110 mw",
-    "-513 ma",
     "0",
     "33.3 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "camera#6",
-    "display#7",
+    "camera#7",
+    "display#8",
     "front",
-    "network#13",
-    "overlays#14"
+    "network#14",
+    "overlays#15"
   ],
   "replica_only_elements": [
-    "-283 ma",
     "0.0",
     "battery 73 percent",
     "flip camera",
@@ -31,9 +29,9 @@
   "max_abs_dtop": 26,
   "max_abs_dwidth": 748,
   "max_abs_dheight": 39,
-  "mean_abs_origin_error_px": 31.594,
-  "origins_within_2px_pct": 18.75,
-  "origins_within_4px_pct": 25.0,
+  "mean_abs_origin_error_px": 29.441,
+  "origins_within_2px_pct": 23.53,
+  "origins_within_4px_pct": 32.35,
   "elements": [
     {
       "key": "id:0 [73\u00b0 fov, rear]",
@@ -296,24 +294,24 @@
       "dheight": -39
     },
     {
-      "key": "torch",
-      "class": "Switch",
+      "key": "-513 ma",
+      "class": "TextView",
       "audit_bounds": [
-        1135,
-        667,
-        1989,
-        743
+        1889,
+        79,
+        1995,
+        117
       ],
       "replica_bounds": [
-        1135,
-        680,
-        1857,
-        731
+        1892,
+        79,
+        1995,
+        96
       ],
-      "dleft": 0,
-      "dtop": 13,
-      "dwidth": -132,
-      "dheight": -25
+      "dleft": 3,
+      "dtop": 0,
+      "dwidth": -3,
+      "dheight": -21
     },
     {
       "key": "exposure compensation",
@@ -354,6 +352,26 @@
       "dtop": 1,
       "dwidth": -748,
       "dheight": -1
+    },
+    {
+      "key": "torch",
+      "class": "Switch",
+      "audit_bounds": [
+        1135,
+        667,
+        1989,
+        743
+      ],
+      "replica_bounds": [
+        1135,
+        667,
+        1989,
+        743
+      ],
+      "dleft": 0,
+      "dtop": 0,
+      "dwidth": 0,
+      "dheight": 0
     }
   ],
   "screen": "130_live_console_overflow"

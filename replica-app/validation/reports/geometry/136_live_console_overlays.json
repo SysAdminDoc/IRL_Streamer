@@ -1,21 +1,18 @@
 {
-  "matched_elements": 12,
+  "matched_elements": 14,
   "unscored_audit_elements": 11,
   "unmatched_audit_elements": [
-    "-1432 ma",
     "-5784 mw",
     "34.7 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "audio#4",
-    "display#6",
+    "audio#5",
+    "display#7",
     "front",
-    "log#7",
-    "network#9",
-    "overlays#11"
+    "log#8",
+    "network#10"
   ],
   "replica_only_elements": [
-    "-283 ma",
     "battery 73 percent",
     "flip camera",
     "mute microphone",
@@ -27,12 +24,12 @@
     "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 331,
-  "max_abs_dtop": 108,
-  "max_abs_dwidth": 530,
+  "max_abs_dtop": 95,
+  "max_abs_dwidth": 662,
   "max_abs_dheight": 39,
-  "mean_abs_origin_error_px": 38.375,
-  "origins_within_2px_pct": 8.33,
-  "origins_within_4px_pct": 16.67,
+  "mean_abs_origin_error_px": 32.929,
+  "origins_within_2px_pct": 14.29,
+  "origins_within_4px_pct": 25.0,
   "elements": [
     {
       "key": "overlays",
@@ -45,14 +42,14 @@
       ],
       "replica_bounds": [
         1135,
-        244,
-        1857,
-        295
+        231,
+        1989,
+        307
       ],
       "dleft": -331,
-      "dtop": 108,
-      "dwidth": 530,
-      "dheight": -2
+      "dtop": 95,
+      "dwidth": 662,
+      "dheight": 23
     },
     {
       "key": "text - timestamp",
@@ -273,6 +270,46 @@
       "dtop": 20,
       "dwidth": -23,
       "dheight": -39
+    },
+    {
+      "key": "overlays",
+      "class": "Switch",
+      "audit_bounds": [
+        1135,
+        254,
+        1989,
+        307
+      ],
+      "replica_bounds": [
+        1135,
+        244,
+        1857,
+        295
+      ],
+      "dleft": 0,
+      "dtop": -10,
+      "dwidth": -132,
+      "dheight": -2
+    },
+    {
+      "key": "-1432 ma",
+      "class": "TextView",
+      "audit_bounds": [
+        1873,
+        79,
+        1995,
+        117
+      ],
+      "replica_bounds": [
+        1877,
+        79,
+        1995,
+        96
+      ],
+      "dleft": 4,
+      "dtop": 0,
+      "dwidth": -4,
+      "dheight": -21
     }
   ],
   "screen": "136_live_console_overlays"

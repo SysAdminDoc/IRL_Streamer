@@ -1,15 +1,19 @@
 {
-  "matched_elements": 4,
+  "matched_elements": 3,
   "unscored_audit_elements": 3,
-  "unmatched_audit_elements": [],
-  "replica_only_elements": [],
+  "unmatched_audit_elements": [
+    "2"
+  ],
+  "replica_only_elements": [
+    "\u2022"
+  ],
   "max_abs_dleft": 73,
   "max_abs_dtop": 45,
   "max_abs_dwidth": 615,
   "max_abs_dheight": 78,
-  "mean_abs_origin_error_px": 28.0,
-  "origins_within_2px_pct": 25.0,
-  "origins_within_4px_pct": 25.0,
+  "mean_abs_origin_error_px": 36.167,
+  "origins_within_2px_pct": 16.67,
+  "origins_within_4px_pct": 16.67,
   "elements": [
     {
       "key": "ok",
@@ -50,26 +54,6 @@
       "dtop": 45,
       "dwidth": -63,
       "dheight": -78
-    },
-    {
-      "key": "2",
-      "class": "EditText",
-      "audit_bounds": [
-        544,
-        499,
-        1711,
-        634
-      ],
-      "replica_bounds": [
-        545,
-        493,
-        1712,
-        651
-      ],
-      "dleft": 1,
-      "dtop": -6,
-      "dwidth": 0,
-      "dheight": 23
     },
     {
       "key": "keyframe frequency",

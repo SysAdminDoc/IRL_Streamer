@@ -3,7 +3,7 @@
   "unscored_audit_elements": 2,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "independent build - version 0.1.0\nlocal simulation; no licensed transport code"
+    "independent build - version 0.2.0\nlocal simulation; no licensed transport code"
   ],
   "max_abs_dleft": 73,
   "max_abs_dtop": 40,
