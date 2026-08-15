@@ -1,8 +1,9 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 10,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Off"
+    "off"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 35,
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 88.89,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -33,7 +34,7 @@
       "dheight": -67
     },
     {
-      "key": "Text",
+      "key": "text",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": 0
     },
     {
-      "key": "Active",
+      "key": "active",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 1
     },
     {
-      "key": "HTML code",
+      "key": "html code",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 1
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -113,7 +114,7 @@
       "dheight": 0
     },
     {
-      "key": "Name",
+      "key": "name",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -133,7 +134,7 @@
       "dheight": 1
     },
     {
-      "key": "Periodic refresh",
+      "key": "periodic refresh",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": 1
     },
     {
-      "key": "Scale",
+      "key": "scale",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -173,7 +174,7 @@
       "dheight": -1
     },
     {
-      "key": "Type",
+      "key": "type",
       "class": "TextView",
       "audit_bounds": [
         278,

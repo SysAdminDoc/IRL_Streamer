@@ -1,5 +1,6 @@
 {
   "matched_elements": 3,
+  "unscored_audit_elements": 2,
   "unmatched_audit_elements": [
     "larix://"
   ],
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 16.67,
   "elements": [
     {
-      "key": "OK",
+      "key": "ok",
       "class": "Button",
       "audit_bounds": [
         1553,
@@ -35,7 +36,7 @@
       "dheight": -78
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         1340,
@@ -55,7 +56,7 @@
       "dheight": -78
     },
     {
-      "key": "Import settings",
+      "key": "import settings",
       "class": "TextView",
       "audit_bounds": [
         556,

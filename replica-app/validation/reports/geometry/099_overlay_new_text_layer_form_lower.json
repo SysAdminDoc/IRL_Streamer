@@ -1,11 +1,12 @@
 {
   "matched_elements": 8,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [
-    "Scale is relative to video resolution, on 100% it fills entire screen. When set to \"Off\", original size is used."
+    "scale is relative to video resolution, on 100% it fills entire screen. when set to \"off\", original size is used."
   ],
   "replica_only_elements": [
-    "Layers with greater Z Order will appear at front.",
-    "Scale is relative to video resolution; Off uses original size."
+    "layers with greater z order will appear at front.",
+    "scale is relative to video resolution; off uses original size."
   ],
   "max_abs_dleft": 1911,
   "max_abs_dtop": 198,
@@ -16,7 +17,7 @@
   "origins_within_4px_pct": 43.75,
   "elements": [
     {
-      "key": "Off",
+      "key": "off",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -36,7 +37,7 @@
       "dheight": 15
     },
     {
-      "key": "Position",
+      "key": "position",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -56,7 +57,7 @@
       "dheight": 1
     },
     {
-      "key": "Z Order",
+      "key": "z order",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -96,7 +97,7 @@
       "dheight": 0
     },
     {
-      "key": "Center",
+      "key": "center",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -116,7 +117,7 @@
       "dheight": 0
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -136,7 +137,7 @@
       "dheight": -67
     },
     {
-      "key": "Scale",
+      "key": "scale",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -156,7 +157,7 @@
       "dheight": 9
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,

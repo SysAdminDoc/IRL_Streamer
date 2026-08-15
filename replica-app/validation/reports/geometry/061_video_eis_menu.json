@@ -1,8 +1,9 @@
 {
   "matched_elements": 5,
+  "unscored_audit_elements": 3,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Selected"
+    "selected"
   ],
   "max_abs_dleft": 91,
   "max_abs_dtop": 43,
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 20.0,
   "elements": [
     {
-      "key": "Off",
+      "key": "off",
       "class": "CheckedTextView",
       "audit_bounds": [
         488,
@@ -33,7 +34,7 @@
       "dheight": -67
     },
     {
-      "key": "On",
+      "key": "on",
       "class": "CheckedTextView",
       "audit_bounds": [
         488,
@@ -53,7 +54,7 @@
       "dheight": -67
     },
     {
-      "key": "System default",
+      "key": "system default",
       "class": "CheckedTextView",
       "audit_bounds": [
         488,
@@ -73,7 +74,7 @@
       "dheight": -67
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         1520,
@@ -93,7 +94,7 @@
       "dheight": -78
     },
     {
-      "key": "Electronic image stabilization",
+      "key": "electronic image stabilization",
       "class": "TextView",
       "audit_bounds": [
         556,

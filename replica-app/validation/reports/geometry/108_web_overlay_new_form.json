@@ -1,5 +1,6 @@
 {
   "matched_elements": 10,
+  "unscored_audit_elements": 7,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -31,7 +32,7 @@
       "dheight": 151
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -51,7 +52,7 @@
       "dheight": -67
     },
     {
-      "key": "Center",
+      "key": "center",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -71,7 +72,7 @@
       "dheight": -2
     },
     {
-      "key": "Preview + stream",
+      "key": "preview + stream",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -91,7 +92,7 @@
       "dheight": 0
     },
     {
-      "key": "Custom CSS",
+      "key": "custom css",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -111,7 +112,7 @@
       "dheight": 0
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -131,7 +132,7 @@
       "dheight": 0
     },
     {
-      "key": "Name",
+      "key": "name",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -151,7 +152,7 @@
       "dheight": 1
     },
     {
-      "key": "Position",
+      "key": "position",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -171,7 +172,7 @@
       "dheight": 1
     },
     {
-      "key": "URL",
+      "key": "url",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -191,7 +192,7 @@
       "dheight": 1
     },
     {
-      "key": "View mode",
+      "key": "view mode",
       "class": "TextView",
       "audit_bounds": [
         278,

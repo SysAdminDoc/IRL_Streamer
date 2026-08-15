@@ -1,5 +1,6 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 11,
   "unmatched_audit_elements": [
     "1920x1080 (16:9)"
   ],
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Double Tap to Flip Camera",
+      "key": "double tap to flip camera",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -33,7 +34,7 @@
       "dheight": 8
     },
     {
-      "key": "FPS",
+      "key": "fps",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": 1
     },
     {
-      "key": "Live rotation",
+      "key": "live rotation",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 1
     },
     {
-      "key": "Orientation",
+      "key": "orientation",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 1
     },
     {
-      "key": "Reverse Orientation",
+      "key": "reverse orientation",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 1
     },
     {
-      "key": "Landscape",
+      "key": "landscape",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -133,7 +134,7 @@
       "dheight": 0
     },
     {
-      "key": "System default",
+      "key": "system default",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": 0
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -173,7 +174,7 @@
       "dheight": -67
     },
     {
-      "key": "Video parameters",
+      "key": "video parameters",
       "class": "TextView",
       "audit_bounds": [
         277,

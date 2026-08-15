@@ -1,23 +1,24 @@
 {
   "matched_elements": 7,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [
-    "-2303 mW",
-    "-569 mA",
-    "37.1 \u00b0C"
+    "-2303 mw",
+    "-569 ma",
+    "37.1 \u00b0c"
   ],
   "replica_only_elements": [
-    "-1144 mW",
-    "-283 mA",
-    "31.6 \u00b0C",
-    "Battery 73 percent",
-    "Flip camera",
-    "Mute microphone",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "-1144 mw",
+    "-283 ma",
+    "31.6 \u00b0c",
+    "battery 73 percent",
+    "flip camera",
+    "mute microphone",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 36,
   "max_abs_dtop": 26,
@@ -88,7 +89,7 @@
       "dheight": -35
     },
     {
-      "key": "FRONT",
+      "key": "front",
       "class": "TextView",
       "audit_bounds": [
         1469,
@@ -108,7 +109,7 @@
       "dheight": -11
     },
     {
-      "key": "BACK",
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,

@@ -1,11 +1,12 @@
 {
   "matched_elements": 6,
+  "unscored_audit_elements": 3,
   "unmatched_audit_elements": [
-    "IRL Pro SRT/SRTLA/Bonding"
+    "irl pro srt/srtla/bonding"
   ],
   "replica_only_elements": [
-    "Local bonding simulation",
-    "Selected"
+    "local bonding simulation",
+    "selected"
   ],
   "max_abs_dleft": 91,
   "max_abs_dtop": 39,
@@ -16,7 +17,7 @@
   "origins_within_4px_pct": 16.67,
   "elements": [
     {
-      "key": "Automatically Select",
+      "key": "automatically select",
       "class": "CheckedTextView",
       "audit_bounds": [
         488,
@@ -36,7 +37,7 @@
       "dheight": -67
     },
     {
-      "key": "Legacy - Hybrid",
+      "key": "legacy - hybrid",
       "class": "CheckedTextView",
       "audit_bounds": [
         488,
@@ -56,7 +57,7 @@
       "dheight": -22
     },
     {
-      "key": "Legacy - Ladder ascend",
+      "key": "legacy - ladder ascend",
       "class": "CheckedTextView",
       "audit_bounds": [
         488,
@@ -76,7 +77,7 @@
       "dheight": -67
     },
     {
-      "key": "Legacy - Logarithmic descend",
+      "key": "legacy - logarithmic descend",
       "class": "CheckedTextView",
       "audit_bounds": [
         488,
@@ -96,7 +97,7 @@
       "dheight": -67
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         1520,
@@ -116,7 +117,7 @@
       "dheight": -78
     },
     {
-      "key": "Mode",
+      "key": "mode",
       "class": "TextView",
       "audit_bounds": [
         556,

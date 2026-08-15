@@ -1,10 +1,11 @@
 {
   "matched_elements": 8,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [
-    "You may either specify remote file url or select local file"
+    "you may either specify remote file url or select local file"
   ],
   "replica_only_elements": [
-    "You may either specify a remote file URL or select a local file"
+    "you may either specify a remote file url or select a local file"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 89,
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 81.25,
   "elements": [
     {
-      "key": "Periodic refresh",
+      "key": "periodic refresh",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -35,7 +36,7 @@
       "dheight": 46
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -55,7 +56,7 @@
       "dheight": -67
     },
     {
-      "key": "Picture",
+      "key": "picture",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -75,7 +76,7 @@
       "dheight": 0
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -95,7 +96,7 @@
       "dheight": 0
     },
     {
-      "key": "Name",
+      "key": "name",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -115,7 +116,7 @@
       "dheight": 1
     },
     {
-      "key": "Select file",
+      "key": "select file",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -135,7 +136,7 @@
       "dheight": 1
     },
     {
-      "key": "Type",
+      "key": "type",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -155,7 +156,7 @@
       "dheight": 1
     },
     {
-      "key": "URL",
+      "key": "url",
       "class": "TextView",
       "audit_bounds": [
         278,

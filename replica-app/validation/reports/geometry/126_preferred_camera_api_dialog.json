@@ -1,8 +1,9 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Camera controls"
+    "camera controls"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 35,
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -33,7 +34,7 @@
       "dheight": -67
     },
     {
-      "key": "Horizon stream demo",
+      "key": "horizon stream demo",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": 1
     },
     {
-      "key": "Mirror front camera",
+      "key": "mirror front camera",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 1
     },
     {
-      "key": "Say no to vertical videos.",
+      "key": "say no to vertical videos.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 0
     },
     {
-      "key": "Stream and record front camera as appears in preview (mirrored).",
+      "key": "stream and record front camera as appears in preview (mirrored).",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 0
     },
     {
-      "key": "Advanced options",
+      "key": "advanced options",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -133,7 +134,7 @@
       "dheight": 15
     },
     {
-      "key": "Preferred camera API",
+      "key": "preferred camera api",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": 1
     },
     {
-      "key": "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available.",
+      "key": "disable camera2 api only if you have some issues with camera like some resolutions or framerates are not available.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -173,7 +174,7 @@
       "dheight": 7
     },
     {
-      "key": "Advanced options",
+      "key": "advanced options",
       "class": "TextView",
       "audit_bounds": [
         277,

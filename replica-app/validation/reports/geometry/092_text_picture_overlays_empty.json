@@ -1,8 +1,9 @@
 {
   "matched_elements": 7,
+  "unscored_audit_elements": 11,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Timestamp"
+    "timestamp"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 93,
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Layers",
+      "key": "layers",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -33,7 +34,7 @@
       "dheight": 15
     },
     {
-      "key": "Enable standby mode",
+      "key": "enable standby mode",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": 1
     },
     {
-      "key": "Pause overlays",
+      "key": "pause overlays",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 1
     },
     {
-      "key": "Show layers on preview",
+      "key": "show layers on preview",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 1
     },
     {
-      "key": "Standby overlays",
+      "key": "standby overlays",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 1
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -133,7 +134,7 @@
       "dheight": -67
     },
     {
-      "key": "Overlays",
+      "key": "overlays",
       "class": "TextView",
       "audit_bounds": [
         277,

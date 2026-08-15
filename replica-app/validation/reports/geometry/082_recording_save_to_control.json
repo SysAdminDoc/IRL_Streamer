@@ -1,13 +1,14 @@
 {
   "matched_elements": 15,
+  "unscored_audit_elements": 19,
   "unmatched_audit_elements": [
-    "Files on Galaxy S22 Ultra",
-    "Galaxy S22 Ultra",
-    "Music"
+    "files on galaxy s22 ultra",
+    "galaxy s22 ultra",
+    "music"
   ],
   "replica_only_elements": [
-    "AppManager",
-    "Files on sdk_gphone64_x86_64",
+    "appmanager",
+    "files on sdk_gphone64_x86_64",
     "sdk_gphone64_x86_64"
   ],
   "max_abs_dleft": 1439,
@@ -19,7 +20,7 @@
   "origins_within_4px_pct": 20.0,
   "elements": [
     {
-      "key": "DCIM",
+      "key": "dcim",
       "class": "TextView",
       "audit_bounds": [
         1769,
@@ -39,7 +40,7 @@
       "dheight": -24
     },
     {
-      "key": "Documents",
+      "key": "documents",
       "class": "TextView",
       "audit_bounds": [
         274,
@@ -59,7 +60,7 @@
       "dheight": 5
     },
     {
-      "key": "Download",
+      "key": "download",
       "class": "TextView",
       "audit_bounds": [
         772,
@@ -79,7 +80,7 @@
       "dheight": 5
     },
     {
-      "key": "Audiobooks",
+      "key": "audiobooks",
       "class": "TextView",
       "audit_bounds": [
         1271,
@@ -99,7 +100,7 @@
       "dheight": 0
     },
     {
-      "key": "Movies",
+      "key": "movies",
       "class": "TextView",
       "audit_bounds": [
         1271,
@@ -119,7 +120,7 @@
       "dheight": 5
     },
     {
-      "key": "Alarms",
+      "key": "alarms",
       "class": "TextView",
       "audit_bounds": [
         274,
@@ -139,7 +140,7 @@
       "dheight": 0
     },
     {
-      "key": "Can\u2019t use this folder",
+      "key": "can\u2019t use this folder",
       "class": "TextView",
       "audit_bounds": [
         301,
@@ -159,7 +160,7 @@
       "dheight": 0
     },
     {
-      "key": "To protect your privacy, choose another folder",
+      "key": "to protect your privacy, choose another folder",
       "class": "TextView",
       "audit_bounds": [
         301,
@@ -179,7 +180,7 @@
       "dheight": -1
     },
     {
-      "key": "USE THIS FOLDER",
+      "key": "use this folder",
       "class": "Button",
       "audit_bounds": [
         114,
@@ -199,7 +200,7 @@
       "dheight": 0
     },
     {
-      "key": "Android",
+      "key": "android",
       "class": "TextView",
       "audit_bounds": [
         772,
@@ -219,7 +220,7 @@
       "dheight": 0
     },
     {
-      "key": "CREATE NEW FOLDER",
+      "key": "create new folder",
       "class": "Button",
       "audit_bounds": [
         1581,
@@ -239,7 +240,7 @@
       "dheight": 0
     },
     {
-      "key": "List view",
+      "key": "list view",
       "class": "Button",
       "audit_bounds": [
         1977,
@@ -259,7 +260,7 @@
       "dheight": 0
     },
     {
-      "key": "More options",
+      "key": "more options",
       "class": "ImageView",
       "audit_bounds": [
         2046,
@@ -279,7 +280,7 @@
       "dheight": 0
     },
     {
-      "key": "New folder",
+      "key": "new folder",
       "class": "Button",
       "audit_bounds": [
         1774,
@@ -299,7 +300,7 @@
       "dheight": 0
     },
     {
-      "key": "Sort by...",
+      "key": "sort by...",
       "class": "Button",
       "audit_bounds": [
         1910,

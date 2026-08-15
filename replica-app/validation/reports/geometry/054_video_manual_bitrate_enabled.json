@@ -1,5 +1,6 @@
 {
   "matched_elements": 10,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [
     "2 sec"
   ],
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "6000 Kbps",
+      "key": "6000 kbps",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -33,7 +34,7 @@
       "dheight": 0
     },
     {
-      "key": "Bitrate is now defined manually.",
+      "key": "bitrate is now defined manually.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": 0
     },
     {
-      "key": "System default",
+      "key": "system default",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 0
     },
     {
-      "key": "Bitrate H264 - HEVC is auto 66%",
+      "key": "bitrate h264 - hevc is auto 66%",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 1
     },
     {
-      "key": "Bitrate matches resolution",
+      "key": "bitrate matches resolution",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 1
     },
     {
-      "key": "Bitrate mode",
+      "key": "bitrate mode",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -133,7 +134,7 @@
       "dheight": 1
     },
     {
-      "key": "Keyframe frequency",
+      "key": "keyframe frequency",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": -9
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -173,7 +174,7 @@
       "dheight": -67
     },
     {
-      "key": "Encoder parameters",
+      "key": "encoder parameters",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -193,7 +194,7 @@
       "dheight": 53
     },
     {
-      "key": "Video parameters",
+      "key": "video parameters",
       "class": "TextView",
       "audit_bounds": [
         277,

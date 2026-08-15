@@ -1,25 +1,24 @@
 {
-  "matched_elements": 2,
+  "matched_elements": 3,
+  "unscored_audit_elements": 2,
   "unmatched_audit_elements": [
-    "Enter your Twitch stream key",
-    "Enter your Twitch username",
-    "Twitch.tv"
+    "enter your twitch stream key",
+    "enter your twitch username"
   ],
   "replica_only_elements": [
-    "Platform A",
-    "Stream key",
-    "Username"
+    "stream key",
+    "username"
   ],
   "max_abs_dleft": 73,
   "max_abs_dtop": 34,
-  "max_abs_dwidth": 126,
+  "max_abs_dwidth": 858,
   "max_abs_dheight": 78,
-  "mean_abs_origin_error_px": 47.0,
-  "origins_within_2px_pct": 0.0,
-  "origins_within_4px_pct": 0.0,
+  "mean_abs_origin_error_px": 32.167,
+  "origins_within_2px_pct": 16.67,
+  "origins_within_4px_pct": 33.33,
   "elements": [
     {
-      "key": "OK",
+      "key": "ok",
       "class": "Button",
       "audit_bounds": [
         1553,
@@ -39,7 +38,7 @@
       "dheight": -78
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         1340,
@@ -57,6 +56,26 @@
       "dtop": 34,
       "dwidth": -63,
       "dheight": -78
+    },
+    {
+      "key": "platform a",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        334,
+        1699,
+        410
+      ],
+      "replica_bounds": [
+        557,
+        338,
+        842,
+        414
+      ],
+      "dleft": 1,
+      "dtop": 4,
+      "dwidth": -858,
+      "dheight": 0
     }
   ],
   "screen": "030_twitch_quick_setup_form"

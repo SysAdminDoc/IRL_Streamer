@@ -1,49 +1,48 @@
 {
-  "matched_elements": 8,
+  "matched_elements": 9,
+  "unscored_audit_elements": 11,
   "unmatched_audit_elements": [
-    "-1947 mW",
-    "-482 mA",
-    "34.7 \u00b0C",
+    "-1947 mw",
+    "-482 ma",
+    "34.7 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "Audio",
-    "Display",
-    "FRONT",
-    "Log",
-    "Network",
-    "Not writing to file\nGo to Record settings to toggle writing\n9:25:52 PM {type=MIC, audioSource=5, channelCount=2, sampleRate=44100, bitRate=96000, aec=false, agc=false, ns=false}\n9:25:52 PM {mime=video/avc, bitRate=6000000, fps=30.0, keyFrameInterval=2, videoSize=1920x1080, bitRateMode=-1, keyFrameInterval=2}\n9:25:52 PM {cameraId=0, physicalCameraId=null, fpsRange=null, videoSize=1920x1080}\n9:25:52 PM {cameraId=1, physicalCameraId=null, fpsRange=null, videoSize=1920x1080}\n9:25:52 PM {cameraId=2, physicalCameraId=null, fpsRange=null, videoSize=1920x1080}\n9:25:52 PM {cameraId=3, physicalCameraId=null, fpsRange=null, videoSize=1920x1080}\n9:25:52 PM H.264, 1920x1080\n9:25:52 PM c2.android.aac.encoder\n9:25:52 PM {sample-rate=44100, mime=audio/mp4a-latm, channel-count=2, aac-profile=2, bitrate=96000}\n9:25:52 PM c2.qti.avc.encoder\n9:25:52 PM {capture-rate=30.0, i-frame-interval=2, mime=video/avc, width=1920, bitrate=6000000, frame-rate=30.0, height=1080}\n9:25:52 PM open camera#0[null]\n9:25:52 PM T: Adjusting web views\n9:25:52 PM onOpened#0[null]\n9:25:52 PM onAudioCaptureStateChanged, state=STARTED\n9:25:52 PM onConfigured\n9:25:52 PM onReady\n9:25:53 PM {max-bitrate=7879680, crop-right=1919, mime=video/avc, profile=8, bitrate=7879680, priority=0, intra-refresh-period=0, color-standard=1, feature-secure-playback=0, csd-1=java.nio.HeapByteBuffer[pos=0 lim=9 cap=9], color-transfer=3, crop-bottom=1079, vendor.qti-ext-enc-content-adaptive-mode.value=0, prepend-sps-pps-to-idr-frames=0, video-qp-average=0, crop-left=0, width=1920, bitrate-mode=1, color-range=2, crop-top=0, frame-rate=30, height=1080, csd-0=java.nio.HeapByteBuffer[pos=0 lim=23 cap=23]}\n9:25:53 PM onVideoCaptureStateChanged, state=STARTED",
-    "Overlays"
+    "audio#4",
+    "display#6",
+    "front",
+    "log#7",
+    "not writing to file\ngo to record settings to toggle writing\n9:25:52 pm {type=mic, audiosource=5, channelcount=2, samplerate=44100, bitrate=96000, aec=false, agc=false, ns=false}\n9:25:52 pm {mime=video/avc, bitrate=6000000, fps=30.0, keyframeinterval=2, videosize=1920x1080, bitratemode=-1, keyframeinterval=2}\n9:25:52 pm {cameraid=0, physicalcameraid=null, fpsrange=null, videosize=1920x1080}\n9:25:52 pm {cameraid=1, physicalcameraid=null, fpsrange=null, videosize=1920x1080}\n9:25:52 pm {cameraid=2, physicalcameraid=null, fpsrange=null, videosize=1920x1080}\n9:25:52 pm {cameraid=3, physicalcameraid=null, fpsrange=null, videosize=1920x1080}\n9:25:52 pm h.264, 1920x1080\n9:25:52 pm c2.android.aac.encoder\n9:25:52 pm {sample-rate=44100, mime=audio/mp4a-latm, channel-count=2, aac-profile=2, bitrate=96000}\n9:25:52 pm c2.qti.avc.encoder\n9:25:52 pm {capture-rate=30.0, i-frame-interval=2, mime=video/avc, width=1920, bitrate=6000000, frame-rate=30.0, height=1080}\n9:25:52 pm open camera#0[null]\n9:25:52 pm t: adjusting web views\n9:25:52 pm onopened#0[null]\n9:25:52 pm onaudiocapturestatechanged, state=started\n9:25:52 pm onconfigured\n9:25:52 pm onready\n9:25:53 pm {max-bitrate=7879680, crop-right=1919, mime=video/avc, profile=8, bitrate=7879680, priority=0, intra-refresh-period=0, color-standard=1, feature-secure-playback=0, csd-1=java.nio.heapbytebuffer[pos=0 lim=9 cap=9], color-transfer=3, crop-bottom=1079, vendor.qti-ext-enc-content-adaptive-mode.value=0, prepend-sps-pps-to-idr-frames=0, video-qp-average=0, crop-left=0, width=1920, bitrate-mode=1, color-range=2, crop-top=0, frame-rate=30, height=1080, csd-0=java.nio.heapbytebuffer[pos=0 lim=23 cap=23]}\n9:25:53 pm onvideocapturestatechanged, state=started",
+    "overlays#9"
   ],
   "replica_only_elements": [
-    "-283 mA",
-    "Battery 73 percent",
-    "Flip camera",
-    "Mute microphone",
-    "NETWORK",
-    "Not writing to file\nGo to Record settings to toggle writing\n21:25:52 {type=MIC, source=local, channels=2, sampleRate=44100, bitRate=96000}\n21:25:52 local camera fixture opened\n21:25:52 {mime=video/avc, profile=8, bitrate=6000000, priority=0,\nintra-refresh-period=0, color-standard=1,\nfeature-secure-playback=0,\ncsd-1=java.nio.HeapByteBuffer[pos=0 lim=9\ncap=9], color-transfer=3, crop-bottom=1079,\nvalue=0, prepend-sps-pps-to-idr-frames=0,\nvideo-qp-average=0, crop-left=0,\nwidth=1920, bitrate-mode=1, color-range=2,\ncrop-top=0, frame-rate=30, height=1080,\ncsd-0=java.nio.HeapByteBuffer[pos=0 lim=23\ncap=23]}\n21:25:53 onAudioCaptureStateChanged, state=SIMULATED\n21:25:53 onVideoCaptureStateChanged,\nstate=SIMULATED",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "-283 ma",
+    "battery 73 percent",
+    "flip camera",
+    "mute microphone",
+    "not writing to file\ngo to record settings to toggle writing\n21:25:52 {type=mic, source=local, channels=2, samplerate=44100, bitrate=96000}\n21:25:52 local camera fixture opened\n21:25:52 {mime=video/avc, profile=8, bitrate=6000000, priority=0,\nintra-refresh-period=0, color-standard=1,\nfeature-secure-playback=0,\ncsd-1=java.nio.heapbytebuffer[pos=0 lim=9\ncap=9], color-transfer=3, crop-bottom=1079,\nvalue=0, prepend-sps-pps-to-idr-frames=0,\nvideo-qp-average=0, crop-left=0,\nwidth=1920, bitrate-mode=1, color-range=2,\ncrop-top=0, frame-rate=30, height=1080,\ncsd-0=java.nio.heapbytebuffer[pos=0 lim=23\ncap=23]}\n21:25:53 onaudiocapturestatechanged, state=simulated\n21:25:53 onvideocapturestatechanged,\nstate=simulated",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
-  "max_abs_dleft": 88,
+  "max_abs_dleft": 122,
   "max_abs_dtop": 26,
-  "max_abs_dwidth": 72,
-  "max_abs_dheight": 35,
-  "mean_abs_origin_error_px": 27.312,
-  "origins_within_2px_pct": 25.0,
-  "origins_within_4px_pct": 37.5,
+  "max_abs_dwidth": 125,
+  "max_abs_dheight": 39,
+  "mean_abs_origin_error_px": 39.167,
+  "origins_within_2px_pct": 5.56,
+  "origins_within_4px_pct": 16.67,
   "elements": [
     {
-      "key": "DISPLAY",
-      "class": "TextView",
+      "key": "display",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1157,
-        136,
-        1312,
-        189
+        1123,
+        118,
+        1346,
+        208
       ],
       "replica_bounds": [
         1245,
@@ -51,19 +50,19 @@
         1409,
         189
       ],
-      "dleft": 88,
-      "dtop": 2,
-      "dwidth": 9,
-      "dheight": -2
+      "dleft": 122,
+      "dtop": 20,
+      "dwidth": -59,
+      "dheight": -39
     },
     {
-      "key": "OVERLAYS",
-      "class": "TextView",
+      "key": "overlays",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1380,
-        136,
-        1572,
-        189
+        1346,
+        118,
+        1606,
+        208
       ],
       "replica_bounds": [
         1461,
@@ -71,19 +70,19 @@
         1664,
         189
       ],
-      "dleft": 81,
-      "dtop": 2,
-      "dwidth": 11,
-      "dheight": -2
+      "dleft": 115,
+      "dtop": 20,
+      "dwidth": -57,
+      "dheight": -39
     },
     {
-      "key": "AUDIO",
-      "class": "TextView",
+      "key": "audio",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1650,
-        136,
-        1765,
-        189
+        1606,
+        118,
+        1809,
+        208
       ],
       "replica_bounds": [
         1715,
@@ -91,10 +90,30 @@
         1837,
         189
       ],
-      "dleft": 65,
-      "dtop": 2,
-      "dwidth": 7,
-      "dheight": -2
+      "dleft": 109,
+      "dtop": 20,
+      "dwidth": -81,
+      "dheight": -39
+    },
+    {
+      "key": "log",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1809,
+        118,
+        2012,
+        208
+      ],
+      "replica_bounds": [
+        1900,
+        138,
+        1978,
+        189
+      ],
+      "dleft": 91,
+      "dtop": 20,
+      "dwidth": -125,
+      "dheight": -39
     },
     {
       "key": "73\u00b0",
@@ -117,7 +136,7 @@
       "dheight": -35
     },
     {
-      "key": "BACK",
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,
@@ -135,26 +154,6 @@
       "dtop": -3,
       "dwidth": -32,
       "dheight": -11
-    },
-    {
-      "key": "LOG",
-      "class": "TextView",
-      "audit_bounds": [
-        1873,
-        136,
-        1947,
-        189
-      ],
-      "replica_bounds": [
-        1900,
-        138,
-        1978,
-        189
-      ],
-      "dleft": 27,
-      "dtop": 2,
-      "dwidth": 4,
-      "dheight": -2
     },
     {
       "key": "103\u00b0",
@@ -195,6 +194,26 @@
       "dtop": 3,
       "dwidth": -49,
       "dheight": -5
+    },
+    {
+      "key": "network",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1112,
+        118,
+        1123,
+        208
+      ],
+      "replica_bounds": [
+        1112,
+        138,
+        1186,
+        189
+      ],
+      "dleft": 0,
+      "dtop": 20,
+      "dwidth": 63,
+      "dheight": -39
     }
   ],
   "screen": "138_live_console_log"

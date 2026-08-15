@@ -1,9 +1,10 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Acoustic Echo Canceler (AEC)",
-    "Tap to reset to 0dB"
+    "acoustic echo canceler (aec)",
+    "tap to reset to 0db"
   ],
   "max_abs_dleft": 1863,
   "max_abs_dtop": 98,
@@ -14,7 +15,7 @@
   "origins_within_4px_pct": 44.44,
   "elements": [
     {
-      "key": "0.0dB",
+      "key": "0.0db",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -34,7 +35,7 @@
       "dheight": 15
     },
     {
-      "key": "Processing",
+      "key": "processing",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -54,7 +55,7 @@
       "dheight": 15
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -74,7 +75,7 @@
       "dheight": -67
     },
     {
-      "key": "Keep Speakers Awake",
+      "key": "keep speakers awake",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -94,7 +95,7 @@
       "dheight": 1
     },
     {
-      "key": "Sample rate",
+      "key": "sample rate",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -134,7 +135,7 @@
       "dheight": 0
     },
     {
-      "key": "Periodically play a silent sound to keep bluetooth speaker awake",
+      "key": "periodically play a silent sound to keep bluetooth speaker awake",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -154,7 +155,7 @@
       "dheight": 0
     },
     {
-      "key": "Input gain",
+      "key": "input gain",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -174,7 +175,7 @@
       "dheight": 7
     },
     {
-      "key": "Audio parameters",
+      "key": "audio parameters",
       "class": "TextView",
       "audit_bounds": [
         277,

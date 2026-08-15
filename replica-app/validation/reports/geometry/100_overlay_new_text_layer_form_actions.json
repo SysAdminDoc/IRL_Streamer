@@ -1,11 +1,12 @@
 {
   "matched_elements": 6,
+  "unscored_audit_elements": 5,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Center",
-    "Position",
-    "Scale is relative to video resolution; Off uses original size.",
-    "Z Order"
+    "center",
+    "position",
+    "scale is relative to video resolution; off uses original size.",
+    "z order"
   ],
   "max_abs_dleft": 580,
   "max_abs_dtop": 512,
@@ -16,7 +17,7 @@
   "origins_within_4px_pct": 33.33,
   "elements": [
     {
-      "key": "SAVE",
+      "key": "save",
       "class": "Button",
       "audit_bounds": [
         1128,
@@ -36,7 +37,7 @@
       "dheight": -78
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         75,
@@ -56,7 +57,7 @@
       "dheight": -78
     },
     {
-      "key": "Layers with greater Z Order will appear at front.",
+      "key": "layers with greater z order will appear at front.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -96,7 +97,7 @@
       "dheight": 33
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -116,7 +117,7 @@
       "dheight": -67
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,

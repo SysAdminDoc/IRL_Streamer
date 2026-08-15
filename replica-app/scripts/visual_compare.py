@@ -116,7 +116,10 @@ def main() -> int:
     Image.blend(reference_image, aligned_image, 0.5).save(args.overlay)
     heat = np.max(absolute, axis=2)
     heat_rgb = np.zeros_like(reference)
-    heat_rgb[..., 0] = np.clip(heat * 3, 0, 255)
+    # heat is uint8: multiplying before widening wraps modulo 256, so a diff of
+    # 86 rendered as red 2 and the *worst* regions came out near-black - in the
+    # exact images the report tells a reviewer to inspect.
+    heat_rgb[..., 0] = np.clip(heat.astype(np.int16) * 3, 0, 255)
     heat_rgb[..., 1] = np.clip(np.maximum(heat.astype(np.int16) - 85, 0) * 3, 0, 255)
     heat_rgb[~valid] = np.array([32, 32, 32], dtype=np.uint8)
     args.diff.parent.mkdir(parents=True, exist_ok=True)

@@ -1,5 +1,6 @@
 {
   "matched_elements": 6,
+  "unscored_audit_elements": 2,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 27,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 8.33,
   "elements": [
     {
-      "key": "Bottom left",
+      "key": "bottom left",
       "class": "CheckedTextView",
       "audit_bounds": [
         278,
@@ -31,7 +32,7 @@
       "dheight": -67
     },
     {
-      "key": "Center",
+      "key": "center",
       "class": "CheckedTextView",
       "audit_bounds": [
         278,
@@ -51,7 +52,7 @@
       "dheight": -67
     },
     {
-      "key": "Custom",
+      "key": "custom",
       "class": "CheckedTextView",
       "audit_bounds": [
         278,
@@ -71,7 +72,7 @@
       "dheight": -67
     },
     {
-      "key": "Top left",
+      "key": "top left",
       "class": "CheckedTextView",
       "audit_bounds": [
         278,
@@ -91,7 +92,7 @@
       "dheight": -67
     },
     {
-      "key": "Top right",
+      "key": "top right",
       "class": "CheckedTextView",
       "audit_bounds": [
         278,
@@ -111,7 +112,7 @@
       "dheight": -67
     },
     {
-      "key": "Bottom right",
+      "key": "bottom right",
       "class": "CheckedTextView",
       "audit_bounds": [
         278,

@@ -1,5 +1,6 @@
 {
   "matched_elements": 6,
+  "unscored_audit_elements": 5,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Manage web overlays",
+      "key": "manage web overlays",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -31,7 +32,7 @@
       "dheight": 1
     },
     {
-      "key": "New web overlay",
+      "key": "new web overlay",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -51,7 +52,7 @@
       "dheight": 1
     },
     {
-      "key": "For perf, no more than 3\u20134 web overlays are recommended",
+      "key": "for perf, no more than 3\u20134 web overlays are recommended",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -71,7 +72,7 @@
       "dheight": -2
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -91,7 +92,7 @@
       "dheight": -67
     },
     {
-      "key": "Web overlays",
+      "key": "web overlays",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -111,7 +112,7 @@
       "dheight": 15
     },
     {
-      "key": "Overlays",
+      "key": "overlays",
       "class": "TextView",
       "audit_bounds": [
         277,

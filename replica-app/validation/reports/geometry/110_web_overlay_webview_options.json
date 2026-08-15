@@ -1,10 +1,11 @@
 {
   "matched_elements": 8,
+  "unscored_audit_elements": 6,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
     "1280",
-    "Width",
-    "Width/Height scaled to 1080p canvas"
+    "width",
+    "width/height scaled to 1080p canvas"
   ],
   "max_abs_dleft": 580,
   "max_abs_dtop": 310,
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 37.5,
   "elements": [
     {
-      "key": "SAVE",
+      "key": "save",
       "class": "Button",
       "audit_bounds": [
         1128,
@@ -35,7 +36,7 @@
       "dheight": -78
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         75,
@@ -95,7 +96,7 @@
       "dheight": 0
     },
     {
-      "key": "Height",
+      "key": "height",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -115,7 +116,7 @@
       "dheight": 1
     },
     {
-      "key": "Scale in percents",
+      "key": "scale in percents",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -135,7 +136,7 @@
       "dheight": 1
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -155,7 +156,7 @@
       "dheight": -67
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,

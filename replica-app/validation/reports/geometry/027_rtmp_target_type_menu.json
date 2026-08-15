@@ -1,5 +1,6 @@
 {
   "matched_elements": 5,
+  "unscored_audit_elements": 2,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 27,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 10.0,
   "elements": [
     {
-      "key": "Akamai/Dacast",
+      "key": "akamai/dacast",
       "class": "CheckedTextView",
       "audit_bounds": [
         98,
@@ -31,7 +32,7 @@
       "dheight": -67
     },
     {
-      "key": "Limelight Networks",
+      "key": "limelight networks",
       "class": "CheckedTextView",
       "audit_bounds": [
         98,
@@ -51,7 +52,7 @@
       "dheight": -67
     },
     {
-      "key": "Periscope Producer",
+      "key": "periscope producer",
       "class": "CheckedTextView",
       "audit_bounds": [
         98,
@@ -71,7 +72,7 @@
       "dheight": -67
     },
     {
-      "key": "RTMP authorization",
+      "key": "rtmp authorization",
       "class": "CheckedTextView",
       "audit_bounds": [
         98,
@@ -91,7 +92,7 @@
       "dheight": -67
     },
     {
-      "key": "Default (no authorization)",
+      "key": "default (no authorization)",
       "class": "CheckedTextView",
       "audit_bounds": [
         98,

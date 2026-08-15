@@ -1,5 +1,6 @@
 {
   "matched_elements": 5,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 80.0,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -31,7 +32,7 @@
       "dheight": -67
     },
     {
-      "key": "Display",
+      "key": "display",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -51,7 +52,7 @@
       "dheight": 0
     },
     {
-      "key": "Grid 3x3",
+      "key": "grid 3x3",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -71,7 +72,7 @@
       "dheight": 1
     },
     {
-      "key": "Show audio level meter",
+      "key": "show audio level meter",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -91,7 +92,7 @@
       "dheight": 1
     },
     {
-      "key": "Show safe margins",
+      "key": "show safe margins",
       "class": "TextView",
       "audit_bounds": [
         278,

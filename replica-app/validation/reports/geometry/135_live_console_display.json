@@ -1,40 +1,41 @@
 {
   "matched_elements": 13,
+  "unscored_audit_elements": 11,
   "unmatched_audit_elements": [
-    "-1208 mW",
-    "-301 mA",
-    "33.9 \u00b0C",
+    "-1208 mw",
+    "-301 ma",
+    "33.9 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "Audio",
-    "Camera",
-    "Display",
-    "FRONT",
-    "Network",
-    "Overlays"
+    "audio#4",
+    "camera#7",
+    "display#8",
+    "front",
+    "network#11",
+    "overlays#12"
   ],
   "replica_only_elements": [
-    "-283 mA",
-    "Battery 73 percent",
-    "Flip camera",
-    "Mute microphone",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "-283 ma",
+    "battery 73 percent",
+    "flip camera",
+    "mute microphone",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 36,
   "max_abs_dtop": 69,
   "max_abs_dwidth": 132,
   "max_abs_dheight": 42,
-  "mean_abs_origin_error_px": 15.115,
-  "origins_within_2px_pct": 38.46,
-  "origins_within_4px_pct": 50.0,
+  "mean_abs_origin_error_px": 20.577,
+  "origins_within_2px_pct": 19.23,
+  "origins_within_4px_pct": 26.92,
   "elements": [
     {
-      "key": "Block all screen touches, useful in water or rain situations.",
+      "key": "block all screen touches, useful in water or rain situations.",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -54,7 +55,7 @@
       "dheight": -13
     },
     {
-      "key": "Lock Screen",
+      "key": "lock screen",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -94,7 +95,7 @@
       "dheight": -35
     },
     {
-      "key": "Safe margins",
+      "key": "safe margins",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -114,7 +115,7 @@
       "dheight": -42
     },
     {
-      "key": "BACK",
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,
@@ -134,24 +135,44 @@
       "dheight": -11
     },
     {
-      "key": "AUDIO",
-      "class": "TextView",
+      "key": "display",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1978,
-        136,
-        2012,
-        189
+        1451,
+        118,
+        1674,
+        208
       ],
       "replica_bounds": [
-        1951,
+        1481,
         138,
-        2012,
+        1645,
         189
       ],
-      "dleft": -27,
-      "dtop": 2,
-      "dwidth": 27,
-      "dheight": -2
+      "dleft": 30,
+      "dtop": 20,
+      "dwidth": -59,
+      "dheight": -39
+    },
+    {
+      "key": "network",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1197,
+        118,
+        1451,
+        208
+      ],
+      "replica_bounds": [
+        1226,
+        138,
+        1422,
+        189
+      ],
+      "dleft": 29,
+      "dtop": 20,
+      "dwidth": -58,
+      "dheight": -39
     },
     {
       "key": "103\u00b0",
@@ -194,13 +215,13 @@
       "dheight": -5
     },
     {
-      "key": "OVERLAYS",
-      "class": "TextView",
+      "key": "overlays",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1708,
-        136,
-        1900,
-        189
+        1674,
+        118,
+        1934,
+        208
       ],
       "replica_bounds": [
         1697,
@@ -208,13 +229,53 @@
         1900,
         189
       ],
-      "dleft": -11,
-      "dtop": 2,
-      "dwidth": 11,
-      "dheight": -2
+      "dleft": 23,
+      "dtop": 20,
+      "dwidth": -57,
+      "dheight": -39
     },
     {
-      "key": "Grid",
+      "key": "audio",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1934,
+        118,
+        2012,
+        208
+      ],
+      "replica_bounds": [
+        1951,
+        138,
+        2012,
+        189
+      ],
+      "dleft": 17,
+      "dtop": 20,
+      "dwidth": -17,
+      "dheight": -39
+    },
+    {
+      "key": "camera",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1112,
+        118,
+        1197,
+        208
+      ],
+      "replica_bounds": [
+        1112,
+        138,
+        1167,
+        189
+      ],
+      "dleft": 0,
+      "dtop": 20,
+      "dwidth": -30,
+      "dheight": -39
+    },
+    {
+      "key": "grid",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -232,66 +293,6 @@
       "dtop": -10,
       "dwidth": -132,
       "dheight": -42
-    },
-    {
-      "key": "NETWORK",
-      "class": "TextView",
-      "audit_bounds": [
-        1231,
-        136,
-        1417,
-        189
-      ],
-      "replica_bounds": [
-        1226,
-        138,
-        1422,
-        189
-      ],
-      "dleft": -5,
-      "dtop": 2,
-      "dwidth": 10,
-      "dheight": -2
-    },
-    {
-      "key": "DISPLAY",
-      "class": "TextView",
-      "audit_bounds": [
-        1485,
-        136,
-        1640,
-        189
-      ],
-      "replica_bounds": [
-        1481,
-        138,
-        1645,
-        189
-      ],
-      "dleft": -4,
-      "dtop": 2,
-      "dwidth": 9,
-      "dheight": -2
-    },
-    {
-      "key": "CAMERA",
-      "class": "TextView",
-      "audit_bounds": [
-        1112,
-        136,
-        1163,
-        189
-      ],
-      "replica_bounds": [
-        1112,
-        138,
-        1167,
-        189
-      ],
-      "dleft": 0,
-      "dtop": 2,
-      "dwidth": 4,
-      "dheight": -2
     }
   ],
   "screen": "135_live_console_display"

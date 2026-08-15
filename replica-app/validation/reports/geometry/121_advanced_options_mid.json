@@ -1,11 +1,12 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [
-    "If IRL Pro sits in background and has no active connections, it will quit after a timeout.",
-    "Stream and record front camera as appears in preview (mirrored)."
+    "if irl pro sits in background and has no active connections, it will quit after a timeout.",
+    "stream and record front camera as appears in preview (mirrored)."
   ],
   "replica_only_elements": [
-    "If IRL Streamer sits in background and has no active connections, it will quit after a timeout."
+    "if irl streamer sits in background and has no active connections, it will quit after a timeout."
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 64,
@@ -16,7 +17,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "This is always enabled now.",
+      "key": "this is always enabled now.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -36,7 +37,7 @@
       "dheight": 0
     },
     {
-      "key": "Keep streaming when not in focus.",
+      "key": "keep streaming when not in focus.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -56,7 +57,7 @@
       "dheight": 18
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -76,7 +77,7 @@
       "dheight": -67
     },
     {
-      "key": "Disable Camera2 API only if you have some issues with camera like some resolutions or framerates are not available.",
+      "key": "disable camera2 api only if you have some issues with camera like some resolutions or framerates are not available.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -96,7 +97,7 @@
       "dheight": 7
     },
     {
-      "key": "Preferred camera API",
+      "key": "preferred camera api",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -116,7 +117,7 @@
       "dheight": 1
     },
     {
-      "key": "Advanced options",
+      "key": "advanced options",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -136,7 +137,7 @@
       "dheight": 15
     },
     {
-      "key": "Quit if inactive in background",
+      "key": "quit if inactive in background",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -156,7 +157,7 @@
       "dheight": 1
     },
     {
-      "key": "Mirror front camera",
+      "key": "mirror front camera",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -176,7 +177,7 @@
       "dheight": -9
     },
     {
-      "key": "Advanced options",
+      "key": "advanced options",
       "class": "TextView",
       "audit_bounds": [
         277,

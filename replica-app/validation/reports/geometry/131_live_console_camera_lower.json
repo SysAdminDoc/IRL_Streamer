@@ -1,42 +1,43 @@
 {
   "matched_elements": 17,
+  "unscored_audit_elements": 13,
   "unmatched_audit_elements": [
-    "-2517 mW",
-    "-612 mA",
+    "-2517 mw",
+    "-612 ma",
     "0",
-    "33.3 \u00b0C",
+    "33.3 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "Camera",
-    "Display",
-    "FRONT",
-    "Network",
-    "Overlays"
+    "camera#7",
+    "display#8",
+    "front",
+    "network#12",
+    "overlays#13"
   ],
   "replica_only_elements": [
-    "-283 mA",
+    "-283 ma",
     "0.0",
-    "Battery 73 percent",
-    "Exposure compensation",
-    "Flip camera",
-    "Mute microphone",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "battery 73 percent",
+    "exposure compensation",
+    "flip camera",
+    "mute microphone",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 51,
   "max_abs_dtop": 56,
   "max_abs_dwidth": 748,
   "max_abs_dheight": 42,
-  "mean_abs_origin_error_px": 15.941,
-  "origins_within_2px_pct": 38.24,
-  "origins_within_4px_pct": 52.94,
+  "mean_abs_origin_error_px": 20.647,
+  "origins_within_2px_pct": 26.47,
+  "origins_within_4px_pct": 35.29,
   "elements": [
     {
-      "key": "Anti-flicker",
+      "key": "anti-flicker",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -56,7 +57,7 @@
       "dheight": -2
     },
     {
-      "key": "Focus mode",
+      "key": "focus mode",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -76,7 +77,7 @@
       "dheight": -19
     },
     {
-      "key": "White balance",
+      "key": "white balance",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -96,7 +97,7 @@
       "dheight": -19
     },
     {
-      "key": "Tap settings",
+      "key": "tap settings",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -136,7 +137,7 @@
       "dheight": -7
     },
     {
-      "key": "Zoom",
+      "key": "zoom",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -176,7 +177,7 @@
       "dheight": -35
     },
     {
-      "key": "BACK",
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,
@@ -194,6 +195,66 @@
       "dtop": -3,
       "dwidth": -32,
       "dheight": -11
+    },
+    {
+      "key": "camera",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1112,
+        118,
+        1338,
+        208
+      ],
+      "replica_bounds": [
+        1142,
+        138,
+        1308,
+        189
+      ],
+      "dleft": 30,
+      "dtop": 20,
+      "dwidth": -60,
+      "dheight": -39
+    },
+    {
+      "key": "display",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1592,
+        118,
+        1815,
+        208
+      ],
+      "replica_bounds": [
+        1622,
+        138,
+        1786,
+        189
+      ],
+      "dleft": 30,
+      "dtop": 20,
+      "dwidth": -59,
+      "dheight": -39
+    },
+    {
+      "key": "network",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1338,
+        118,
+        1592,
+        208
+      ],
+      "replica_bounds": [
+        1367,
+        138,
+        1563,
+        189
+      ],
+      "dleft": 29,
+      "dtop": 20,
+      "dwidth": -58,
+      "dheight": -39
     },
     {
       "key": "103\u00b0",
@@ -236,7 +297,27 @@
       "dheight": -5
     },
     {
-      "key": "White balance",
+      "key": "overlays",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1815,
+        118,
+        2012,
+        208
+      ],
+      "replica_bounds": [
+        1838,
+        138,
+        2012,
+        189
+      ],
+      "dleft": 23,
+      "dtop": 20,
+      "dwidth": -23,
+      "dheight": -39
+    },
+    {
+      "key": "white balance",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -256,27 +337,7 @@
       "dheight": 8
     },
     {
-      "key": "OVERLAYS",
-      "class": "TextView",
-      "audit_bounds": [
-        1849,
-        136,
-        2012,
-        189
-      ],
-      "replica_bounds": [
-        1838,
-        138,
-        2012,
-        189
-      ],
-      "dleft": -11,
-      "dtop": 2,
-      "dwidth": 11,
-      "dheight": -2
-    },
-    {
-      "key": "Exposure",
+      "key": "exposure",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -296,67 +357,7 @@
       "dheight": -42
     },
     {
-      "key": "NETWORK",
-      "class": "TextView",
-      "audit_bounds": [
-        1372,
-        136,
-        1558,
-        189
-      ],
-      "replica_bounds": [
-        1367,
-        138,
-        1563,
-        189
-      ],
-      "dleft": -5,
-      "dtop": 2,
-      "dwidth": 10,
-      "dheight": -2
-    },
-    {
-      "key": "CAMERA",
-      "class": "TextView",
-      "audit_bounds": [
-        1146,
-        136,
-        1304,
-        189
-      ],
-      "replica_bounds": [
-        1142,
-        138,
-        1308,
-        189
-      ],
-      "dleft": -4,
-      "dtop": 2,
-      "dwidth": 8,
-      "dheight": -2
-    },
-    {
-      "key": "DISPLAY",
-      "class": "TextView",
-      "audit_bounds": [
-        1626,
-        136,
-        1781,
-        189
-      ],
-      "replica_bounds": [
-        1622,
-        138,
-        1786,
-        189
-      ],
-      "dleft": -4,
-      "dtop": 2,
-      "dwidth": 9,
-      "dheight": -2
-    },
-    {
-      "key": "Focus",
+      "key": "focus",
       "class": "Switch",
       "audit_bounds": [
         1135,

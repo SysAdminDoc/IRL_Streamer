@@ -1,24 +1,20 @@
 {
-  "matched_elements": 7,
-  "unmatched_audit_elements": [
-    "KICK.COM",
-    "TWITCH.TV"
-  ],
+  "matched_elements": 9,
+  "unscored_audit_elements": 3,
+  "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "PLATFORM A",
-    "PLATFORM B",
-    "Quick Site Setup"
+    "quick site setup"
   ],
   "max_abs_dleft": 580,
-  "max_abs_dtop": 169,
+  "max_abs_dtop": 198,
   "max_abs_dwidth": 2032,
   "max_abs_dheight": 102,
-  "mean_abs_origin_error_px": 121.286,
-  "origins_within_2px_pct": 21.43,
-  "origins_within_4px_pct": 21.43,
+  "mean_abs_origin_error_px": 142.0,
+  "origins_within_2px_pct": 16.67,
+  "origins_within_4px_pct": 16.67,
   "elements": [
     {
-      "key": "SAVE",
+      "key": "save",
       "class": "Button",
       "audit_bounds": [
         1128,
@@ -38,7 +34,7 @@
       "dheight": -78
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         75,
@@ -58,7 +54,47 @@
       "dheight": -78
     },
     {
-      "key": "Start typing or paste URL to view protocol-specific fields for authentication etc.",
+      "key": "platform a",
+      "class": "Button",
+      "audit_bounds": [
+        75,
+        219,
+        777,
+        344
+      ],
+      "replica_bounds": [
+        306,
+        417,
+        547,
+        474
+      ],
+      "dleft": 231,
+      "dtop": 198,
+      "dwidth": -461,
+      "dheight": -68
+    },
+    {
+      "key": "platform b",
+      "class": "Button",
+      "audit_bounds": [
+        777,
+        219,
+        1479,
+        344
+      ],
+      "replica_bounds": [
+        1008,
+        417,
+        1248,
+        474
+      ],
+      "dleft": 231,
+      "dtop": 198,
+      "dwidth": -462,
+      "dheight": -68
+    },
+    {
+      "key": "start typing or paste url to view protocol-specific fields for authentication etc.",
       "class": "TextView",
       "audit_bounds": [
         98,
@@ -78,7 +114,7 @@
       "dheight": 0
     },
     {
-      "key": "URL",
+      "key": "url",
       "class": "EditText",
       "audit_bounds": [
         75,
@@ -98,7 +134,7 @@
       "dheight": -102
     },
     {
-      "key": "Name",
+      "key": "name",
       "class": "EditText",
       "audit_bounds": [
         75,
@@ -118,7 +154,7 @@
       "dheight": -102
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -138,7 +174,7 @@
       "dheight": -67
     },
     {
-      "key": "New outgoing connection",
+      "key": "new outgoing connection",
       "class": "TextView",
       "audit_bounds": [
         277,

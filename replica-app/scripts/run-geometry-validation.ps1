@@ -3,7 +3,8 @@ param(
     [string]$Serial = '',
     [double]$WithinPxTarget = 2.0,
     [double]$RegressionTolerancePct = 1.0,
-    [switch]$UpdateBaseline
+    [switch]$UpdateBaseline,
+    [string]$BaselineReason = ''
 )
 
 # Layout-bounds gate. SSIM answers "do these screens look alike"; this answers
@@ -129,14 +130,26 @@ Write-Host "Geometry validation report: $reportPath"
 Write-Host ("Mean origin error {0:N2} px; {1:N1}% of origins within 2 px; {2} clean states." -f $meanErr, $within2, $clean)
 
 if ($UpdateBaseline) {
-    if ($failures.Count -gt 0) { throw "Refusing to update the baseline while the gate is failing." }
+    # Lowering the bar needs a stated reason. The legitimate case is a matcher
+    # change that scores more elements than before: coverage rises while the
+    # percentage falls, because previously invisible elements join the
+    # denominator. Anything else is a regression to fix, not to record.
+    $lowering = $within2 -lt ($baselineWithin2 - $RegressionTolerancePct)
+    if ($failures.Count -gt 0 -and -not ($lowering -and $BaselineReason)) {
+        throw "Refusing to update the baseline while the gate is failing. Pass -BaselineReason to record a deliberate re-baseline."
+    }
+    $matchedTotal = ($rows | ForEach-Object { [int]$_.matched } | Measure-Object -Sum).Sum
+    $unmatchedTotal = ($rows | ForEach-Object { [int]$_.unmatched } | Measure-Object -Sum).Sum
     [ordered]@{
         recorded = (Get-Date -Format 'yyyy-MM-dd')
         within_2px_pct = [math]::Round($within2, 3)
         within_4px_pct = [math]::Round($within4, 3)
         mean_origin_error_px = [math]::Round($meanErr, 3)
         states_compared = $rows.Count
-        note = 'Ratchet baseline for the geometry gate. Raise it by fixing layout, never by lowering this file.'
+        matched_elements = $matchedTotal
+        unmatched_elements = $unmatchedTotal
+        reason = if ($BaselineReason) { $BaselineReason } else { 'Routine ratchet after an improvement.' }
+        note = 'Ratchet baseline for the geometry gate. Raise it by fixing layout. Only lower it with a stated reason, and only when matched_elements shows coverage went up.'
     } | ConvertTo-Json | Set-Content -LiteralPath $baselinePath -Encoding utf8
     Write-Host "Updated geometry baseline: $baselinePath"
 }

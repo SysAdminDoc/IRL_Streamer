@@ -1,5 +1,6 @@
 {
   "matched_elements": 10,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 1751,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 40.0,
   "elements": [
     {
-      "key": "Right 100 %",
+      "key": "right 100 %",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -31,7 +32,7 @@
       "dheight": 15
     },
     {
-      "key": "Bottom 100 %",
+      "key": "bottom 100 %",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -51,7 +52,7 @@
       "dheight": 15
     },
     {
-      "key": "Custom",
+      "key": "custom",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -71,7 +72,7 @@
       "dheight": 0
     },
     {
-      "key": "H Position",
+      "key": "h position",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -91,7 +92,7 @@
       "dheight": 7
     },
     {
-      "key": "Z Order",
+      "key": "z order",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -131,7 +132,7 @@
       "dheight": 1
     },
     {
-      "key": "Position",
+      "key": "position",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -151,7 +152,7 @@
       "dheight": 47
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -171,7 +172,7 @@
       "dheight": -67
     },
     {
-      "key": "V Position",
+      "key": "v position",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -191,7 +192,7 @@
       "dheight": 7
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,

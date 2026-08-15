@@ -1,5 +1,6 @@
 {
   "matched_elements": 7,
+  "unscored_audit_elements": 3,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 91,
@@ -111,7 +112,7 @@
       "dheight": -67
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         1520,
@@ -131,7 +132,7 @@
       "dheight": -78
     },
     {
-      "key": "FPS",
+      "key": "fps",
       "class": "TextView",
       "audit_bounds": [
         556,

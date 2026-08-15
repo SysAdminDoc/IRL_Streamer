@@ -1,5 +1,6 @@
 {
   "matched_elements": 10,
+  "unscored_audit_elements": 7,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 60.0,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -31,7 +32,7 @@
       "dheight": -67
     },
     {
-      "key": "Camera",
+      "key": "camera",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -71,7 +72,7 @@
       "dheight": -9
     },
     {
-      "key": "Rear camera (0)",
+      "key": "rear camera (0)",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -91,7 +92,7 @@
       "dheight": 0
     },
     {
-      "key": "Flip between physical sub-cameras",
+      "key": "flip between physical sub-cameras",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -111,7 +112,7 @@
       "dheight": 1
     },
     {
-      "key": "Resolution",
+      "key": "resolution",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -131,7 +132,7 @@
       "dheight": 1
     },
     {
-      "key": "Start app with",
+      "key": "start app with",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -151,7 +152,7 @@
       "dheight": 1
     },
     {
-      "key": "Off",
+      "key": "off",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -171,7 +172,7 @@
       "dheight": 0
     },
     {
-      "key": "Multi-camera capture",
+      "key": "multi-camera capture",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -191,7 +192,7 @@
       "dheight": 1
     },
     {
-      "key": "Video parameters",
+      "key": "video parameters",
       "class": "TextView",
       "audit_bounds": [
         277,

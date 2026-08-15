@@ -1,7 +1,8 @@
 {
   "matched_elements": 10,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [
-    "On"
+    "on"
   ],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -33,7 +34,7 @@
       "dheight": -67
     },
     {
-      "key": "Electronic image stabilization",
+      "key": "electronic image stabilization",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": -9
     },
     {
-      "key": "Vendor-specific video enhancements",
+      "key": "vendor-specific video enhancements",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 15
     },
     {
-      "key": "Bitrate adjusts based on the format being used.",
+      "key": "bitrate adjusts based on the format being used.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 0
     },
     {
-      "key": "System default",
+      "key": "system default",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 0
     },
     {
-      "key": "System default",
+      "key": "system default",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -133,7 +134,7 @@
       "dheight": 0
     },
     {
-      "key": "Auto adjust bitrate based on format",
+      "key": "auto adjust bitrate based on format",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": 1
     },
     {
-      "key": "H.264 profile",
+      "key": "h.264 profile",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -173,7 +174,7 @@
       "dheight": 1
     },
     {
-      "key": "HEVC profile",
+      "key": "hevc profile",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -193,7 +194,7 @@
       "dheight": 1
     },
     {
-      "key": "Video parameters",
+      "key": "video parameters",
       "class": "TextView",
       "audit_bounds": [
         277,

@@ -1,46 +1,47 @@
 {
   "matched_elements": 12,
+  "unscored_audit_elements": 11,
   "unmatched_audit_elements": [
-    "-1432 mA",
-    "-5784 mW",
-    "34.7 \u00b0C",
+    "-1432 ma",
+    "-5784 mw",
+    "34.7 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "Audio",
-    "Display",
-    "FRONT",
-    "Log",
-    "Network",
-    "Overlays#11"
+    "audio#4",
+    "display#6",
+    "front",
+    "log#7",
+    "network#9",
+    "overlays#11"
   ],
   "replica_only_elements": [
-    "-283 mA",
-    "Battery 73 percent",
-    "Flip camera",
-    "Mute microphone",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "-283 ma",
+    "battery 73 percent",
+    "flip camera",
+    "mute microphone",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
-  "max_abs_dleft": 297,
-  "max_abs_dtop": 126,
-  "max_abs_dwidth": 529,
+  "max_abs_dleft": 331,
+  "max_abs_dtop": 108,
+  "max_abs_dwidth": 530,
   "max_abs_dheight": 39,
-  "mean_abs_origin_error_px": 33.708,
-  "origins_within_2px_pct": 33.33,
-  "origins_within_4px_pct": 41.67,
+  "mean_abs_origin_error_px": 38.375,
+  "origins_within_2px_pct": 8.33,
+  "origins_within_4px_pct": 16.67,
   "elements": [
     {
-      "key": "Overlays",
-      "class": "LinearLayout",
+      "key": "overlays",
+      "class": "TextView",
       "audit_bounds": [
-        1432,
-        118,
-        1692,
-        208
+        1466,
+        136,
+        1658,
+        189
       ],
       "replica_bounds": [
         1135,
@@ -48,13 +49,13 @@
         1857,
         295
       ],
-      "dleft": -297,
-      "dtop": 126,
-      "dwidth": 462,
-      "dheight": -39
+      "dleft": -331,
+      "dtop": 108,
+      "dwidth": 530,
+      "dheight": -2
     },
     {
-      "key": "Text - Timestamp",
+      "key": "text - timestamp",
       "class": "CheckBox",
       "audit_bounds": [
         1135,
@@ -72,26 +73,6 @@
       "dtop": 25,
       "dwidth": -529,
       "dheight": -22
-    },
-    {
-      "key": "LOG",
-      "class": "TextView",
-      "audit_bounds": [
-        1959,
-        136,
-        2012,
-        189
-      ],
-      "replica_bounds": [
-        1900,
-        138,
-        1978,
-        189
-      ],
-      "dleft": -59,
-      "dtop": 2,
-      "dwidth": 25,
-      "dheight": -2
     },
     {
       "key": "73\u00b0",
@@ -114,7 +95,27 @@
       "dheight": -35
     },
     {
-      "key": "BACK",
+      "key": "display",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1209,
+        118,
+        1432,
+        208
+      ],
+      "replica_bounds": [
+        1245,
+        138,
+        1409,
+        189
+      ],
+      "dleft": 36,
+      "dtop": 20,
+      "dwidth": -59,
+      "dheight": -39
+    },
+    {
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,
@@ -134,7 +135,27 @@
       "dheight": -11
     },
     {
-      "key": "Long Press to edit text overlays",
+      "key": "overlays",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1432,
+        118,
+        1692,
+        208
+      ],
+      "replica_bounds": [
+        1461,
+        138,
+        1664,
+        189
+      ],
+      "dleft": 29,
+      "dtop": 20,
+      "dwidth": -57,
+      "dheight": -39
+    },
+    {
+      "key": "long press to edit text overlays",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -194,13 +215,13 @@
       "dheight": -5
     },
     {
-      "key": "AUDIO",
-      "class": "TextView",
+      "key": "audio",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1736,
-        136,
-        1851,
-        189
+        1692,
+        118,
+        1895,
+        208
       ],
       "replica_bounds": [
         1715,
@@ -208,59 +229,39 @@
         1837,
         189
       ],
-      "dleft": -21,
-      "dtop": 2,
-      "dwidth": 7,
-      "dheight": -2
+      "dleft": 23,
+      "dtop": 20,
+      "dwidth": -81,
+      "dheight": -39
     },
     {
-      "key": "OVERLAYS",
-      "class": "TextView",
+      "key": "log",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1466,
-        136,
-        1658,
-        189
+        1895,
+        118,
+        2012,
+        208
       ],
       "replica_bounds": [
-        1461,
+        1900,
         138,
-        1664,
+        1978,
         189
       ],
-      "dleft": -5,
-      "dtop": 2,
-      "dwidth": 11,
-      "dheight": -2
+      "dleft": 5,
+      "dtop": 20,
+      "dwidth": -39,
+      "dheight": -39
     },
     {
-      "key": "DISPLAY",
-      "class": "TextView",
-      "audit_bounds": [
-        1243,
-        136,
-        1398,
-        189
-      ],
-      "replica_bounds": [
-        1245,
-        138,
-        1409,
-        189
-      ],
-      "dleft": 2,
-      "dtop": 2,
-      "dwidth": 9,
-      "dheight": -2
-    },
-    {
-      "key": "NETWORK",
-      "class": "TextView",
+      "key": "network",
+      "class": "LinearLayout",
       "audit_bounds": [
         1112,
-        136,
-        1175,
-        189
+        118,
+        1209,
+        208
       ],
       "replica_bounds": [
         1112,
@@ -269,9 +270,9 @@
         189
       ],
       "dleft": 0,
-      "dtop": 2,
-      "dwidth": 11,
-      "dheight": -2
+      "dtop": 20,
+      "dwidth": -23,
+      "dheight": -39
     }
   ],
   "screen": "136_live_console_overlays"

@@ -1,5 +1,6 @@
 {
   "matched_elements": 10,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 55.0,
   "elements": [
     {
-      "key": "Recommended - Automatically choose the best option for the current connection type.",
+      "key": "recommended - automatically choose the best option for the current connection type.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -31,7 +32,7 @@
       "dheight": 0
     },
     {
-      "key": "Mode",
+      "key": "mode",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -51,7 +52,7 @@
       "dheight": 1
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -71,7 +72,7 @@
       "dheight": -101
     },
     {
-      "key": "Fast",
+      "key": "fast",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -91,7 +92,7 @@
       "dheight": 0
     },
     {
-      "key": "Noise reduction",
+      "key": "noise reduction",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -111,7 +112,7 @@
       "dheight": 1
     },
     {
-      "key": "Reduce frame rate related to bitrate drop in adaptive bitrate mode. However this can cause issues when it changes fps. YMMV",
+      "key": "reduce frame rate related to bitrate drop in adaptive bitrate mode. however this can cause issues when it changes fps. ymmv",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -131,7 +132,7 @@
       "dheight": 7
     },
     {
-      "key": "Adaptive frame rate",
+      "key": "adaptive frame rate",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -151,7 +152,7 @@
       "dheight": 1
     },
     {
-      "key": "Adaptive bitrate streaming",
+      "key": "adaptive bitrate streaming",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -171,7 +172,7 @@
       "dheight": 15
     },
     {
-      "key": "On",
+      "key": "on",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -191,7 +192,7 @@
       "dheight": 39
     },
     {
-      "key": "Video parameters",
+      "key": "video parameters",
       "class": "TextView",
       "audit_bounds": [
         277,

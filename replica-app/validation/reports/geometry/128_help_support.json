@@ -1,14 +1,15 @@
 {
   "matched_elements": 4,
+  "unscored_audit_elements": 6,
   "unmatched_audit_elements": [
-    "About IRL Pro",
-    "Discord"
+    "about irl pro",
+    "discord"
   ],
   "replica_only_elements": [
-    "About IRL Streamer",
-    "Community",
-    "External support links are intentionally omitted",
-    "Produces no share action in this privacy-safe fixture"
+    "about irl streamer",
+    "community",
+    "external support links are intentionally omitted",
+    "produces no share action in this privacy-safe fixture"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 107,
@@ -19,7 +20,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Reset app settings",
+      "key": "reset app settings",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -39,7 +40,7 @@
       "dheight": 1
     },
     {
-      "key": "Send cameras debug details to developers",
+      "key": "send cameras debug details to developers",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -59,7 +60,7 @@
       "dheight": 1
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -79,7 +80,7 @@
       "dheight": -67
     },
     {
-      "key": "Help & support",
+      "key": "help & support",
       "class": "TextView",
       "audit_bounds": [
         277,

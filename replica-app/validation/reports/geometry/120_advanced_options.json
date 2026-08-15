@@ -1,15 +1,16 @@
 {
   "matched_elements": 5,
+  "unscored_audit_elements": 12,
   "unmatched_audit_elements": [
-    "Enables any tweaks I'm testing that aren't ready yet",
-    "Experimental SRTLA Tweaks",
-    "Show SRTLA Debug"
+    "enables any tweaks i'm testing that aren't ready yet",
+    "experimental srtla tweaks",
+    "show srtla debug"
   ],
   "replica_only_elements": [
-    "Enables local experimental fixtures that aren't ready yet",
-    "Experimental Bonding Tweaks",
-    "Keep streaming when not in focus.",
-    "Show Bonding Debug"
+    "enables local experimental fixtures that aren't ready yet",
+    "experimental bonding tweaks",
+    "keep streaming when not in focus.",
+    "show bonding debug"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 35,
@@ -20,7 +21,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -40,7 +41,7 @@
       "dheight": -67
     },
     {
-      "key": "Misc Settings",
+      "key": "misc settings",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -60,7 +61,7 @@
       "dheight": 15
     },
     {
-      "key": "Allow RTMP HEVC",
+      "key": "allow rtmp hevc",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -80,7 +81,7 @@
       "dheight": 1
     },
     {
-      "key": "Show status bar on broadcast page",
+      "key": "show status bar on broadcast page",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -100,7 +101,7 @@
       "dheight": 1
     },
     {
-      "key": "Advanced options",
+      "key": "advanced options",
       "class": "TextView",
       "audit_bounds": [
         277,

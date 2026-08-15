@@ -1,11 +1,12 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [
-    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('MMM dd, HH:mm:ss', 'en_US') %></b>"
+    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('mmm dd, hh:mm:ss', 'en_us') %></b>"
   ],
   "replica_only_elements": [
     "1",
-    "Date/time \u00b7 MMM dd, HH:mm:ss \u00b7 en-US"
+    "date/time \u00b7 mmm dd, hh:mm:ss \u00b7 en-us"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 151,
@@ -16,7 +17,7 @@
   "origins_within_4px_pct": 55.56,
   "elements": [
     {
-      "key": "Periodic refresh",
+      "key": "periodic refresh",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -36,7 +37,7 @@
       "dheight": 1
     },
     {
-      "key": "Refresh interval (sec)",
+      "key": "refresh interval (sec)",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -56,7 +57,7 @@
       "dheight": 55
     },
     {
-      "key": "Timestamp",
+      "key": "timestamp",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -76,7 +77,7 @@
       "dheight": 98
     },
     {
-      "key": "HTML code",
+      "key": "html code",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -96,7 +97,7 @@
       "dheight": 0
     },
     {
-      "key": "Type",
+      "key": "type",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -116,7 +117,7 @@
       "dheight": 1
     },
     {
-      "key": "Text",
+      "key": "text",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -136,7 +137,7 @@
       "dheight": 0
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -156,7 +157,7 @@
       "dheight": -67
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -176,7 +177,7 @@
       "dheight": 0
     },
     {
-      "key": "Name",
+      "key": "name",
       "class": "TextView",
       "audit_bounds": [
         278,

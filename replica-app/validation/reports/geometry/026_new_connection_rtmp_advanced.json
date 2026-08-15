@@ -1,27 +1,26 @@
 {
-  "matched_elements": 7,
+  "matched_elements": 8,
+  "unscored_audit_elements": 4,
   "unmatched_audit_elements": [
-    "AuditTestz",
-    "KICK.COM",
-    "RTMP URL schema is rtmp://server/application/streamkey, e.g. rtmp://a.rtmp.youtube.com/live2/abcd-efgh-abcd-efgh",
-    "TWITCH.TV"
+    "platform a",
+    "platform b",
+    "rtmp url schema is rtmp://server/application/streamkey, e.g. rtmp://a.rtmp.youtube.com/live2/abcd-efgh-abcd-efgh"
   ],
   "replica_only_elements": [
-    "Local fixture",
-    "Name",
-    "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host.",
-    "URL"
+    "name",
+    "rtmp url schema is rtmp://server/application/streamkey. this fixture never connects to the entered host.",
+    "url"
   ],
   "max_abs_dleft": 580,
   "max_abs_dtop": 63,
   "max_abs_dwidth": 955,
   "max_abs_dheight": 78,
-  "mean_abs_origin_error_px": 122.571,
-  "origins_within_2px_pct": 14.29,
-  "origins_within_4px_pct": 21.43,
+  "mean_abs_origin_error_px": 108.188,
+  "origins_within_2px_pct": 12.5,
+  "origins_within_4px_pct": 25.0,
   "elements": [
     {
-      "key": "SAVE",
+      "key": "save",
       "class": "Button",
       "audit_bounds": [
         1128,
@@ -41,7 +40,7 @@
       "dheight": -78
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         75,
@@ -61,7 +60,7 @@
       "dheight": -78
     },
     {
-      "key": "Default (no authorization)",
+      "key": "default (no authorization)",
       "class": "TextView",
       "audit_bounds": [
         98,
@@ -81,7 +80,7 @@
       "dheight": -8
     },
     {
-      "key": "Target type - Leave Default for most cases",
+      "key": "target type - leave default for most cases",
       "class": "TextView",
       "audit_bounds": [
         98,
@@ -101,7 +100,7 @@
       "dheight": 9
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -119,6 +118,26 @@
       "dtop": 35,
       "dwidth": -90,
       "dheight": -67
+    },
+    {
+      "key": "local fixture",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        375,
+        2181,
+        501
+      ],
+      "replica_bounds": [
+        87,
+        372,
+        2294,
+        507
+      ],
+      "dleft": 12,
+      "dtop": -3,
+      "dwidth": 101,
+      "dheight": 9
     },
     {
       "key": "rtmp://198.51.100.1/live",
@@ -141,7 +160,7 @@
       "dheight": 9
     },
     {
-      "key": "New outgoing connection",
+      "key": "new outgoing connection",
       "class": "TextView",
       "audit_bounds": [
         277,

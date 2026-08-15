@@ -1,5 +1,6 @@
 {
   "matched_elements": 4,
+  "unscored_audit_elements": 4,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 75.0,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -31,7 +32,7 @@
       "dheight": -67
     },
     {
-      "key": "Delete multiple",
+      "key": "delete multiple",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -51,7 +52,7 @@
       "dheight": 1
     },
     {
-      "key": "Manage web overlays",
+      "key": "manage web overlays",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -71,7 +72,7 @@
       "dheight": 0
     },
     {
-      "key": "New web overlay",
+      "key": "new web overlay",
       "class": "TextView",
       "audit_bounds": [
         278,

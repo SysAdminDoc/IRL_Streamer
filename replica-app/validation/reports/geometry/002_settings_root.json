@@ -1,10 +1,11 @@
 {
   "matched_elements": 8,
+  "unscored_audit_elements": 7,
   "unmatched_audit_elements": [
-    "Version 3.5.23 build 305230"
+    "version 3.5.23 build 305230"
   ],
   "replica_only_elements": [
-    "Version 0.1.0 \u00b7 clean-room reconstruction"
+    "version 0.1.0 \u00b7 clean-room reconstruction"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 35,
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -35,7 +36,7 @@
       "dheight": -67
     },
     {
-      "key": "Bonding settings",
+      "key": "bonding settings",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -55,7 +56,7 @@
       "dheight": 0
     },
     {
-      "key": "Chatbox and activity feed settings",
+      "key": "chatbox and activity feed settings",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -75,7 +76,7 @@
       "dheight": 0
     },
     {
-      "key": "Bonding",
+      "key": "bonding",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -95,7 +96,7 @@
       "dheight": 1
     },
     {
-      "key": "Connections",
+      "key": "connections",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -115,7 +116,7 @@
       "dheight": 1
     },
     {
-      "key": "Streamer",
+      "key": "streamer",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -135,7 +136,7 @@
       "dheight": 1
     },
     {
-      "key": "Video",
+      "key": "video",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -155,7 +156,7 @@
       "dheight": -8
     },
     {
-      "key": "Settings",
+      "key": "settings",
       "class": "TextView",
       "audit_bounds": [
         277,

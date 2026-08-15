@@ -1,33 +1,52 @@
 {
-  "matched_elements": 2,
+  "matched_elements": 3,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [
-    "Custom Page",
-    "Enable Streamelements Dashboard",
-    "Enables the activity/replay dashboard locally. You will have to login manually because SE doesn't have a token",
-    "Streamlabs API Key",
-    "This is for the local alert replay/view dashboard. Looks like 9b6b77b411b345b87bdf6e6c5a811751. You get it from the remote control url widget/controller/xxxxxxxxxxxxxxxxxxxx",
-    "This is for the local alert replay/view dashboard. You get it from API Settings, looks like AABF3L45J3L2LKJ74LK5",
-    "Toonation API Key"
+    "custom page",
+    "dashboard c api key",
+    "enable dashboard b",
+    "enables the activity/replay dashboard locally. you will have to login manually because se doesn't have a token",
+    "this is for the local alert replay/view dashboard. looks like 9b6b77b411b345b87bdf6e6c5a811751. you get it from the remote control url widget/controller/xxxxxxxxxxxxxxxxxxxx",
+    "this is for the local alert replay/view dashboard. you get it from api settings, looks like aabf3l45j3l2lkj74lk5"
   ],
   "replica_only_elements": [
-    "Activity/replay dashboards are local fixtures. On-stream alerts belong in a web overlay.",
-    "Alert Dashboard",
-    "Blank; locally simulated and never transmitted",
-    "Custom chatbox URL",
-    "Custom chatbox url, setting this ignores the username settings above",
-    "Dashboard A API Key",
-    "Show user count"
+    "activity/replay dashboards are local fixtures. on-stream alerts belong in a web overlay.",
+    "alert dashboard",
+    "blank; locally simulated and never transmitted",
+    "custom chatbox url",
+    "custom chatbox url, setting this ignores the username settings above",
+    "show user count"
   ],
   "max_abs_dleft": 45,
-  "max_abs_dtop": 35,
+  "max_abs_dtop": 692,
   "max_abs_dwidth": 90,
   "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 20.5,
+  "mean_abs_origin_error_px": 129.0,
   "origins_within_2px_pct": 50.0,
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "dashboard a api key",
+      "class": "TextView",
+      "audit_bounds": [
+        278,
+        283,
+        668,
+        344
+      ],
+      "replica_bounds": [
+        278,
+        975,
+        725,
+        1037
+      ],
+      "dleft": 0,
+      "dtop": 692,
+      "dwidth": 57,
+      "dheight": 1
+    },
+    {
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -47,7 +66,7 @@
       "dheight": -67
     },
     {
-      "key": "Streamer options",
+      "key": "streamer options",
       "class": "TextView",
       "audit_bounds": [
         277,

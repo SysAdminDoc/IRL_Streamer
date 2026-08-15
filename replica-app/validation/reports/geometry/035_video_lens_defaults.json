@@ -1,7 +1,8 @@
 {
   "matched_elements": 10,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [
-    "Bitrate matches the value recommended based on resolution and frame rate."
+    "bitrate matches the value recommended based on resolution and frame rate."
   ],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Bitrate matches resolution",
+      "key": "bitrate matches resolution",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": 0
     },
     {
-      "key": "Auto",
+      "key": "auto",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 0
     },
     {
-      "key": "Auto",
+      "key": "auto",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 0
     },
     {
-      "key": "Anti-flicker",
+      "key": "anti-flicker",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 1
     },
     {
-      "key": "Exposure compensation",
+      "key": "exposure compensation",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -133,7 +134,7 @@
       "dheight": 1
     },
     {
-      "key": "Encoder parameters",
+      "key": "encoder parameters",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": 15
     },
     {
-      "key": "White balance",
+      "key": "white balance",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -173,7 +174,7 @@
       "dheight": 45
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -193,7 +194,7 @@
       "dheight": -67
     },
     {
-      "key": "Video parameters",
+      "key": "video parameters",
       "class": "TextView",
       "audit_bounds": [
         277,

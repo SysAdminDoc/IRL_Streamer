@@ -1,12 +1,13 @@
 {
   "matched_elements": 2,
+  "unscored_audit_elements": 2,
   "unmatched_audit_elements": [
-    "Install Barcode Scanner?",
-    "This application requires Barcode Scanner. Would you like to install it?"
+    "install barcode scanner?",
+    "this application requires barcode scanner. would you like to install it?"
   ],
   "replica_only_elements": [
-    "Install QR Scanner?",
-    "This reconstruction can use an installed QR scanner. Would you like to open the app store?"
+    "install qr scanner?",
+    "this reconstruction can use an installed qr scanner. would you like to open the app store?"
   ],
   "max_abs_dleft": 88,
   "max_abs_dtop": 42,
@@ -17,7 +18,7 @@
   "origins_within_4px_pct": 0.0,
   "elements": [
     {
-      "key": "NO",
+      "key": "no",
       "class": "Button",
       "audit_bounds": [
         1373,
@@ -37,7 +38,7 @@
       "dheight": -78
     },
     {
-      "key": "YES",
+      "key": "yes",
       "class": "Button",
       "audit_bounds": [
         1553,

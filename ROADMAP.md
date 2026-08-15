@@ -194,26 +194,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Confidence: Verified
   Effort: M
 
-- [ ] P2 — IS-36 Geometry matcher: phantom "missing" elements from text/content-desc duplicates and unscored authorized renames drown real regressions
-  Category: testing
-  Where: `replica-app/scripts/geometry_diff.py:37` (`IDENTITY_TEXT` covers only 2 strings), `:60-61` (`key = text or desc`), `:5-7` (docstring promises resource-id/class fallback matching that does not exist)
-  Problem: three noise sources make `unmatched_audit_elements` unreliable as a regression signal. (a) Audit dumps carry both a TextView (`text="DISPLAY"`) and a tab container (`content-desc="Display"`) for the same widget, so every quick-panel state reports phantom missing Title-case tabs even when the uppercase text matched (state 138 "misses" Audio/Display/Log/Network/Overlays). (b) D014-renamed labels (TWITCH.TV→PLATFORM A, Streamlabs→Dashboard A, AuditTestz→Local fixture) are not in `IDENTITY_TEXT`, so states 009-011, 025, 030-031, 129 permanently report high unmatched counts, hiding any genuinely missing element among authorized renames. (c) ~44% of nodes have neither text nor desc and are invisible to the matcher, while the docstring claims a fallback that was never implemented.
-  Evidence: fresh run of `geometry_diff.py --screen 138…` reproduces the Title-case phantoms; `app-audit/evidence/ui-xml/138….xml` contains only uppercase text plus desc duplicates; unmatched lists for 009/025/030 are exactly the D014 rename pairs.
-  Fix: dedupe audit nodes whose text and desc keys refer to the same bounds; match case-insensitively; move the D014 rename pairs into a versioned alias table (audit label → replica label) consulted before declaring an element missing; report the unscored-node count per screen and fix the docstring.
-  Acceptance: state 138 reports no tab-label phantoms; states 009-011/025/030-031 report unmatched ≈ 0 with aliases applied; the summary CSV gains an `unscored` column.
-  Confidence: Verified
-  Effort: M
-
-- [ ] P2 — IS-37 Diff heatmap: uint8 overflow renders the *worst* pixel errors near-black
-  Category: correctness
-  Where: `replica-app/scripts/visual_compare.py:119`
-  Problem: `heat_rgb[..., 0] = np.clip(heat * 3, 0, 255)` multiplies a uint8 array, which wraps modulo 256 before the clip (diff 86 → red 2, diff 200 → red 88). Severe-difference regions render dark in `validation/diffs/` — the exact images the report tells a reviewer to inspect. Line 120 already does it correctly with `astype(np.int16)`.
-  Evidence: numerically verified (uint8 86*3 = 2).
-  Fix: `np.clip(heat.astype(np.int16) * 3, 0, 255)`.
-  Acceptance: a synthetic 100%-different image pair produces a saturated-red diff map.
-  Confidence: Verified
-  Effort: S
-
 - [ ] P2 — IS-39 Fresh clone cannot run any visual comparison: `validation/baseline/` is gitignored and nothing populates it
   Category: reliability
   Where: `.gitignore:21`, `replica-app/scripts/compare-screen.ps1:7-9`, `replica-app/README.md:129`
@@ -260,14 +240,6 @@ build/test failures. IDs continue the `IS-nn` scheme from IS-21.
   Fix: render `validationError` as an in-app surface for the debug state (e.g. a transient overlay matching the audited toast bounds) or re-trigger the toast on each injection and have the capture script wait-and-verify; at minimum document that 101's defining pixel region is time-boxed.
   Acceptance: repeated captures of state 101 deterministically contain the error text (verify with 5 consecutive captures).
   Confidence: Needs-repro (mechanism verified in code; flake not yet observed)
-  Effort: S
-
-- [ ] P3 — IS-50 Python harness robustness: crash on empty results, threshold text hardcoded, anchor extractor's latent filter and silent skip
-  Category: maintainability
-  Where: `replica-app/scripts/build_final_report.py:65,96,110-114` (`stats()` returns None on empty input → `TypeError` instead of "no results found"; report text hardcodes "0.985" and the `PREVIOUS` pass constants rather than deriving them from `thresholds.csv`/results); `replica-app/scripts/extract_scroll_anchors.py:74-88` (selection-dialog branch requires `top >= list_top`, so a row straddling the viewport top can never anchor and `scroll_offset_px` is structurally 0 — latent today, wrong on any re-capture with a mid-row offset; screen 057, whose dump has no ListView because the IME covers it, is dropped by a bare `continue` with no message)
-  Fix: early-exit with a clear message when results are empty; derive threshold text from `thresholds.csv` and assert uniformity; mirror the settings-branch filter (`bottom > list_top`); log every skipped screen.
-  Acceptance: empty-dir run prints a one-line explanation and exits non-zero; extractor logs 057 as skipped-with-reason; a synthetic straddling-row XML produces a non-zero offset.
-  Confidence: Verified
   Effort: S
 
 ## Research-Driven Additions — 2026-08-15 (pass 2)

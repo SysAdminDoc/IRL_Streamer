@@ -1,7 +1,8 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [
-    "This is for the activity feed only (Bell icon on right). To add the on stream alerts, use a web overlay."
+    "this is for the activity feed only (bell icon on right). to add the on stream alerts, use a web overlay."
   ],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 55.56,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -33,7 +34,7 @@
       "dheight": -67
     },
     {
-      "key": "Custom chatbox url, setting this ignores the username settings above",
+      "key": "custom chatbox url, setting this ignores the username settings above",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": 0
     },
     {
-      "key": "Custom chatbox URL",
+      "key": "custom chatbox url",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 1
     },
     {
-      "key": "Show user count",
+      "key": "show user count",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 1
     },
     {
-      "key": "Move chat box to the right",
+      "key": "move chat box to the right",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 0
     },
     {
-      "key": "Right chat box",
+      "key": "right chat box",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -133,7 +134,7 @@
       "dheight": 1
     },
     {
-      "key": "Other",
+      "key": "other",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": 15
     },
     {
-      "key": "Alert Dashboard",
+      "key": "alert dashboard",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -173,7 +174,7 @@
       "dheight": 15
     },
     {
-      "key": "Streamer options",
+      "key": "streamer options",
       "class": "TextView",
       "audit_bounds": [
         277,

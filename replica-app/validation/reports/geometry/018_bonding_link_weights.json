@@ -1,8 +1,9 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 12,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Cellular Weight"
+    "cellular weight"
   ],
   "max_abs_dleft": 188,
   "max_abs_dtop": 149,
@@ -73,7 +74,7 @@
       "dheight": 26
     },
     {
-      "key": "Enable Ethernet/USB Connection",
+      "key": "enable ethernet/usb connection",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -93,7 +94,7 @@
       "dheight": 1
     },
     {
-      "key": "Ethernet Weight",
+      "key": "ethernet weight",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 7
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -133,7 +134,7 @@
       "dheight": -67
     },
     {
-      "key": "Enable WiFi",
+      "key": "enable wifi",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": 1
     },
     {
-      "key": "WiFi Weight",
+      "key": "wifi weight",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -173,7 +174,7 @@
       "dheight": 7
     },
     {
-      "key": "Bonding and NoDrop options",
+      "key": "bonding and nodrop options",
       "class": "TextView",
       "audit_bounds": [
         277,

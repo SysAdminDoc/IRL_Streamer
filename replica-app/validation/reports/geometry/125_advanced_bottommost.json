@@ -1,10 +1,11 @@
 {
   "matched_elements": 8,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [
-    "USB OTG works unstable unfortunately and it's dependent on hardware capabilities. So if you enable this feature and it doesn't work, this means IRL Pro can't handle it.\n\nTap on this message to read more details on our website."
+    "usb otg works unstable unfortunately and it's dependent on hardware capabilities. so if you enable this feature and it doesn't work, this means irl pro can't handle it.\n\ntap on this message to read more details on our website."
   ],
   "replica_only_elements": [
-    "USB OTG depends on hardware capabilities. This local reconstruction does not open an external support site."
+    "usb otg depends on hardware capabilities. this local reconstruction does not open an external support site."
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 35,
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 81.25,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -35,7 +36,7 @@
       "dheight": -67
     },
     {
-      "key": "WebViews",
+      "key": "webviews",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -55,7 +56,7 @@
       "dheight": 15
     },
     {
-      "key": "Advanced options",
+      "key": "advanced options",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -75,7 +76,7 @@
       "dheight": 0
     },
     {
-      "key": "Allow web overlays to access location",
+      "key": "allow web overlays to access location",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -95,7 +96,7 @@
       "dheight": 0
     },
     {
-      "key": "Debug WebViews using Chrome Developer Tools",
+      "key": "debug webviews using chrome developer tools",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -115,7 +116,7 @@
       "dheight": 0
     },
     {
-      "key": "Clear all cookies from web overlays",
+      "key": "clear all cookies from web overlays",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -135,7 +136,7 @@
       "dheight": 1
     },
     {
-      "key": "Web contents debugging",
+      "key": "web contents debugging",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -155,7 +156,7 @@
       "dheight": 1
     },
     {
-      "key": "Web overlay geo enabled",
+      "key": "web overlay geo enabled",
       "class": "TextView",
       "audit_bounds": [
         278,

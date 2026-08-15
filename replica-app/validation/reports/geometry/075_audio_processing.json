@@ -1,14 +1,15 @@
 {
   "matched_elements": 7,
+  "unscored_audit_elements": 10,
   "unmatched_audit_elements": [
-    "Acoustic Echo Canceler [Qualcomm Fluence]",
-    "Noise Suppression [Qualcomm Fluence]"
+    "acoustic echo canceler [qualcomm fluence]",
+    "noise suppression [qualcomm fluence]"
   ],
   "replica_only_elements": [
-    "Acoustic Echo Canceler [local device capability]",
-    "Noise Suppression [local device capability]",
-    "Periodically play a silent sound to keep bluetooth speaker awake",
-    "Processing"
+    "acoustic echo canceler [local device capability]",
+    "noise suppression [local device capability]",
+    "periodically play a silent sound to keep bluetooth speaker awake",
+    "processing"
   ],
   "max_abs_dleft": 1863,
   "max_abs_dtop": 224,
@@ -19,7 +20,7 @@
   "origins_within_4px_pct": 57.14,
   "elements": [
     {
-      "key": "0.0dB",
+      "key": "0.0db",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -39,7 +40,7 @@
       "dheight": 15
     },
     {
-      "key": "Input gain",
+      "key": "input gain",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -59,7 +60,7 @@
       "dheight": 7
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -79,7 +80,7 @@
       "dheight": -101
     },
     {
-      "key": "Tap to reset to 0dB",
+      "key": "tap to reset to 0db",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -99,7 +100,7 @@
       "dheight": 15
     },
     {
-      "key": "Audio parameters",
+      "key": "audio parameters",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -119,7 +120,7 @@
       "dheight": -26
     },
     {
-      "key": "Acoustic Echo Canceler (AEC)",
+      "key": "acoustic echo canceler (aec)",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -139,7 +140,7 @@
       "dheight": 1
     },
     {
-      "key": "Noise Suppressor (NS)",
+      "key": "noise suppressor (ns)",
       "class": "TextView",
       "audit_bounds": [
         278,

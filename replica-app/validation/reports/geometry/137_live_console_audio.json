@@ -1,47 +1,46 @@
 {
-  "matched_elements": 11,
+  "matched_elements": 12,
+  "unscored_audit_elements": 12,
   "unmatched_audit_elements": [
-    "-2545 mW",
-    "-630 mA",
-    "34.7 \u00b0C",
+    "-2545 mw",
+    "-630 ma",
+    "34.7 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "Audio",
-    "Display",
-    "FRONT",
-    "Log",
-    "Network",
-    "Overlays"
+    "audio#5",
+    "display#7",
+    "front",
+    "log#10",
+    "overlays#12"
   ],
   "replica_only_elements": [
-    "-283 mA",
-    "Battery 73 percent",
-    "Flip camera",
-    "Mute microphone",
-    "NETWORK",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "-283 ma",
+    "battery 73 percent",
+    "flip camera",
+    "mute microphone",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
-  "max_abs_dleft": 88,
+  "max_abs_dleft": 122,
   "max_abs_dtop": 26,
   "max_abs_dwidth": 666,
-  "max_abs_dheight": 35,
-  "mean_abs_origin_error_px": 20.0,
-  "origins_within_2px_pct": 45.45,
-  "origins_within_4px_pct": 54.55,
+  "max_abs_dheight": 39,
+  "mean_abs_origin_error_px": 29.5,
+  "origins_within_2px_pct": 29.17,
+  "origins_within_4px_pct": 37.5,
   "elements": [
     {
-      "key": "DISPLAY",
-      "class": "TextView",
+      "key": "display",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1157,
-        136,
-        1312,
-        189
+        1123,
+        118,
+        1346,
+        208
       ],
       "replica_bounds": [
         1245,
@@ -49,19 +48,19 @@
         1409,
         189
       ],
-      "dleft": 88,
-      "dtop": 2,
-      "dwidth": 9,
-      "dheight": -2
+      "dleft": 122,
+      "dtop": 20,
+      "dwidth": -59,
+      "dheight": -39
     },
     {
-      "key": "OVERLAYS",
-      "class": "TextView",
+      "key": "overlays",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1380,
-        136,
-        1572,
-        189
+        1346,
+        118,
+        1606,
+        208
       ],
       "replica_bounds": [
         1461,
@@ -69,19 +68,19 @@
         1664,
         189
       ],
-      "dleft": 81,
-      "dtop": 2,
-      "dwidth": 11,
-      "dheight": -2
+      "dleft": 115,
+      "dtop": 20,
+      "dwidth": -57,
+      "dheight": -39
     },
     {
-      "key": "AUDIO",
-      "class": "TextView",
+      "key": "audio",
+      "class": "LinearLayout",
       "audit_bounds": [
-        1650,
-        136,
-        1765,
-        189
+        1606,
+        118,
+        1809,
+        208
       ],
       "replica_bounds": [
         1715,
@@ -89,10 +88,30 @@
         1837,
         189
       ],
-      "dleft": 65,
-      "dtop": 2,
-      "dwidth": 7,
-      "dheight": -2
+      "dleft": 109,
+      "dtop": 20,
+      "dwidth": -81,
+      "dheight": -39
+    },
+    {
+      "key": "log",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1809,
+        118,
+        2012,
+        208
+      ],
+      "replica_bounds": [
+        1900,
+        138,
+        1978,
+        189
+      ],
+      "dleft": 91,
+      "dtop": 20,
+      "dwidth": -125,
+      "dheight": -39
     },
     {
       "key": "73\u00b0",
@@ -115,7 +134,7 @@
       "dheight": -35
     },
     {
-      "key": "BACK",
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,
@@ -133,26 +152,6 @@
       "dtop": -3,
       "dwidth": -32,
       "dheight": -11
-    },
-    {
-      "key": "LOG",
-      "class": "TextView",
-      "audit_bounds": [
-        1873,
-        136,
-        1947,
-        189
-      ],
-      "replica_bounds": [
-        1900,
-        138,
-        1978,
-        189
-      ],
-      "dleft": 27,
-      "dtop": 2,
-      "dwidth": 4,
-      "dheight": -2
     },
     {
       "key": "103\u00b0",
@@ -195,7 +194,27 @@
       "dheight": -5
     },
     {
-      "key": "0.0dB",
+      "key": "network",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1112,
+        118,
+        1123,
+        208
+      ],
+      "replica_bounds": [
+        1112,
+        138,
+        1186,
+        189
+      ],
+      "dleft": 0,
+      "dtop": 20,
+      "dwidth": 63,
+      "dheight": -39
+    },
+    {
+      "key": "0.0db",
       "class": "TextView",
       "audit_bounds": [
         1889,
@@ -215,7 +234,7 @@
       "dheight": -2
     },
     {
-      "key": "Input gain",
+      "key": "input gain",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -235,7 +254,7 @@
       "dheight": -2
     },
     {
-      "key": "Double tap \"Input gain\" to reset to 0dB",
+      "key": "double tap \"input gain\" to reset to 0db",
       "class": "TextView",
       "audit_bounds": [
         1135,

@@ -36,6 +36,27 @@ BOUNDS_RE = re.compile(r"\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]")
 # nodes is not comparable because the replacement string has a different width.
 IDENTITY_TEXT = {"IRL Pro", "IRL Streamer"}
 
+# Authorized renames (deviations D004/D011/D014): the audited label on the left
+# is reproduced by the replica label on the right. Pairing them stops an
+# authorized substitution from being reported as a missing element, which
+# otherwise buries a genuinely absent element among expected noise.
+LABEL_ALIASES = {
+    "twitch.tv": "platform a",
+    "kick.com": "platform b",
+    "audittestz": "local fixture",
+    "streamlabs api key": "dashboard a api key",
+    "enable streamelements dashboard": "enable dashboard b",
+    "toonation api key": "dashboard c api key",
+}
+
+# Labels whose replacement text is authorized and differs in length, so their
+# geometry is not comparable at all (D011 about-box copy, D009 telemetry
+# fixtures). Reported as informational rather than as missing elements.
+NON_COMPARABLE_PREFIXES = (
+    "built by ",
+    "includes licensed ",
+)
+
 
 @dataclass
 class Node:
@@ -58,7 +79,20 @@ class Node:
 
     @property
     def key(self) -> str:
-        return self.text.strip() or self.desc.strip()
+        """Normalized match key.
+
+        Case-folded because the audit dumps a tab's visible text in caps
+        ("DISPLAY") and its container's content-desc in title case ("Display"),
+        which previously produced a phantom missing element for every tab.
+        Authorized renames are mapped to the replica's label so a documented
+        substitution is not reported as an absence.
+        """
+        raw = (self.text.strip() or self.desc.strip()).casefold()
+        return LABEL_ALIASES.get(raw, raw)
+
+    @property
+    def comparable(self) -> bool:
+        return not self.key.startswith(NON_COMPARABLE_PREFIXES)
 
 
 def parse_nodes(path: Path) -> list[Node]:
@@ -88,11 +122,29 @@ def parse_nodes(path: Path) -> list[Node]:
 
 def index_by_key(nodes: list[Node]) -> dict[str, list[Node]]:
     table: dict[str, list[Node]] = {}
+    seen: set[tuple[str, int, int, int, int]] = set()
     for node in nodes:
-        if not node.key:
+        if not node.key or not node.comparable:
             continue
+        # A label and its container often carry the same string at the same
+        # bounds (text on the TextView, content-desc on the parent). Index it
+        # once so the duplicate is not counted as a second, unmatched element.
+        identity = (node.key, node.left, node.top, node.right, node.bottom)
+        if identity in seen:
+            continue
+        seen.add(identity)
         table.setdefault(node.key, []).append(node)
     return table
+
+
+def unscored_count(nodes: list[Node]) -> int:
+    """Nodes with no visible label, which this differ cannot pair at all.
+
+    Switches, icons and layout containers fall here. They are excluded from
+    both the matched set and the missing set, so the count is reported rather
+    than left implicit.
+    """
+    return sum(1 for node in nodes if not node.key)
 
 
 def compare(audit: list[Node], replica: list[Node]) -> dict:
@@ -107,11 +159,13 @@ def compare(audit: list[Node], replica: list[Node]) -> dict:
     """
     audit_index = index_by_key(audit)
     replica_index = index_by_key(replica)
+    unscored = unscored_count(audit)
 
+    identity = {value.casefold() for value in IDENTITY_TEXT}
     matched: list[dict] = []
     missing: list[str] = []
     for key, audit_nodes in sorted(audit_index.items()):
-        if key in IDENTITY_TEXT:
+        if key in identity:
             continue
         available = list(replica_index.get(key, []))
         if not available:
@@ -139,7 +193,7 @@ def compare(audit: list[Node], replica: list[Node]) -> dict:
                 }
             )
 
-    extra = sorted(set(replica_index) - set(audit_index) - IDENTITY_TEXT)
+    extra = sorted(set(replica_index) - set(audit_index) - identity)
 
     def worst(field: str) -> int:
         return max((abs(m[field]) for m in matched), default=0)
@@ -149,6 +203,7 @@ def compare(audit: list[Node], replica: list[Node]) -> dict:
     within_4 = sum(1 for e in origin_errors if e <= 4)
     return {
         "matched_elements": len(matched),
+        "unscored_audit_elements": unscored,
         "unmatched_audit_elements": missing,
         "replica_only_elements": extra,
         "max_abs_dleft": worst("dleft"),

@@ -1,40 +1,41 @@
 {
   "matched_elements": 15,
+  "unscored_audit_elements": 15,
   "unmatched_audit_elements": [
-    "-1645 mW",
-    "-410 mA",
-    "33.9 \u00b0C",
+    "-1645 mw",
+    "-410 ma",
+    "33.9 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "Camera",
-    "Display",
-    "FRONT",
-    "Network",
-    "Overlays"
+    "camera#5",
+    "display#7",
+    "front",
+    "network#12",
+    "overlays#13"
   ],
   "replica_only_elements": [
-    "-283 mA",
+    "-283 ma",
     "100",
-    "Battery 73 percent",
-    "Flip camera",
-    "Mute microphone",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "battery 73 percent",
+    "flip camera",
+    "mute microphone",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 51,
   "max_abs_dtop": 30,
   "max_abs_dwidth": 757,
-  "max_abs_dheight": 35,
-  "mean_abs_origin_error_px": 12.367,
-  "origins_within_2px_pct": 36.67,
-  "origins_within_4px_pct": 50.0,
+  "max_abs_dheight": 70,
+  "mean_abs_origin_error_px": 17.7,
+  "origins_within_2px_pct": 23.33,
+  "origins_within_4px_pct": 30.0,
   "elements": [
     {
-      "key": "Stats",
+      "key": "stats",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -74,7 +75,7 @@
       "dheight": -35
     },
     {
-      "key": "BACK",
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,
@@ -94,7 +95,47 @@
       "dheight": -11
     },
     {
-      "key": "Enable Ethernet/USB Connection",
+      "key": "camera",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1112,
+        118,
+        1338,
+        208
+      ],
+      "replica_bounds": [
+        1142,
+        138,
+        1308,
+        158
+      ],
+      "dleft": 30,
+      "dtop": 20,
+      "dwidth": -60,
+      "dheight": -70
+    },
+    {
+      "key": "display",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1592,
+        118,
+        1815,
+        208
+      ],
+      "replica_bounds": [
+        1622,
+        138,
+        1786,
+        158
+      ],
+      "dleft": 30,
+      "dtop": 20,
+      "dwidth": -59,
+      "dheight": -70
+    },
+    {
+      "key": "enable ethernet/usb connection",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -114,7 +155,27 @@
       "dheight": -25
     },
     {
-      "key": "Enable WiFi",
+      "key": "network",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1338,
+        118,
+        1592,
+        208
+      ],
+      "replica_bounds": [
+        1367,
+        138,
+        1563,
+        158
+      ],
+      "dleft": 29,
+      "dtop": 20,
+      "dwidth": -58,
+      "dheight": -70
+    },
+    {
+      "key": "enable wifi",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -174,7 +235,27 @@
       "dheight": -5
     },
     {
-      "key": "Ethernet Weight",
+      "key": "overlays",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1815,
+        118,
+        2012,
+        208
+      ],
+      "replica_bounds": [
+        1838,
+        138,
+        2012,
+        189
+      ],
+      "dleft": 23,
+      "dtop": 20,
+      "dwidth": -23,
+      "dheight": -39
+    },
+    {
+      "key": "ethernet weight",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -194,7 +275,7 @@
       "dheight": -2
     },
     {
-      "key": "WiFi Weight",
+      "key": "wifi weight",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -214,7 +295,7 @@
       "dheight": -2
     },
     {
-      "key": "Cellular Weight",
+      "key": "cellular weight",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -234,87 +315,7 @@
       "dheight": -2
     },
     {
-      "key": "OVERLAYS",
-      "class": "TextView",
-      "audit_bounds": [
-        1849,
-        136,
-        2012,
-        189
-      ],
-      "replica_bounds": [
-        1838,
-        138,
-        2012,
-        189
-      ],
-      "dleft": -11,
-      "dtop": 2,
-      "dwidth": 11,
-      "dheight": -2
-    },
-    {
-      "key": "NETWORK",
-      "class": "TextView",
-      "audit_bounds": [
-        1372,
-        136,
-        1558,
-        189
-      ],
-      "replica_bounds": [
-        1367,
-        138,
-        1563,
-        158
-      ],
-      "dleft": -5,
-      "dtop": 2,
-      "dwidth": 10,
-      "dheight": -33
-    },
-    {
-      "key": "CAMERA",
-      "class": "TextView",
-      "audit_bounds": [
-        1146,
-        136,
-        1304,
-        189
-      ],
-      "replica_bounds": [
-        1142,
-        138,
-        1308,
-        158
-      ],
-      "dleft": -4,
-      "dtop": 2,
-      "dwidth": 8,
-      "dheight": -33
-    },
-    {
-      "key": "DISPLAY",
-      "class": "TextView",
-      "audit_bounds": [
-        1626,
-        136,
-        1781,
-        189
-      ],
-      "replica_bounds": [
-        1622,
-        138,
-        1786,
-        158
-      ],
-      "dleft": -4,
-      "dtop": 2,
-      "dwidth": 9,
-      "dheight": -33
-    },
-    {
-      "key": "Enable Cellular",
+      "key": "enable cellular",
       "class": "Switch",
       "audit_bounds": [
         1135,

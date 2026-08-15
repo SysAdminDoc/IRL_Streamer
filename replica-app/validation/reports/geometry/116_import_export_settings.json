@@ -1,10 +1,11 @@
 {
   "matched_elements": 5,
+  "unscored_audit_elements": 6,
   "unmatched_audit_elements": [
-    "You can take a picture of QR code with your camera app which recognizes QR."
+    "you can take a picture of qr code with your camera app which recognizes qr."
   ],
   "replica_only_elements": [
-    "You can take a picture of a QR code with a camera app which recognizes QR."
+    "you can take a picture of a qr code with a camera app which recognizes qr."
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 89,
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 70.0,
   "elements": [
     {
-      "key": "Export settings",
+      "key": "export settings",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -35,7 +36,7 @@
       "dheight": 1
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -55,7 +56,7 @@
       "dheight": -67
     },
     {
-      "key": "Import settings",
+      "key": "import settings",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -75,7 +76,7 @@
       "dheight": 1
     },
     {
-      "key": "Import/Export Settings",
+      "key": "import/export settings",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -95,7 +96,7 @@
       "dheight": 0
     },
     {
-      "key": "Scan QR code",
+      "key": "scan qr code",
       "class": "TextView",
       "audit_bounds": [
         278,

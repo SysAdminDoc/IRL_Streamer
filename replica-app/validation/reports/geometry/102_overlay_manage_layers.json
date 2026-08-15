@@ -1,10 +1,11 @@
 {
   "matched_elements": 5,
+  "unscored_audit_elements": 5,
   "unmatched_audit_elements": [
-    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('MMM dd, HH:mm:ss', 'en_US') %></b>"
+    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('mmm dd, hh:mm:ss', 'en_us') %></b>"
   ],
   "replica_only_elements": [
-    "Local date/time layer"
+    "local date/time layer"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 45,
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 60.0,
   "elements": [
     {
-      "key": "Delete multiple",
+      "key": "delete multiple",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -35,7 +36,7 @@
       "dheight": 1
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -55,7 +56,7 @@
       "dheight": -67
     },
     {
-      "key": "New layer",
+      "key": "new layer",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -75,7 +76,7 @@
       "dheight": 1
     },
     {
-      "key": "Manage layers",
+      "key": "manage layers",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -95,7 +96,7 @@
       "dheight": 0
     },
     {
-      "key": "Timestamp",
+      "key": "timestamp",
       "class": "TextView",
       "audit_bounds": [
         278,

@@ -1,16 +1,17 @@
 {
   "matched_elements": 6,
+  "unscored_audit_elements": 4,
   "unmatched_audit_elements": [
-    "CANCEL",
-    "Password",
-    "SAVE",
-    "Show password"
+    "cancel",
+    "password",
+    "save",
+    "show password"
   ],
   "replica_only_elements": [
-    "Local fixture",
-    "Name",
-    "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host.",
-    "URL"
+    "local fixture",
+    "name",
+    "rtmp url schema is rtmp://server/application/streamkey. this fixture never connects to the entered host.",
+    "url"
   ],
   "max_abs_dleft": 180,
   "max_abs_dtop": 361,
@@ -21,7 +22,7 @@
   "origins_within_4px_pct": 16.67,
   "elements": [
     {
-      "key": "Login",
+      "key": "login",
       "class": "EditText",
       "audit_bounds": [
         75,
@@ -41,7 +42,7 @@
       "dheight": -102
     },
     {
-      "key": "RTMP authorization",
+      "key": "rtmp authorization",
       "class": "TextView",
       "audit_bounds": [
         98,
@@ -61,7 +62,7 @@
       "dheight": -8
     },
     {
-      "key": "Target type - Leave Default for most cases",
+      "key": "target type - leave default for most cases",
       "class": "TextView",
       "audit_bounds": [
         98,
@@ -101,7 +102,7 @@
       "dheight": 19
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -121,7 +122,7 @@
       "dheight": -67
     },
     {
-      "key": "New outgoing connection",
+      "key": "new outgoing connection",
       "class": "TextView",
       "audit_bounds": [
         277,

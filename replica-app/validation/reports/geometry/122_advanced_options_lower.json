@@ -1,10 +1,11 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 10,
   "unmatched_audit_elements": [
-    "Enable this only if you have serious issues with connectivity, e.g. USB tethering not working."
+    "enable this only if you have serious issues with connectivity, e.g. usb tethering not working."
   ],
   "replica_only_elements": [
-    "Enable only for unusual local connectivity such as USB tethering."
+    "enable only for unusual local connectivity such as usb tethering."
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 73,
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Don't check network connection",
+      "key": "don't check network connection",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -35,7 +36,7 @@
       "dheight": 1
     },
     {
-      "key": "Do nothing",
+      "key": "do nothing",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -55,7 +56,7 @@
       "dheight": 0
     },
     {
-      "key": "Volume keys",
+      "key": "volume keys",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -75,7 +76,7 @@
       "dheight": 1
     },
     {
-      "key": "Say no to vertical videos.",
+      "key": "say no to vertical videos.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -95,7 +96,7 @@
       "dheight": 0
     },
     {
-      "key": "Horizon stream demo",
+      "key": "horizon stream demo",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -115,7 +116,7 @@
       "dheight": 14
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -135,7 +136,7 @@
       "dheight": -67
     },
     {
-      "key": "Platform-specific tweaks",
+      "key": "platform-specific tweaks",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -155,7 +156,7 @@
       "dheight": 15
     },
     {
-      "key": "Camera controls",
+      "key": "camera controls",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -175,7 +176,7 @@
       "dheight": 15
     },
     {
-      "key": "Advanced options",
+      "key": "advanced options",
       "class": "TextView",
       "audit_bounds": [
         277,

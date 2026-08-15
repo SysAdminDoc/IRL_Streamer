@@ -1,5 +1,6 @@
 {
   "matched_elements": 4,
+  "unscored_audit_elements": 2,
   "unmatched_audit_elements": [],
   "replica_only_elements": [],
   "max_abs_dleft": 28,
@@ -11,7 +12,7 @@
   "origins_within_4px_pct": 12.5,
   "elements": [
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         1057,
@@ -31,7 +32,7 @@
       "dheight": -78
     },
     {
-      "key": "CREATE CONNECTION",
+      "key": "create connection",
       "class": "Button",
       "audit_bounds": [
         1270,
@@ -51,7 +52,7 @@
       "dheight": -78
     },
     {
-      "key": "You don't have any active connections, please add one.",
+      "key": "you don't have any active connections, please add one.",
       "class": "TextView",
       "audit_bounds": [
         572,
@@ -71,7 +72,7 @@
       "dheight": 77
     },
     {
-      "key": "Start Broadcast?",
+      "key": "start broadcast?",
       "class": "TextView",
       "audit_bounds": [
         556,

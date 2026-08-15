@@ -36,6 +36,16 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Reopening a settings dialog showed the catalog default instead of the value it
   was editing, so confirming it silently reverted the saved setting - and a
   multi-select dropped every selection the default did not contain.
+- The difference heat maps rendered the worst pixel errors as near-black. The red
+  channel was multiplied as `uint8`, so it wrapped modulo 256 and any difference
+  at or above 86 came out darker than a small one - in exactly the images the
+  report tells a reviewer to inspect before waiving a failure.
+- The geometry matcher no longer reports phantom missing elements. Labels are
+  matched case-insensitively (the audit dumps a tab's text in caps and its
+  container's description in title case), authorized renames are paired through
+  an alias table, and a label duplicated on its own container is indexed once.
+  Coverage rose from 1041 to 1060 matched elements with unmatched down from 238
+  to 217; the differ also reports how many nodes it cannot score at all.
 - The geometry gate can now fail. It enforces coverage (every catalog state with
   audit evidence must be compared), non-vacuity (a state that matched zero
   elements measured nothing and is not a pass), and no regression against a

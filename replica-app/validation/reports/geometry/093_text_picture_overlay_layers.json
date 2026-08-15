@@ -1,11 +1,12 @@
 {
   "matched_elements": 7,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [
-    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('MMM dd, HH:mm:ss', 'en_US') %></b>"
+    "<p style='font-family:sans-serif;font-size:x-large; color: #66ff66;'><b><%date('mmm dd, hh:mm:ss', 'en_us') %></b>"
   ],
   "replica_only_elements": [
-    "Local green date/time layer",
-    "Pause overlays"
+    "local green date/time layer",
+    "pause overlays"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 114,
@@ -16,7 +17,7 @@
   "origins_within_4px_pct": 57.14,
   "elements": [
     {
-      "key": "Timestamp",
+      "key": "timestamp",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -36,7 +37,7 @@
       "dheight": 1
     },
     {
-      "key": "Layers",
+      "key": "layers",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -56,7 +57,7 @@
       "dheight": 15
     },
     {
-      "key": "Manage layers",
+      "key": "manage layers",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -76,7 +77,7 @@
       "dheight": 1
     },
     {
-      "key": "New layer",
+      "key": "new layer",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -96,7 +97,7 @@
       "dheight": 1
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -116,7 +117,7 @@
       "dheight": -101
     },
     {
-      "key": "Overlays",
+      "key": "overlays",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -136,7 +137,7 @@
       "dheight": -26
     },
     {
-      "key": "Check layers images availability",
+      "key": "check layers images availability",
       "class": "TextView",
       "audit_bounds": [
         278,

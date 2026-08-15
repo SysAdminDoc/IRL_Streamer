@@ -1,10 +1,11 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [
-    "Microphone to use for recording audio. Note that the exact behaviour of the options depends on how the option is implemented on your device."
+    "microphone to use for recording audio. note that the exact behaviour of the options depends on how the option is implemented on your device."
   ],
   "replica_only_elements": [
-    "Camcorder \u00b7 behavior depends on device implementation"
+    "camcorder \u00b7 behavior depends on device implementation"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 45,
@@ -15,7 +16,7 @@
   "origins_within_4px_pct": 61.11,
   "elements": [
     {
-      "key": "Audio channels",
+      "key": "audio channels",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -35,7 +36,7 @@
       "dheight": 1
     },
     {
-      "key": "Bitrate",
+      "key": "bitrate",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -55,7 +56,7 @@
       "dheight": 1
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -75,7 +76,7 @@
       "dheight": -67
     },
     {
-      "key": "Sample rate",
+      "key": "sample rate",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -95,7 +96,7 @@
       "dheight": 45
     },
     {
-      "key": "Auto",
+      "key": "auto",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -115,7 +116,7 @@
       "dheight": 0
     },
     {
-      "key": "Stereo",
+      "key": "stereo",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -135,7 +136,7 @@
       "dheight": 0
     },
     {
-      "key": "Audio parameters",
+      "key": "audio parameters",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -155,7 +156,7 @@
       "dheight": 0
     },
     {
-      "key": "Audio source",
+      "key": "audio source",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -175,7 +176,7 @@
       "dheight": 1
     },
     {
-      "key": "Prefer Bluetooth Mic/Headset",
+      "key": "prefer bluetooth mic/headset",
       "class": "TextView",
       "audit_bounds": [
         278,

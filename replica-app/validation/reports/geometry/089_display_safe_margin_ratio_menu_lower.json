@@ -1,8 +1,9 @@
 {
   "matched_elements": 8,
+  "unscored_audit_elements": 3,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Selected"
+    "selected"
   ],
   "max_abs_dleft": 91,
   "max_abs_dtop": 40,
@@ -113,7 +114,7 @@
       "dheight": -67
     },
     {
-      "key": "OK",
+      "key": "ok",
       "class": "Button",
       "audit_bounds": [
         1553,
@@ -133,7 +134,7 @@
       "dheight": -78
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         1340,
@@ -153,7 +154,7 @@
       "dheight": -78
     },
     {
-      "key": "Safe margins ratios",
+      "key": "safe margins ratios",
       "class": "TextView",
       "audit_bounds": [
         556,

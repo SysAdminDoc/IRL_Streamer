@@ -1,27 +1,26 @@
 {
-  "matched_elements": 2,
+  "matched_elements": 3,
+  "unscored_audit_elements": 2,
   "unmatched_audit_elements": [
-    "Enter your Kick Stream Key",
-    "Enter your Kick Stream URL",
-    "Enter your Kick username",
-    "Kick.com"
+    "enter your kick stream key",
+    "enter your kick stream url",
+    "enter your kick username"
   ],
   "replica_only_elements": [
-    "Platform B",
-    "Stream URL",
-    "Stream key",
-    "Username"
+    "stream key",
+    "stream url",
+    "username"
   ],
   "max_abs_dleft": 73,
   "max_abs_dtop": 35,
-  "max_abs_dwidth": 126,
+  "max_abs_dwidth": 860,
   "max_abs_dheight": 78,
-  "mean_abs_origin_error_px": 47.5,
-  "origins_within_2px_pct": 0.0,
-  "origins_within_4px_pct": 0.0,
+  "mean_abs_origin_error_px": 32.5,
+  "origins_within_2px_pct": 16.67,
+  "origins_within_4px_pct": 33.33,
   "elements": [
     {
-      "key": "OK",
+      "key": "ok",
       "class": "Button",
       "audit_bounds": [
         1553,
@@ -41,7 +40,7 @@
       "dheight": -78
     },
     {
-      "key": "CANCEL",
+      "key": "cancel",
       "class": "Button",
       "audit_bounds": [
         1340,
@@ -59,6 +58,26 @@
       "dtop": 35,
       "dwidth": -63,
       "dheight": -78
+    },
+    {
+      "key": "platform b",
+      "class": "TextView",
+      "audit_bounds": [
+        556,
+        255,
+        1699,
+        331
+      ],
+      "replica_bounds": [
+        557,
+        259,
+        840,
+        335
+      ],
+      "dleft": 1,
+      "dtop": 4,
+      "dwidth": -860,
+      "dheight": 0
     }
   ],
   "screen": "031_kick_quick_setup_form"

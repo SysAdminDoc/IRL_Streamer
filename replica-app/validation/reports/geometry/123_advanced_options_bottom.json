@@ -1,12 +1,13 @@
 {
   "matched_elements": 7,
+  "unscored_audit_elements": 10,
   "unmatched_audit_elements": [
-    "USB Camera#6",
-    "USB OTG works unstable unfortunately and it's dependent on hardware capabilities. So if you enable this feature and it doesn't work, this means IRL Pro can't handle it.\n\nTap on this message to read more details on our website."
+    "usb camera#6",
+    "usb otg works unstable unfortunately and it's dependent on hardware capabilities. so if you enable this feature and it doesn't work, this means irl pro can't handle it.\n\ntap on this message to read more details on our website."
   ],
   "replica_only_elements": [
-    "USB OTG depends on hardware capabilities. This local reconstruction does not open an external support site.",
-    "WebViews"
+    "usb otg depends on hardware capabilities. this local reconstruction does not open an external support site.",
+    "webviews"
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 174,
@@ -17,7 +18,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Take picture from USB UVC camera.",
+      "key": "take picture from usb uvc camera.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -37,7 +38,7 @@
       "dheight": 0
     },
     {
-      "key": "Encoder buffer size",
+      "key": "encoder buffer size",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -57,7 +58,7 @@
       "dheight": 15
     },
     {
-      "key": "USB Camera",
+      "key": "usb camera",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -77,7 +78,7 @@
       "dheight": 9
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -97,7 +98,7 @@
       "dheight": -67
     },
     {
-      "key": "Enable custom encoder buffer size",
+      "key": "enable custom encoder buffer size",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -117,7 +118,7 @@
       "dheight": 1
     },
     {
-      "key": "Use recommended encoder buffer size.",
+      "key": "use recommended encoder buffer size.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -137,7 +138,7 @@
       "dheight": 0
     },
     {
-      "key": "Advanced options",
+      "key": "advanced options",
       "class": "TextView",
       "audit_bounds": [
         277,

@@ -1,8 +1,9 @@
 {
   "matched_elements": 8,
+  "unscored_audit_elements": 8,
   "unmatched_audit_elements": [
     "1280",
-    "Center"
+    "center"
   ],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -14,7 +15,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Width",
+      "key": "width",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -34,7 +35,7 @@
       "dheight": -9
     },
     {
-      "key": "Width/Height scaled to 1080p canvas",
+      "key": "width/height scaled to 1080p canvas",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -54,7 +55,7 @@
       "dheight": -2
     },
     {
-      "key": "Z Order",
+      "key": "z order",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -94,7 +95,7 @@
       "dheight": 0
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -114,7 +115,7 @@
       "dheight": -67
     },
     {
-      "key": "Layers with greater Z Order will appear at front.",
+      "key": "layers with greater z order will appear at front.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -134,7 +135,7 @@
       "dheight": -2
     },
     {
-      "key": "WebView options",
+      "key": "webview options",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -154,7 +155,7 @@
       "dheight": 15
     },
     {
-      "key": "Layer",
+      "key": "layer",
       "class": "TextView",
       "audit_bounds": [
         277,

@@ -1,7 +1,8 @@
 {
   "matched_elements": 9,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [
-    "JPEG"
+    "jpeg"
   ],
   "replica_only_elements": [],
   "max_abs_dleft": 45,
@@ -13,7 +14,7 @@
   "origins_within_4px_pct": 55.56,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -33,7 +34,7 @@
       "dheight": -67
     },
     {
-      "key": "Video recording is split into sections by default for reliability purposes. You may disable this if you need.",
+      "key": "video recording is split into sections by default for reliability purposes. you may disable this if you need.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -53,7 +54,7 @@
       "dheight": 7
     },
     {
-      "key": "Split video into sections",
+      "key": "split video into sections",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -73,7 +74,7 @@
       "dheight": 1
     },
     {
-      "key": "WARNING: Recording will stop when the battery level is critically low, usually ~7%.",
+      "key": "warning: recording will stop when the battery level is critically low, usually ~7%.",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -113,7 +114,7 @@
       "dheight": 0
     },
     {
-      "key": "Sections duration (minutes)",
+      "key": "sections duration (minutes)",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -133,7 +134,7 @@
       "dheight": 1
     },
     {
-      "key": "Snapshot format",
+      "key": "snapshot format",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -153,7 +154,7 @@
       "dheight": -9
     },
     {
-      "key": "Record stream",
+      "key": "record stream",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -173,7 +174,7 @@
       "dheight": 1
     },
     {
-      "key": "Recording options",
+      "key": "recording options",
       "class": "TextView",
       "audit_bounds": [
         277,

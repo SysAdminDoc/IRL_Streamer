@@ -1,30 +1,65 @@
 {
-  "matched_elements": 4,
+  "matched_elements": 7,
+  "unscored_audit_elements": 3,
   "unmatched_audit_elements": [
-    "AuditTestz",
-    "KICK.COM",
-    "RTMP URL schema is rtmp://server/application/streamkey, e.g. rtmp://a.rtmp.youtube.com/live2/abcd-efgh-abcd-efgh",
-    "TWITCH.TV",
-    "Target type - Leave Default for most cases"
+    "rtmp url schema is rtmp://server/application/streamkey, e.g. rtmp://a.rtmp.youtube.com/live2/abcd-efgh-abcd-efgh",
+    "target type - leave default for most cases"
   ],
   "replica_only_elements": [
-    "Local fixture",
-    "Name",
-    "PLATFORM A",
-    "PLATFORM B",
-    "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host.",
-    "URL"
+    "name",
+    "rtmp url schema is rtmp://server/application/streamkey. this fixture never connects to the entered host.",
+    "url"
   ],
-  "max_abs_dleft": 45,
-  "max_abs_dtop": 35,
+  "max_abs_dleft": 231,
+  "max_abs_dtop": 40,
   "max_abs_dwidth": 1795,
-  "max_abs_dheight": 67,
-  "mean_abs_origin_error_px": 12.75,
-  "origins_within_2px_pct": 50.0,
-  "origins_within_4px_pct": 50.0,
+  "max_abs_dheight": 78,
+  "mean_abs_origin_error_px": 46.929,
+  "origins_within_2px_pct": 35.71,
+  "origins_within_4px_pct": 35.71,
   "elements": [
     {
-      "key": "Navigate up",
+      "key": "platform a",
+      "class": "Button",
+      "audit_bounds": [
+        75,
+        377,
+        777,
+        512
+      ],
+      "replica_bounds": [
+        306,
+        417,
+        547,
+        474
+      ],
+      "dleft": 231,
+      "dtop": 40,
+      "dwidth": -461,
+      "dheight": -78
+    },
+    {
+      "key": "platform b",
+      "class": "Button",
+      "audit_bounds": [
+        777,
+        377,
+        1479,
+        512
+      ],
+      "replica_bounds": [
+        1008,
+        417,
+        1248,
+        474
+      ],
+      "dleft": 231,
+      "dtop": 40,
+      "dwidth": -462,
+      "dheight": -78
+    },
+    {
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -42,6 +77,26 @@
       "dtop": 35,
       "dwidth": -90,
       "dheight": -67
+    },
+    {
+      "key": "local fixture",
+      "class": "EditText",
+      "audit_bounds": [
+        75,
+        664,
+        2181,
+        790
+      ],
+      "replica_bounds": [
+        87,
+        665,
+        2294,
+        800
+      ],
+      "dleft": 12,
+      "dtop": 1,
+      "dwidth": 101,
+      "dheight": 9
     },
     {
       "key": "rtmp://198.51.100.1/live",
@@ -64,7 +119,7 @@
       "dheight": 9
     },
     {
-      "key": "New outgoing connection",
+      "key": "new outgoing connection",
       "class": "TextView",
       "audit_bounds": [
         277,
@@ -84,7 +139,7 @@
       "dheight": 0
     },
     {
-      "key": "Quick Site Setup",
+      "key": "quick site setup",
       "class": "TextView",
       "audit_bounds": [
         75,

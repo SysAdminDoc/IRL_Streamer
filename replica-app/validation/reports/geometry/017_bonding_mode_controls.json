@@ -1,12 +1,13 @@
 {
   "matched_elements": 7,
+  "unscored_audit_elements": 10,
   "unmatched_audit_elements": [
-    "Cellular Weight",
-    "Enable Cellular",
-    "Tune what links are enabled when bonding and their relative weights. Weights are relative so don't have an effect if only one connection enabled.\nThis can be adjusted live in the quick settings network tab."
+    "cellular weight",
+    "enable cellular",
+    "tune what links are enabled when bonding and their relative weights. weights are relative so don't have an effect if only one connection enabled.\nthis can be adjusted live in the quick settings network tab."
   ],
   "replica_only_elements": [
-    "Tune which links are enabled and their relative weights. The same values appear in Network quick settings."
+    "tune which links are enabled and their relative weights. the same values appear in network quick settings."
   ],
   "max_abs_dleft": 45,
   "max_abs_dtop": 218,
@@ -17,7 +18,7 @@
   "origins_within_4px_pct": 50.0,
   "elements": [
     {
-      "key": "Advanced Bonding Settings",
+      "key": "advanced bonding settings",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -37,7 +38,7 @@
       "dheight": 15
     },
     {
-      "key": "Enable Bonding for the following connections:",
+      "key": "enable bonding for the following connections:",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -57,7 +58,7 @@
       "dheight": -2
     },
     {
-      "key": "Only bond the connections, video is sent straight to the destination",
+      "key": "only bond the connections, video is sent straight to the destination",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -77,7 +78,7 @@
       "dheight": 0
     },
     {
-      "key": "Connections",
+      "key": "connections",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -97,7 +98,7 @@
       "dheight": 15
     },
     {
-      "key": "Bonding Only",
+      "key": "bonding only",
       "class": "TextView",
       "audit_bounds": [
         278,
@@ -117,7 +118,7 @@
       "dheight": 41
     },
     {
-      "key": "Navigate up",
+      "key": "navigate up",
       "class": "ImageButton",
       "audit_bounds": [
         75,
@@ -137,7 +138,7 @@
       "dheight": -67
     },
     {
-      "key": "Bonding and NoDrop options",
+      "key": "bonding and nodrop options",
       "class": "TextView",
       "audit_bounds": [
         277,

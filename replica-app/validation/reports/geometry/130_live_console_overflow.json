@@ -1,41 +1,42 @@
 {
   "matched_elements": 16,
+  "unscored_audit_elements": 12,
   "unmatched_audit_elements": [
-    "-2110 mW",
-    "-513 mA",
+    "-2110 mw",
+    "-513 ma",
     "0",
-    "33.3 \u00b0C",
+    "33.3 \u00b0c",
     "61\u00b0",
     "67\u00b0",
-    "Camera",
-    "Display",
-    "FRONT",
-    "Network",
-    "Overlays"
+    "camera#6",
+    "display#7",
+    "front",
+    "network#13",
+    "overlays#14"
   ],
   "replica_only_elements": [
-    "-283 mA",
+    "-283 ma",
     "0.0",
-    "Battery 73 percent",
-    "Flip camera",
-    "Mute microphone",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "battery 73 percent",
+    "flip camera",
+    "mute microphone",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 135,
   "max_abs_dtop": 26,
   "max_abs_dwidth": 748,
-  "max_abs_dheight": 35,
-  "mean_abs_origin_error_px": 26.594,
-  "origins_within_2px_pct": 31.25,
-  "origins_within_4px_pct": 43.75,
+  "max_abs_dheight": 39,
+  "mean_abs_origin_error_px": 31.594,
+  "origins_within_2px_pct": 18.75,
+  "origins_within_4px_pct": 25.0,
   "elements": [
     {
-      "key": "id:0 [73\u00b0 FoV, rear]",
+      "key": "id:0 [73\u00b0 fov, rear]",
       "class": "RadioButton",
       "audit_bounds": [
         1135,
@@ -55,7 +56,7 @@
       "dheight": -33
     },
     {
-      "key": "id:1 [67\u00b0 FoV, front]",
+      "key": "id:1 [67\u00b0 fov, front]",
       "class": "RadioButton",
       "audit_bounds": [
         1135,
@@ -75,7 +76,7 @@
       "dheight": -33
     },
     {
-      "key": "id:2 [103\u00b0 FoV, rear]",
+      "key": "id:2 [103\u00b0 fov, rear]",
       "class": "RadioButton",
       "audit_bounds": [
         1135,
@@ -95,7 +96,7 @@
       "dheight": -33
     },
     {
-      "key": "id:3 [61\u00b0 FoV, front]",
+      "key": "id:3 [61\u00b0 fov, front]",
       "class": "RadioButton",
       "audit_bounds": [
         1135,
@@ -115,7 +116,7 @@
       "dheight": -22
     },
     {
-      "key": "Active camera",
+      "key": "active camera",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -155,7 +156,7 @@
       "dheight": -35
     },
     {
-      "key": "BACK",
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,
@@ -173,6 +174,66 @@
       "dtop": -3,
       "dwidth": -32,
       "dheight": -11
+    },
+    {
+      "key": "camera",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1112,
+        118,
+        1338,
+        208
+      ],
+      "replica_bounds": [
+        1142,
+        138,
+        1308,
+        189
+      ],
+      "dleft": 30,
+      "dtop": 20,
+      "dwidth": -60,
+      "dheight": -39
+    },
+    {
+      "key": "display",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1592,
+        118,
+        1815,
+        208
+      ],
+      "replica_bounds": [
+        1622,
+        138,
+        1786,
+        189
+      ],
+      "dleft": 30,
+      "dtop": 20,
+      "dwidth": -59,
+      "dheight": -39
+    },
+    {
+      "key": "network",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1338,
+        118,
+        1592,
+        208
+      ],
+      "replica_bounds": [
+        1367,
+        138,
+        1563,
+        189
+      ],
+      "dleft": 29,
+      "dtop": 20,
+      "dwidth": -58,
+      "dheight": -39
     },
     {
       "key": "103\u00b0",
@@ -215,7 +276,27 @@
       "dheight": -5
     },
     {
-      "key": "Torch",
+      "key": "overlays",
+      "class": "LinearLayout",
+      "audit_bounds": [
+        1815,
+        118,
+        2012,
+        208
+      ],
+      "replica_bounds": [
+        1838,
+        138,
+        2012,
+        189
+      ],
+      "dleft": 23,
+      "dtop": 20,
+      "dwidth": -23,
+      "dheight": -39
+    },
+    {
+      "key": "torch",
       "class": "Switch",
       "audit_bounds": [
         1135,
@@ -235,87 +316,7 @@
       "dheight": -25
     },
     {
-      "key": "OVERLAYS",
-      "class": "TextView",
-      "audit_bounds": [
-        1849,
-        136,
-        2012,
-        189
-      ],
-      "replica_bounds": [
-        1838,
-        138,
-        2012,
-        189
-      ],
-      "dleft": -11,
-      "dtop": 2,
-      "dwidth": 11,
-      "dheight": -2
-    },
-    {
-      "key": "NETWORK",
-      "class": "TextView",
-      "audit_bounds": [
-        1372,
-        136,
-        1558,
-        189
-      ],
-      "replica_bounds": [
-        1367,
-        138,
-        1563,
-        189
-      ],
-      "dleft": -5,
-      "dtop": 2,
-      "dwidth": 10,
-      "dheight": -2
-    },
-    {
-      "key": "CAMERA",
-      "class": "TextView",
-      "audit_bounds": [
-        1146,
-        136,
-        1304,
-        189
-      ],
-      "replica_bounds": [
-        1142,
-        138,
-        1308,
-        189
-      ],
-      "dleft": -4,
-      "dtop": 2,
-      "dwidth": 8,
-      "dheight": -2
-    },
-    {
-      "key": "DISPLAY",
-      "class": "TextView",
-      "audit_bounds": [
-        1626,
-        136,
-        1781,
-        189
-      ],
-      "replica_bounds": [
-        1622,
-        138,
-        1786,
-        189
-      ],
-      "dleft": -4,
-      "dtop": 2,
-      "dwidth": 9,
-      "dheight": -2
-    },
-    {
-      "key": "Exposure compensation",
+      "key": "exposure compensation",
       "class": "TextView",
       "audit_bounds": [
         1135,
@@ -335,7 +336,7 @@
       "dheight": -2
     },
     {
-      "key": "Zoom",
+      "key": "zoom",
       "class": "TextView",
       "audit_bounds": [
         1135,

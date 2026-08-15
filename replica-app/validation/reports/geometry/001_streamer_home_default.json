@@ -1,16 +1,17 @@
 {
   "matched_elements": 10,
+  "unscored_audit_elements": 9,
   "unmatched_audit_elements": [],
   "replica_only_elements": [
-    "Battery 73 percent",
-    "Flip camera",
-    "Mute microphone",
-    "OIS",
-    "Quick settings",
-    "Reload chat and overlays",
-    "Settings",
-    "Start broadcast",
-    "Take snapshot (local simulation)"
+    "battery 73 percent",
+    "flip camera",
+    "mute microphone",
+    "ois",
+    "quick settings",
+    "reload chat and overlays",
+    "settings",
+    "start broadcast",
+    "take snapshot (local simulation)"
   ],
   "max_abs_dleft": 36,
   "max_abs_dtop": 26,
@@ -81,7 +82,7 @@
       "dheight": -35
     },
     {
-      "key": "FRONT",
+      "key": "front",
       "class": "TextView",
       "audit_bounds": [
         1469,
@@ -101,7 +102,7 @@
       "dheight": -11
     },
     {
-      "key": "BACK",
+      "key": "back",
       "class": "TextView",
       "audit_bounds": [
         1496,
@@ -161,7 +162,7 @@
       "dheight": -5
     },
     {
-      "key": "31.6 \u00b0C",
+      "key": "31.6 \u00b0c",
       "class": "TextView",
       "audit_bounds": [
         1905,
@@ -181,7 +182,7 @@
       "dheight": 0
     },
     {
-      "key": "-1144 mW",
+      "key": "-1144 mw",
       "class": "TextView",
       "audit_bounds": [
         1866,
@@ -201,7 +202,7 @@
       "dheight": 0
     },
     {
-      "key": "-283 mA",
+      "key": "-283 ma",
       "class": "TextView",
       "audit_bounds": [
         1889,
