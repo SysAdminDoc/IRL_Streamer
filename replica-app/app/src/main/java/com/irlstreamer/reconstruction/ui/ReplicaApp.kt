@@ -22,7 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.irlstreamer.reconstruction.MainViewModel
-import com.irlstreamer.reconstruction.debug.AuditScrollAnchors
+import com.irlstreamer.reconstruction.debug.Harness
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.AppUiState
 import com.irlstreamer.reconstruction.ui.components.AuditedDialogHost
@@ -104,7 +104,7 @@ fun ReplicaApp(
         state.runtime.dialog?.let { request ->
             // Restore the audited choice-list scroll offset for the *_menu_middle and
             // *_menu_lower captures, which show the same menu scrolled to a later option.
-            val anchorLabel = AuditScrollAnchors.labelFor(context, state.runtime.debugScreenId)
+            val anchorLabel = Harness.overrides.scrollAnchorLabel(context, state.runtime.debugScreenId)
             val anchoredRequest = anchorLabel
                 ?.let { label -> request.options.indexOf(label) }
                 ?.takeIf { it > 0 }

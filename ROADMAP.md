@@ -314,13 +314,6 @@ Added after v0.3.0 shipped the CameraX preview. The app is a pixel-faithful repl
 
 ### P1
 
-- [ ] P1 — IS-69 Isolate the debug-state catalog from release code paths
-  Why: `debugScreenId` checks now live in `ReplicaApp.kt`, `Forms.kt`, `SettingsScreen.kt` and `LiveConsoleScreen.kt` (the v0.3.0 fixture switch added another). Every new surface has to remember the harness, and the release build carries catalog code it can never reach.
-  Evidence: `grep -rn debugScreenId app/src/main` lists five production files; `DebugStateCatalog` is in `src/main`, not `src/debug`.
-  Touches: `.../debug/*`, a small `HarnessOverrides` interface with a no-op release implementation, the five call sites
-  Acceptance: `src/main` contains no reference to `DebugStateCatalog`; release APK class list excludes it; the 145-state capture still passes geometry.
-  Complexity: M
-
 - [ ] P1 — IS-70 Retire fixture decoys as each real subsystem lands
   Why: fixture telemetry (mA/mW/°C), the hardcoded "30 fps" pill, the "Snapshot simulation complete" toast, "local camera fixture opened" in the LOG tab, and the SIMULATED capture states are misleading now that the console shows a real camera. Left in place they become permanent lies in a shipping app.
   Evidence: `TelemetryBlock` and `FpsPill` in `LiveConsoleScreen.kt`; `QuickSettingsPanel.kt` LOG tab text; `SimulatedBroadcastEngine.IdleStatistics`.

@@ -2,6 +2,7 @@ package com.irlstreamer.reconstruction.debug
 
 import com.irlstreamer.reconstruction.BuildConfig
 import com.irlstreamer.reconstruction.model.AppRoute
+import com.irlstreamer.reconstruction.model.noConnectionDialog
 import com.irlstreamer.reconstruction.model.ConsoleTelemetry
 import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
@@ -142,7 +143,7 @@ object DebugStateCatalog {
             139 -> base.copy(route = AppRoute.LiveConsole, microphoneMuted = true)
             140 -> base.copy(route = AppRoute.LiveConsole, currentCameraId = 1)
             141 -> base.copy(route = AppRoute.LiveConsole, currentCameraId = 2)
-            142 -> base.copy(route = AppRoute.LiveConsole, dialog = noConnectionDialog())
+            142 -> base.copy(route = AppRoute.LiveConsole, dialog = noConnectionDialog)
             143 -> base.copy(route = AppRoute.LiveConsole, toastMessage = "Reloading chat and all web overlays, please wait a few seconds…")
             in 144..145 -> base.copy(route = AppRoute.LiveConsole)
             else -> base
@@ -156,14 +157,6 @@ object DebugStateCatalog {
         "validation_error" -> resolve("101_overlay_blank_save_validation")
         else -> RuntimeUiState(route = AppRoute.LiveConsole)
     }
-
-    fun noConnectionDialog() = alertDialog(
-        id = "no_connection",
-        title = "Start Broadcast?",
-        message = "You don't have any active connections, please add one.",
-        positive = "CREATE CONNECTION",
-        negative = "CANCEL",
-    ).copy(overLiveConsole = true)
 
     private fun RuntimeUiState.settings(page: SettingsPage, index: Int = 0) = copy(
         route = AppRoute.Settings(page),

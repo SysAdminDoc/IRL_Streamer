@@ -14,7 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import android.util.Log
 import com.irlstreamer.reconstruction.BuildConfig
 import com.irlstreamer.reconstruction.MainViewModel
-import com.irlstreamer.reconstruction.debug.AuditScrollAnchors
+import com.irlstreamer.reconstruction.debug.Harness
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.AppUiState
 import com.irlstreamer.reconstruction.model.DialogRequest
@@ -59,7 +59,7 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
     // Prefer the audited scroll position: the anchor names the row that the audit
     // hierarchy shows flush against the top of the list viewport. Fall back to the
     // catalog index only when a state has no recorded anchor.
-    val anchorLabel = AuditScrollAnchors.labelFor(LocalContext.current, state.runtime.debugScreenId)
+    val anchorLabel = Harness.overrides.scrollAnchorLabel(LocalContext.current, state.runtime.debugScreenId)
     val anchorIndex = anchorLabel
         ?.let { label -> visibleItems.indexOfFirst { itemTitle(it) == label } }
         ?.takeIf { it >= 0 }
@@ -68,7 +68,7 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
         // replace, so it must never happen quietly: an anchor that resolves to
         // nothing looks identical to a state that never had one.
         Log.w(
-            "AuditScrollAnchors",
+            "CaptureAnchors",
             "Anchor \"$anchorLabel\" for ${state.runtime.debugScreenId} matched no row on $page; " +
                 "falling back to index ${state.runtime.settingsScrollIndex}",
         )
@@ -165,7 +165,7 @@ private fun handleAction(action: SettingAction, state: AppUiState, viewModel: Ma
  * back over the user's setting. A multi-select was worse - reopening dropped
  * every selection the catalog default did not contain.
  *
- * Debug states are unaffected: `DebugStateCatalog` injects its dialogs into
+ * Debug states are unaffected: the capture harness injects its dialogs into
  * runtime state directly and never routes through here, so the audited captures
  * keep exactly the selection they were captured with.
  */

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.irlstreamer.reconstruction.data.ReplicaSettingsRepository
-import com.irlstreamer.reconstruction.debug.DebugStateCatalog
+import com.irlstreamer.reconstruction.debug.Harness
 import com.irlstreamer.reconstruction.engine.BroadcastEngine
 import com.irlstreamer.reconstruction.engine.BroadcastFailure
 import com.irlstreamer.reconstruction.engine.BroadcastRequest
@@ -19,6 +19,7 @@ import com.irlstreamer.reconstruction.model.QuickTab
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.RuntimeUiState
 import com.irlstreamer.reconstruction.model.SettingsPage
+import com.irlstreamer.reconstruction.model.noConnectionDialog
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -158,11 +159,11 @@ class MainViewModel(
     }
 
     fun applyDebugScreen(screenId: String) {
-        runtime.value = DebugStateCatalog.resolve(screenId)
+        Harness.overrides.screenState(screenId)?.let { runtime.value = it }
     }
 
     fun applyNamedState(name: String) {
-        runtime.value = DebugStateCatalog.resolveNamedState(name)
+        Harness.overrides.namedState(name)?.let { runtime.value = it }
     }
 
     fun toggleQuickPanel() {
@@ -214,7 +215,7 @@ class MainViewModel(
                 is BroadcastResult.Started -> Unit
                 is BroadcastResult.Rejected -> when (val failure = result.failure) {
                     BroadcastFailure.NoActiveConnection ->
-                        runtime.value = runtime.value.copy(dialog = DebugStateCatalog.noConnectionDialog())
+                        runtime.value = runtime.value.copy(dialog = noConnectionDialog)
                     is BroadcastFailure.TransportUnavailable ->
                         runtime.value = runtime.value.copy(toastMessage = failure.reason)
                 }

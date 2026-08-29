@@ -138,6 +138,21 @@ data class ScreenOverrides(
     val telemetry: ConsoleTelemetry? = null,
 )
 
+/**
+ * The audited guard raised when Start is pressed with nothing to broadcast to
+ * (screen 142). Production behaviour, so it lives here rather than in the
+ * capture catalog the release build does not carry.
+ */
+val noConnectionDialog = DialogRequest(
+    id = "no_connection",
+    title = "Start Broadcast?",
+    type = DialogType.ALERT,
+    message = "You don't have any active connections, please add one.",
+    positiveLabel = "CREATE CONNECTION",
+    negativeLabel = "CANCEL",
+    overLiveConsole = true,
+)
+
 /** One live-console telemetry sample, exactly as the audit recorded it. */
 data class ConsoleTelemetry(
     val currentMilliamps: Int,

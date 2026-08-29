@@ -8,6 +8,7 @@ import com.irlstreamer.reconstruction.model.QuickTab
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.RuntimeUiState
 import com.irlstreamer.reconstruction.model.ScreenOverrides
+import java.io.File
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -58,5 +59,32 @@ class DebugStateCatalogTest {
         assertEquals(50, state.effectiveWifiWeight)
         assertFalse(state.settings.gridVisible)
         assertEquals(100, state.settings.wifiWeight)
+    }
+
+    /**
+     * The catalog lives in the debug source set so release builds cannot carry
+     * it. Production code reaches the harness through `HarnessOverrides`.
+     */
+    @Test
+    fun productionSourceDoesNotReachIntoTheCatalog() {
+        var candidate: File? = File(System.getProperty("user.dir").orEmpty()).absoluteFile
+        while (candidate != null && !File(candidate, "src/main/java").isDirectory) {
+            candidate = candidate.parentFile
+        }
+        val main = File(requireNotNull(candidate) { "src/main/java not found" }, "src/main/java")
+
+        val offenders = main.walkTopDown()
+            .filter { it.isFile && it.extension == "kt" }
+            .flatMap { file ->
+                file.readLines().withIndex()
+                    .filter { (_, line) -> line.contains("DebugStateCatalog") || line.contains("AuditScrollAnchors") }
+                    .map { (index, line) -> "${file.name}:${index + 1}: ${line.trim()}" }
+            }
+            .toList()
+
+        assertTrue(
+            "production source must go through HarnessOverrides:\n" + offenders.joinToString("\n"),
+            offenders.isEmpty(),
+        )
     }
 }
