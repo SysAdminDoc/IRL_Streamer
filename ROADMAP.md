@@ -374,13 +374,6 @@ From `RESEARCH.md` (2026-08-29). Every item traces to a source recorded there. E
   Acceptance: a phone running the stock Moblink app on the same LAN appears in Bonding settings, is accepted with the shared password, and its link carries packets visible in the per-link stats; disconnecting it removes the link without dropping the stream.
   Complexity: L
 
-- [ ] P1 — IS-84 Gradle dependency verification with pinned plugin and artifact checksums
-  Why: the wrapper SHA-256 is pinned but no `gradle/verification-metadata.xml` exists; the upcoming native transport dependencies (srtdroid, StreamPack) widen the surface.
-  Evidence: 2026 plugin-portal trojanized-plugin incident (Likely, https://www.redfoxsec.com/blog/software-supply-chain-attacks-2026-latest-incidents-analysis-and-how-to-protect-your-pipeline); https://blog.gradle.org/category/security.
-  Touches: `replica-app/gradle/verification-metadata.xml` (generated with `--write-verification-metadata sha256`), `scripts/build-release.ps1` (fail on unverified)
-  Acceptance: `gradlew :app:assembleRelease` fails when any dependency checksum changes; the metadata file is committed and regenerated only by an explicit script flag.
-  Complexity: S
-
 ### P2
 
 - [ ] P2 — IS-79 Portrait 9:16 output with rotated overlays

@@ -58,6 +58,16 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\launch-replica
 
 The repository-owned `irl-streamer-signing.jks` is a disposable local self-signed identity used for deterministic debug/release upgrade testing. It is not a production or Play signing key.
 
+## Dependency verification
+
+Every dependency is pinned by SHA-256 in `gradle/verification-metadata.xml`, so a
+build fails outright if an artifact's bytes change. When you deliberately add or
+upgrade a dependency, rewrite the file and read the diff before committing it:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-release.ps1 -RegenerateVerification
+```
+
 ## Delivered validation status
 
 The reconstruction is validated by three gates, in the order they constrain it.

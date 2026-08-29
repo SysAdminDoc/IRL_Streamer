@@ -13,6 +13,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - When the camera will not start, the console says why and offers Retry instead
   of flashing a toast and leaving a black rectangle.
 
+- Every dependency is pinned by checksum. A build now fails if an artifact's
+  bytes change under it, and regenerating the pins takes a deliberate flag.
+
 ### Fixed
 
 - The capture catalog the screenshot harness uses no longer ships in release
