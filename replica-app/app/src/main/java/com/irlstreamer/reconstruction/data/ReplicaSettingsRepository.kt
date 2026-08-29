@@ -5,14 +5,15 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.mutablePreferencesOf
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 private val Context.replicaDataStore by preferencesDataStore(name = "irl_streamer_settings")
@@ -127,8 +128,18 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
      * silent and irreversible, with the confirm dialog as its only guard.
      */
     suspend fun reset(): Preferences {
-        val snapshot = dataStore.data.first()
-        dataStore.edit { it.clear() }
+        // One transaction: reading the snapshot separately let a concurrent write
+        // land between the read and the clear, where undo could not recover it.
+        var snapshot: Preferences = emptyPreferences()
+        dataStore.edit { preferences ->
+            val copy = mutablePreferencesOf()
+            preferences.asMap().forEach { (key, value) ->
+                @Suppress("UNCHECKED_CAST")
+                copy[key as Preferences.Key<Any>] = value
+            }
+            snapshot = copy
+            preferences.clear()
+        }
         return snapshot
     }
 

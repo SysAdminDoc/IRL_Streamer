@@ -63,8 +63,8 @@ fun ReplicaApp(
     // A reset is real and irreversible once the offer lapses, so it gets an
     // action affordance rather than the plain toast every other event uses.
     val snackbarHostState = remember { SnackbarHostState() }
-    LaunchedEffect(state.runtime.undoResetVisible) {
-        if (state.runtime.undoResetVisible) {
+    LaunchedEffect(state.runtime.undoResetOffer) {
+        if (state.runtime.undoResetOffer != null) {
             val result = snackbarHostState.showSnackbar(
                 message = "Settings reset",
                 actionLabel = "UNDO",

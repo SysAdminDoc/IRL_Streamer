@@ -359,13 +359,6 @@ From `RESEARCH.md` (2026-08-29). Every item traces to a source recorded there. E
 
 ### P1
 
-- [ ] P1 — IS-78 Production loading, empty and error surfaces replace toast-only feedback
-  Why: the only loading/empty/error states are debug-catalog seeds (`DebugStateCatalog.kt:152-155`); a camera bind failure in `CameraPreview.kt:118,141` is a toast with no retry, and a Start refusal has no inline state.
-  Evidence: repo inspection 2026-08-29; IRL Pro reviews cite "black screen on Samsung" with no recovery path (https://play.google.com/store/apps/details?id=app.irlpro.android).
-  Touches: `model/AppModels.kt` (`RuntimeUiState.surfaceError`), `ui/live/CameraPreview.kt` (error surface with Retry), `ui/live/LiveConsoleScreen.kt`, `ui/settings/Forms.kt` (inline validation instead of toast)
-  Acceptance: camera bind failure renders an in-console message with a Retry control that re-binds; connection list empty state renders a call-to-action; form validation errors render inline under the field; toasts remain only for transient confirmations.
-  Complexity: M
-
 - [ ] P1 — IS-77 Multi-network hold and per-link socket binding layer
   Why: SRTLA (IS-17), Moblink (IS-59/IS-76) and per-link telemetry (IS-09) all need cellular, WiFi and USB Ethernet held simultaneously with UDP sockets bound per link; nothing in the app does this and the platform gives no per-link RTT.
   Evidence: `ConnectivityManager.requestNetwork` per transport + `Network.bindSocket`, 100-request cap per UID, sockets die on loss (https://developer.android.com/develop/connectivity/network-ops/reading-network-state); MPTCP unavailable on stock Android (https://github.com/mptcp-nexus/android).
@@ -524,3 +517,19 @@ From `RESEARCH.md` (2026-08-29). Every item traces to a source recorded there. E
   Touches: chat model (message actions), Twitch Helix moderation endpoints, Kick moderation API, quick panel long-press menu
   Acceptance: long-press on a message offers Delete, Timeout 10 min, Ban; the action takes effect on the platform and the message is marked in the overlay.
   Complexity: M
+
+## Findings from the 2026-08-29 drain
+
+- [ ] P2 — IS-100 The undo offer can be unreachable or expire unseen
+  Why: the snackbar is hosted in the activity window, so any dialog opened inside the ten seconds covers it and the offer lapses untappable; the countdown also keeps running while the app is backgrounded, so returning after ten seconds finds the offer gone without it ever having been seen.
+  Evidence: adversarial review 2026-08-29 of `ui/ReplicaApp.kt` snackbar host vs `ui/components/AuditedDialogs.kt` (Compose `Dialog` is a separate window with a `fillMaxSize()` scrim); `LaunchedEffect` is composition-scoped, not lifecycle-scoped.
+  Touches: `ui/ReplicaApp.kt`, `ui/components/AuditedDialogs.kt`
+  Acceptance: opening a dialog while the offer is live still leaves Undo tappable; backgrounding the app pauses the countdown so the offer survives to be seen on return; a test drives both paths.
+  Complexity: M
+
+- [ ] P2 — IS-101 Quick-panel toggles never reflect their own writes
+  Why: `QuickSettingsPanel` reads `runtime.transientBooleans[...]` while `MainViewModel.toggleBoolean` writes through `repository.setExtraToggle`, which lands in `settings.extraToggles`. Nothing copies one to the other, so Torch, Focus mode, White balance and Anti-flicker snap back the moment they are tapped.
+  Evidence: adversarial review 2026-08-29; `ui/live/QuickSettingsPanel.kt:177-189` vs `MainViewModel.toggleBoolean`.
+  Touches: `ui/live/QuickSettingsPanel.kt`, `MainViewModel.kt`
+  Acceptance: tapping each quick-panel toggle leaves it in the new position, and the position survives closing and reopening the panel; a unit test covers one toggle end to end.
+  Complexity: S

@@ -8,9 +8,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - Resetting the app settings now says so, and offers Undo for ten seconds. The
-  reset used to clear everything silently with no way back.
+  reset used to clear everything silently with no way back. Resetting twice
+  inside that window still restores what the first reset cleared.
+- When the camera will not start, the console says why and offers Retry instead
+  of flashing a toast and leaving a black rectangle.
 
 ### Fixed
+
+- The capture catalog the screenshot harness uses no longer ships in release
+  builds, and neither does the audit scroll-anchor data it reads.
 
 - The settings header and the About dialog show the version the build actually
   carries. Both were literals that still said 0.2.0 after the 0.3.0 release. A

@@ -37,6 +37,7 @@ class MainViewModel(
 
     /** What the last reset cleared, held until the user undoes it or the offer expires. */
     private var resetSnapshot: Preferences? = null
+    private var undoOfferId = 0L
 
     val uiState: StateFlow<AppUiState> = combine(runtime, repository.settings) { runtimeState, settings ->
         AppUiState(runtimeState, settings)
@@ -133,8 +134,11 @@ class MainViewModel(
             }
             "reset_settings" -> {
                 viewModelScope.launch {
-                    resetSnapshot = repository.reset()
-                    runtime.value = runtime.value.copy(undoResetVisible = true)
+                    val cleared = repository.reset()
+                    // Resetting twice inside the offer window must not replace the
+                    // snapshot with the empty store the first reset just left behind.
+                    if (resetSnapshot == null) resetSnapshot = cleared
+                    runtime.value = runtime.value.copy(undoResetOffer = ++undoOfferId)
                 }
                 // Clearing only the DataStore left every in-session value on
                 // screen, so a reset appeared not to have happened.
@@ -244,14 +248,14 @@ class MainViewModel(
     fun undoReset() {
         val snapshot = resetSnapshot ?: return
         resetSnapshot = null
-        runtime.value = runtime.value.copy(undoResetVisible = false)
+        runtime.value = runtime.value.copy(undoResetOffer = null)
         viewModelScope.launch { repository.restore(snapshot) }
     }
 
     /** The undo offer expired or was dismissed; the reset stands. */
     fun consumeUndoReset() {
         resetSnapshot = null
-        runtime.value = runtime.value.copy(undoResetVisible = false)
+        runtime.value = runtime.value.copy(undoResetOffer = null)
     }
 
     fun consumeToast() {

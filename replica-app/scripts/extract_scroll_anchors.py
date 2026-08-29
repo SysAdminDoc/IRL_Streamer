@@ -11,7 +11,7 @@ For each settings state this records the first preference row that intersects th
 list viewport, its visible label, and how far that row is scrolled past the top of
 the viewport. The app consumes the result at runtime to place the list exactly.
 
-Output: app/src/main/assets/audit-scroll-anchors.json
+Output: app/src/debug/assets/audit-scroll-anchors.json
 """
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 AUDIT_ROOT = PROJECT_ROOT.parent / "app-audit"
 XMLDIR = AUDIT_ROOT / "evidence" / "ui-xml"
 CATALOG = AUDIT_ROOT / "screens" / "screen-catalog.csv"
-OUT = PROJECT_ROOT / "app" / "src" / "main" / "assets" / "audit-scroll-anchors.json"
+OUT = PROJECT_ROOT / "app" / "src" / "debug" / "assets" / "audit-scroll-anchors.json"
 
 BOUNDS = re.compile(r"\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]")
 

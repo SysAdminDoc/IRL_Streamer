@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -102,6 +103,11 @@ fun CameraPreview(
         return
     }
 
+    // A failure is a state the console can show and retry, not a toast that
+    // scrolls away leaving a black rectangle (the complaint IRL Pro reviews make).
+    var failure by remember { mutableStateOf<String?>(null) }
+    var attempt by remember { mutableIntStateOf(0) }
+
     val previewView = remember {
         PreviewView(context).apply {
             // TextureView keeps the Compose overlays composited above the
@@ -112,11 +118,12 @@ fun CameraPreview(
     }
     var provider by remember { mutableStateOf<ProcessCameraProvider?>(null) }
 
-    LaunchedEffect(cameraId) {
+    LaunchedEffect(cameraId, attempt) {
+        failure = null
         val cameraProvider = provider ?: runCatching { ProcessCameraProvider.awaitInstance(context) }
             .onFailure {
                 Log.e(TAG, "CameraX provider unavailable", it)
-                onError("Camera unavailable: ${it.message ?: it.javaClass.simpleName}")
+                failure = "Camera unavailable: ${it.message ?: it.javaClass.simpleName}"
             }
             .getOrNull() ?: return@LaunchedEffect
         provider = cameraProvider
@@ -127,7 +134,7 @@ fun CameraPreview(
             cameraProvider.hasCamera(CameraSelector.DEFAULT_BACK_CAMERA) -> CameraSelector.DEFAULT_BACK_CAMERA
             cameraProvider.hasCamera(CameraSelector.DEFAULT_FRONT_CAMERA) -> CameraSelector.DEFAULT_FRONT_CAMERA
             else -> {
-                onError("This device reports no camera")
+                failure = "This device reports no camera"
                 return@LaunchedEffect
             }
         }
@@ -139,7 +146,7 @@ fun CameraPreview(
             cameraProvider.bindToLifecycle(lifecycleOwner, selector, preview)
         }.onFailure {
             Log.e(TAG, "Camera bind failed", it)
-            onError("Camera failed to start: ${it.message ?: it.javaClass.simpleName}")
+            failure = "Camera failed to start: ${it.message ?: it.javaClass.simpleName}"
         }
     }
 
@@ -147,10 +154,38 @@ fun CameraPreview(
         onDispose { provider?.unbindAll() }
     }
 
+    failure?.let { message ->
+        FailureSurface(message = message, modifier = modifier, onRetry = { attempt++ })
+        return
+    }
+
     AndroidView(
         factory = { previewView },
         modifier = modifier.testTag("camera_preview"),
     )
+}
+
+/** What the console shows when the camera will not start, with a way out. */
+@Composable
+private fun FailureSurface(message: String, modifier: Modifier, onRetry: () -> Unit) {
+    Column(
+        modifier = modifier
+            .background(Color.Black)
+            .padding(horizontal = 48.dp)
+            .testTag("camera_failure_surface"),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text(
+            text = message,
+            color = Color(0xFFBBBBBB),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Center,
+        )
+        TextButton(onClick = onRetry, modifier = Modifier.testTag("camera_retry")) {
+            Text("RETRY", color = AuditColors.Accent, fontSize = 14.sp)
+        }
+    }
 }
 
 @Composable

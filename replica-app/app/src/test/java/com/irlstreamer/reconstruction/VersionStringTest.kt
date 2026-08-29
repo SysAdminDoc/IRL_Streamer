@@ -39,8 +39,9 @@ class VersionStringTest {
 
     @Test
     fun noHardcodedVersionLiteralRemainsInProductionSource() {
-        val literal = Regex("""Version \d+\.\d+\.\d+""")
-        val offenders = sourceRoot().walkTopDown()
+        // Any shape of our own version: "Version 0.4", "version v0.4.0", "Version 0.4.0-debug".
+        val literal = Regex("""[Vv]ersion\s+v?\d+\.\d+""")
+        val offenders = sourceRoots().asSequence().flatMap { it.walkTopDown() }
             .filter { it.isFile && it.extension == "kt" }
             .flatMap { file ->
                 file.readLines().withIndex()
@@ -55,14 +56,18 @@ class VersionStringTest {
         )
     }
 
-    /** Unit tests run from the module directory, but do not rely on it. */
-    private fun sourceRoot(): File {
+    /**
+     * Both shipped source sets. The debug catalog carried the same literal and
+     * is what the 145-state capture actually renders, so it is scanned too.
+     */
+    private fun sourceRoots(): List<File> {
         var candidate: File? = File(System.getProperty("user.dir").orEmpty()).absoluteFile
-        while (candidate != null) {
-            val source = File(candidate, "src/main/java")
-            if (source.isDirectory) return source
+        while (candidate != null && !File(candidate, "src/main/java").isDirectory) {
             candidate = candidate.parentFile
         }
-        throw AssertionError("could not locate src/main/java from ${System.getProperty("user.dir")}")
+        val module = requireNotNull(candidate) {
+            "could not locate src/main/java from ${System.getProperty("user.dir")}"
+        }
+        return listOf(File(module, "src/main/java"), File(module, "src/debug/java")).filter { it.isDirectory }
     }
 }
