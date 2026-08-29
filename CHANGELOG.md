@@ -3,7 +3,11 @@
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [0.3.1], 2026-08-29
+
+### Changed
+
+- New app icon: adaptive, themed (monochrome) and legacy variants regenerated from the 2026-08 icon set.
 
 ### Added
 
@@ -30,14 +34,14 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- The capture catalog the screenshot harness uses no longer ships in release
+- The capture catalog the screenshot test rig uses no longer ships in release
   builds, and neither does the audit scroll-anchor data it reads.
 
 - The settings header and the About dialog show the version the build actually
   carries. Both were literals that still said 0.2.0 after the 0.3.0 release. A
   test now fails if a version literal reappears in production source.
 
-## [0.3.0] - 2026-08-29
+## [0.3.0]: 2026-08-29
 
 The console shows a real camera. Until now the live view was a static JPEG
 (`preview_fixture`), so the app looked frozen the moment it opened.
@@ -56,14 +60,14 @@ The console shows a real camera. Until now the live view was a static JPEG
 
 ### Changed
 
-- The debug-state harness keeps the deterministic fixture (any resolved
+- The debug-state test rig keeps the deterministic fixture (any resolved
   `debugScreenId`) so the 145 audited captures still compare pixel for pixel.
 
 Verified on a Galaxy S25 Ultra (Android 16): cold launch shows the back
 camera, flip shows the front camera, revoke plus relaunch raises the system
 prompt and the preview resumes on allow.
 
-## [0.2.0] - 2026-08-15
+## [0.2.0]: 2026-08-15
 
 First pass over the audit findings (IS-22..IS-51) and the earlier research
 roadmap. The theme is gate integrity: the three validation gates could report a
@@ -100,7 +104,7 @@ defects that the blunted gates had been hiding.
   scroll anchor only ever applied to the first dialog of the run, corrupting
   every `*_menu_middle` / `*_menu_lower` state.
 - Reopening a settings dialog showed the catalog default instead of the value it
-  was editing, so confirming it silently reverted the saved setting - and a
+  was editing, so confirming it silently reverted the saved setting: and a
   multi-select dropped every selection the default did not contain.
 - Accessibility on the live console: plain buttons (Settings, Reload, Snapshot)
   no longer announce a "Not selected" state they do not have, quick-panel toggles
@@ -122,7 +126,7 @@ defects that the blunted gates had been hiding.
   rendered portrait on tablets and unfolded foldables with no layout for it.
 - The difference heat maps rendered the worst pixel errors as near-black. The red
   channel was multiplied as `uint8`, so it wrapped modulo 256 and any difference
-  at or above 86 came out darker than a small one - in exactly the images the
+  at or above 86 came out darker than a small one: in exactly the images the
   report tells a reviewer to inspect before waiving a failure.
 - The geometry matcher no longer reports phantom missing elements. Labels are
   matched case-insensitively (the audit dumps a tab's text in caps and its
@@ -151,7 +155,7 @@ defects that the blunted gates had been hiding.
 - Flipping the camera switches facing rather than toggling against id 1, so
   flipping from the second front lens no longer lands on another front lens, and
   the console control lights up for both.
-- PowerShell harness robustness: the emulator boot poll no longer dies when adb
+- The PowerShell test rig no longer aborts its emulator boot poll when adb
   writes routine "device offline" noise to stderr under the script-wide `Stop`
   preference, a wrong AVD name is reported immediately instead of after the full
   timeout, and `wm size` / `wm density` are read back so a silent failure cannot
@@ -169,8 +173,8 @@ defects that the blunted gates had been hiding.
 
 - Validation artifacts are invalidated before every capture. A failed capture or
   a crashed compare previously left the previous run's screenshot, hierarchy dump
-  and result JSON in place, and the sweep reported that stale result - `PASS`
-  included - as though it belonged to the current run. Capture and compare
+  and result JSON in place, and the sweep reported that stale result: `PASS`
+  included: as though it belonged to the current run. Capture and compare
   failures now surface as `CAPTURE_FAILED` / `COMPARE_FAILED` rows and a non-zero
   exit, and a failed hierarchy dump leaves no file so the geometry gate reports
   `NO_REPLICA_DUMP`.
@@ -195,6 +199,6 @@ defects that the blunted gates had been hiding.
   instead of producing 145 dimension mismatches with no stated cause.
 - `BroadcastEngine` seam with the local simulation behind it
   (`SimulatedBroadcastEngine`), so a capture/transport implementation can land
-  without touching Compose or the 145-state debug harness. Starting a broadcast
+  without touching Compose or the 145-state debug test rig. Starting a broadcast
   is now the engine's decision: it refuses with `NoActiveConnection` and the UI
   raises the audited guard dialog.

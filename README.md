@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="branding/irl-streamer-app-icon-v2.png" width="180" alt="IRL Streamer logo">
+  <img src="branding/irl-streamer-app-icon-v3.png" width="180" alt="IRL Streamer logo">
 </p>
 
 # IRL_Streamer
 
-[![Version](https://img.shields.io/badge/version-0.3.0-80CBC4)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.3.1-80CBC4)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%209%2B%20(API%2028--36)-3DDC84)](replica-app/)
 
