@@ -286,3 +286,62 @@ From `RESEARCH.md` second pass (screenshot-testing ecosystem, competitor matrice
   Acceptance: user-defined bitrate presets appear as one-tap chips in the Network quick tab and apply live; presets persist (IS-31 rules).
   Complexity: S
 
+
+## Product Assessment — 2026-08-29
+
+Added after v0.3.0 shipped the CameraX preview. The app is a pixel-faithful replica with a live viewfinder; nothing leaves the phone yet. The items below are what that assessment turned up that the existing entries do not already cover, plus a suggested order through the backlog.
+
+### Suggested order
+
+1. IS-05 (RECORD_AUDIO half) + IS-06 + IS-04 together. A foreground service with nothing to keep alive is pointless, and a stream without a service dies on screen-off. This is the change that turns a demo into an app.
+2. IS-07 before any connection form can save a key.
+3. IS-09, IS-12, IS-14/IS-56, IS-08: what makes a cellular stream survivable.
+4. IS-58: the ultrawide-for-free pitch the research found. Small job once IS-04 is in.
+5. IS-17 + IS-52: bonding only after single-link streaming is solid.
+6. IS-53: demote SSIM to advisory now; real camera frames make most live states incomparable anyway.
+
+### P1
+
+- [ ] P1 — IS-69 Isolate the debug-state catalog from release code paths
+  Why: `debugScreenId` checks now live in `ReplicaApp.kt`, `Forms.kt`, `SettingsScreen.kt` and `LiveConsoleScreen.kt` (the v0.3.0 fixture switch added another). Every new surface has to remember the harness, and the release build carries catalog code it can never reach.
+  Evidence: `grep -rn debugScreenId app/src/main` lists five production files; `DebugStateCatalog` is in `src/main`, not `src/debug`.
+  Touches: `.../debug/*`, a small `HarnessOverrides` interface with a no-op release implementation, the five call sites
+  Acceptance: `src/main` contains no reference to `DebugStateCatalog`; release APK class list excludes it; the 145-state capture still passes geometry.
+  Complexity: M
+
+- [ ] P1 — IS-70 Retire fixture decoys as each real subsystem lands
+  Why: fixture telemetry (mA/mW/°C), the hardcoded "30 fps" pill, the "Snapshot simulation complete" toast, "local camera fixture opened" in the LOG tab, and the SIMULATED capture states are misleading now that the console shows a real camera. Left in place they become permanent lies in a shipping app.
+  Evidence: `TelemetryBlock` and `FpsPill` in `LiveConsoleScreen.kt`; `QuickSettingsPanel.kt` LOG tab text; `SimulatedBroadcastEngine.IdleStatistics`.
+  Depends on: IS-04 (engine), IS-09 (telemetry), IS-74 (fps)
+  Touches: `LiveConsoleScreen.kt`, `QuickSettingsPanel.kt`, `SimulatedBroadcastEngine.kt`, `DebugStateCatalog.kt`
+  Acceptance: outside the harness no console reading is a constant; each fixture value is either measured or the control is hidden with a stated reason.
+  Complexity: S per subsystem, tracked here so none is forgotten
+
+### P2
+
+- [ ] P2 — IS-71 Snapshot button captures a still through CameraX `ImageCapture`
+  Why: the audited snapshot control exists and does nothing. With a bound preview this is one more use case and a MediaStore write.
+  Touches: `CameraPreview.kt` (bind `ImageCapture` beside `Preview`), `LiveConsoleScreen.kt` snapshot handler, `WRITE`-free MediaStore insert
+  Acceptance: tapping the snapshot control saves a JPEG to Pictures/IRL Streamer and toasts the filename; failure toasts the reason; the debug harness state is unchanged.
+  Complexity: S
+
+- [ ] P2 — IS-72 Torch, zoom and exposure compensation act on the camera
+  Why: the quick panel's Torch switch and Exposure/Zoom sliders are `remember` state only. `CameraControl.enableTorch`, `setZoomRatio` and `setExposureCompensationIndex` make all three real, and `CameraInfo` supplies the real ranges instead of the hardcoded 1..8x and -2..2.
+  Touches: `CameraPreview.kt` (expose the bound `Camera`), `QuickSettingsPanel.kt` `CameraQuickSettings`, a small camera-controls holder on the view model
+  Acceptance: torch lights the LED, zoom and exposure visibly change the preview, slider bounds come from `CameraInfo`, controls are disabled with a reason when the lens lacks the capability (front torch).
+  Complexity: S
+
+- [ ] P2 — IS-73 Lens pills open the physical lens they name
+  Why: v0.3.0 maps ids 1/3 to front and 0/2 to back facing only; 73° and 103° both open the default back camera. Stepping stone to IS-58 that needs no engine work.
+  Evidence: `CameraPreview.kt` selector logic; `LensSelector` labels in `LiveConsoleScreen.kt`
+  Touches: `CameraPreview.kt` (enumerate `cameraProvider.availableCameraInfos`, match by facing and FoV from `SENSOR_INFO_PHYSICAL_SIZE` / focal length), lens pill labels
+  Acceptance: on the S25 Ultra the 103° pill shows the ultrawide and 73° the main; on a two-camera device the unavailable pills are dimmed.
+  Complexity: M
+
+### P3
+
+- [ ] P3 — IS-74 FPS pill reads the measured preview frame rate
+  Why: "30 fps" is a string constant. A frame-timestamp counter on the preview surface (or `Preview.setTargetFrameRate` plus an `ImageAnalysis` tick) gives an honest number and will later reflect the encoder.
+  Touches: `CameraPreview.kt`, `FpsPill` in `LiveConsoleScreen.kt`
+  Acceptance: covering the lens or switching to a 60 fps-capable lens changes the reading; the harness states still render the audited "30 fps".
+  Complexity: S
