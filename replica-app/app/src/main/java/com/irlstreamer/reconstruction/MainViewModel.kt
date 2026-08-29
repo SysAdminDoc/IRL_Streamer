@@ -1,5 +1,6 @@
 package com.irlstreamer.reconstruction
 
+import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -32,6 +33,9 @@ class MainViewModel(
     private val runtime = MutableStateFlow(RuntimeUiState())
     private var lastRearCameraId = 0
     private var lastFrontCameraId = 1
+
+    /** What the last reset cleared, held until the user undoes it or the offer expires. */
+    private var resetSnapshot: Preferences? = null
 
     val uiState: StateFlow<AppUiState> = combine(runtime, repository.settings) { runtimeState, settings ->
         AppUiState(runtimeState, settings)
@@ -127,7 +131,10 @@ class MainViewModel(
                 "Picture" -> navigateTo(SettingsPage.PICTURE_LAYER_FORM)
             }
             "reset_settings" -> {
-                viewModelScope.launch { repository.reset() }
+                viewModelScope.launch {
+                    resetSnapshot = repository.reset()
+                    runtime.value = runtime.value.copy(undoResetVisible = true)
+                }
                 // Clearing only the DataStore left every in-session value on
                 // screen, so a reset appeared not to have happened.
                 runtime.value = runtime.value.copy(
@@ -230,6 +237,20 @@ class MainViewModel(
 
     fun showToast(message: String) {
         runtime.value = runtime.value.copy(toastMessage = message)
+    }
+
+    /** Puts back everything the last reset cleared. */
+    fun undoReset() {
+        val snapshot = resetSnapshot ?: return
+        resetSnapshot = null
+        runtime.value = runtime.value.copy(undoResetVisible = false)
+        viewModelScope.launch { repository.restore(snapshot) }
+    }
+
+    /** The undo offer expired or was dismissed; the reset stands. */
+    fun consumeUndoReset() {
+        resetSnapshot = null
+        runtime.value = runtime.value.copy(undoResetVisible = false)
     }
 
     fun consumeToast() {

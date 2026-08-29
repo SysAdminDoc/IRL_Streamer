@@ -1,6 +1,7 @@
 package com.irlstreamer.reconstruction.data
 
 import android.content.Context
+import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
@@ -11,6 +12,7 @@ import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 private val Context.replicaDataStore by preferencesDataStore(name = "irl_streamer_settings")
@@ -19,7 +21,9 @@ private val Context.replicaDataStore by preferencesDataStore(name = "irl_streame
 private const val TOGGLE_PREFIX = "toggle."
 private const val CHOICE_PREFIX = "choice."
 
-class ReplicaSettingsRepository(private val context: Context) {
+class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
+    constructor(context: Context) : this(context.replicaDataStore)
+
     private object Keys {
         val showPlatformIcons = booleanPreferencesKey("show_platform_icons")
         val showBots = booleanPreferencesKey("show_bots")
@@ -47,7 +51,7 @@ class ReplicaSettingsRepository(private val context: Context) {
         val webOverlayMaster = booleanPreferencesKey("web_overlay_master")
     }
 
-    val settings: Flow<ReplicaSettings> = context.replicaDataStore.data.map { preferences ->
+    val settings: Flow<ReplicaSettings> = dataStore.data.map { preferences ->
         ReplicaSettings(
             showPlatformIcons = preferences[Keys.showPlatformIcons] ?: false,
             showBots = preferences[Keys.showBots] ?: false,
@@ -90,33 +94,52 @@ class ReplicaSettingsRepository(private val context: Context) {
         )
     }
 
-    suspend fun setBoolean(key: String, value: Boolean) = context.replicaDataStore.edit { preferences ->
+    suspend fun setBoolean(key: String, value: Boolean) = dataStore.edit { preferences ->
         preferences[booleanKey(key)] = value
     }
 
-    suspend fun setInt(key: String, value: Int) = context.replicaDataStore.edit { preferences ->
+    suspend fun setInt(key: String, value: Int) = dataStore.edit { preferences ->
         preferences[intKey(key)] = value
     }
 
-    suspend fun setFloat(key: String, value: Float) = context.replicaDataStore.edit { preferences ->
+    suspend fun setFloat(key: String, value: Float) = dataStore.edit { preferences ->
         preferences[floatKey(key)] = value
     }
 
-    suspend fun setStringSet(key: String, value: Set<String>) = context.replicaDataStore.edit { preferences ->
+    suspend fun setStringSet(key: String, value: Set<String>) = dataStore.edit { preferences ->
         preferences[stringSetKey(key)] = value
     }
 
     /** Persist a toggle the settings model has no named field for. */
-    suspend fun setExtraToggle(key: String, value: Boolean) = context.replicaDataStore.edit { preferences ->
+    suspend fun setExtraToggle(key: String, value: Boolean) = dataStore.edit { preferences ->
         preferences[booleanPreferencesKey("$TOGGLE_PREFIX$key")] = value
     }
 
     /** Persist a single-choice or text value, keyed by dialog id. */
-    suspend fun setChoiceValue(id: String, value: String) = context.replicaDataStore.edit { preferences ->
+    suspend fun setChoiceValue(id: String, value: String) = dataStore.edit { preferences ->
         preferences[stringPreferencesKey("$CHOICE_PREFIX$id")] = value
     }
 
-    suspend fun reset() = context.replicaDataStore.edit { it.clear() }
+    /**
+     * Clears every stored value and returns what was cleared.
+     *
+     * The caller keeps the snapshot so the user can undo: a reset used to be
+     * silent and irreversible, with the confirm dialog as its only guard.
+     */
+    suspend fun reset(): Preferences {
+        val snapshot = dataStore.data.first()
+        dataStore.edit { it.clear() }
+        return snapshot
+    }
+
+    /** Puts back a snapshot taken by [reset], discarding anything written since. */
+    suspend fun restore(snapshot: Preferences) = dataStore.edit { preferences ->
+        preferences.clear()
+        snapshot.asMap().forEach { (key, value) ->
+            @Suppress("UNCHECKED_CAST")
+            preferences[key as Preferences.Key<Any>] = value
+        }
+    }
 
     private fun booleanKey(key: String): Preferences.Key<Boolean> = when (key) {
         "show_platform_icons" -> Keys.showPlatformIcons

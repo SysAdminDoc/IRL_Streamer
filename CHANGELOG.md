@@ -5,6 +5,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Resetting the app settings now says so, and offers Undo for ten seconds. The
+  reset used to clear everything silently with no way back.
+
 ### Fixed
 
 - The settings header and the About dialog show the version the build actually

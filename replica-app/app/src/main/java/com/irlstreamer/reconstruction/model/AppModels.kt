@@ -158,6 +158,8 @@ data class RuntimeUiState(
     val debugScreenId: String? = null,
     val overrides: ScreenOverrides = ScreenOverrides(),
     val toastMessage: String? = null,
+    /** A reset just cleared the settings and can still be put back. */
+    val undoResetVisible: Boolean = false,
     val launchInitializing: Boolean = false,
     val requestFolderPicker: Boolean = false,
     val formVariant: String? = null,

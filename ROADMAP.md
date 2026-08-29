@@ -366,13 +366,6 @@ From `RESEARCH.md` (2026-08-29). Every item traces to a source recorded there. E
 
 ### P1
 
-- [ ] P1 — IS-82 Reset app settings reports completion and can be undone for 10 seconds
-  Why: `MainViewModel.kt:129-130` clears DataStore irreversibly with no completion toast and no test; the confirm dialog is the only guard.
-  Evidence: `ReplicaSettingsRepository.kt:119` `edit { it.clear() }`; global rule "no confirmation dialogs, immediate action + toast" argues for snapshot-and-undo instead.
-  Touches: `data/ReplicaSettingsRepository.kt` (snapshot before clear, `restore(snapshot)`), `MainViewModel.kt`, `ui/ReplicaApp.kt` toast with Undo action, `SettingsPersistenceTest.kt`
-  Acceptance: reset shows "Settings reset. Undo" for 10 s; tapping Undo restores every key; a unit test round-trips a populated store through reset and undo.
-  Complexity: S
-
 - [ ] P1 — IS-78 Production loading, empty and error surfaces replace toast-only feedback
   Why: the only loading/empty/error states are debug-catalog seeds (`DebugStateCatalog.kt:152-155`); a camera bind failure in `CameraPreview.kt:118,141` is a toast with no retry, and a Start refusal has no inline state.
   Evidence: repo inspection 2026-08-29; IRL Pro reviews cite "black screen on Samsung" with no recovery path (https://play.google.com/store/apps/details?id=app.irlpro.android).

@@ -8,11 +8,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.irlstreamer.reconstruction.MainViewModel
 import com.irlstreamer.reconstruction.debug.AuditScrollAnchors
@@ -50,6 +57,21 @@ fun ReplicaApp(
         if (!toastText.isNullOrBlank()) {
             Toast.makeText(context, toastText, Toast.LENGTH_LONG).show()
             viewModel.consumeToast()
+        }
+    }
+
+    // A reset is real and irreversible once the offer lapses, so it gets an
+    // action affordance rather than the plain toast every other event uses.
+    val snackbarHostState = remember { SnackbarHostState() }
+    LaunchedEffect(state.runtime.undoResetVisible) {
+        if (state.runtime.undoResetVisible) {
+            val result = snackbarHostState.showSnackbar(
+                message = "Settings reset",
+                actionLabel = "UNDO",
+                withDismissAction = false,
+                duration = SnackbarDuration.Long,
+            )
+            if (result == SnackbarResult.ActionPerformed) viewModel.undoReset() else viewModel.consumeUndoReset()
         }
     }
 
@@ -94,5 +116,13 @@ fun ReplicaApp(
                 onConfirm = viewModel::confirmDialog,
             )
         }
+
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 24.dp)
+                .testTag("undo_host"),
+        )
     }
 }
