@@ -19,6 +19,7 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
   Complexity: L
 
 - [ ] P1 — IS-05 Runtime permission flow for camera and microphone
+  Progress (v0.3.0, 2026-08-29): CAMERA is done (grant, deny with retry, permanently-denied opens app settings) and a CameraX preview renders in the console. RECORD_AUDIO and the other declared permissions remain.
   Why: no permission request exists today, and the audited original declares `CAMERA`, `RECORD_AUDIO`, location and network-state permissions. Real capture cannot start without this, and the audit has no evidence for the denial screens.
   Evidence: `app-audit/app/permissions-and-appops.md`; `testing/untested-and-blocked-cases.md`
   Touches: `MainActivity.kt`, new permission composables, `AndroidManifest.xml`

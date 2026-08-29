@@ -70,13 +70,25 @@ fun LiveConsoleScreen(state: AppUiState, viewModel: MainViewModel) {
             .background(Color.Black)
             .testTag("live_console"),
     ) {
+        // The debug-state harness captures screenshots from a warm process and
+        // compares them pixel for pixel, so audited states keep the deterministic
+        // fixture (D003). Everything else shows the real camera.
+        val useFixture = state.runtime.debugScreenId != null
         if (!state.runtime.launchInitializing) {
-            Image(
-                painter = painterResource(R.drawable.preview_fixture),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize(),
-            )
+            if (useFixture) {
+                Image(
+                    painter = painterResource(R.drawable.preview_fixture),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            } else {
+                CameraPreview(
+                    cameraId = state.runtime.currentCameraId,
+                    onError = viewModel::showToast,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
         }
 
         if (state.effectiveGrid) GridGuide()

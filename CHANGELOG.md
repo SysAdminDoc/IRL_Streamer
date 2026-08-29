@@ -3,6 +3,32 @@
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.3.0] - 2026-08-29
+
+The console shows a real camera. Until now the live view was a static JPEG
+(`preview_fixture`), so the app looked frozen the moment it opened.
+
+### Added
+
+- CameraX preview (1.6.2) bound to the console's lifecycle. The lens pills,
+  the quick-panel camera list and the flip button switch facing live: ids 1
+  and 3 open the front camera, 0 and 2 the back. If the wanted facing is
+  missing the other one is used and a toast says so.
+- `CAMERA` runtime permission. Requested on first launch; a refusal leaves the
+  console usable on a black surface with an "ALLOW CAMERA" retry, and once
+  Android stops showing its prompt the retry opens the app's settings page.
+- `android.hardware.camera.any` declared as optional so camera-less devices
+  can still install.
+
+### Changed
+
+- The debug-state harness keeps the deterministic fixture (any resolved
+  `debugScreenId`) so the 145 audited captures still compare pixel for pixel.
+
+Verified on a Galaxy S25 Ultra (Android 16): cold launch shows the back
+camera, flip shows the front camera, revoke plus relaunch raises the system
+prompt and the preview resumes on allow.
+
 ## [0.2.0] - 2026-08-15
 
 First pass over the audit findings (IS-22..IS-51) and the earlier research

@@ -4,7 +4,7 @@
 
 # IRL_Streamer
 
-[![Version](https://img.shields.io/badge/version-0.2.0-80CBC4)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.3.0-80CBC4)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%209%2B%20(API%2028--36)-3DDC84)](replica-app/)
 
@@ -16,7 +16,8 @@ The working Android project is in [`replica-app`](replica-app/). The immutable 1
 
 - Native Android application targeting API 36, with API 28 minimum support
 - Forced landscape live console, settings, dialogs, forms, overlays, and debug-addressable audit states
-- Deterministic local simulations for broadcasting, bonding, recording, camera, chat, and remote services
+- Live camera preview through CameraX, with a runtime permission flow
+- Deterministic local simulations for broadcasting, bonding, recording, chat, and remote services
 - JVM tests, device Compose tests, lint, release build, signature verification, and visual-comparison tooling
 - Original IRL_Streamer logo and adaptive launcher icon generated specifically for this project
 
