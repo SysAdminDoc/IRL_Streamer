@@ -28,10 +28,12 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,6 +57,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.irlstreamer.reconstruction.MainViewModel
 import com.irlstreamer.reconstruction.R
 import com.irlstreamer.reconstruction.model.AppUiState
@@ -84,8 +87,7 @@ fun LiveConsoleScreen(state: AppUiState, viewModel: MainViewModel) {
                 )
             } else {
                 CameraPreview(
-                    cameraId = state.runtime.currentCameraId,
-                    onError = viewModel::showToast,
+                    viewModel = viewModel,
                     modifier = Modifier.fillMaxSize(),
                 )
             }
@@ -175,9 +177,11 @@ fun LiveConsoleScreen(state: AppUiState, viewModel: MainViewModel) {
             modifier = Modifier.offset(x = 248.89.dp, y = maxHeight - 42.04.dp),
         )
 
+        val broadcasting by viewModel.broadcasting.collectAsStateWithLifecycle()
         StartButton(
             modifier = Modifier.offset(x = 334.4.dp, y = maxHeight - 48.dp),
-            onClick = { viewModel.startBroadcast() },
+            broadcasting = broadcasting,
+            onClick = viewModel::toggleBroadcast,
         )
 
         LensSelector(
@@ -288,7 +292,7 @@ private fun FpsPill(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun StartButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
+private fun StartButton(modifier: Modifier = Modifier, broadcasting: Boolean = false, onClick: () -> Unit) {
     Box(modifier = modifier.size(width = 80.dp, height = 48.dp), contentAlignment = Alignment.Center) {
         Box(
             modifier = Modifier
@@ -299,7 +303,12 @@ private fun StartButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
                 .testTag("start_broadcast"),
             contentAlignment = Alignment.Center,
         ) {
-            Icon(Icons.Default.PlayArrow, "Start broadcast", tint = Color.White, modifier = Modifier.size(20.dp))
+            Icon(
+                imageVector = if (broadcasting) Icons.Default.Stop else Icons.Default.PlayArrow,
+                contentDescription = if (broadcasting) "Stop broadcast" else "Start broadcast",
+                tint = Color.White,
+                modifier = Modifier.size(20.dp),
+            )
         }
     }
 }

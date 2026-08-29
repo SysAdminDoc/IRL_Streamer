@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.irlstreamer.reconstruction.data.ReplicaSettingsRepository
+import com.irlstreamer.reconstruction.engine.StreamPackBroadcastEngine
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.ui.ReplicaApp
 import com.irlstreamer.reconstruction.ui.theme.IrlStreamerTheme
@@ -25,7 +26,10 @@ class MainActivity : ComponentActivity() {
         window.statusBarColor = Color.BLACK
         window.navigationBarColor = Color.BLACK
 
-        val factory = MainViewModel.Factory(ReplicaSettingsRepository(applicationContext))
+        val factory = MainViewModel.Factory(
+            ReplicaSettingsRepository(applicationContext),
+            StreamPackBroadcastEngine(applicationContext),
+        )
         mainViewModel = androidx.lifecycle.ViewModelProvider(this, factory)[MainViewModel::class.java]
         handleDebugIntent(intent)
 

@@ -2,7 +2,7 @@
 
 IRL Streamer is an independent, authorized clean-room reconstruction of the observable Android interface documented in `../app-audit`. It is not the official IRL Pro application and contains no decompiled code, extracted private data, original signing material, or unauthorized artwork.
 
-The implementation recreates the audited landscape live console, settings hierarchy, dialogs, forms, overlays, quick settings, validation states, and lifecycle-facing navigation with deterministic local fixtures. The console shows the device camera through CameraX (the audited debug states keep a fixed preview image so screenshot comparisons stay reproducible). Broadcasting, bonding transport, remote chat, remote dashboards, recording, and arbitrary WebView execution are deliberately safe simulations because no authorized backend or transport specification was supplied.
+The implementation recreates the audited landscape live console, settings hierarchy, dialogs, forms, overlays, quick settings, validation states, and lifecycle-facing navigation with deterministic local fixtures. The console shows the device camera and publishes it over RTMP through StreamPack (the audited debug states keep a fixed preview image so screenshot comparisons stay reproducible). Audio capture, bonding transport, remote chat, remote dashboards, recording, and arbitrary WebView execution are still safe simulations because no authorized backend or transport specification was supplied.
 
 ## Provenance of the audited original
 

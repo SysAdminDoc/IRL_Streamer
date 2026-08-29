@@ -7,6 +7,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- The console broadcasts for real. Camera capture and H.264 encoding run through
+  StreamPack, and the saved connection is published over RTMP. Verified against a
+  local MediaMTX, which reports the stream online with one H264 track. The one
+  control starts and stops it.
+- Connections you enter are saved. The form used to say "saved to the local
+  fixture" and keep nothing, so Start could only ever refuse.
 - Resetting the app settings now says so, and offers Undo for ten seconds. The
   reset used to clear everything silently with no way back. Resetting twice
   inside that window still restores what the first reset cleared.
@@ -15,6 +21,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Every dependency is pinned by checksum. A build now fails if an artifact's
   bytes change under it, and regenerating the pins takes a deliberate flag.
+
+### Changed
+
+- The camera now runs through the broadcast engine rather than CameraX, so the
+  preview and the outgoing stream share one capture session. CameraX is no
+  longer a dependency.
 
 ### Fixed
 

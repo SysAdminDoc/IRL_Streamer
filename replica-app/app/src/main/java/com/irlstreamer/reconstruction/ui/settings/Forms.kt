@@ -98,7 +98,7 @@ fun ConnectionFormScreen(state: AppUiState, viewModel: MainViewModel) {
             item {
                 FormHint(
                     if (rtmp) {
-                        "RTMP URL schema is rtmp://server/application/streamkey. This fixture never connects to the entered host."
+                        "RTMP URL schema is rtmp://server/application/streamkey."
                     } else {
                         "Start typing or paste URL to view protocol-specific fields for authentication etc."
                     },

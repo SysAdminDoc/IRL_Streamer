@@ -10,16 +10,6 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P1
 
-- [ ] P1 — IS-04 Adopt StreamPack as the capture/encode engine behind `BroadcastEngine`
-  Note (2026-08-29, groundwork landed): the connection form now persists a name and URL (`ReplicaSettings.connectionName`/`connectionUrl`) and `startBroadcast` hands that URL to the engine, so the audited no-connection guard fires only when nothing is saved. What remains is the engine itself. Verified against Maven Central: streampack-core/-extension-rtmp/-ui 3.2.0 and srtdroid-ktx 1.10.0 are published (the Maven Central *search* index still reports 3.0.0-RC / 1.9.1 and is stale). The camera-owning API is the suspend factory `cameraSingleStreamer(context, cameraId, audioSourceFactory, ...)` in `io.github.thibaultbee.streampack.core.streamers.single`; it holds the camera, so the CameraX preview added in v0.3.0 has to hand the device over when a real engine starts. RTMP alone needs no srtdroid, which keeps the libsrt CVE surface out until SRT lands (IS-52).
-  Note (2026-08-29): srtdroid 1.10.0 (2026-08-26) bundles srt 1.5.7; StreamPack main pins 1.9.5 (srt 1.5.4). Force 1.10.0 with a resolutionStrategy rule. Decide the capture topology first (RESEARCH.md Open Question 1): CameraX preview from v0.3.0 and StreamPack's Camera2 pipeline cannot both own the device.
-  Why: it is the only actively-maintained Android library covering Camera2 + MediaCodec + RTMP/RTMPS/SRT under a permissive licence (Apache-2.0), and its source→processing→endpoint model maps onto the audited settings split.
-  Evidence: StreamPack README (v3.2.0, Apache-2.0) — RESEARCH.md "Competitive Landscape".
-  Depends on: IS-02
-  Touches: `app/build.gradle.kts`, new `.../engine/StreamPackBroadcastEngine.kt`
-  Acceptance: a real camera preview renders in the live console and an RTMP publish to a local MediaMTX instance succeeds; the simulation remains selectable for the debug-state harness.
-  Complexity: L
-
 - [ ] P1 — IS-05 Runtime permission flow for camera and microphone
   Progress (v0.3.0, 2026-08-29): CAMERA is done (grant, deny with retry, permanently-denied opens app settings) and a CameraX preview renders in the console. RECORD_AUDIO and the other declared permissions remain.
   Why: no permission request exists today, and the audited original declares `CAMERA`, `RECORD_AUDIO`, location and network-state permissions. Real capture cannot start without this, and the audit has no evidence for the denial screens.
@@ -196,6 +186,7 @@ From `RESEARCH.md` second pass (screenshot-testing ecosystem, competitor matrice
 ### P1
 
 - [ ] P1 — IS-52 Build libsrt 1.5.6+ and OpenSSL 3.5.x from source; do not ship srtdroid's bundled SRT stack
+  Note (2026-08-29): not yet reachable. v0.4.0 publishes over RTMP only and pulls no srtdroid, so no libsrt ships today. This item becomes live the moment SRT or SRTLA is added; srtdroid 1.10.0 (2026-08-26) bundles srt 1.5.7 and is the version to depend on.
   Note (2026-08-29): Downgraded: srtdroid 1.10.0 already ships srt 1.5.7 + OpenSSL 3.5.1. Override the dependency in IS-04 and verify 16 KB alignment with llvm-readelf. Build from source only if a TLS path needs OpenSSL 3.5.8/4.0.2.
   Why: StreamPack 3.2.0 → srtdroid 1.9.5 bundles srt 1.5.4 + OpenSSL 3.5.1; SRT ≤1.5.5 carries two Critical CVEs — CVE-2026-55868 (encryption state-machine downgrade) and CVE-2026-55869 (KMREQ/KMRSP stack buffer overflow) — fixed in v1.5.6 (2026-07-20). The srtla port (IS-17) needs libsrt anyway, so one owned, 16 KB-aligned, NDK r28-built copy serves both and closes the CVEs and the Play 2027-02-01 page-size deadline in a single move.
   Evidence: GHSA-4mc6-qmpp-g7gw, GHSA-6xg9-784j-24rm, Haivision/srt v1.5.6 release; StreamPack `gradle/libs.versions.toml@3.2.0`; srtdroid 1.9.5 release notes — RESEARCH.md "Security, Privacy, and Reliability".
@@ -410,6 +401,7 @@ From `RESEARCH.md` (2026-08-29). Every item traces to a source recorded there. E
   Complexity: M
 
 - [ ] P2 — IS-86 CameraX `SessionConfig` feature groups and Camera2Interop DSL migration
+  Note (2026-08-29): reconsider before starting. CameraX was removed in v0.4.0 when StreamPack took over capture, so `SessionConfig` feature groups are no longer reachable. The equivalent work is now Camera2Interop through StreamPack's camera source, or it should be dropped.
   Why: 60 fps, preview/video stabilization and HDR are now a declarative feature group with a support pre-check; the legacy `Camera2Interop.Extender` is deprecated in 1.7.0-alpha03 and IS-58/IS-62 will need interop.
   Evidence: CameraX 1.5.0/1.6.0/1.7.0-alpha03 release notes (https://developer.android.com/jetpack/androidx/releases/camera).
   Touches: `ui/live/CameraPreview.kt` (bind via `SessionConfig` with `setPreferredFeatureGroup`), Video settings (stabilization and fps rows backed by `isSessionConfigSupported`)

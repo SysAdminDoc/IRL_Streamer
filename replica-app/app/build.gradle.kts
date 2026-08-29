@@ -90,11 +90,15 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
     implementation("androidx.datastore:datastore-preferences:1.2.1")
 
-    val cameraxVersion = "1.6.2"
-    implementation("androidx.camera:camera-core:$cameraxVersion")
-    implementation("androidx.camera:camera-camera2:$cameraxVersion")
-    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
-    implementation("androidx.camera:camera-view:$cameraxVersion")
+
+    // Capture, encode and RTMP publish. The endpoint artifact is `streampack-rtmp`
+    // since 3.1; `streampack-extension-rtmp` stopped at 3.0.0-RC2. SRT is
+    // deliberately not pulled in yet: it would drag srtdroid's bundled libsrt
+    // along with it (see ROADMAP IS-52).
+    val streamPackVersion = "3.2.0"
+    implementation("io.github.thibaultbee.streampack:streampack-core:$streamPackVersion")
+    implementation("io.github.thibaultbee.streampack:streampack-rtmp:$streamPackVersion")
+    implementation("io.github.thibaultbee.streampack:streampack-compose:$streamPackVersion")
 
     implementation(platform("androidx.compose:compose-bom:2026.06.01"))
     implementation("androidx.compose.ui:ui")

@@ -10,7 +10,10 @@ import com.irlstreamer.reconstruction.engine.BroadcastEngine
 import com.irlstreamer.reconstruction.engine.BroadcastFailure
 import com.irlstreamer.reconstruction.engine.BroadcastRequest
 import com.irlstreamer.reconstruction.engine.BroadcastResult
+import com.irlstreamer.reconstruction.engine.BroadcastState
 import com.irlstreamer.reconstruction.engine.SimulatedBroadcastEngine
+import com.irlstreamer.reconstruction.engine.StreamPackBroadcastEngine
+import io.github.thibaultbee.streampack.core.interfaces.IWithVideoSource
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.AppUiState
 import com.irlstreamer.reconstruction.model.DialogRequest
@@ -25,6 +28,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -35,6 +39,22 @@ class MainViewModel(
     private val runtime = MutableStateFlow(RuntimeUiState())
     private var lastRearCameraId = 0
     private var lastFrontCameraId = 1
+
+    private val capture = engine as? StreamPackBroadcastEngine
+
+    /** The camera the console previews. Null while the engine owns no camera. */
+    val videoSource: StateFlow<IWithVideoSource?> =
+        capture?.videoSource ?: MutableStateFlow(null)
+
+    /** True from the moment Start is pressed until the stream is closed. */
+    val broadcasting: StateFlow<Boolean> = engine.state
+        .map { it == BroadcastState.CONNECTING || it == BroadcastState.LIVE || it == BroadcastState.DEGRADED }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    private val _cameraFailure = MutableStateFlow<String?>(null)
+
+    /** Why the preview is not showing, when it is not. */
+    val cameraFailure: StateFlow<String?> = _cameraFailure
 
     /** What the last reset cleared, held until the user undoes it or the offer expires. */
     private var resetSnapshot: Preferences? = null
@@ -188,8 +208,31 @@ class MainViewModel(
         runtime.value = runtime.value.copy(quickPanelLower = lower)
     }
 
+    /**
+     * Opens the camera for the console preview. Safe to call repeatedly: the
+     * engine keeps one camera open and hands the same source back.
+     */
+    fun openCamera() {
+        val capture = capture ?: return
+        viewModelScope.launch {
+            capture.openCamera()
+                .onSuccess { _cameraFailure.value = null }
+                .onFailure { _cameraFailure.value = "Camera failed to start: ${it.message ?: it.javaClass.simpleName}" }
+        }
+    }
+
     fun setCurrentCamera(cameraId: Int) {
         runtime.value = runtime.value.copy(currentCameraId = cameraId)
+        applyFacing(cameraId)
+    }
+
+    /** Points the real camera the way the selected lens asks. */
+    private fun applyFacing(cameraId: Int) {
+        val capture = capture ?: return
+        viewModelScope.launch {
+            capture.selectFacing(cameraId in FRONT_CAMERA_IDS)
+                .onFailure { runtime.value = runtime.value.copy(toastMessage = "That lens is not available on this device") }
+        }
     }
 
     /**
@@ -205,6 +248,7 @@ class MainViewModel(
         val target = if (current in FRONT_CAMERA_IDS) lastRearCameraId else lastFrontCameraId
         if (current in FRONT_CAMERA_IDS) lastFrontCameraId = current else lastRearCameraId = current
         runtime.value = runtime.value.copy(currentCameraId = target)
+        applyFacing(target)
     }
 
     fun toggleMicrophone() {
@@ -241,6 +285,11 @@ class MainViewModel(
 
     fun stopBroadcast() {
         viewModelScope.launch { engine.stop() }
+    }
+
+    /** One control, as the audited console has: it starts, then it stops. */
+    fun toggleBroadcast() {
+        if (broadcasting.value) stopBroadcast() else startBroadcast()
     }
 
     override fun onCleared() {
@@ -312,9 +361,12 @@ class MainViewModel(
         viewModelScope.launch { repository.setStringSet(key, value) }
     }
 
-    class Factory(private val repository: ReplicaSettingsRepository) : ViewModelProvider.Factory {
+    class Factory(
+        private val repository: ReplicaSettingsRepository,
+        private val engine: BroadcastEngine,
+    ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(repository) as T
+        override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(repository, engine) as T
     }
 
     private companion object {
