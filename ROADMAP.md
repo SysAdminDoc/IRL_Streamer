@@ -364,13 +364,6 @@ From `RESEARCH.md` (2026-08-29). Every item traces to a source recorded there. E
 
 ### P0
 
-- [ ] P0 — IS-75 Derive the displayed version from `BuildConfig.VERSION_NAME`
-  Why: `SettingsCatalog.kt:81,348` and `DebugStateCatalog.kt:137` hardcode "Version 0.2.0" while `versionName` is 0.3.0; every release will drift again unless the literal goes.
-  Evidence: repo inspection 2026-08-29; `replica-app/app/build.gradle.kts` `versionName = "0.3.0"`.
-  Touches: `ui/settings/SettingsCatalog.kt`, `debug/DebugStateCatalog.kt` (keep the audited "3.5.23" string only inside the debug fixture), `SettingsCatalogTest.kt`
-  Acceptance: the About row and settings header show the build's `versionName`; a unit test fails if any `"Version 0."` literal reappears in `src/main`.
-  Complexity: S
-
 ### P1
 
 - [ ] P1 — IS-82 Reset app settings reports completion and can be undone for 10 seconds

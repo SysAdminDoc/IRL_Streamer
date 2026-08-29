@@ -3,6 +3,14 @@
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Fixed
+
+- The settings header and the About dialog show the version the build actually
+  carries. Both were literals that still said 0.2.0 after the 0.3.0 release. A
+  test now fails if a version literal reappears in production source.
+
 ## [0.3.0] - 2026-08-29
 
 The console shows a real camera. Until now the live view was a static JPEG

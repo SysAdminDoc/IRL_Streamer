@@ -1,5 +1,6 @@
 package com.irlstreamer.reconstruction.ui.settings
 
+import com.irlstreamer.reconstruction.BuildConfig
 import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.SettingsPage
@@ -78,7 +79,7 @@ object SettingsCatalog {
     private val root = SettingsPageSpec(
         title = "Settings",
         items = listOf(
-            SettingItem.Row("identity", "IRL Streamer", "Version 0.2.0 · clean-room reconstruction", accentTitle = true),
+            SettingItem.Row("identity", "IRL Streamer", "Version ${BuildConfig.VERSION_NAME} · clean-room reconstruction", accentTitle = true),
             SettingItem.Row("streamer", "Streamer", "Chatbox and activity feed settings", action = SettingAction.Navigate(SettingsPage.STREAMER)),
             SettingItem.Row("bonding", "Bonding", "Bonding settings", action = SettingAction.Navigate(SettingsPage.BONDING)),
             SettingItem.Row("connections", "Connections", action = SettingAction.Navigate(SettingsPage.CONNECTIONS)),
@@ -345,7 +346,7 @@ object SettingsCatalog {
                 id = "about",
                 title = "IRL Streamer",
                 type = DialogType.ABOUT,
-                message = "Independent build - Version 0.2.0\nLocal simulation; no licensed transport code",
+                message = "Independent build - Version ${BuildConfig.VERSION_NAME}\nLocal simulation; no licensed transport code",
                 positiveLabel = "OK",
             ))),
         ),

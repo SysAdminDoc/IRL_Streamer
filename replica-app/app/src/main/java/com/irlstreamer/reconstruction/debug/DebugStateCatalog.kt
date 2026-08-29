@@ -1,5 +1,6 @@
 package com.irlstreamer.reconstruction.debug
 
+import com.irlstreamer.reconstruction.BuildConfig
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.ConsoleTelemetry
 import com.irlstreamer.reconstruction.model.DialogRequest
@@ -134,7 +135,7 @@ object DebugStateCatalog {
                 id = "about",
                 title = "IRL Streamer",
                 type = DialogType.ABOUT,
-                message = "Independent build - Version 0.2.0\nLocal simulation; no licensed transport code",
+                message = "Independent build - Version ${BuildConfig.VERSION_NAME}\nLocal simulation; no licensed transport code",
                 positiveLabel = "OK",
             ))
             in 130..138 -> liveQuickPreset(base, number)
