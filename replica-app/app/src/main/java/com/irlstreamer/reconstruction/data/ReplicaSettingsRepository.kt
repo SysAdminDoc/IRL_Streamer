@@ -50,6 +50,8 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
         val safeMarginRatios = stringSetPreferencesKey("safe_margin_ratios")
         val timestampActive = booleanPreferencesKey("timestamp_active")
         val webOverlayMaster = booleanPreferencesKey("web_overlay_master")
+        val connectionName = stringPreferencesKey("connection_name")
+        val connectionUrl = stringPreferencesKey("connection_url")
     }
 
     val settings: Flow<ReplicaSettings> = dataStore.data.map { preferences ->
@@ -78,6 +80,8 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
             safeMarginRatios = preferences[Keys.safeMarginRatios] ?: setOf("16:9 (1.78)"),
             timestampActive = preferences[Keys.timestampActive] ?: false,
             webOverlayMaster = preferences[Keys.webOverlayMaster] ?: true,
+            connectionName = preferences[Keys.connectionName] ?: "",
+            connectionUrl = preferences[Keys.connectionUrl] ?: "",
             extraToggles = preferences.asMap()
                 .filterKeys { it.name.startsWith(TOGGLE_PREFIX) }
                 .entries
@@ -119,6 +123,12 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
     /** Persist a single-choice or text value, keyed by dialog id. */
     suspend fun setChoiceValue(id: String, value: String) = dataStore.edit { preferences ->
         preferences[stringPreferencesKey("$CHOICE_PREFIX$id")] = value
+    }
+
+    /** Saves the outgoing destination the console broadcasts to. */
+    suspend fun setConnection(name: String, url: String) = dataStore.edit { preferences ->
+        preferences[Keys.connectionName] = name
+        preferences[Keys.connectionUrl] = url
     }
 
     /**

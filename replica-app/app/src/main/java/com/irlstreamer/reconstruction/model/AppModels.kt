@@ -117,6 +117,9 @@ data class ReplicaSettings(
     val extraToggles: Map<String, Boolean> = emptyMap(),
     /** Persisted single-choice and text values, keyed by dialog id. */
     val choiceValues: Map<String, String> = emptyMap(),
+    /** The saved outgoing destination. Blank until the connection form saves one. */
+    val connectionName: String = "",
+    val connectionUrl: String = "",
 )
 
 data class ScreenOverrides(

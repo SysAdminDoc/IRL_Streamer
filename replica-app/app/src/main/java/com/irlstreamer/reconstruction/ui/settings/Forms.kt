@@ -137,7 +137,8 @@ fun ConnectionFormScreen(state: AppUiState, viewModel: MainViewModel) {
                     saveEnabled = rtmp,
                     onCancel = { viewModel.back() },
                     onSave = {
-                        viewModel.showToast("Connection saved to the local fixture")
+                        viewModel.saveConnection(name, url)
+                        viewModel.showToast("Connection saved")
                         viewModel.back()
                     },
                 )

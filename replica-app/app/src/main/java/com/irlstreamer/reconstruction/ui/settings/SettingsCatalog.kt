@@ -3,6 +3,7 @@ package com.irlstreamer.reconstruction.ui.settings
 import com.irlstreamer.reconstruction.BuildConfig
 import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
+import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.SettingsPage
 
 sealed interface SettingItem {
@@ -141,6 +142,18 @@ object SettingsCatalog {
             SettingItem.Slider("ethernet_weight", "Ethernet Weight", min = 0f, max = 100f, steps = 99, formatter = { it.toInt().toString() }),
         ),
     )
+
+    /** The audited page, plus the saved destination when there is one. */
+    fun connectionsPage(settings: ReplicaSettings): SettingsPageSpec {
+        if (settings.connectionUrl.isBlank()) return connections
+        val saved = SettingItem.Row(
+            id = "saved_connection",
+            title = settings.connectionName.ifBlank { "Connection" },
+            summary = settings.connectionUrl,
+            action = SettingAction.Navigate(SettingsPage.MANAGE_CONNECTIONS),
+        )
+        return connections.copy(items = connections.items + saved)
+    }
 
     private val connections = SettingsPageSpec(
         title = "Outgoing connections",

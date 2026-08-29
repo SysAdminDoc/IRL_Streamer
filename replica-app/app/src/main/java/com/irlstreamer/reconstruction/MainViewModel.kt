@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -170,6 +171,11 @@ class MainViewModel(
         Harness.overrides.namedState(name)?.let { runtime.value = it }
     }
 
+    /** Persists the destination entered on the connection form. */
+    fun saveConnection(name: String, url: String) {
+        viewModelScope.launch { repository.setConnection(name.trim(), url.trim()) }
+    }
+
     fun toggleQuickPanel() {
         runtime.value = runtime.value.copy(quickPanelOpen = !runtime.value.quickPanelOpen)
     }
@@ -213,9 +219,15 @@ class MainViewModel(
      * raised (screen 142). The refusal is the engine's decision, not the UI's,
      * so a real engine changes this behaviour without touching Compose.
      */
-    fun startBroadcast(connectionName: String? = null) {
+    fun startBroadcast() {
         viewModelScope.launch {
-            when (val result = engine.start(BroadcastRequest(connectionName))) {
+            // The engine decides; the console only supplies what was configured.
+            val settings = repository.settings.first()
+            val request = BroadcastRequest(
+                connectionName = settings.connectionUrl.takeIf { it.isNotBlank() },
+                recordLocally = settings.recordStream,
+            )
+            when (val result = engine.start(request)) {
                 is BroadcastResult.Started -> Unit
                 is BroadcastResult.Rejected -> when (val failure = result.failure) {
                     BroadcastFailure.NoActiveConnection ->

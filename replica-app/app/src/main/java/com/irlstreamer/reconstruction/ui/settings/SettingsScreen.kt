@@ -45,7 +45,11 @@ fun SettingsScreen(state: AppUiState, viewModel: MainViewModel) {
 
 @Composable
 private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewModel: MainViewModel) {
-    val spec = SettingsCatalog.page(page)
+    val spec = if (page == SettingsPage.CONNECTIONS) {
+        SettingsCatalog.connectionsPage(state.settings)
+    } else {
+        SettingsCatalog.page(page)
+    }
     val visibleItems = remember(spec.items, state.effectiveSafeMargins) {
         if (page == SettingsPage.DISPLAY && !state.effectiveSafeMargins) {
             spec.items.filterNot {
