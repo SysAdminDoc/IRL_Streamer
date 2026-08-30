@@ -10,14 +10,6 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P1
 
-- [ ] P1 — IS-05 Runtime permission flow for camera and microphone
-  Progress (v0.3.0, 2026-08-29): CAMERA is done (grant, deny with retry, permanently-denied opens app settings) and a CameraX preview renders in the console. RECORD_AUDIO and the other declared permissions remain.
-  Why: no permission request exists today, and the audited original declares `CAMERA`, `RECORD_AUDIO`, location and network-state permissions. Real capture cannot start without this, and the audit has no evidence for the denial screens.
-  Evidence: `app-audit/app/permissions-and-appops.md`; `testing/untested-and-blocked-cases.md`
-  Touches: `MainActivity.kt`, new permission composables, `AndroidManifest.xml`
-  Acceptance: grant, deny, and permanently-denied paths each reach a defined state; denial never crashes or blanks the console; the net-new screens are documented as additions beyond the audit.
-  Complexity: M
-
 - [ ] P1 — IS-06 Foreground service with correct Android 14+ service types
   Why: the audited original runs a camera/mic foreground service (notification ID 101, channel `...channel.foreground_service`, actions Start/Exit). On modern Android an undeclared or mistyped service type is a crash on start, not a warning.
   Evidence: `app-audit/app/package-inventory.md`; deviation D012
@@ -297,7 +289,7 @@ Added after v0.3.0 shipped the CameraX preview. The app is a pixel-faithful repl
 
 ### Suggested order
 
-1. IS-05 (RECORD_AUDIO half) + IS-06 + IS-04 together. A foreground service with nothing to keep alive is pointless, and a stream without a service dies on screen-off. This is the change that turns a demo into an app.
+1. IS-06 next. Camera, microphone, and RTMP publishing are live, but a stream still needs a foreground service to survive screen-off.
 2. IS-07 before any connection form can save a key.
 3. IS-09, IS-12, IS-14/IS-56, IS-08: what makes a cellular stream survivable.
 4. IS-58: the ultrawide-for-free pitch the research found. Small job once IS-04 is in.
@@ -492,8 +484,8 @@ From `RESEARCH.md` (2026-08-29). Every item traces to a source recorded there. E
 - [ ] P3 — IS-96 Toolchain migration as one unit: compileSdk 37, AGP 9.x built-in Kotlin, Gradle 9.5, Compose BOM 2026.08
   Why: the next Compose BOM forces compileSdk 37 and AGP 9.1.1+, AGP 9 requires dropping `kotlin-android`, and AGP 9.3 needs Gradle 9.5; doing these piecemeal breaks the build at every step.
   Evidence: https://android-developers.googleblog.com/2026/08/jetpack-compose-august-2026-release.html; https://blog.jetbrains.com/kotlin/2026/01/update-your-projects-for-agp9/; https://developer.android.com/build/releases/agp-9-3-0-release-notes.
-  Touches: `replica-app/build.gradle.kts`, `app/build.gradle.kts` (remove `org.jetbrains.kotlin.android`, keep the compose plugin), `gradle/wrapper/gradle-wrapper.properties`, `CLAUDE.md` pins, `PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY` review (API 37 removes the opt-out)
-  Acceptance: release build, unit tests and the 145-state capture pass on the new toolchain; CLAUDE.md pin table updated; no `kotlin-android` plugin remains.
+  Touches: `replica-app/build.gradle.kts`, `app/build.gradle.kts` (remove `org.jetbrains.kotlin.android`, keep the compose plugin), `gradle/wrapper/gradle-wrapper.properties`, working-note pins, `PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY` review (API 37 removes the opt-out)
+  Acceptance: release build, unit tests and the 145-state capture pass on the new toolchain; working-note pins updated; no `kotlin-android` plugin remains.
   Complexity: L
 
 - [ ] P3 — IS-97 Chat moderation actions from the quick panel

@@ -58,6 +58,7 @@ class MainViewModel(
 
     /** What the last reset cleared, held until the user undoes it or the offer expires. */
     private var resetSnapshot: Preferences? = null
+    private var broadcastRequestInFlight = false
     private var undoOfferId = 0L
 
     val uiState: StateFlow<AppUiState> = combine(runtime, repository.settings) { runtimeState, settings ->
@@ -221,6 +222,26 @@ class MainViewModel(
         }
     }
 
+    /** Hands the camera back, so a backgrounded app is not holding the device. */
+    fun releaseCamera() {
+        val capture = capture ?: return
+        viewModelScope.launch { capture.releaseCamera() }
+    }
+
+    /**
+     * Retry after a failure: the cached streamer may be the thing that is broken,
+     * so it is discarded before opening again.
+     */
+    fun retryCamera() {
+        val capture = capture ?: return
+        viewModelScope.launch {
+            capture.releaseCamera()
+            _cameraFailure.value = null
+            capture.openCamera()
+                .onFailure { _cameraFailure.value = "Camera failed to start: ${it.message ?: it.javaClass.simpleName}" }
+        }
+    }
+
     fun setCurrentCamera(cameraId: Int) {
         runtime.value = runtime.value.copy(currentCameraId = cameraId)
         applyFacing(cameraId)
@@ -264,21 +285,13 @@ class MainViewModel(
      * so a real engine changes this behaviour without touching Compose.
      */
     fun startBroadcast() {
+        if (broadcastRequestInFlight) return
+        broadcastRequestInFlight = true
         viewModelScope.launch {
-            // The engine decides; the console only supplies what was configured.
-            val settings = repository.settings.first()
-            val request = BroadcastRequest(
-                connectionName = settings.connectionUrl.takeIf { it.isNotBlank() },
-                recordLocally = settings.recordStream,
-            )
-            when (val result = engine.start(request)) {
-                is BroadcastResult.Started -> Unit
-                is BroadcastResult.Rejected -> when (val failure = result.failure) {
-                    BroadcastFailure.NoActiveConnection ->
-                        runtime.value = runtime.value.copy(dialog = noConnectionDialog)
-                    is BroadcastFailure.TransportUnavailable ->
-                        runtime.value = runtime.value.copy(toastMessage = failure.reason)
-                }
+            try {
+                start()
+            } finally {
+                broadcastRequestInFlight = false
             }
         }
     }
@@ -289,7 +302,34 @@ class MainViewModel(
 
     /** One control, as the audited console has: it starts, then it stops. */
     fun toggleBroadcast() {
-        if (broadcasting.value) stopBroadcast() else startBroadcast()
+        // Without this, two quick taps both read `broadcasting == false` while the
+        // first request is still suspended, and both reach startStream.
+        if (broadcastRequestInFlight) return
+        broadcastRequestInFlight = true
+        viewModelScope.launch {
+            try {
+                if (broadcasting.value) engine.stop() else start()
+            } finally {
+                broadcastRequestInFlight = false
+            }
+        }
+    }
+
+    private suspend fun start() {
+        val settings = repository.settings.first()
+        val request = BroadcastRequest(
+            connectionName = settings.connectionUrl.takeIf { it.isNotBlank() },
+            recordLocally = settings.recordStream,
+        )
+        when (val result = engine.start(request)) {
+            is BroadcastResult.Started -> Unit
+            is BroadcastResult.Rejected -> when (val failure = result.failure) {
+                BroadcastFailure.NoActiveConnection ->
+                    runtime.value = runtime.value.copy(dialog = noConnectionDialog)
+                is BroadcastFailure.TransportUnavailable ->
+                    runtime.value = runtime.value.copy(toastMessage = failure.reason)
+            }
+        }
     }
 
     override fun onCleared() {

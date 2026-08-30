@@ -57,4 +57,7 @@ The manifest contains no camera, microphone, storage, or Internet permission. Fo
 
 ## Signing
 
-Both local build types use the repository-owned self-signed `irl-streamer-signing.jks` to make emulator upgrade/install behavior deterministic. Release is minified and resource-shrunk. This is a QA identity, not a production credential.
+Release signing is supplied through environment variables and kept outside the
+repository. Release builds are minified and resource-shrunk. Debug builds use the
+same external identity when it is configured, otherwise they use the local Android
+debug identity.

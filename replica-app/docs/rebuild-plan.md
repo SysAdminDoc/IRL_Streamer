@@ -43,7 +43,7 @@ The captured target comprises 145 visual states, 119 logical screen names, 15 pr
 
 - Environment and audit-integrity checks pass.
 - Debug unit tests, lint, assembly, install, launch, UI tests, and ADB smoke tests pass.
-- Repository-owned signing identity is used; the ambient Android debug keystore is never used.
+- Release signing is supplied from an external local key and no signing material is committed.
 - The minified release APK installs and relaunches successfully on the emulator.
 - Every captured state has an implementation status and traceability row.
 - Every visually validated state has a current screenshot, side-by-side image, overlay, diff heat map, similarity metrics, and documented masks.

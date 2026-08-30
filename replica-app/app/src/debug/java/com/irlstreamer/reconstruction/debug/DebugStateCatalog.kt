@@ -150,7 +150,15 @@ object DebugStateCatalog {
         }
     }
 
-    fun resolveNamedState(name: String): RuntimeUiState = when (name.lowercase()) {
+    /**
+     * Named fixtures are captured like the numbered ones, so they carry a screen
+     * id: without it the console treats them as a live session and opens the
+     * camera, which is neither reproducible nor wanted during a capture.
+     */
+    fun resolveNamedState(name: String): RuntimeUiState =
+        namedState(name).copy(debugScreenId = "named_${name.lowercase()}")
+
+    private fun namedState(name: String): RuntimeUiState = when (name.lowercase()) {
         "loading" -> RuntimeUiState(route = AppRoute.LiveConsole, launchInitializing = true, toastMessage = "H.264, 1920x1080")
         "empty" -> RuntimeUiState(route = AppRoute.Settings(SettingsPage.CONNECTIONS))
         "network_error" -> RuntimeUiState(route = AppRoute.LiveConsole, quickPanelOpen = true, quickTab = QuickTab.NETWORK, toastMessage = "Local network fixture unavailable")

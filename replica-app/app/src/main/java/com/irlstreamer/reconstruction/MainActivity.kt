@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.irlstreamer.reconstruction.data.ReplicaSettingsRepository
+import com.irlstreamer.reconstruction.engine.SimulatedBroadcastEngine
 import com.irlstreamer.reconstruction.engine.StreamPackBroadcastEngine
 import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.ui.ReplicaApp
@@ -26,10 +27,15 @@ class MainActivity : ComponentActivity() {
         window.statusBarColor = Color.BLACK
         window.navigationBarColor = Color.BLACK
 
-        val factory = MainViewModel.Factory(
-            ReplicaSettingsRepository(applicationContext),
-            StreamPackBroadcastEngine(applicationContext),
-        )
+        // A capture run must not open the camera or reach the network: the
+        // harness drives audited states, and its screenshots have to be
+        // reproducible. Everything else gets the real engine.
+        val engine = if (isCaptureLaunch(intent)) {
+            SimulatedBroadcastEngine()
+        } else {
+            StreamPackBroadcastEngine(applicationContext)
+        }
+        val factory = MainViewModel.Factory(ReplicaSettingsRepository(applicationContext), engine)
         mainViewModel = androidx.lifecycle.ViewModelProvider(this, factory)[MainViewModel::class.java]
         handleDebugIntent(intent)
 
@@ -64,6 +70,14 @@ class MainActivity : ComponentActivity() {
         super.onNewIntent(intent)
         setIntent(intent)
         handleDebugIntent(intent)
+    }
+
+    /** True when the debug harness launched us to render one audited state. */
+    private fun isCaptureLaunch(intent: Intent?): Boolean {
+        if (!BuildConfig.ENABLE_DEBUG_STATE_SELECTOR || intent == null) return false
+        return intent.hasExtra("screen_id") || intent.hasExtra("replica_state") ||
+            intent.data?.getQueryParameter("screen_id") != null ||
+            intent.data?.getQueryParameter("replica_state") != null
     }
 
     private fun handleDebugIntent(intent: Intent?) {

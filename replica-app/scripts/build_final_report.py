@@ -227,7 +227,7 @@ def main() -> int:
     cert = release.get("Certificate SHA-256")
     launch = release.get("Cold launch")
     lines += [
-        f"| Release signing certificate SHA-256 | `{cert}` (repository-owned local QA identity, not a production key) |"
+        f"| Release signing certificate SHA-256 | `{cert}` (external local signing identity) |"
         if cert else "| Release signing certificate SHA-256 | not recorded |",
         f"| Release install + cold launch | {release.get('Install', 'not recorded')} / {launch} on `{release.get('Device', 'unknown device')}`, recorded {release.get('Generated', 'undated')} |"
         if launch else "| Release install + cold launch | not recorded |",

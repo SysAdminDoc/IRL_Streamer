@@ -8,7 +8,9 @@ import android.util.Size
 import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
 import com.irlstreamer.reconstruction.model.ReplicaSettings
+import io.github.thibaultbee.streampack.core.elements.encoders.AudioCodecConfig
 import io.github.thibaultbee.streampack.core.elements.encoders.VideoCodecConfig
+import io.github.thibaultbee.streampack.core.elements.sources.audio.audiorecord.MicrophoneSourceFactory
 import io.github.thibaultbee.streampack.core.elements.sources.video.camera.extensions.backCameras
 import io.github.thibaultbee.streampack.core.elements.sources.video.camera.extensions.cameraManager
 import io.github.thibaultbee.streampack.core.elements.sources.video.camera.extensions.frontCameras
@@ -16,7 +18,8 @@ import io.github.thibaultbee.streampack.core.interfaces.IWithVideoSource
 import io.github.thibaultbee.streampack.core.interfaces.setCameraId
 import io.github.thibaultbee.streampack.core.interfaces.releaseBlocking
 import io.github.thibaultbee.streampack.core.interfaces.startStream
-import io.github.thibaultbee.streampack.core.streamers.single.VideoOnlySingleStreamer
+import io.github.thibaultbee.streampack.core.streamers.single.IVideoSingleStreamer
+import io.github.thibaultbee.streampack.core.streamers.single.cameraSingleStreamer
 import io.github.thibaultbee.streampack.core.streamers.single.cameraVideoOnlySingleStreamer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -30,9 +33,9 @@ private const val TAG = "StreamPackEngine"
  * Camera capture, H.264 encode and RTMP publish.
  *
  * This engine owns the camera: it drives both the console preview and the
- * outgoing stream, so nothing else may bind the device while it exists. Audio
- * is not captured yet - the microphone source needs the RECORD_AUDIO flow that
- * ROADMAP IS-05 covers - so the published stream is video only.
+ * outgoing stream, so nothing else may bind the device while it exists. Sound
+ * is captured too when RECORD_AUDIO has been granted; without it the stream is
+ * video only rather than refusing to start.
  */
 class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine {
     private val _state = MutableStateFlow(BroadcastState.IDLE)
@@ -46,7 +49,11 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     val videoSource: StateFlow<IWithVideoSource?> = _videoSource.asStateFlow()
 
     private val streamerLock = Mutex()
-    private var streamer: VideoOnlySingleStreamer? = null
+    private var streamer: IVideoSingleStreamer? = null
+
+    /** True when the open streamer captures sound as well as picture. */
+    var hasAudio: Boolean = false
+        private set
     private var settings = ReplicaSettings()
 
     override fun configure(settings: ReplicaSettings) {
@@ -60,20 +67,60 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     /**
      * Opens the camera if it is not already open. Called by the console before it
      * can show a preview, and again by [start].
+     *
+     * The stream carries sound only when RECORD_AUDIO was granted before the
+     * camera opened: a streamer built with an audio input refuses to start
+     * without one, and the input cannot be added afterwards.
      */
     @RequiresPermission(Manifest.permission.CAMERA)
-    suspend fun openCamera(): Result<VideoOnlySingleStreamer> = streamerLock.withLock {
+    suspend fun openCamera(): Result<IVideoSingleStreamer> = streamerLock.withLock {
         streamer?.let { return@withLock Result.success(it) }
+        val withAudio = ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) ==
+            PackageManager.PERMISSION_GRANTED
+        var opened: IVideoSingleStreamer? = null
         runCatching {
-            // Video only: the microphone needs RECORD_AUDIO, which the app does not
-            // request yet, and a streamer with an audio input refuses to start
-            // without an audio config.
-            cameraVideoOnlySingleStreamer(context = context).also { opened ->
-                opened.setVideoConfig(videoConfig())
-                streamer = opened
-                _videoSource.value = opened
+            opened = if (withAudio) {
+                cameraSingleStreamer(
+                    context = context,
+                    audioSourceFactory = MicrophoneSourceFactory(),
+                ).also { it.setAudioConfig(AudioCodecConfig()) }
+            } else {
+                cameraVideoOnlySingleStreamer(context = context)
             }
-        }.onFailure { Log.e(TAG, "camera open failed", it) }
+            val streamerToUse = requireNotNull(opened)
+            streamerToUse.setVideoConfig(videoConfig())
+            hasAudio = withAudio
+            streamer = streamerToUse
+            _videoSource.value = streamerToUse
+            streamerToUse
+        }.onFailure { failure ->
+            Log.e(TAG, "camera open failed", failure)
+            // Configuring can throw after the camera is already held. Dropping
+            // that streamer untracked would leave the device open and every
+            // retry would then fail with "camera in use".
+            opened?.let { runCatching { it.releaseBlocking() } }
+        }
+    }
+
+    /**
+     * Closes the camera and forgets the streamer.
+     *
+     * Android takes the camera away from a backgrounded app, and a streamer that
+     * lost its device still reports itself as open, so the console would show a
+     * dead surface with no way back. The console releases on stop and opens again
+     * on start.
+     */
+    suspend fun releaseCamera() = streamerLock.withLock {
+        val current = streamer ?: return@withLock
+        streamer = null
+        _videoSource.value = null
+        hasAudio = false
+        _state.value = BroadcastState.IDLE
+        runCatching {
+            current.stopStream()
+            current.close()
+            current.releaseBlocking()
+        }.onFailure { Log.e(TAG, "camera release failed", it) }
     }
 
     /**
@@ -109,7 +156,9 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
 
         _state.value = BroadcastState.CONNECTING
         return runCatching {
-            opened.setVideoConfig(videoConfig())
+            // The configs are applied once, when the camera opens. Re-applying the
+            // video config here left the RTMP endpoint advertising the audio track
+            // only, and the receiver rejected the video packets that followed.
             opened.startStream(url)
         }.fold(
             onSuccess = {
@@ -121,7 +170,8 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
                 BroadcastResult.Started
             },
             onFailure = { failure ->
-                Log.e(TAG, "publish to $url failed", failure)
+                // The URL carries the stream key; only the host is safe to log.
+                Log.e(TAG, "publish to ${url.substringBefore("://")}://${url.substringAfter("://").substringBefore('/')} failed", failure)
                 _state.value = BroadcastState.ERROR
                 BroadcastResult.Rejected(
                     BroadcastFailure.TransportUnavailable(
@@ -134,6 +184,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
 
     override suspend fun stop() {
         val current = streamerLock.withLock { streamer } ?: return
+        if (_state.value == BroadcastState.IDLE) return
         runCatching {
             current.stopStream()
             current.close()

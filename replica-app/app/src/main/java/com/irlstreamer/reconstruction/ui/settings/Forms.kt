@@ -54,7 +54,10 @@ fun ConnectionFormScreen(state: AppUiState, viewModel: MainViewModel) {
     var url by remember(variant) { mutableStateOf(if (variant.startsWith("rtmp")) "rtmp://198.51.100.1/live" else "") }
     var login by remember(variant) { mutableStateOf("") }
     var password by remember(variant) { mutableStateOf("") }
-    val rtmp = url.startsWith("rtmp://", ignoreCase = true) || variant.startsWith("rtmp")
+    // rtmps is the same endpoint with TLS; rejecting it only stopped the form saving.
+    val rtmp = url.startsWith("rtmp://", ignoreCase = true) ||
+        url.startsWith("rtmps://", ignoreCase = true) ||
+        variant.startsWith("rtmp")
     val authorization = variant == "rtmp_auth" || state.runtime.transientValues["rtmp_target"] == "RTMP authorization"
     val listState = key(state.runtime.debugScreenId) {
         rememberLazyListState(initialFirstVisibleItemIndex = state.runtime.settingsScrollIndex.coerceAtMost(3))

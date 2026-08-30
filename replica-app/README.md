@@ -2,7 +2,7 @@
 
 IRL Streamer is an independent, authorized clean-room reconstruction of the observable Android interface documented in `../app-audit`. It is not the official IRL Pro application and contains no decompiled code, extracted private data, original signing material, or unauthorized artwork.
 
-The implementation recreates the audited landscape live console, settings hierarchy, dialogs, forms, overlays, quick settings, validation states, and lifecycle-facing navigation with deterministic local fixtures. The console shows the device camera and publishes it over RTMP through StreamPack (the audited debug states keep a fixed preview image so screenshot comparisons stay reproducible). Audio capture, bonding transport, remote chat, remote dashboards, recording, and arbitrary WebView execution are still safe simulations because no authorized backend or transport specification was supplied.
+The implementation recreates the audited landscape live console, settings hierarchy, dialogs, forms, overlays, quick settings, validation states, and lifecycle-facing navigation with deterministic local fixtures. The console captures camera video and microphone audio, then publishes them over RTMP or RTMPS through StreamPack. Audited debug states keep a fixed preview image so screenshot comparisons stay reproducible. Bonding transport, remote chat, remote dashboards, recording, and arbitrary WebView execution remain safe simulations because no authorized backend or transport specification was supplied.
 
 ## Provenance of the audited original
 
@@ -20,7 +20,7 @@ None of that code is present here. This reconstruction shares no source, no asse
 
 - Windows 10/11 with PowerShell 5.1 or newer
 - Android SDK with platform/build tools 36 and `adb`
-- Android Studio JBR / Java 17
+- Java 21
 - Python 3.12 with Pillow, NumPy, and scikit-image for visual comparison
 - An isolated emulator; never use the original audit phone for replica QA
 
@@ -56,7 +56,18 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\launch-replica
 - Orientation: forced landscape
 - Reference test display: 2316 × 1080 captured pixels, 450 dpi, font scale 1.0, dark mode, three-button navigation
 
-The repository-owned `irl-streamer-signing.jks` is a disposable local self-signed identity used for deterministic debug/release upgrade testing. It is not a production or Play signing key.
+Release signing stays outside the repository. Set these variables before running
+`scripts/build-release.ps1`:
+
+```powershell
+$env:IRL_STREAMER_KEYSTORE_FILE = 'C:\path\to\release.jks'
+$env:IRL_STREAMER_KEYSTORE_PASSWORD = '<store password>'
+$env:IRL_STREAMER_KEY_ALIAS = '<key alias>'
+$env:IRL_STREAMER_KEY_PASSWORD = '<key password>'
+```
+
+The build script stops immediately when any value or the key file is missing.
+The public repository and release assets never contain a signing key.
 
 ## Dependency verification
 
@@ -72,21 +83,21 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-release.
 
 The reconstruction is validated by three gates, in the order they constrain it.
 
-**1. Geometry — replica UI hierarchy vs audit UI hierarchy.** SSIM tells you *that*
+**1. Geometry, replica UI hierarchy vs audit UI hierarchy.** SSIM tells you *that*
 a screen differs; only the hierarchy tells you *which element* moved, which is the
 target the audit states in pixels. `scripts/geometry_diff.py` pairs nodes by visible
 label and measures each element's drawn origin against
 `../app-audit/evidence/ui-xml/<id>.xml`. Current numbers are in
 `validation/reports/geometry-validation-report.md`.
 
-**2. Visual — unmasked whole-screen SSIM at 0.985.** Strict and deliberately not
+**2. Visual, unmasked whole-screen SSIM at 0.985.** Strict and deliberately not
 met by masking. Masks exist (`validation/masks/mask-register.csv`) but feed only a
 *secondary* app-chrome metric that excludes system-owned pixels: the Android status
 bar, the Samsung navigation strip, and the IME window on the three states where the
-keyboard covers the app. The camera preview is **not** masked — excluding it would
+keyboard covers the app. The camera preview is **not** masked. Excluding it would
 remove about 97% of a live-console screen and leave a meaningless number.
 
-**3. Behaviour — JVM and on-device Compose tests.**
+**3. Behaviour, JVM and on-device Compose tests.**
 
 Measured 2026-08-15 on v0.2.0 (all 145 states, one build, `emulator-5554`). These
 numbers drift with every change; `validation/reports/final-coverage-report.md` is
@@ -203,6 +214,8 @@ The selector is compiled out of release builds. Release launch extras do not cha
 
 No authorized original-assets directory was supplied. The UI therefore uses Android library icons, a newly generated neutral preview fixture, independent geometry, system typography, and the distinct IRL Streamer identity. The original screenshots remain validation evidence only and are never rendered by the app. See `docs/known-deviations.md` and `docs/asset-rights-register.csv` for the complete register.
 
-No live backend is connected. All telemetry, logs, network weights, connection forms, alerts, reloads, snapshots, recording controls, and overlay content remain on-device deterministic simulations. The code requests no camera, microphone, or network permission.
+The camera, microphone, saved destination, and RTMP or RTMPS publishing path are
+live. Telemetry, bonding weights, remote alerts, reloads, snapshots, recording,
+and overlay content remain on-device deterministic simulations.
 
 The release verification run writes its smoke capture to `validation/current/release-launch.png` (generated evidence, not committed) and records the result in `validation/reports/release-verification.txt`. The signed release APK is built to `app/build/outputs/apk/release/app-release.apk`.

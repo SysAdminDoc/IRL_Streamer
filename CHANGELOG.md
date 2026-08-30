@@ -3,6 +3,30 @@
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.4.0], 2026-08-30
+
+### Added
+
+- Broadcasts can include microphone audio. Camera and microphone permissions are
+  requested together, while a refused microphone falls back to silent video.
+- RTMPS destinations are accepted by the connection form.
+
+### Changed
+
+- The camera is released when the app leaves the foreground and opened again on
+  return. Retry now replaces a failed capture session instead of reusing it.
+- Automated screen captures use the simulated engine, keeping the camera and
+  network inactive during deterministic validation.
+- Release signing now reads an external local key from environment variables.
+  No signing key is stored in the repository.
+
+### Fixed
+
+- Quick repeated taps can no longer start two broadcasts at once.
+- Publish failures log only the destination host, so stream keys stay out of logs.
+- Dependency verification regeneration now covers debug, release, test, lint,
+  and device-test configurations.
+
 ## [0.3.1], 2026-08-29
 
 ### Changed

@@ -6,6 +6,14 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
+val externalSigning = mapOf(
+    "storeFile" to providers.environmentVariable("IRL_STREAMER_KEYSTORE_FILE").orNull,
+    "storePassword" to providers.environmentVariable("IRL_STREAMER_KEYSTORE_PASSWORD").orNull,
+    "keyAlias" to providers.environmentVariable("IRL_STREAMER_KEY_ALIAS").orNull,
+    "keyPassword" to providers.environmentVariable("IRL_STREAMER_KEY_PASSWORD").orNull,
+)
+val externalSigningConfigured = externalSigning.values.all { !it.isNullOrBlank() }
+
 android {
     namespace = "com.irlstreamer.reconstruction"
     compileSdk = 36
@@ -14,18 +22,20 @@ android {
         applicationId = "com.irlstreamer.reconstruction"
         minSdk = 28
         targetSdk = 36
-        versionCode = 4
-        versionName = "0.3.1"
+        versionCode = 5
+        versionName = "0.4.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
     signingConfigs {
-        create("repository") {
-            storeFile = rootProject.file("irl-streamer-signing.jks")
-            storePassword = "irl-streamer-local"
-            keyAlias = "irl-streamer"
-            keyPassword = "irl-streamer-local"
+        if (externalSigningConfigured) {
+            create("external") {
+                storeFile = file(requireNotNull(externalSigning["storeFile"]))
+                storePassword = requireNotNull(externalSigning["storePassword"])
+                keyAlias = requireNotNull(externalSigning["keyAlias"])
+                keyPassword = requireNotNull(externalSigning["keyPassword"])
+            }
         }
     }
 
@@ -33,12 +43,12 @@ android {
         debug {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
-            signingConfig = signingConfigs.getByName("repository")
+            signingConfigs.findByName("external")?.let { signingConfig = it }
             isMinifyEnabled = false
             buildConfigField("boolean", "ENABLE_DEBUG_STATE_SELECTOR", "true")
         }
         release {
-            signingConfig = signingConfigs.getByName("repository")
+            signingConfigs.findByName("external")?.let { signingConfig = it }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(

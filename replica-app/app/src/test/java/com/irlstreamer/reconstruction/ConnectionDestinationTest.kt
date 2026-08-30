@@ -103,7 +103,7 @@ class ConnectionDestinationTest {
         assertNull(
             empty.items.filterIsInstance<SettingItem.Row>().firstOrNull { it.id == "saved_connection" },
         )
-        assertEquals(SettingsCatalog.page(SettingsPage.CONNECTIONS).items.size, empty.items.size)
+        assertEquals(3, empty.items.size)
 
         val saved = SettingsCatalog.connectionsPage(
             ReplicaSettings(connectionName = "Local fixture", connectionUrl = "rtmp://10.0.2.2/live/key"),

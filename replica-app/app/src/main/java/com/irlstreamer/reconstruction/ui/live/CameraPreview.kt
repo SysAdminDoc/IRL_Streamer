@@ -15,9 +15,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -31,6 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.irlstreamer.reconstruction.MainViewModel
 import com.irlstreamer.reconstruction.ui.theme.AuditColors
@@ -56,14 +59,26 @@ fun CameraPreview(
         )
     }
     var askedOnce by remember { mutableStateOf(false) }
-    var attempt by remember { mutableIntStateOf(0) }
-    val permissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
+    // Both at once: the console is a broadcaster, and a streamer that opens
+    // without a microphone cannot gain one later without reopening the camera.
+    val permissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
         askedOnce = true
-        granted = result
+        granted = result[Manifest.permission.CAMERA] ?: granted
+        if (result[Manifest.permission.RECORD_AUDIO] == false) {
+            viewModel.showToast("Microphone refused, so the broadcast will be silent")
+        }
     }
 
     LaunchedEffect(Unit) {
-        if (!granted) permissionLauncher.launch(Manifest.permission.CAMERA)
+        val wanted = buildList {
+            if (!granted) add(Manifest.permission.CAMERA)
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) !=
+                PackageManager.PERMISSION_GRANTED
+            ) {
+                add(Manifest.permission.RECORD_AUDIO)
+            }
+        }
+        if (wanted.isNotEmpty()) permissionLauncher.launch(wanted.toTypedArray())
     }
 
     if (!granted) {
@@ -74,7 +89,7 @@ fun CameraPreview(
                 val canPrompt = activity == null || !askedOnce ||
                     ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)
                 if (canPrompt) {
-                    permissionLauncher.launch(Manifest.permission.CAMERA)
+                    permissionLauncher.launch(arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO))
                 } else {
                     context.startActivity(
                         Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", context.packageName, null))
@@ -86,7 +101,24 @@ fun CameraPreview(
         return
     }
 
-    LaunchedEffect(granted, attempt) { viewModel.openCamera() }
+    // The camera follows the console's lifecycle. Android revokes it from a
+    // backgrounded app anyway, and holding a dead streamer showed a black
+    // preview that Retry could not recover.
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner, granted) {
+        if (lifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+            viewModel.openCamera()
+        }
+        val observer = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_START -> viewModel.openCamera()
+                Lifecycle.Event.ON_STOP -> viewModel.releaseCamera()
+                else -> Unit
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
 
     val source by viewModel.videoSource.collectAsStateWithLifecycle()
     val failure by viewModel.cameraFailure.collectAsStateWithLifecycle()
@@ -94,7 +126,7 @@ fun CameraPreview(
     // A failure is a state the console can show and retry, not a toast that
     // scrolls away leaving a black rectangle (the complaint IRL Pro reviews make).
     failure?.let { message ->
-        FailureSurface(message = message, modifier = modifier, onRetry = { attempt++ })
+        FailureSurface(message = message, modifier = modifier, onRetry = viewModel::retryCamera)
         return
     }
 

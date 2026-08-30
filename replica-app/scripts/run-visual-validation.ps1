@@ -31,6 +31,11 @@ else {
     $targets = @($catalog | Where-Object { $representative -contains [int]$_.screen_id.Substring(0, 3) } | ForEach-Object { $_.screen_id })
 }
 
+# Audited pages render persisted state (a saved connection adds a row to the
+# Connections page), so a capture run starts from clean app data.
+& powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'reset-replica.ps1') -Serial $Serial
+if ($LASTEXITCODE -ne 0) { throw 'Could not clear replica data before capturing.' }
+
 $rows = @()
 $targetIndex = 0
 foreach ($id in $targets) {
