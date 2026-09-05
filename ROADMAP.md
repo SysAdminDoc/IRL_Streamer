@@ -524,13 +524,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P0
 
-- [ ] P0 — IS-104 Recreate the validation AVD so the three gates can run again
-  Why: the geometry, strict-SSIM and app-chrome gates are the only defence against regressions across 145 audited screens, and none of them can be executed on this machine. Every audited-screen change is blocked behind this, including IS-99.
-  Evidence: `Roadmap_Blocked.md`; repo `CLAUDE.md` entry 2026-08-29 "the harness AVD no longer exists on this machine"; the baseline in `replica-app/validation/geometry-baseline.json` was captured at 2316x1080 / 450 dpi on API 36, so no other API level is comparable.
-  Touches: `replica-app/scripts/start-headless-emulator.ps1`, `scripts/check-environment.ps1`, `docs/testing-guide.md`
-  Acceptance: `sdkmanager` installs the android-36 system image, `issue-sweep-api36` is recreated at 2316x1080 / 450 dpi, and `run-full-validation.ps1` completes with the geometry gate reporting against the existing baseline rather than erroring; `validation/reports/release-verification.txt` is regenerated for the current versionCode.
-  Complexity: M
-
 ### P1
 
 - [ ] P1 — IS-105 The stream key is displayed in clear on two screens
