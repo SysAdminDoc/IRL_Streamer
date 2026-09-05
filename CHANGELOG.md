@@ -9,6 +9,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - A broadcast that drops now leaves the live state instead of showing LIVE
   forever. The console watches the outgoing stream and says why it stopped.
+- Stream keys no longer leave the device in a cloud backup or a phone-to-phone
+  transfer. The backup rules named a file the app never writes, so the settings
+  store holding the connection URL was being copied off the device.
 
 ## [0.4.0], 2026-08-30
 

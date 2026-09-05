@@ -16,7 +16,20 @@ import com.irlstreamer.reconstruction.model.ReplicaSettings
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-private val Context.replicaDataStore by preferencesDataStore(name = "irl_streamer_settings")
+/**
+ * Name of the settings store.
+ *
+ * DataStore writes it to `filesDir/datastore/$SETTINGS_DATASTORE_NAME.preferences_pb`,
+ * and the connection URL it holds carries the stream key. The backup rules
+ * exclude that exact path, so the name is shared rather than repeated as a
+ * literal - renaming the store must break the test that ties the two together.
+ */
+internal const val SETTINGS_DATASTORE_NAME = "irl_streamer_settings"
+
+/** The path Auto Backup sees, relative to the `file` domain. */
+internal const val SETTINGS_DATASTORE_BACKUP_PATH = "datastore/$SETTINGS_DATASTORE_NAME.preferences_pb"
+
+private val Context.replicaDataStore by preferencesDataStore(name = SETTINGS_DATASTORE_NAME)
 
 /** Namespaces for generically persisted values, kept out of the named key space. */
 private const val TOGGLE_PREFIX = "toggle."

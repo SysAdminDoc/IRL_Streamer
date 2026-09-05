@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android 12 and newer read these rules instead of backup_rules.xml. Both paths
+    off the device are covered: a cloud backup and a direct device-to-device
+    transfer. See backup_rules.xml for why the settings store is excluded.
+-->
 <data-extraction-rules>
     <cloud-backup>
-        <exclude domain="sharedpref" path="secrets.xml" />
+        <exclude domain="file" path="datastore/irl_streamer_settings.preferences_pb" />
     </cloud-backup>
     <device-transfer>
-        <exclude domain="sharedpref" path="secrets.xml" />
+        <exclude domain="file" path="datastore/irl_streamer_settings.preferences_pb" />
     </device-transfer>
 </data-extraction-rules>

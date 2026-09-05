@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    The settings store holds the outgoing connection URL, and an RTMP URL carries
+    the stream key in its path. Auto Backup includes getFilesDir() by default, so
+    without this exclusion the key leaves the device with the backup.
+
+    The path must match ReplicaSettingsRepository's store name;
+    BackupRulesTest keeps the two in step.
+-->
 <full-backup-content>
-    <exclude domain="sharedpref" path="secrets.xml" />
+    <exclude domain="file" path="datastore/irl_streamer_settings.preferences_pb" />
 </full-backup-content>
