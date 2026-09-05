@@ -13,6 +13,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- The app checks GitHub once a day for a newer release and says so under Help &
+  support, with a link to the releases page. It fails silently offline and can be
+  turned off. There is no store to push updates, so it has to look.
 - Several outgoing connections can be saved. Tap one to make it the destination
   the console broadcasts to, and delete one from Manage outgoing connections,
   which asks first. Saving a name that already exists edits it instead of adding

@@ -25,6 +25,8 @@ import com.irlstreamer.reconstruction.model.redactStreamKeysIn
 import com.irlstreamer.reconstruction.model.RuntimeUiState
 import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.model.noConnectionDialog
+import com.irlstreamer.reconstruction.update.fetchLatestReleaseTag
+import com.irlstreamer.reconstruction.update.shouldCheckForUpdate
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -101,6 +103,26 @@ class MainViewModel(
                     },
                 )
             }
+        }
+        checkForUpdate()
+    }
+
+    /**
+     * Looks for a newer release, at most once a day.
+     *
+     * Distribution is signed APKs on GitHub Releases, so nothing pushes an
+     * update: a user on an old build has no signal that a fix shipped unless the
+     * app looks. Failure is silent, because being offline is normal for a phone
+     * that streams outdoors.
+     */
+    private fun checkForUpdate() {
+        viewModelScope.launch {
+            val settings = repository.settings.first()
+            if (!shouldCheckForUpdate(settings.updateCheckEnabled, settings.updateLastCheckMillis, System.currentTimeMillis())) {
+                return@launch
+            }
+            val tag = fetchLatestReleaseTag() ?: return@launch
+            repository.recordUpdateCheck(tag, System.currentTimeMillis())
         }
     }
 

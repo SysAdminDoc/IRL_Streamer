@@ -21,6 +21,7 @@ import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.REVEAL_STREAM_KEY
 import com.irlstreamer.reconstruction.model.SettingsPage
+import com.irlstreamer.reconstruction.update.RELEASES_URL
 import com.irlstreamer.reconstruction.ui.components.AuditedAppBar
 import com.irlstreamer.reconstruction.ui.components.InfoRow
 import com.irlstreamer.reconstruction.ui.components.isSecret
@@ -48,11 +49,14 @@ fun SettingsScreen(state: AppUiState, viewModel: MainViewModel) {
 private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewModel: MainViewModel) {
     val spec = if (page == SettingsPage.CONNECTIONS) {
         SettingsCatalog.connectionsPage(state.settings, state.runtime.transientBooleans[REVEAL_STREAM_KEY] == true)
+    } else if (page == SettingsPage.HELP) {
+        SettingsCatalog.helpPage(state.settings)
     } else if (page == SettingsPage.MANAGE_CONNECTIONS) {
         SettingsCatalog.manageConnectionsPage(state.settings)
     } else {
         SettingsCatalog.page(page)
     }
+    val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
     val visibleItems = remember(spec.items, state.effectiveSafeMargins) {
         if (page == SettingsPage.DISPLAY && !state.effectiveSafeMargins) {
             spec.items.filterNot {
@@ -119,7 +123,7 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
                             enabled = derivedEnabled,
                             accentTitle = item.accentTitle,
                             onClick = if (derivedEnabled) {
-                                { handleAction(item.action, state, viewModel) }
+                                { handleAction(item.action, state, viewModel, uriHandler::openUri) }
                             } else null,
                         )
                     }
@@ -153,12 +157,18 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
     }
 }
 
-private fun handleAction(action: SettingAction, state: AppUiState, viewModel: MainViewModel) {
+private fun handleAction(
+    action: SettingAction,
+    state: AppUiState,
+    viewModel: MainViewModel,
+    openUri: (String) -> Unit,
+) {
     when (action) {
         SettingAction.None -> Unit
         is SettingAction.Navigate -> viewModel.navigateTo(action.page)
         is SettingAction.Dialog -> viewModel.showDialog(withCurrentValue(action.request, state))
         SettingAction.OpenFolder -> viewModel.requestFolderPicker()
+        SettingAction.OpenReleasesPage -> openUri(RELEASES_URL)
         is SettingAction.Toast -> viewModel.showToast(action.message)
         SettingAction.ToggleStreamKeyReveal -> viewModel.toggleStreamKeyReveal()
         is SettingAction.SelectConnection -> viewModel.selectConnection(action.name)

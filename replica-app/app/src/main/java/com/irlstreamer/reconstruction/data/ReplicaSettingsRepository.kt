@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.mutablePreferencesOf
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
@@ -82,6 +83,9 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
         val connectionUrl = stringPreferencesKey("connection_url")
         val connections = stringPreferencesKey("connections")
         val activeConnection = stringPreferencesKey("active_connection")
+        val updateCheckEnabled = booleanPreferencesKey("update_check_enabled")
+        val updateLastCheck = longPreferencesKey("update_last_check_millis")
+        val updateLatestTag = stringPreferencesKey("update_latest_tag")
     }
 
     val settings: Flow<ReplicaSettings> = dataStore.data.map { preferences ->
@@ -113,6 +117,9 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
             connectionName = activeConnectionIn(preferences)?.name ?: "",
             connectionUrl = activeConnectionIn(preferences)?.url ?: "",
             connections = savedConnectionsIn(preferences),
+            updateCheckEnabled = preferences[Keys.updateCheckEnabled] ?: true,
+            updateLastCheckMillis = preferences[Keys.updateLastCheck] ?: 0L,
+            updateLatestTag = preferences[Keys.updateLatestTag] ?: "",
             extraToggles = preferences.asMap()
                 .filterKeys { it.name.startsWith(TOGGLE_PREFIX) }
                 .entries
@@ -171,6 +178,12 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
         // stops a stale pair from reappearing if the list is ever emptied.
         preferences.remove(Keys.connectionName)
         preferences.remove(Keys.connectionUrl)
+    }
+
+    /** Records what the last release check found, and when it ran. */
+    suspend fun recordUpdateCheck(latestTag: String, checkedAtMillis: Long) = dataStore.edit { preferences ->
+        preferences[Keys.updateLastCheck] = checkedAtMillis
+        preferences[Keys.updateLatestTag] = latestTag
     }
 
     /** Marks an already-saved destination as the one to broadcast to. */

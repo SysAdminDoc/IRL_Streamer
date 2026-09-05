@@ -8,6 +8,7 @@ import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.model.effectiveConnections
 import com.irlstreamer.reconstruction.model.hasStreamKey
 import com.irlstreamer.reconstruction.model.redactStreamKey
+import com.irlstreamer.reconstruction.update.isNewerVersion
 
 sealed interface SettingItem {
     data class Section(val title: String) : SettingItem
@@ -57,6 +58,9 @@ sealed interface SettingAction {
 
     /** Make this saved destination the one the console broadcasts to. */
     data class SelectConnection(val name: String) : SettingAction
+
+    /** Open the GitHub releases page, where the newer build is. */
+    data object OpenReleasesPage : SettingAction
 
     /** Ask before forgetting a saved destination. */
     data class DeleteConnection(val name: String) : SettingAction
@@ -192,6 +196,35 @@ object SettingsCatalog {
             )
         }
         return connections.copy(items = items)
+    }
+
+    /**
+     * The audited page, plus what the release check found.
+     *
+     * There is no store to push an update here, so the app has to say when a
+     * newer build exists. The rows only appear once a check has run, which the
+     * capture harness never does, so the audited page is unchanged.
+     */
+    fun helpPage(settings: ReplicaSettings): SettingsPageSpec {
+        val items = mutableListOf<SettingItem>()
+        items += help.items
+        items += SettingItem.Toggle(
+            key = "update_check_enabled",
+            title = "Check for updates",
+            summary = "Ask GitHub once a day whether a newer release exists.",
+            summaryOff = "The app will not look for updates.",
+        )
+        val latest = settings.updateLatestTag
+        if (latest.isNotBlank() && isNewerVersion(latest, BuildConfig.VERSION_NAME)) {
+            items += SettingItem.Row(
+                id = "update_available",
+                title = "Update available: $latest",
+                summary = "You are on ${BuildConfig.VERSION_NAME}. Open the releases page to download it.",
+                accentTitle = true,
+                action = SettingAction.OpenReleasesPage,
+            )
+        }
+        return help.copy(items = items)
     }
 
     /** The audited page, plus a delete row per saved destination. */

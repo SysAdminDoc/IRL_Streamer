@@ -549,14 +549,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: an uncaught exception writes a timestamped crash file; the Log tab renders the real ring buffer; the export action produces a share intent whose payload contains no stream key or credential, asserted by a test.
   Complexity: M
 
-- [ ] P1 — IS-113 No in-app update check on a sideload-only channel
-  Why: distribution is signed APKs on GitHub Releases, so a user on an old build has no signal that a fix shipped. Nothing in the app queries the releases API.
-  Evidence: zero occurrences of `api.github.com` or `releases/latest` under `replica-app/app/src`; latest release `v0.4.0` (2026-08-30) matches HEAD today, so the gap is preventable rather than already open.
-  Cross-reference: this replaces the open half of IS-20, whose channel question is settled.
-  Touches: new update-check source, `ui/settings/SettingsCatalog.kt` (Help & support), `AndroidManifest.xml`
-  Acceptance: the app compares `BuildConfig.VERSION_NAME` against the latest release tag on a throttled schedule and offers the release page when behind; the check fails silently offline and can be turned off.
-  Complexity: S
-
 - [ ] P1 — IS-114 The only risky class in the repo has no tests
   Why: `StreamPackBroadcastEngine` owns the camera, the microphone, the encoder and the network and is referenced by no test source set, while `BroadcastEngineTest` asserts on a `FakeEngine` that emits DEGRADED and RECONNECTING states no production code can produce.
   Evidence: `app/src/test/java/com/irlstreamer/reconstruction/BroadcastEngineTest.kt:141-146`; no occurrence of `StreamPackBroadcastEngine` in `app/src/test` or `app/src/androidTest`.

@@ -123,6 +123,12 @@ data class ReplicaSettings(
      */
     val connectionName: String = "",
     val connectionUrl: String = "",
+    /** Whether the app looks for a newer release. Sideload has no store to push one. */
+    val updateCheckEnabled: Boolean = true,
+    /** When the last release check ran, in epoch millis. */
+    val updateLastCheckMillis: Long = 0L,
+    /** The newest release tag seen, or blank before the first successful check. */
+    val updateLatestTag: String = "",
     /** Every saved destination, in the order they were added. */
     val connections: List<OutgoingConnection> = emptyList(),
 )
