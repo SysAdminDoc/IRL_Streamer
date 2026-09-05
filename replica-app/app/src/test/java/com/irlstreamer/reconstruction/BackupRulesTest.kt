@@ -1,6 +1,7 @@
 package com.irlstreamer.reconstruction
 
 import com.irlstreamer.reconstruction.data.SETTINGS_DATASTORE_BACKUP_PATH
+import com.irlstreamer.reconstruction.data.SETTINGS_DATASTORE_DIRECTORY
 import java.io.File
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -24,14 +25,14 @@ class BackupRulesTest {
 
         assertTrue(
             "backup_rules.xml must exclude $SETTINGS_DATASTORE_BACKUP_PATH, found:\n$rules",
-            rules.contains(excludeFor(SETTINGS_DATASTORE_BACKUP_PATH)),
+            rules.contains(excludeFor(SETTINGS_DATASTORE_DIRECTORY)),
         )
     }
 
     @Test
     fun bothCloudBackupAndDeviceTransferExcludeTheStore() {
         val rules = readRules("data_extraction_rules.xml")
-        val exclusion = excludeFor(SETTINGS_DATASTORE_BACKUP_PATH)
+        val exclusion = excludeFor(SETTINGS_DATASTORE_DIRECTORY)
 
         // Android 12+ reads this file instead, and it splits the two ways data
         // leaves a device. Covering only one of them still leaks the key.

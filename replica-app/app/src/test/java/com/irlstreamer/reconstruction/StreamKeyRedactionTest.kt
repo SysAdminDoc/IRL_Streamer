@@ -3,6 +3,7 @@ package com.irlstreamer.reconstruction
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.hasStreamKey
 import com.irlstreamer.reconstruction.model.redactStreamKey
+import com.irlstreamer.reconstruction.model.redactStreamKeysIn
 import com.irlstreamer.reconstruction.ui.settings.SettingItem
 import com.irlstreamer.reconstruction.ui.settings.SettingsCatalog
 import org.junit.Assert.assertEquals
@@ -35,6 +36,68 @@ class StreamKeyRedactionTest {
 
         assertFalse("the key survived redaction: $masked", masked.contains(secret))
         assertTrue(masked, masked.startsWith("rtmps://ingest.example.com/app/"))
+    }
+
+    @Test
+    fun aTrailingSlashAfterTheKeyStillHidesIt() {
+        // Regression: the last slash was treated as "no path left", so the URL
+        // came back untouched and hasStreamKey reported nothing to hide - the
+        // key was on screen with no indication it was even a secret.
+        val masked = redactStreamKey("rtmp://ingest.example.com/live/$secret/")
+
+        assertFalse("the key survived redaction: $masked", masked.contains(secret))
+        assertTrue(masked, masked.startsWith("rtmp://ingest.example.com/live/"))
+        assertTrue(hasStreamKey("rtmp://ingest.example.com/live/$secret/"))
+    }
+
+    @Test
+    fun aKeyInTheFragmentIsHidden() {
+        val masked = redactStreamKey("rtmp://ingest.example.com/live/app#$secret")
+
+        assertFalse("the key survived redaction: $masked", masked.contains(secret))
+    }
+
+    @Test
+    fun anEmbeddedPasswordIsHiddenToo() {
+        // Same class of secret sitting in the same string.
+        val masked = redactStreamKey("rtmp://operator:hunter2@ingest.example.com/live/$secret")
+
+        assertFalse("the password survived redaction: $masked", masked.contains("hunter2"))
+        assertFalse("the key survived redaction: $masked", masked.contains(secret))
+        assertTrue(masked, masked.contains("operator"))
+    }
+
+    @Test
+    fun theKeyIsHiddenWhereverItSitsInThePath() {
+        // A key as the only path segment, and an SRT-style query with no path.
+        assertFalse(redactStreamKey("rtmp://ingest.example.com/$secret").contains(secret))
+        assertFalse(redactStreamKey("srt://ingest.example.com:9000?streamid=$secret").contains(secret))
+        // An uppercase scheme is still a URL.
+        assertFalse(redactStreamKey("RTMP://INGEST.EXAMPLE.COM/live/$secret").contains(secret))
+        // An IPv6 literal host must not be mistaken for a path.
+        val ipv6 = redactStreamKey("rtmp://[::1]/live/$secret")
+        assertFalse(ipv6, ipv6.contains(secret))
+        assertTrue(ipv6, ipv6.startsWith("rtmp://[::1]/live/"))
+    }
+
+    @Test
+    fun aUrlQuotedInsideAnErrorMessageIsRedacted() {
+        // Transport errors quote the URL they failed on, and that message is
+        // shown to the user and written to the log.
+        val message = "Failed to connect to rtmp://ingest.example.com/live/$secret after 3 tries"
+
+        val masked = redactStreamKeysIn(message)
+
+        assertFalse("the key survived redaction: $masked", masked.contains(secret))
+        assertTrue(masked, masked.startsWith("Failed to connect to rtmp://ingest.example.com/live/"))
+        assertTrue(masked, masked.endsWith("after 3 tries"))
+    }
+
+    @Test
+    fun textWithNoUrlIsUnchanged() {
+        val message = "Connection reset by peer"
+
+        assertEquals(message, redactStreamKeysIn(message))
     }
 
     @Test

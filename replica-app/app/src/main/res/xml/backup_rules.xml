@@ -4,9 +4,12 @@
     the stream key in its path. Auto Backup includes getFilesDir() by default, so
     without this exclusion the key leaves the device with the backup.
 
-    The path must match ReplicaSettingsRepository's store name;
+    The whole datastore directory is excluded, not just the one file: DataStore
+    writes a scratch file beside it and renames, so an exact-filename rule leaves
+    a window where a copy of the key is not covered. The path must contain
+    ReplicaSettingsRepository's store directory;
     BackupRulesTest keeps the two in step.
 -->
 <full-backup-content>
-    <exclude domain="file" path="datastore/irl_streamer_settings.preferences_pb" />
+    <exclude domain="file" path="datastore" />
 </full-backup-content>

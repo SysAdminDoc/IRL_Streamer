@@ -9,6 +9,7 @@ import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.redactStreamKey
+import com.irlstreamer.reconstruction.model.redactStreamKeysIn
 import com.irlstreamer.reconstruction.model.videoFormatFrom
 import io.github.thibaultbee.streampack.core.elements.metrics.TrackedMetrics
 import io.github.thibaultbee.streampack.core.elements.metrics.WithEndpointMetrics
@@ -70,7 +71,9 @@ internal fun CoroutineScope.watchOutgoingStream(
             if (isLive()) {
                 onLost(
                     BroadcastFailure.TransportUnavailable(
-                        throwable.message ?: throwable.javaClass.simpleName,
+                        // Transport errors routinely quote the URL they failed
+                        // on, and this reason is shown to the user.
+                        throwable.message?.let(::redactStreamKeysIn) ?: throwable.javaClass.simpleName,
                     ),
                 )
             }
@@ -107,6 +110,18 @@ internal fun BroadcastStatistics.withEndpointMetrics(metrics: TrackedMetrics): B
         .toInt(),
     bytesSent = metrics.cumulative.bytesWritten.coerceAtLeast(0),
 )
+
+/**
+ * A throwable's message with any destination URL redacted, plus its type.
+ *
+ * Transport errors quote the URL they failed on, so handing the throwable
+ * straight to the logger prints the stream key to logcat. The type is kept
+ * because it is usually what identifies the failure.
+ */
+internal fun safeMessage(throwable: Throwable): String {
+    val message = throwable.message?.let(::redactStreamKeysIn)
+    return if (message.isNullOrBlank()) throwable.javaClass.simpleName else "${throwable.javaClass.simpleName}: $message"
+}
 
 /** First retry waits this long; each later one doubles. */
 internal const val RECONNECT_BASE_DELAY_MS = 1_000L
@@ -343,11 +358,13 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
                 // The URL carries the stream key, so neither the log nor the
                 // message the console shows may contain it.
                 val safeUrl = redactStreamKey(url)
-                Log.e(TAG, "publish to $safeUrl failed", failure)
+                // The throwable itself is not handed to the logger: its own
+                // message routinely quotes the URL it failed on.
+                Log.e(TAG, "publish to $safeUrl failed: ${safeMessage(failure)}")
                 _state.value = BroadcastState.ERROR
                 BroadcastResult.Rejected(
                     BroadcastFailure.TransportUnavailable(
-                        failure.message ?: "Could not publish to $safeUrl",
+                        failure.message?.let(::redactStreamKeysIn) ?: "Could not publish to $safeUrl",
                     ),
                 )
             },
@@ -417,10 +434,16 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
                 onAttempt = { attempt ->
                     _statistics.value = _statistics.value.copy(reconnectAttempt = attempt)
                 },
-                connect = { attemptReconnect(url) },
+                connect = {
+                    attemptReconnect(url).also { connected ->
+                        // Back to LIVE the instant the retry lands, not after
+                        // the loop unwinds: a drop in that gap would look like
+                        // it happened while reconnecting and be ignored.
+                        if (connected) _state.value = BroadcastState.LIVE
+                    }
+                },
             )
             if (recovered) {
-                _state.value = BroadcastState.LIVE
                 _statistics.value = _statistics.value.copy(
                     reconnectAttempt = 0,
                     currentBitrateKbps = settings.h264BitrateKbps,
@@ -450,7 +473,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         }.fold(
             onSuccess = { true },
             onFailure = { failure ->
-                Log.e(TAG, "reconnect to ${redactStreamKey(url)} failed", failure)
+                Log.e(TAG, "reconnect to ${redactStreamKey(url)} failed: ${safeMessage(failure)}")
                 false
             },
         )

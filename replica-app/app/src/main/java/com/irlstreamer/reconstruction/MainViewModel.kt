@@ -21,6 +21,7 @@ import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.QuickTab
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.REVEAL_STREAM_KEY
+import com.irlstreamer.reconstruction.model.redactStreamKeysIn
 import com.irlstreamer.reconstruction.model.RuntimeUiState
 import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.model.noConnectionDialog
@@ -96,7 +97,7 @@ class MainViewModel(
                 runtime.value = runtime.value.copy(
                     toastMessage = when (failure) {
                         BroadcastFailure.NoActiveConnection -> "The broadcast stopped: no active connection."
-                        is BroadcastFailure.TransportUnavailable -> "The broadcast stopped: ${failure.reason}"
+                        is BroadcastFailure.TransportUnavailable -> "The broadcast stopped: ${redactStreamKeysIn(failure.reason)}"
                     },
                 )
             }
@@ -359,7 +360,9 @@ class MainViewModel(
                 BroadcastFailure.NoActiveConnection ->
                     runtime.value = runtime.value.copy(dialog = noConnectionDialog)
                 is BroadcastFailure.TransportUnavailable ->
-                    runtime.value = runtime.value.copy(toastMessage = failure.reason)
+                    // Belt and braces: the engine redacts, and so does the last
+                    // step before the text reaches the screen.
+                    runtime.value = runtime.value.copy(toastMessage = redactStreamKeysIn(failure.reason))
             }
         }
     }

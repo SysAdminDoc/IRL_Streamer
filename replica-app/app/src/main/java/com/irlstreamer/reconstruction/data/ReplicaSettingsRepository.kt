@@ -26,8 +26,17 @@ import kotlinx.coroutines.flow.map
  */
 internal const val SETTINGS_DATASTORE_NAME = "irl_streamer_settings"
 
-/** The path Auto Backup sees, relative to the `file` domain. */
-internal const val SETTINGS_DATASTORE_BACKUP_PATH = "datastore/$SETTINGS_DATASTORE_NAME.preferences_pb"
+/**
+ * The directory Auto Backup must exclude, relative to the `file` domain.
+ *
+ * The whole directory rather than the one file: DataStore writes an update to a
+ * scratch file beside the real one and renames it, so a rule naming only the
+ * final filename leaves a window where a second copy of the key is not covered.
+ */
+internal const val SETTINGS_DATASTORE_DIRECTORY = "datastore"
+
+/** The file itself, for messages that need to name it. */
+internal const val SETTINGS_DATASTORE_BACKUP_PATH = "$SETTINGS_DATASTORE_DIRECTORY/$SETTINGS_DATASTORE_NAME.preferences_pb"
 
 private val Context.replicaDataStore by preferencesDataStore(name = SETTINGS_DATASTORE_NAME)
 
