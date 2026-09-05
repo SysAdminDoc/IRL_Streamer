@@ -10,9 +10,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - A dropped broadcast reconnects on its own. The console shows which retry is
   in flight, waits a little longer between each one, and goes back to live as
   soon as the destination accepts again. Pressing Stop ends it for good.
-
-### Added
-
 - The app checks GitHub once a day for a newer release and says so under Help &
   support, with a link to the releases page. It fails silently offline and can be
   turned off. There is no store to push updates, so it has to look.
