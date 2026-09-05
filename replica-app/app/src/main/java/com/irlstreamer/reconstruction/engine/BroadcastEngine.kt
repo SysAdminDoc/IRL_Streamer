@@ -40,6 +40,8 @@ data class BroadcastStatistics(
     val fps: Int = 0,
     val uptimeSeconds: Long = 0,
     val droppedFrames: Int = 0,
+    /** Payload the endpoint has actually written since the broadcast started. */
+    val bytesSent: Long = 0,
     val links: List<LinkStatistics> = emptyList(),
     /**
      * Which reconnect attempt is in flight, or 0 when the stream is not

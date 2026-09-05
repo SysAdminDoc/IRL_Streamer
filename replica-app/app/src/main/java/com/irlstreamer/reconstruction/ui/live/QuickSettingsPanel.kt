@@ -31,6 +31,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -198,7 +199,10 @@ private fun NetworkQuickSettings(state: AppUiState, viewModel: MainViewModel) {
     NetworkLine("Bitrate Mode")
     Spacer(Modifier.height(27.02.dp))
     NetworkLine("Current Adaptive Bitrate")
-    NetworkLine("0bps", alignEnd = true)
+    // Real once a broadcast is running. The audited capture runs the simulated
+    // engine, which reports nothing, so it still reads "0bps" there.
+    val liveBitrateKbps by viewModel.currentBitrateKbps.collectAsStateWithLifecycle()
+    NetworkLine(formatBitrate(liveBitrateKbps), alignEnd = true)
     Spacer(Modifier.height(8.18.dp))
     QuickSlider("Target Video Bitrate", bitrate, 0.5f..20f, "%.1fMbps".format(bitrate)) { bitrate = it }
     Text(
@@ -357,4 +361,14 @@ private fun QuickSlider(
         }
         Spacer(Modifier.height(8.18.dp))
     }
+}
+
+/**
+ * The audited readout is "0bps" while nothing is being sent, so an idle console
+ * is unchanged. A running broadcast shows what the endpoint actually wrote.
+ */
+private fun formatBitrate(kbps: Int): String = when {
+    kbps <= 0 -> "0bps"
+    kbps < 1_000 -> "${kbps}kbps"
+    else -> "%.1fMbps".format(kbps / 1_000f)
 }

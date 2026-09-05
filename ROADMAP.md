@@ -534,14 +534,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: a broadcast survives the display timeout and a manual screen-off; the flag and the wake lock are released the moment the broadcast stops, verified with `dumpsys power`.
   Complexity: S
 
-- [ ] P1 — IS-109 Broadcast statistics are fabricated while a real stream is running
-  Why: uptime and dropped frames are only ever reset to zero and the current bitrate is echoed back from settings, so the numbers on the console cannot tell a healthy stream from a failing one. StreamPack already measures all of it.
-  Evidence: `engine/StreamPackBroadcastEngine.kt:165-170, 195-197`; StreamPack 3.2.0 `BasicEndpointMetrics` exposes `uptime`, `packetsWritten`, `packetsWriteDropped`, `packetsWriteLost`, `bytesWritten` and the `writtenBitrateInBps` extension (`core/src/main/java/io/github/thibaultbee/streampack/core/elements/metrics/EndpointMetrics.kt`), with an RTMP implementation in `extensions/rtmp/.../RtmpEndpointMetrics.kt`.
-  Cross-reference: IS-09 covers per-link network telemetry from `ConnectivityManager`; this covers the endpoint's own counters.
-  Touches: `engine/BroadcastEngine.kt`, `engine/StreamPackBroadcastEngine.kt`, `ui/live/LiveConsoleScreen.kt`
-  Acceptance: uptime advances in real time, bytes and dropped-packet counts move under induced loss, and the D009 deviation note is narrowed to only what is still simulated.
-  Complexity: M
-
 - [ ] P1 — IS-110 RTMP authorization login and password are collected and thrown away
   Why: selecting "RTMP authorization" reveals Login and Password fields, but Save persists only the name and URL, so the credentials vanish and any authenticated destination fails with no explanation.
   Evidence: `ui/settings/Forms.kt:135-136` hold `login`/`password` in local `remember` state; the Save handler at `Forms.kt:143` calls `viewModel.saveConnection(name, url)` only; `data/ReplicaSettingsRepository.kt:129-132` stores two keys.

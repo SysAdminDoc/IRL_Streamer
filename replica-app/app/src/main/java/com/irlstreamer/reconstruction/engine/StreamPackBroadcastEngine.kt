@@ -10,6 +10,10 @@ import androidx.core.content.ContextCompat
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.redactStreamKey
 import com.irlstreamer.reconstruction.model.videoFormatFrom
+import io.github.thibaultbee.streampack.core.elements.metrics.TrackedMetrics
+import io.github.thibaultbee.streampack.core.elements.metrics.WithEndpointMetrics
+import io.github.thibaultbee.streampack.core.elements.metrics.metricsFlow
+import io.github.thibaultbee.streampack.core.elements.metrics.writtenBitrateInBps
 import io.github.thibaultbee.streampack.core.elements.encoders.AudioCodecConfig
 import io.github.thibaultbee.streampack.core.elements.encoders.VideoCodecConfig
 import io.github.thibaultbee.streampack.core.elements.sources.audio.audiorecord.MicrophoneSourceFactory
@@ -83,6 +87,27 @@ internal fun CoroutineScope.watchOutgoingStream(
     }
 }
 
+/**
+ * Folds one metrics sample from the endpoint into the console's statistics.
+ *
+ * The console used to reset uptime and dropped counts to zero and echo the
+ * configured bitrate straight back, so its numbers could not tell a healthy
+ * stream from a failing one. These come from what the endpoint actually wrote.
+ *
+ * `instant` covers the last sampling interval, which is what a bitrate reading
+ * should show; `cumulative` covers the whole broadcast, which is what uptime and
+ * the loss counters should show. Dropped and lost packets are summed because
+ * both mean payload that never reached the destination.
+ */
+internal fun BroadcastStatistics.withEndpointMetrics(metrics: TrackedMetrics): BroadcastStatistics = copy(
+    currentBitrateKbps = (metrics.instant.writtenBitrateInBps / 1_000).toInt().coerceAtLeast(0),
+    uptimeSeconds = metrics.cumulative.uptime.inWholeSeconds.coerceAtLeast(0),
+    droppedFrames = (metrics.cumulative.packetsWriteDropped + metrics.cumulative.packetsWriteLost)
+        .coerceIn(0L, Int.MAX_VALUE.toLong())
+        .toInt(),
+    bytesSent = metrics.cumulative.bytesWritten.coerceAtLeast(0),
+)
+
 /** First retry waits this long; each later one doubles. */
 internal const val RECONNECT_BASE_DELAY_MS = 1_000L
 
@@ -152,6 +177,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     /** Where a dropped broadcast should reconnect to. Cleared by an explicit stop. */
     private var activeUrl: String? = null
     private var reconnectJob: Job? = null
+    private var metricsJob: Job? = null
 
     /** The console previews this once the camera is open. */
     private val _videoSource = MutableStateFlow<IWithVideoSource?>(null)
@@ -208,6 +234,18 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
                 isLive = { _state.value == BroadcastState.LIVE || _state.value == BroadcastState.CONNECTING },
                 onLost = ::onStreamLost,
             )
+            metricsJob?.cancel()
+            metricsJob = (streamerToUse.endpoint as? WithEndpointMetrics<*>)?.let { source ->
+                engineScope.launch {
+                    source.metricsFlow().collect { sample ->
+                        // Only while the stream is up: between attempts these
+                        // would report a link that is not carrying anything.
+                        if (_state.value == BroadcastState.LIVE) {
+                            _statistics.value = _statistics.value.withEndpointMetrics(sample)
+                        }
+                    }
+                }
+            }
             streamerToUse
         }.onFailure { failure ->
             Log.e(TAG, "camera open failed", failure)
@@ -234,6 +272,8 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         _state.value = BroadcastState.IDLE
         watchJob?.cancel()
         watchJob = null
+        metricsJob?.cancel()
+        metricsJob = null
         // The camera is gone, so there is nothing left to reconnect with.
         activeUrl = null
         reconnectJob?.cancel()
@@ -341,6 +381,8 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     override fun release() {
         watchJob?.cancel()
         watchJob = null
+        metricsJob?.cancel()
+        metricsJob = null
         reconnectJob?.cancel()
         reconnectJob = null
         activeUrl = null

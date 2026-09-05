@@ -63,6 +63,14 @@ class MainViewModel(
         .map { it.reconnectAttempt }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
+    /**
+     * What the endpoint is actually writing, in kbps, or 0 when nothing is
+     * being sent. The simulation reports 0, so audited captures are unchanged.
+     */
+    val currentBitrateKbps: StateFlow<Int> = engine.statistics
+        .map { it.currentBitrateKbps }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
     private val _cameraFailure = MutableStateFlow<String?>(null)
 
     /** Why the preview is not showing, when it is not. */
