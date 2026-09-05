@@ -36,6 +36,23 @@ class UpdateCheckTest {
     }
 
     @Test
+    fun aNumberedPreReleaseTagIsNotMistakenForANewerRelease() {
+        // Regression: taking every digit made the "1" in rc1 a fourth part, so
+        // an rc that precedes 0.4.0 reported as newer than it.
+        assertFalse(isNewerVersion("v0.4.0-rc1", "0.4.0"))
+        assertFalse(isNewerVersion("v0.4.0", "0.4.0-rc1"))
+        // A real later release is still recognised across a suffix.
+        assertTrue(isNewerVersion("v0.5.0-rc1", "0.4.0"))
+    }
+
+    @Test
+    fun aDebugBuildIsNotToldItIsBehindItsOwnVersion() {
+        // Debug builds append -debug to versionName.
+        assertFalse(isNewerVersion("v0.4.0", "0.4.0-debug"))
+        assertTrue(isNewerVersion("v0.5.0", "0.4.0-debug"))
+    }
+
+    @Test
     fun anUnreadableVersionNeverNags() {
         // Better to say nothing than to claim an update that may not exist.
         assertFalse(isNewerVersion("nightly", "0.4.0"))

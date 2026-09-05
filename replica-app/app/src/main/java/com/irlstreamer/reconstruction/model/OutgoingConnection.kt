@@ -33,6 +33,11 @@ fun decodeConnections(stored: String): List<OutgoingConnection> {
         val url = parts[1]
         if (name.isBlank() || url.isBlank()) null else OutgoingConnection(name, url)
     }
+        // Names identify an entry case-insensitively, so two that differ only by
+        // case would make upsert edit one and delete remove both, and would give
+        // two rows the same id. Stored data from before that rule could hold a
+        // pair like that.
+        .distinctBy { it.name.lowercase() }
 }
 
 /**

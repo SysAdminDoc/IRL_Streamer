@@ -10,7 +10,8 @@ internal const val LATEST_RELEASE_API = "https://api.github.com/repos/SysAdminDo
 internal const val UPDATE_CHECK_INTERVAL_MS = 24L * 60 * 60 * 1000
 
 private val TAG_NAME = Regex("\"tag_name\"\\s*:\\s*\"([^\"]+)\"")
-private val VERSION_NUMBERS = Regex("\\d+")
+/** `v0.4.0-rc1` and `0.4.0` both yield `0.4.0`; the suffix is deliberately dropped. */
+private val RELEASE_CORE = Regex("""^[^0-9]*(\d+(?:\.\d+)*)""")
 
 /**
  * Whether to ask GitHub for the latest release now.
@@ -36,14 +37,19 @@ fun parseLatestTag(json: String): String? =
 /**
  * True when [latest] is a later release than [current].
  *
- * Tags carry a leading `v` and versions have a varying number of parts, so both
- * are reduced to their numbers and compared piecewise. A version that cannot be
- * read as numbers reports "not newer" rather than nagging about an update that
- * may not exist.
+ * Only the dotted release number is compared. A tag carries a leading `v`, and
+ * either side can carry a suffix - `-rc1` on a pre-release, `-debug` on a debug
+ * build - so taking every digit in the string made `v0.4.0-rc1` look newer than
+ * `0.4.0` because the `1` became a fourth part.
+ *
+ * Equal release numbers report "not newer" whatever the suffixes say. Ordering
+ * pre-releases is not something this needs to do, and a false "update
+ * available" is worse than a missed one: it nags about a build that is not
+ * actually ahead.
  */
 fun isNewerVersion(latest: String, current: String): Boolean {
-    val latestParts = versionNumbers(latest)
-    val currentParts = versionNumbers(current)
+    val latestParts = releaseNumbers(latest)
+    val currentParts = releaseNumbers(current)
     if (latestParts.isEmpty() || currentParts.isEmpty()) return false
 
     for (index in 0 until maxOf(latestParts.size, currentParts.size)) {
@@ -54,5 +60,8 @@ fun isNewerVersion(latest: String, current: String): Boolean {
     return false
 }
 
-private fun versionNumbers(value: String): List<Int> =
-    VERSION_NUMBERS.findAll(value).mapNotNull { it.value.toIntOrNull() }.toList()
+/** The leading dotted number, ignoring a `v` prefix and any suffix after it. */
+private fun releaseNumbers(value: String): List<Int> {
+    val core = RELEASE_CORE.find(value)?.groupValues?.get(1) ?: return emptyList()
+    return core.split('.').mapNotNull { it.toIntOrNull() }
+}

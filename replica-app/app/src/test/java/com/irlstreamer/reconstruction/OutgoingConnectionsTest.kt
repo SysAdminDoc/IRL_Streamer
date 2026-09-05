@@ -104,6 +104,23 @@ class OutgoingConnectionsTest {
     }
 
     @Test
+    fun namesThatDifferOnlyByCaseCannotBothSurvive() {
+        // Names identify an entry case-insensitively. A stored pair like this
+        // would make editing one leave the other and give two rows the same id.
+        val stored = encodeConnections(
+            listOf(
+                OutgoingConnection("Home", "rtmp://10.0.0.2/live/one"),
+                OutgoingConnection("home", "rtmp://10.0.0.2/live/two"),
+            ),
+        )
+
+        val decoded = decodeConnections(stored)
+
+        assertEquals(1, decoded.size)
+        assertEquals("Home", decoded.single().name)
+    }
+
+    @Test
     fun malformedStoredTextIsIgnoredRatherThanCrashing() {
         assertTrue(decodeConnections("nonsense-with-no-separator").isEmpty())
         assertTrue(decodeConnections("").isEmpty())
