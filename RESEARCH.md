@@ -1,196 +1,177 @@
 # Research — IRL Streamer
-Date: 2026-08-29 — replaces all prior research (the two 2026-08-15 passes). Findings from those passes that still stand are restated here with their sources rather than referenced.
+Date: 2026-09-04 — replaces all prior research (passes of 2026-08-15 and 2026-08-29).
 
 ## Executive Summary
 
-IRL Streamer is a clean-room Kotlin/Compose reconstruction of IRL Pro's 145 audited screens. As of v0.3.0 (2026-08-29) the console shows a live CameraX preview; everything else that would leave the phone (encode, RTMP/SRT, bonding, recording, chat) is still a deterministic simulation behind the `BroadcastEngine` seam (`replica-app/app/src/main/java/com/irlstreamer/reconstruction/engine/`). The audited original is Softvelum Larix code plus BELABOX SRTLA (class prefix `com.wmspanel.*`, `larix:` scheme; Verified from `app-audit/app/application-identity.md`), and Softvelum has since discontinued the Larix SDK (https://softvelum.com/larix/android_sdk/), so IRL Pro's derivation cannot be repeated. It must be built.
+IRL Streamer is a clean-room Android reconstruction of a 145-state IRL-broadcasting console audit, now shipping v0.4.0 with a real capture path: StreamPack 3.2.0 owns the camera, encodes H.264, captures the microphone when granted, and publishes to a saved RTMP or RTMPS destination. The UI is the strongest part of the project — a data-driven Compose settings tree, measured audit tokens locked by tests, and a validation harness whose gates were deliberately made able to fail. The transport is the weakest: the engine starts a stream and then stops observing it.
 
-The strongest shape for this project is the thing no open-source Android app is: a free Moblin-class broadcaster with SRTLA bonding. IRL Pro (closed, free, last shipped v3.5.23 on 2024-09-03) still has the Android SRTLA market to itself apart from IRLwhatever (proprietary open beta, https://irlwhatever.com/). Moblin's maintainer closed the Android port request as not planned (https://github.com/eerimoq/moblin/issues/149). The window found on 2026-08-15 is still open.
+The strategic picture changed since the last pass. The 2026-08-15 and 2026-08-29 conclusions that "no open-source SRTLA client for Android exists" and that "the market window is open" are **both now false**. Between 2025-08 and 2026-09 four independent Android efforts appeared — LifeStreamer (GPL-3.0, built on the same StreamPack SDK, v1.45.0 on 2026-09-03), Bond Bunny (AGPL-3.0 SRTLA bonding sidecar), PocketSRT/PocketBond, and Vivid (MIT, an explicit Android port of Moblin, nightly releases) — plus a first-party Android Moblink relay from Moblin's own author. What none of them have is a finished console: LifeStreamer explicitly tells users to add overlays in OBS and run chat elsewhere, and Vivid has the UI but has not shipped bonding. That gap — audited-quality console UI on top of real transport — is where this project's existing asset actually is.
 
-Three facts from this pass change the existing plan:
+Top opportunities in priority order:
 
-1. **SRTLA no longer needs an AGPL port.** irlserver/srtla_send (Rust, MIT, v3.0.0 2026-01-11, pushed 2026-08-23) is a complete SRTLA v2 sender with quality-aware link scoring, and datagutt/moblink-rust (MIT) documents the Moblink protocol. Port from those, treat BELABOX's C as protocol reference only. Retargets IS-17 and the licence posture note in `LICENSE`.
-2. **libsrt 1.5.7 is one dependency override away.** srtdroid 1.10.0 (2026-08-26) bundles srt 1.5.7 + OpenSSL 3.5.1 (https://github.com/ThibaultBee/srtdroid/releases); StreamPack main still pins srtdroid 1.9.5 (srt 1.5.4, https://github.com/ThibaultBee/StreamPack/blob/main/gradle/libs.versions.toml). A Gradle resolution rule replaces most of IS-52's from-source build; only the OpenSSL bump remains a reason to build.
-3. **Overlays have a platform path.** CameraX `OverlayEffect` (1.4+, multi-Preview fix in 1.7.0-alpha03) draws Canvas content into the frame pipeline, so IS-13's "GPU compositor" can start as Canvas, not GL.
-
-Top opportunities, priority order:
-
-1. Ship a stream: RECORD_AUDIO + foreground service + StreamPack RTMP/SRT (IS-05, IS-06, IS-04), with srtdroid 1.10.0 forced.
-2. Thermal governor and charge-wattage HUD. Overheating and the S24U 5 W charging trap are the most repeated Android IRL complaint (https://start.irlstreami.ng/android-devices/irl-pro). Existing IS-18 gets the API and thresholds below.
-3. ABR ported from belacoder's constants (fully readable in `belacoder.c`) with Moblin's Fight preset as the second controller (IS-12).
-4. SRTLA sender from srtla_send + Moblink streamer side, so spare Android phones running the existing Moblink relay app donate links (new IS-76; IS-59 covers the donor direction).
-5. Disconnect protection without a PC: in-app BRB flag plus NOALBS-compatible stats (IS-14, IS-56). IRL Pro's most-cited review gap.
-6. Portrait 9:16 output. IRL Pro's top Play review request and Moblin issue #88. New IS-79.
-7. Chat parity: Kick needs a webhook relay (official events are webhook-only), Twitch is EventSub WebSocket. TTS offline via sherpa-onnx. New IS-80, IS-81.
-8. Trust fixes already visible in the code: stale "Version 0.2.0" literals, toast-only error feedback, an untested irreversible reset, 2 string resources against ~632 literals.
+1. **A dead stream is invisible.** `StreamPackBroadcastEngine` never collects StreamPack's `throwableFlow`, `isStreamingFlow` or `isOpenFlow`, so the console shows LIVE after the connection drops.
+2. **The stream key leaves the device.** The backup rules exclude a file the app never writes; the real store is backed up.
+3. **The stream key is displayed in clear** on the connections page and inside a publish-failure toast.
+4. **No gate can be run on this machine.** The harness AVD and android-36 image are gone, so the three validation gates and every audited-screen change are blocked.
+5. **No reconnect.** Competitors advertise "infinite reconnect"; this app has none, and the state machine already declares `RECONNECTING`.
+6. **The screen sleeps mid-broadcast** — no wake lock, no `FLAG_KEEP_SCREEN_ON`, no foreground service.
+7. **Resolution and FPS settings are decoys** — the encoder is hardcoded to 1920x1080 at 30 fps.
+8. **Statistics are fabricated** even though StreamPack 3.2.0 ships a Metrics API with exactly the fields the console fakes.
+9. **The one risky class has no tests**, and the instrumented console test now opens the real camera and microphone on a device.
+10. **Toolchain is a generation behind** and the next targetSdk bump adds a mandatory runtime permission that this app's LAN use cases need.
 
 ## Product Map
 
-- **Core workflows:** landscape console with live preview; start/stop broadcast; connection CRUD (RTMP/SRT/SRTLA); video/audio/recording settings; text/picture/timestamp/web overlays; quick panel (camera/network/display/overlays/audio/log).
-- **Personas:** outdoor cellular streamer (one-handed, glanceable); bonded multi-modem rig operator (per-link visibility); iOS Moblin streamer with a spare Android phone (donor role).
-- **Platforms and distribution:** Android 9+ (minSdk 28), targetSdk 36, single activity, Compose BOM 2026.06.01, CameraX 1.6.2, AGP 8.13.2, Gradle 8.14.4, Kotlin 2.3.21. No releases published yet (GitHub releases API empty on 2026-08-29). Play requires target API 36 from 2026-08-31 (met). 16 KB page alignment required for API 35+ targets (https://developer.android.com/guide/practices/page-sizes).
-- **Integrations (all simulated today):** RTMP/RTMPS/SRT egress, SRTLA relay, Twitch/Kick chat, Streamlabs/StreamElements/Toonation dashboards, `irlstreamer://` settings import (parsed nowhere: `ui/settings/SettingsCatalog.kt:296-301`).
+- **Core workflows.** Go live from the landscape console to a saved RTMP/RTMPS destination; configure video, audio, recording, bonding, overlays and display through a 22-page settings tree; drive the live quick panel (camera, network, display, overlays, audio, log tabs); reproduce any of 145 audited states through the debug harness for visual and geometry validation.
+- **Personas.** The IRL streamer walking with a phone as the whole rig; the operator running a phone as a camera into a home OBS or a relay; the maintainer running the parity harness.
+- **Platforms and distribution.** Android 9 (API 28) to Android 16 (API 36), forced landscape, single `:app` Gradle module, `com.irlstreamer.reconstruction`. Distribution is signed APKs on GitHub Releases only (latest `v0.4.0`, 2026-08-30, matching HEAD); there is no in-app update path.
+- **Integrations and data flows.** Camera2 and AudioRecord through StreamPack into MediaCodec H.264, out over RTMP/RTMPS. Settings persist in a DataStore Preferences file (`files/datastore/irl_streamer_settings.preferences_pb`) including `connection_url`, which carries the stream key. Bonding, recording, snapshots, chat, overlays and telemetry are deterministic local simulations (`docs/known-deviations.md` D005, D008, D009).
 
 ## Competitive Landscape
 
-**Moblin (iOS, MIT, https://github.com/eerimoq/moblin)** — the feature ceiling: RTMP(S)/SRT/SRTLA/RIST/WHIP, bonding with per-link stats and priorities, four ABR controllers, widgets, chat with 7TV/BTTV/FFZ emotes and moderation, TTS, OBS WebSocket, web remote, Apple Watch. Learn: its open issues are a free bug-avoidance list (#414 SRT latency creep on long streams, #426 HEVC SEI timecode size bug, #418 RIST bonding sends to a dead link, #409 low-light boost forces 60 fps). Avoid: the widget surface before transport works.
+**LifeStreamer** (https://github.com/dimadesu/LifeStreamer, GPL-3.0, 38 stars, created 2025-09-11, v1.45.0 on 2026-09-03, pushed 2026-09-05) — the closest competitor by construction: an Android IRL app built on the same StreamPack SDK, releasing every few days. Ships SRT and RTMP, HEVC and H.264, a BELABOX/Moblin-derived adaptive bitrate, SRTLA via its Bond Bunny sidecar, USB/UVC and RTMP/SRT sources, USB and Bluetooth audio, Moblink, and a foreground service for screen-off streaming. **Learn:** infinite reconnect, background service, and external sources are what an Android IRL app is now expected to have. **Avoid:** its deliberate absence of overlays, chat and UI — the author points users at OBS instead, which is precisely the ground this project already holds.
 
-**Moblink (https://github.com/eerimoq/Moblink, protocol in https://github.com/datagutt/moblink-rust)** — Android relay app on Play; mDNS discovery, WebSocket hello/identify challenge-response, then UDP forwarding bound to the relay's interface. Learn: implementing the *streamer* side makes every existing Moblink phone a bonding leg for this app. Avoid: a private protocol.
+**Vivid** (https://github.com/thoser666/Vivid, MIT, 24 stars, Kotlin/Compose, nightly builds through 2026-09-04) — an explicit Android port of Moblin, 34 of 67 features done, `v0.5.8-beta.1`. Has RTMP/RTMPS/SRT on RootEncoder 2.7.5, Twitch EventSub chat with moderation, 11 OpenGL filters, OBS WebSocket, widgets, minSdk 24 / targetSdk 37 on Gradle 9.3.1 and JDK 25. **Learn:** it proves the toolchain migration this project has deferred (IS-96) is routine now. **Avoid:** its position — it has the UI and no bonding, which is the mirror of LifeStreamer and leaves both incomplete.
 
-**IRL Pro (https://irlpro.app/, https://play.google.com/store/apps/details?id=app.irlpro.android)** — free, SRTLA with hosted relay, HEVC, chat overlay. Play ~4.0/334 reviews, stagnant since 2024-09. Review complaints (Likely, via search excerpts): no portrait mode, no disconnect protection, can't use USB cameras, over-exposure, no scenes, web chat "bounces around", slow torch, no low-light boost. Its own community docs name overheating and charge-lock as the main problems. Learn: these are the acceptance criteria for a replacement. Avoid: a hosted relay as the moat; ship self-host docs.
+**Moblin** (https://github.com/eerimoq/moblin, MIT, 730 stars, iOS, pushed 2026-09-04) — still the feature ceiling: chat across Twitch/Kick/YouTube/SOOP, widget system, four named ABR controllers, Moblink, DJI Bluetooth control, replay, TTS, web remote. Its 13 open issues are a free defect list for anyone reimplementing the same features (#426 HEVC SEI timecode emulation-prevention bytes, #418 RIST bonding feeding a stale-RTT dead link, #414 SRT latency growth on long streams, #409 Low Light Boost forcing 60 fps). **Learn:** the remote-control API is the feature users ask to extend. **Avoid:** building the widget surface before the transport is trustworthy.
 
-**IRLwhatever (https://irlwhatever.com/, proprietary beta)** — SRTLA/RIST/SRT, Moblink client, UVC, incoming RTMP, PiP, emotes, TTS, browser remote. The only Android app with Moblink client today. Learn: it proves the feature set is buildable on Android. Avoid: nothing; it is the yardstick for "done".
+**Moblink** (https://github.com/eerimoq/Moblink, MIT, Kotlin, 24 stars, pushed 2026-09-05) — a first-party Android relay app already exists that turns a spare phone into an extra SRTLA bonding leg, with a Rust reimplementation for non-phone donors (https://github.com/datagutt/moblink-rust). **Learn:** the streamer side of Moblink is the valuable half for this project; the donor role is already served. **Avoid:** rebuilding the donor app.
 
-**StreamPack (Apache-2.0, 3.2.0 2026-07-21, https://github.com/ThibaultBee/StreamPack)** — Camera2 + MediaCodec, RTMP/RTMPS/SRT, H.264/HEVC/VP9/AV1, dual output (record + stream), SRT ABR, Metrics API, physical camera ID flow, torch strength, Compose preview. No SRTLA (#76 open since 2023, maintainer lacks time), no overlays (#52 open), no USB source (#186). Learn: use it for capture/encode/transport only. Avoid: waiting on upstream for bonding or effects.
+**Bond Bunny** (https://github.com/dimadesu/bond-bunny, AGPL-3.0, Java, 31 stars, v1.16.0 on 2026-07-30) and **PocketSRT/PocketBond** (https://github.com/romestylez/pocketSRT, https://github.com/romestylez/pocketBond) — two independent Android SRTLA implementations, both structured as a local SRT listener that re-sprays packets across links. **Learn:** the sidecar architecture is a legitimate shipping strategy that decouples bonding from capture. **Avoid:** the AGPL source as a copy target; port from the MIT reference instead.
 
-**RootEncoder (Apache-2.0, 2.8.0 2026-07-16, https://github.com/pedroSG94/RootEncoder)** — adds WHIP (beta) and an OpenGL filter pipeline. Learn: reference implementation for GL text/image overlays if `OverlayEffect` proves insufficient. Avoid: its ABR (simple stepper, #1990).
+**irlserver/srtla_send** (https://github.com/irlserver/srtla_send, MIT, v3.0.0 2026-01-11, pushed 2026-08-23) — the best-documented SRTLA v2 sender in public: `window / (in_flight + 1)` scoring with ~8 s exponential NAK decay, a 0.7x penalty above five NAKs, a ≤3% RTT bonus, 10% hysteresis against link flapping, stalled-link deselection and whole-bond DNS re-home. **Learn:** port these semantics and emit the same per-link metric names (`rtt_ms`, `window`, `in_flight`, `nak_total`, `quality_multiplier`). **Avoid:** bundling it — it is a standalone Unix binary with no FFI or Android target and needs source routing that Android does not give you outside `Network.bindSocket`.
 
-**irlserver/srtla_send (Rust, MIT, https://github.com/irlserver/srtla_send)** — SRTLA v2 sender with ~8 s exponential NAK decay, burst detection, stalled-link deselection, whole-bond re-home on DNS change, keyframe-priority hints, Prometheus metrics. Learn: this is the spec to port to Kotlin. Avoid: BELABOX/srtla C (AGPL-3.0) as code.
+**BELABOX** (https://github.com/BELABOX/srtla, AGPL-3.0) — the protocol of record (REG1/REG2/REG3 handshake, connection groups, `REG_ERR`/`REG_NAK`/`REG_NGP`), but the sender has had one commit since 2025-04-05 and the newest OS image is 2025-09-15. **Learn:** the wire format, from the README. **Avoid:** treating the C code as a live upstream, and avoid linking it (AGPL).
 
-**BELABOX belacoder (GPL-3.0, https://raw.githubusercontent.com/BELABOX/belacoder/master/belacoder.c)** — the reference ABR: `SRTO_SNDDATA` buffer occupancy and `msRTT` EWMAs (0.99/0.01), three buffer thresholds, RTT thresholds from latency (drop to min at RTT ≥ latency/3 or buffer > th3; step down 100 kbps + bitrate/10 every 250 ms at RTT > latency/5 or buffer > th2; step up 30 kbps + bitrate/30 every 500 ms when RTT < min and delta < 0.01; round to 100 kbps; 6 s ACK silence = dead link). Learn: port the constants verbatim, cross-check with Moblin's `AdaptiveBitrateSrtBelabox.swift` and its test suite. Moblin's Fight preset (https://github.com/eerimoq/moblin/blob/main/Moblin/Media/AdaptiveBitrate/AdaptiveBitrateSrtFight.swift): 200 ms tick on RTT + packets-in-flight, Fast PIF 200 / factor 0.9, Slow PIF 500 / 0.95, RTT clamp 450 ms, min 50 kbps.
+**MediaMTX** (https://github.com/bluenviron/mediamtx, v1.20.1 2026-08-18) — healthy release cadence and the natural loopback rig for RTMP and SRT. Its SRTLA receiver PR #5811 has been **open since 2026-05-29** with a sceptical maintainer. **Learn:** use it as the RTMP/SRT test receiver. **Avoid:** documenting it as an SRTLA ingest — point users at `irlserver/irl-srt-server` (MIT, pushed 2026-09-03) instead.
 
-**NOALBS (MIT, v2.19.1, https://github.com/NOALBS/nginx-obs-automatic-low-bitrate-switching)** — defaults low 500 kbps, offline 450 kbps, RTT 1000 ms degraded / 3500 ms offline, 5 consecutive checks; chat commands `!bitrate !fix !refresh !switch !live !privacy`. Learn: mirror the thresholds on-device and emit a privacy/BRB flag. Avoid: assuming a PC is present.
+**Cloud relays** — the paywall map is stable and cheap: IRLServer $9.99/mo, PerHost SRTLA $7/mo, BELABOX Cloud from $10/mo (gated behind GitHub Sponsors or a voucher), IRLHost Plus €11.99/mo; cloud-OBS is the step change at $30–$60/mo, with IRLToolkit at $129–$179 the legacy tier everyone undercuts. Restream only accepts SRT from $239/mo and has no SRTLA at any tier. **Learn:** endpoint presets for the $7–$12 relays are the fastest onboarding path. **Avoid:** a hosted relay as this project's moat.
 
-**Receivers** — go-irl v2.4.0 (AGPL, 2026-08-20, https://github.com/e04/go-irl), irl-srt-server (MIT, https://github.com/irlserver/irl-srt-server), OpenIRL/srtla-receiver (GPL-3, Docker), and **MediaMTX PR #5811 "SRTLA receiver support" open and updated 2026-08-28** (https://github.com/bluenviron/mediamtx/pull/5811). Learn: if #5811 merges, MediaMTX becomes the one-container test rig for both SRT and SRTLA.
+**Larix Broadcaster** (https://softvelum.com/larix/premium/) — the audited original's engine lineage; Android build updated 2026-07-06, Premium $9.99/mo removes the watermark and time limit and unlocks multi-output, HEVC and ABR. Bonding is RIST-based, not SRTLA. **Learn:** everything it paywalls is free-tier scope here. **Avoid:** its watermark-and-timer free tier.
 
-**Larix Broadcaster (https://softvelum.com/larix/premium/)** — $9.99/mo or $119/yr removes watermark and time limit; bonding is Zixi-only on Apple; Tuner remote $10/device/mo. Play 2.88/5. Learn: everything it paywalls is free-tier scope here. Avoid: subscription resentment.
+**IRL Pro** (`app.irlpro.android`) — last updated 2024-09-03, roughly two years stale, ~120K installs at 4.0/5. The audited original, now effectively abandoned. **Learn:** its unaddressed review complaints are acceptance criteria. **Avoid:** assuming its behaviour is current.
 
-**StreamCaster-android (v0.0.3, no LICENSE, https://github.com/alxayo/StreamCaster-android)** — RootEncoder-based Compose app with thermal throttling (60 s cooldown) and QR endpoint import. Learn: the thermal cooldown pattern and QR payload. Avoid: copying unlicensed code.
+**IRLwhatever** (https://irlwhatever.com/, proprietary beta) — SRTLA, RIST, SRT, RTMP, UVC, Moblink client, dual-camera PiP, Twitch/Kick chat overlay with 7TV/BTTV/FFZ emotes, OBS control. The yardstick for a finished Android product.
 
-**Commercial class in one line** — PRISM Plus $9.99/mo for multistream since 2025-07-28; Streamlabs Ultra $27/mo gates disconnect protection; CameraFi $9.99/mo; Twitch app added 90 s disconnect protection in 2026-03; Kick app can't reply to chat; IRLToolkit $129–$179/mo; IRLServer relay $9.99/mo; BELABOX Cloud $10/mo. Disconnect protection and multistream are the two features every closed app charges for.
+**Twitch, Kick, Prism, Streamlabs mobile** — Twitch's native app added **Disconnect Protection on 2026-03-09** (holds the stream up to 90 s on a drop, on by default on Android and iOS), which weakens the case for an on-device BRB slate on Twitch specifically but not on Kick or YouTube. Kick's "Go Live" app is RTMP-class with no SRT. Prism Live has RTMP/HLS/WHIP/SRT/RIST and 6-way multistream but no bonding. Streamlabs Mobile is RTMP only.
 
 ## Reported Issues
 
-The GitHub tracker is empty on 2026-08-29: no open or closed issues, no PRs, no discussions (disabled), no releases. There is no KNOWN_ISSUES.md. Defects come from code inspection instead:
+The GitHub tracker at `SysAdminDoc/IRL_Streamer` is **empty on 2026-09-04**: no open or closed issues, no pull requests, discussions disabled. There is no `KNOWN_ISSUES.md` and the README has no troubleshooting section. Every defect below came from reading the code on 2026-09-04.
 
-- `ui/settings/SettingsCatalog.kt:81,348` and `debug/DebugStateCatalog.kt:137` hardcode "Version 0.2.0" while `versionName` is 0.3.0. Root cause: version is a literal, not `BuildConfig.VERSION_NAME`.
-- `MainViewModel.kt:129-130` → `ReplicaSettingsRepository.kt:119` `edit { it.clear() }`: reset is real, irreversible, unconfirmed by any toast, and has no unit test.
-- `CameraPreview.kt:118,141`: camera bind failures reach the user only as a toast; no retry surface.
-- Loading/empty/error states exist only as debug-catalog seeds (`DebugStateCatalog.kt:152-155`); production feedback is toast-only.
-- `res/values/strings.xml` has 2 strings; ~632 hardcoded literals; `supportsRtl="true"` with no RTL copy.
-- 4 `contentDescription` sites across 20 UI files; IS-68 (unnamed checkable quick-panel switches) still open.
-- `DebugStateCatalog` ships in `src/main` (IS-69).
+- **A dead stream reads as LIVE.** `engine/StreamPackBroadcastEngine.kt:162-186` sets `BroadcastState.LIVE` on a successful `startStream` and never observes the streamer again. StreamPack's `IStreamer` exposes `throwableFlow: StateFlow<Throwable?>` and `isStreamingFlow: StateFlow<Boolean>`, and `ICloseableStreamer` exposes `isOpenFlow`; none is collected anywhere in the app.
+- **`BroadcastState.DEGRADED` and `RECONNECTING` are unreachable.** Only the `FakeEngine` at `app/src/test/.../BroadcastEngineTest.kt:141-146` emits them, so the suite asserts on a contract no production code implements.
+- **The stream key is backed up off the device.** `res/xml/backup_rules.xml:3` and `res/xml/data_extraction_rules.xml` exclude `sharedpref/secrets.xml`, a file the app never writes. The real store is `preferencesDataStore(name = "irl_streamer_settings")` (`data/ReplicaSettingsRepository.kt:19`), which lands under `getFilesDir()` and is in Auto Backup's default set (https://developer.android.com/identity/data/autobackup), with `allowBackup="true"` in the manifest.
+- **The stream key is rendered in clear.** `ui/settings/SettingsCatalog.kt:152` uses the full connection URL as a settings-row summary, and `engine/StreamPackBroadcastEngine.kt:179` builds a failure message containing `$url` that `MainViewModel.kt:329-330` shows as a toast. The `Log.e` on line 174 is correctly redacted, so the sanitisation exists but does not cover the two user-visible paths.
+- **RTMP authorization credentials are discarded.** `ui/settings/Forms.kt:135-136` collects Login and Password into local `remember` state, and the Save handler at `:143` calls `saveConnection(name, url)` only. The fields are a dead form.
+- **Only one connection can exist.** `ReplicaSettingsRepository.setConnection` writes two fixed keys, so saving a second connection silently replaces the first, while the page copy at `SettingsCatalog.kt:161` promises "Long hold to edit a connection" and `manage_connections` offers a disabled "Delete multiple".
+- **Resolution and FPS are decoys.** `StreamPackBroadcastEngine.kt:204-208, 216-219` hardcode 1920x1080 at 30 fps; `model/AppModels.kt` carries no resolution or fps field at all, while `SettingsCatalog.kt` presents nine resolutions and eleven frame rates as configurable.
+- **Statistics are fabricated.** `uptimeSeconds` and `droppedFrames` are only ever reset to zero, `currentBitrateKbps` is set once from settings, and all three `LinkStatistics` report 0 kbps. StreamPack 3.2.0 ships `BasicEndpointMetrics` (`uptime`, `packetsWritten`, `packetsWriteDropped`, `packetsWriteLost`, `bytesWritten`, `writtenBitrateInBps`) which covers most of it.
+- **No screen or CPU hold.** Zero occurrences of `keepScreenOn`, `FLAG_KEEP_SCREEN_ON` or `WakeLock`, and no `<service>` in the manifest, so the display sleeps and the process is killable mid-broadcast.
+- **No crash handler, no log file, no diagnostics export.** Six `Log.` calls in the whole app; the quick panel's Log tab (`ui/live/QuickSettingsPanel.kt:258-287`) is a hardcoded string ending `state=SIMULATED`; the "Send cameras debug details" row is a toast.
+- **The instrumented console test opens real hardware.** `app/src/androidTest/.../LiveConsoleTest.kt:11` launches without a `screen_id` extra, and `MainActivity.kt:33-37` selects `StreamPackBroadcastEngine` for any non-capture launch.
+- **Documentation contradicts the code.** `docs/known-deviations.md` D005 still says "Audio is not captured yet, so the stream is video only" — untrue since `d045b6e`; the KDoc at `engine/BroadcastEngine.kt:70-72` still calls the simulation the only implementation; `MainViewModel.kt:282-285` still says no connection is configurable; `validation/reports/release-verification.txt` still reports versionCode 1 / versionName 0.1.0 from 2026-08-15.
+- **Every gate is un-runnable.** `Roadmap_Blocked.md` and the repo `CLAUDE.md` record that the `issue-sweep-api36` AVD and the android-36 system image are absent, and the geometry baseline was captured at 2316x1080 / 450 dpi on API 36, so no other API level is comparable. The strict visual gate stands at 0/145 with median SSIM 0.869 and mean geometry error 48.78 px.
+- **No static analysis.** No `lint {}` block, no lint baseline, no detekt, ktlint or `.editorconfig`; lint only runs via `lintVital` on a release assembly.
+
+Judged not worth acting on: the `TODO`/`FIXME` scan returned zero hits across the whole tree, so there is no hidden debt in comments; the D014/D015 out-of-order numbering in `known-deviations.md` is cosmetic; `stopBroadcast()` lacking the in-flight guard that `toggleBroadcast()` has is unreachable from the current UI, which only exposes the toggle.
 
 ## Security, Privacy, and Reliability
 
-- **libsrt:** 1.5.6 (2026-07-20) fixed CVE-2026-55868 (encryption downgrade) and CVE-2026-55869 (KMREQ overflow); 1.5.7 (2026-08-28) adds ACK/DROPREQ/FEC bounds checks and a bonding use-after-free fix (https://github.com/Haivision/srt/releases). srtdroid 1.10.0 ships 1.5.7; StreamPack pins 1.9.5 (1.5.4). Force 1.10.0 via `resolutionStrategy` and verify `llvm-readelf -l` shows 0x4000 LOAD alignment.
-- **OpenSSL:** srtdroid 1.10.0 bundles 3.5.1; current LTS is 3.5.8 (https://openssl-library.org/news/openssl-3.5-notes/). The 3.5.1 CMS CVEs are not reachable from SRT's AES-GCM path (Likely). Rebuild only if a TLS/RTMPS path exposes them.
-- **Secrets:** `androidx.security-crypto` is deprecated (1.1.0-alpha07); replacement is DataStore 1.3.0-alpha07+ `datastore-tink` with an AndroidKeyStore-backed keyset (https://developer.android.com/jetpack/androidx/releases/datastore). Feeds IS-07. Today stream keys would land in plain Preferences DataStore.
-- **Foreground service:** `camera|microphone` types have no 6 h timeout; cannot start from BOOT_COMPLETED on 15+; `microphone` cannot start from background; Play rejects unused type declarations and requires a Console usage declaration (https://developer.android.com/about/versions/15/changes/foreground-service-types, https://support.google.com/googleplay/android-developer/answer/16965181). Feeds IS-06.
-- **Multi-network:** `requestNetwork(TRANSPORT_CELLULAR)` + `Network.bindSocket` per link; 100-request cap per UID; sockets die on network loss, rebind in `onAvailable` (https://developer.android.com/develop/connectivity/network-ops/reading-network-state). MPTCP is not exposed on stock Android (https://github.com/mptcp-nexus/android); SRTLA over bound UDP is the only path.
-- **Supply chain:** 2026 Gradle plugin portal trojanized-plugin incident (Likely, https://www.redfoxsec.com/blog/software-supply-chain-attacks-2026-latest-incidents-analysis-and-how-to-protect-your-pipeline). The repo pins the wrapper SHA-256 but has no `gradle/verification-metadata.xml`.
-- **Platform:** CVE-2026-0006 critical RCE in Media Codecs Mainline (https://source.android.com/docs/security/bulletin/2026/2026-03-01); nothing to do in-app beyond not parsing untrusted media.
-- **Reset with no undo** and **toast-only errors** (see Reported Issues) are the reliability gaps in shipped code.
+- **Stream-key exposure has three independent paths**, all live in v0.4.0: cloud backup and device transfer (`res/xml/backup_rules.xml`, `res/xml/data_extraction_rules.xml`), the settings row summary (`ui/settings/SettingsCatalog.kt:152`), and the publish-failure toast (`engine/StreamPackBroadcastEngine.kt:179` → `MainViewModel.kt:330`). A stream key on screen is a documented channel-hijack vector, and this app's own screen is what a phone streamer shares.
+- **Secrets are stored unencrypted.** DataStore Preferences is plaintext protobuf; IS-07 covers the fix and the deprecation of `androidx.security-crypto`.
+- **Supply chain, ahead of SRT adoption.** libsrt 1.5.6 fixed CVE-2026-55868 (encryption state-machine downgrade) and CVE-2026-55869 (heap overflow in KMREQ handling); StreamPack still pins srtdroid 1.9.5, which bundles srt 1.5.4 and is therefore vulnerable. srtdroid 1.10.0 (2026-08-26) carries srt 1.5.7 but bundles **OpenSSL 3.5.1**, five patch releases behind 3.5.7 (2026-06-09), which fixed 15 CVEs including CVE-2026-45447, a use-after-free in `PKCS7_verify`. Adding `streampack-srt` without a resolution rule ships both problems.
+- **Missing guardrails.** No reconnect, no thermal backoff, no degraded state, no data-usage guard on a metered link, no rate limit or confirmation on a destructive settings reset beyond the ten-second undo (which IS-100 shows can be covered by a dialog).
+- **Recovery and rollback.** The settings reset/undo snapshot is the only recovery mechanism in the app; there is no crash log to recover from a failure, no exported diagnostics, and no way for a user on an old APK to learn a fix shipped.
+- **Positive findings.** Dependency verification is on with sha256 per artifact across debug, release, test, lint and device-test configurations (`gradle/verification-metadata.xml`, 4,461 lines); release signing reads four external environment variables and no key is in the repo; the browsable `irlstreamer://` deep link is confined to the debug source set; `Assert-ReplicaDevice` refuses any non-emulator serial.
 
 ## Architecture Assessment
 
-- **Engine seam holds.** `BroadcastEngine` is the right boundary; StreamPack's `StreamerPipeline`/`DualStreamer` maps onto it and gives record+stream for free (IS-08).
-- **Camera stack split.** CameraX for the preview (shipped) versus StreamPack's Camera2 for the encoder surface will fight over the device. Decision needed before IS-04: either StreamPack's Compose preview replaces `CameraPreview.kt`, or CameraX `VideoCapture`/`OverlayEffect` feeds the encoder and StreamPack is used for transport only. Research leans to the latter: `OverlayEffect` (Canvas into the frame), `SessionConfig` feature groups (60 fps + PREVIEW/VIDEO_STABILIZATION + HDR with `isSessionConfigSupported`), Low Light Boost, concurrent-camera PiP, and `Recorder.setVideoMimeType(HEVC)` all arrive in CameraX 1.5–1.7 (https://developer.android.com/jetpack/androidx/releases/camera). Needs live validation: whether a CameraX `VideoCapture` surface can be redirected into StreamPack's encoder, or whether StreamPack must accept an external `Surface` source.
-- **Debug harness leaks into production paths** (`debugScreenId` checks in five `src/main` files). IS-69.
-- **Version string** should derive from `BuildConfig.VERSION_NAME` (IS-75).
-- **Toolchain ceiling is one migration, not several:** Compose BOM 2026.08.00 requires compileSdk 37 + AGP 9.1.1+, AGP 9 requires dropping `kotlin-android` for built-in Kotlin, AGP 9.3 needs Gradle 9.5 (https://android-developers.googleblog.com/2026/08/jetpack-compose-august-2026-release.html, https://blog.jetbrains.com/kotlin/2026/01/update-your-projects-for-agp9/). CameraX 1.7.0-alpha03 deprecates `Camera2Interop.Extender` for a DSL. Plan as one item (IS-96).
-- **Test gaps:** no ViewModel navigation test, no permission test, no accessibility test, no reset test, no transport loopback. Emulator `-camera-back videofile:` plus MediaMTX in Docker gives a local loopback rig (https://developer.android.com/studio/run/emulator-commandline).
-- **Docs:** README has no troubleshooting section and no self-host receiver guidance; `known-deviations.md` numbering skips D014 before D015.
+- **The engine seam held, and the prior pass's open question is settled.** StreamPack owns the camera and drives both preview and encode through one session; CameraX was removed entirely in v0.4.0 and `ui/live/CameraPreview.kt` now wraps StreamPack's `SourcePreview`. The camera-stack fork the last pass agonised over is closed.
+- **The engine is write-only.** It commands StreamPack but never listens to it. Adding a single collector over `throwableFlow`, `isStreamingFlow` and `isOpenFlow` in `StreamPackBroadcastEngine` unlocks dead-stream detection, reconnect, the degraded state and honest statistics without touching Compose.
+- **StreamPack 3.2.0 already provides four things this app hand-rolls or fakes.** `streampack-services` ships an Apache-2.0 `StreamerService` (a `LifecycleService` that owns the streamer, posts open/close/error notifications and collects `throwableFlow` for you) — its manifest declares `FOREGROUND_SERVICE` and `POST_NOTIFICATIONS` but only the `mediaProjection` type, so a camera streamer must add `FOREGROUND_SERVICE_CAMERA` and `FOREGROUND_SERVICE_MICROPHONE` itself. The Metrics API covers uptime, bytes, dropped and lost packets. `ISurfaceSourceInternal` plus a `VideoSourceFactory` is the documented custom-source seam (`docs/use_cases/CustomSources.md`), and main has an unreleased "set Bitmap as video source" commit from 2026-08-29 — that is the BRB slate. `DualStreamer` and `CombineEndpoint` give record-and-stream and multistream.
+- **Version-catalog gap.** Dependency versions are inline literals in `app/build.gradle.kts` with no `gradle/libs.versions.toml`, which makes the coming toolchain migration harder to stage.
+- **Toolchain is one generation behind.** The project pins Gradle 8.14.4 / AGP 8.13.2 (the tip of the 8.x line) / Kotlin 2.3.21 / Compose BOM 2026.06.01. Current is AGP 9.4.0 (September 2026, requiring Gradle 9.6.0 and JDK 17, max API level 37) and Compose BOM 2026.08.00 (2026-08-14). Compose 1.12.0 "requires compileSdk 37 and Android Gradle Plugin (AGP) 9". Android 17 / API 37 is stable, and at targetSdk 37 the `ACCESS_LOCAL_NETWORK` runtime permission becomes mandatory for **all** traffic to local addresses — which this app needs for a LAN MediaMTX, a home OBS, Moblink mDNS discovery, the planned local web remote and the loopback test rig.
+- **Test gaps.** 40 test functions across 12 files, none touching `StreamPackBroadcastEngine`, networking, real-disk persistence, permission flows or the (absent) service. The `InMemoryPreferencesDataStore` fake is a documented workaround for a Windows rename failure, so repository semantics are covered but disk persistence is not.
+- **Documentation and harness.** README claims and `known-deviations.md` have drifted from the shipped engine three times in three releases (`edb1a29`, `6f91265`, and the D005 line still wrong today); the commit history shows five separate commits fixing gates that could not fail, which is exactly why the un-runnable AVD is a priority rather than a chore.
 
 ## Rejected Ideas
 
-- **Port BELABOX srtla C via NDK** (RESEARCH 2026-08-15, ROADMAP IS-17 as written): AGPL relicenses the app and a MIT Rust sender now exists. Retarget, don't port.
-- **Build libsrt from source as the primary CVE fix** (IS-52 as written): srtdroid 1.10.0 already ships 1.5.7. Keep from-source only for an OpenSSL bump.
-- **Migrate the parity harness to Roborazzi/Paparazzi** (both 2026-08-15 passes): still true, none score cross-app goldens. Roborazzi stays a self-golden layer (IS-63).
-- **MPTCP / Speedify-style VPN bonding**: MPTCP needs a patched AOSP; VPN bonding doesn't speak SRTLA and community reports it still drops (https://github.com/mptcp-nexus/android, https://support.speedify.com/article/870-bonding-mode).
-- **WHIP to Twitch/Kick/YouTube as a primary transport**: Kick and YouTube don't accept WHIP; Twitch's endpoint is experimental (https://www.rfc-editor.org/rfc/rfc9725.html, https://space-node.net/blog/kick-streaming-setup-guide-2026). Keep WHIP for MediaMTX/LiveKit only, later.
-- **Twitch Enhanced Broadcasting from the phone as P1**: the IVS multitrack contract is public (https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/multitrack-video-sw-integration.html) but whether Twitch whitelists arbitrary mobile clients is unverified. P3 with that question attached.
-- **Health Connect for heart-rate widgets**: historical records only, no live stream (https://developer.android.com/health-and-fitness/guides/health-connect/develop/read-data). Use BLE GATT 0x180D directly.
-- **WebView-to-GL texture for browser overlays with WebGL/video**: WebView falls back to software draw off-screen (https://groups.google.com/a/chromium.org/g/chromium-dev/c/3wrULcul8lw). Accept low-fps `PixelCopy` snapshots, no WebGL.
-- **Zixi/NDI, Guest Star, APV codec, hosted relay, HaishinKit.kt, Larix SDK**: all still rejected for the 2026-08-15 reasons (proprietary, platform-locked, irrelevant to uplink, discontinued).
-- **Samsung `sdhms` thermal-throttle tile hacks** (https://xdaforums.com/t/thermal-throttling-quick-tile-s25-plus-ultra.4717811/): root-adjacent, not for an app.
+- **Rebuild a Moblink donor/relay app** — `eerimoq/Moblink` (MIT, Kotlin, pushed 2026-09-05) already does it first-party, and `moblink-rust` covers non-phone donors. Only the streamer side (IS-76) is worth building. This supersedes IS-59 as written.
+- **Wear OS companion (IS-92 as written)** — removed from the roadmap: Wear OS is out of bounds for this machine's Android work by standing rule, and no research or implementation effort should be spent on it.
+- **Play / F-Droid distribution decision (IS-20 as written)** — settled, not open: distribution is signed APKs on GitHub Releases, so the remaining work is an in-app update check, not a channel decision.
+- **Bundle `srtla_send` or fork BELABOX `srtla`** — unchanged from 2026-08-29 and now better evidenced: `srtla_send` is a standalone Unix binary with no FFI or Android target and relies on source routing that Android replaces with `Network.bindSocket`; BELABOX's C is AGPL and has had one commit since 2025-04-05.
+- **Document MediaMTX as the SRTLA receiver** — PR #5811 has been open since 2026-05-29 with the maintainer arguing SRTLA is unstandardised and OS-level bonding is preferable. Use `irlserver/irl-srt-server` for SRTLA and MediaMTX for RTMP/SRT.
+- **WHIP as a primary uplink** — RFC 9725 since March 2025, and Cloudflare, AWS IVS, Ant Media and Red5 accept it, but Twitch, YouTube and Kick do not. Keep it for self-hosted relays only.
+- **AV1 encode for live** — YouTube is the only major live ingest accepting AV1 as of mid-2026; Twitch keeps it inside its beta community. HEVC is the codec worth adding now.
+- **On-device BRB as a Twitch feature** — Twitch shipped native Disconnect Protection on 2026-03-09 with a 90-second hold, on by default. IS-56 keeps its value for Kick, YouTube and self-hosted targets; it is no longer a Twitch differentiator.
+- **Copy Bond Bunny or LifeStreamer source** — AGPL-3.0 and GPL-3.0 respectively. Read them for behaviour, port from the MIT `srtla_send` semantics.
+- **Migrate the parity harness to Roborazzi/Paparazzi** — still true across three passes: none of them score cross-app goldens. Roborazzi stays a self-golden layer (IS-63).
+- **A plugin or extension surface, and any multi-user or account model** — considered and excluded rather than overlooked: this is a single-purpose console owned by one person on one handset, the audit describes no extension point, and every integration it needs (chat, OBS, relays) is a first-class feature rather than a third-party slot.
+- **Health Connect for live heart rate, WebView-to-GL with WebGL, MPTCP/Speedify VPN bonding, Zixi/NDI, Larix SDK, HaishinKit.kt** — all still rejected for the reasons recorded on 2026-08-15 and 2026-08-29.
 
 ## Sources
 
-Engines, protocol, bonding
-- https://github.com/ThibaultBee/StreamPack
-- https://github.com/ThibaultBee/StreamPack/blob/main/CHANGELOG.md
-- https://github.com/ThibaultBee/StreamPack/blob/main/gradle/libs.versions.toml
-- https://github.com/ThibaultBee/StreamPack/issues/76
-- https://github.com/ThibaultBee/StreamPack/issues/52
-- https://github.com/ThibaultBee/srtdroid/releases
-- https://github.com/Haivision/srt/releases
-- https://github.com/BELABOX/srtla/blob/main/README.md
-- https://raw.githubusercontent.com/BELABOX/belacoder/master/belacoder.c
-- https://github.com/irlserver/srtla_send
-- https://github.com/irlserver/irl-srt-server
-- https://github.com/e04/go-irl
-- https://github.com/bluenviron/mediamtx/pull/5811
-- https://github.com/bluenviron/mediamtx/releases
+Competitor clients
+- https://github.com/dimadesu/LifeStreamer
+- https://github.com/dimadesu/bond-bunny
+- https://github.com/dimadesu/MediaSrvr
+- https://github.com/thoser666/Vivid
+- https://github.com/romestylez/pocketSRT
+- https://github.com/romestylez/pocketBond
 - https://github.com/eerimoq/moblin
-- https://github.com/eerimoq/moblin/issues/149
-- https://github.com/eerimoq/moblin/issues/414
-- https://github.com/eerimoq/moblin/issues/426
-- https://github.com/eerimoq/moblin/issues/88
-- https://github.com/eerimoq/moblin/blob/main/Moblin/Media/AdaptiveBitrate/AdaptiveBitrateSrtFight.swift
 - https://github.com/eerimoq/Moblink
 - https://github.com/datagutt/moblink-rust
-- https://github.com/pedroSG94/RootEncoder
-- https://github.com/NOALBS/nginx-obs-automatic-low-bitrate-switching
-- https://github.com/alxayo/StreamCaster-android
-- https://raw.githubusercontent.com/obsproject/obs-websocket/master/docs/generated/protocol.md
-- https://github.com/k2-fsa/sherpa-onnx
-- https://github.com/lmarceau/heart-rate-monitor-ble
-
-Competitors, commercial, community
-- https://irlpro.app/
-- https://play.google.com/store/apps/details?id=app.irlpro.android
-- https://start.irlstreami.ng/android-devices/irl-pro
-- https://start.irlstreami.ng/android-devices/recommended-android-phones
 - https://irlwhatever.com/
 - https://softvelum.com/larix/premium/
-- https://softvelum.com/larix/android_sdk/
-- https://softvelum.com/larix/faq/
-- https://guide.prismlive.com/mobile/announcement/general/upcoming-subscription-model-for-prism-live-studio
-- https://streamlabs.com/mobile-app
-- https://help.kick.com/en/articles/15159836-getting-started-with-the-kick-go-live-app
-- https://irltoolkit.com/
-- https://irlserver.com/
+- https://play.google.com/store/apps/details?id=app.irlpro.android
+- https://prismlive.com/en_us/mobile.html
+
+Transport, relays and receivers
+- https://github.com/BELABOX/srtla
+- https://github.com/irlserver/srtla_send
+- https://github.com/irlserver/irl-srt-server
+- https://github.com/bluenviron/mediamtx/pull/5811
+- https://github.com/NOALBS/nginx-obs-automatic-low-bitrate-switching
 - https://belabox.net/
-- https://support.speedify.com/article/870-bonding-mode
-- https://github.com/irlhost/awesome-irl-streaming
-- https://github.com/banj-oe/IRLStreamingforFreeorCheap
+- https://irlserver.com/
+- https://www.perhost.app/en
+- https://irltoolkit.com/
+- https://restream.io/pricing
 
-Platform, dependencies, policy
-- https://developer.android.com/jetpack/androidx/releases/camera
-- https://developer.android.com/jetpack/androidx/releases/datastore
-- https://developer.android.com/about/versions/15/changes/foreground-service-types
-- https://developer.android.com/about/versions/16/behavior-changes-16
-- https://developer.android.com/about/versions/16/features
-- https://developer.android.com/about/versions/17/release-notes
-- https://developer.android.com/games/optimize/adpf/thermal
-- https://developer.android.com/media/camera/lowlight/low-light-boost-ae
-- https://developer.android.com/develop/connectivity/network-ops/reading-network-state
-- https://developer.android.com/develop/connectivity/bluetooth/ble-audio/audio-recording
-- https://developer.android.com/guide/practices/page-sizes
-- https://developer.android.com/google/play/requirements/target-sdk
-- https://support.google.com/googleplay/android-developer/answer/16965181
-- https://developer.android.com/studio/run/emulator-commandline
-- https://android-developers.googleblog.com/2026/08/jetpack-compose-august-2026-release.html
-- https://blog.jetbrains.com/kotlin/2026/01/update-your-projects-for-agp9/
-- https://developer.android.com/build/releases/agp-9-3-0-release-notes
-- https://openssl-library.org/news/openssl-3.5-notes/
-- https://source.android.com/docs/security/bulletin/2026/2026-03-01
-- https://dev.twitch.tv/docs/eventsub/handling-websocket-events
-- https://github.com/KickEngineering/KickDevDocs
-- https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/multitrack-video-sw-integration.html
+Engine and dependencies
+- https://github.com/ThibaultBee/StreamPack
+- https://github.com/ThibaultBee/StreamPack/blob/main/CHANGELOG.md
+- https://github.com/ThibaultBee/StreamPack/issues
+- https://repo1.maven.org/maven2/io/github/thibaultbee/streampack/streampack-core/maven-metadata.xml
+- https://github.com/ThibaultBee/srtdroid
+- https://github.com/Haivision/srt
+- https://github.com/pedroSG94/RootEncoder
+
+Platform and toolchain
+- https://developer.android.com/identity/data/autobackup
+- https://developer.android.com/privacy-and-security/local-network-permission
+- https://developer.android.com/about/versions/17/behavior-changes-17
+- https://developer.android.com/build/releases/gradle-plugin
+- https://developer.android.com/develop/ui/compose/bom
+- https://developer.android.com/develop/ui/compose/setup-compose-dependencies-and-compiler
+- https://developer.android.com/media/camera/camera2/camera-enumeration
+- https://developer.android.com/reference/android/net/Network#bindSocket(java.net.Socket)
+
+Protocols and platforms
+- https://github.com/veovera/enhanced-rtmp
+- https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types/
+- https://github.com/Bukk94/KickLib
+- https://developers.google.com/youtube/v3/live/guides/ingestion-protocol-comparison
 - https://www.rfc-editor.org/rfc/rfc9725.html
-- https://github.com/mptcp-nexus/android
-
-Project evidence
-- `app-audit/app/permissions-and-appops.md`, `app-audit/app/package-inventory.md`, `app-audit/testing/untested-and-blocked-cases.md`
-- `replica-app/docs/known-deviations.md`, `replica-app/app/build.gradle.kts`
+- https://github.com/Haivision/srt/blob/master/docs/API/statistics.md
 
 ## Open Questions
 
-1. **Capture topology:** can StreamPack accept an external `Surface` (CameraX `VideoCapture`/`OverlayEffect` output) as its video source, or must the preview move to StreamPack's Camera2 pipeline? Decides whether `CameraPreview.kt` survives IS-04 and whether IS-13 can use `OverlayEffect`. Needs a spike against StreamPack 3.2.0.
-2. **Twitch mobile whitelisting for Enhanced Broadcasting:** the IVS multitrack contract is public, Twitch's own docs 403 to automation. Blocks IS-91 prioritisation.
-3. **Receiver for end-to-end bonding tests:** MediaMTX PR #5811 (SRTLA) is unmerged; until it lands the LAN rig is go-irl or irl-srt-server, and Android 16's local-network permission may bite LAN tests.
-4. **Distribution channel** (unchanged from 2026-08-15): Play vs F-Droid vs GitHub decides signing and the FGS Console declaration before IS-06 ships.
+1. **Can StreamPack's video config be changed mid-stream?** `IConfigurableVideoStreamer.setVideoConfig()` has no guard against being called while `isStreamingFlow` is true, and `SingleStreamerImpl` just forwards to the pipeline output. Bitrate is likely safe; a resolution or fps change reconfigures the encoder and is unvalidated. This decides whether IS-12 (ABR) can move resolution as well as bitrate, and whether IS-108 needs a stream restart. Needs a spike against 3.2.0.
+2. **Is srtdroid's OpenSSL actually exploitable here?** srtdroid 1.10.0 bundles OpenSSL 3.5.1, and 3.5.7 fixed a `PKCS7_verify` use-after-free. Whether libsrt's key exchange reaches that code path determines whether IS-52 needs an owned OpenSSL build or only a srtdroid version bump. Needs a reading of libsrt's crypto usage, not a version comparison.
+3. **Does `Network.bindSocket` still hold several simultaneous networks on Android 16/17 without a foreground service?** No 2026 behaviour-change document narrowing this surfaced, but absence of a hit is not proof. This gates IS-77 and therefore all bonding work. Needs live validation on a dual-SIM device.
+4. **Will Twitch accept Enhanced RTMP multitrack from a third-party mobile encoder?** Dual Format went GA in June 2026 and the contract is public, but every documented example is a desktop encoder. Still blocks IS-91's priority.
+5. **Which physical lenses does the target device expose to Camera2?** OEMs commonly hide ultrawide and telephoto from Camera2 even when the stock app uses them. IS-58 and IS-73 cannot be scoped until this is measured on the S25 Ultra.
 
-Confidence: library versions, CVEs, CameraX/Android release notes, Moblin/StreamPack/srtla_send facts and pricing pages are Verified against primary sources on 2026-08-29. IRL Pro Play-review complaints and Larix version dates are Likely (search excerpts; Play blocks automated fetch). Reddit thread frequencies were not fetchable this pass; community ranking rests on vendor community docs, GitHub issues and Play excerpts.
+Confidence: library versions, Maven metadata, CVE fix versions, GitHub repository metadata and release dates, Android platform documentation, and every file path and line number cited here are **Verified** against primary sources on 2026-09-04. Cloud-relay pricing tiers are **Verified** from vendor pages except IRLHosting and Streamrun, which are **Likely**. Community pain rankings are **Likely** at best — Reddit was not reachable from this session's tooling, so those conclusions rest on GitHub issue trackers, vendor community docs and trade write-ups. Anything marked as needing a spike above is **Needs live validation**.
