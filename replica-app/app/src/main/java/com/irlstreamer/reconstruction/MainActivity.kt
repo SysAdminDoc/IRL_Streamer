@@ -29,8 +29,9 @@ class MainActivity : ComponentActivity() {
 
         // A capture run must not open the camera or reach the network: the
         // harness drives audited states, and its screenshots have to be
-        // reproducible. Everything else gets the real engine.
-        val engine = if (isCaptureLaunch(intent)) {
+        // reproducible. An instrumented run must not either - it would grab the
+        // camera from whatever else holds it and make results device-dependent.
+        val engine = if (shouldSimulateBroadcast(isCaptureLaunch(intent), isUnderInstrumentation())) {
             SimulatedBroadcastEngine()
         } else {
             StreamPackBroadcastEngine(applicationContext)
@@ -72,6 +73,15 @@ class MainActivity : ComponentActivity() {
         handleDebugIntent(intent)
     }
 
+    /**
+     * True when this process is running under an instrumentation test.
+     *
+     * The runner class only exists on an androidTest classpath, so its presence
+     * is the signal. Nothing else in the app depends on the test libraries.
+     */
+    private fun isUnderInstrumentation(): Boolean =
+        runCatching { Class.forName("androidx.test.platform.app.InstrumentationRegistry") }.isSuccess
+
     /** True when the debug harness launched us to render one audited state. */
     private fun isCaptureLaunch(intent: Intent?): Boolean {
         if (!BuildConfig.ENABLE_DEBUG_STATE_SELECTOR || intent == null) return false
@@ -93,3 +103,14 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+/**
+ * Whether the console should drive the simulation rather than real capture.
+ *
+ * Two runs must never touch the camera or the network: the 145-state capture
+ * sweep, whose screenshots have to be reproducible, and an instrumented test,
+ * which would otherwise take the camera from whatever else holds it and make
+ * its results depend on the device it ran on.
+ */
+internal fun shouldSimulateBroadcast(isCaptureLaunch: Boolean, isUnderInstrumentation: Boolean): Boolean =
+    isCaptureLaunch || isUnderInstrumentation

@@ -572,13 +572,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: the engine takes its streamer through an injectable factory so a fake `IStreamer` can drive open, start, throw, reopen and release; tests cover the audio-permission fork, the failure-release path and the state transitions, and mutating the engine turns them red.
   Complexity: M
 
-- [ ] P1 — IS-115 The instrumented console test opens the real camera and microphone
-  Why: `LiveConsoleTest` launches without a capture extra, and any non-capture launch selects the real engine, so the device suite grabs hardware and may reach the network. That makes results device-dependent and can collide with whatever else holds the camera.
-  Evidence: `app/src/androidTest/java/com/irlstreamer/reconstruction/LiveConsoleTest.kt:11`; `MainActivity.kt:33-37` selects `SimulatedBroadcastEngine` only when `isCaptureLaunch(intent)`.
-  Touches: `app/src/androidTest/.../LiveConsoleTest.kt`, `MainActivity.kt`
-  Acceptance: the instrumented suite runs with the simulated engine by construction, and a test asserts that a launch without the capture extra in a test context never constructs the StreamPack engine.
-  Complexity: S
-
 ### P2
 
 - [ ] P2 — IS-116 Offer HEVC as an encoder choice
