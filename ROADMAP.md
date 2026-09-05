@@ -542,13 +542,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: credentials entered on the form are persisted through the secret store, applied to the RTMP connect, and survive an app restart; a test round-trips a credentialled connection.
   Complexity: M
 
-- [ ] P1 — IS-111 Saving a connection silently destroys the previous one
-  Why: the repository keeps a single name/URL pair, so a second saved connection overwrites the first with no warning, while the page copy promises editing and a disabled "Delete multiple" row implies a list.
-  Evidence: `data/ReplicaSettingsRepository.kt:129-132`; `ui/settings/SettingsCatalog.kt:161` "Long hold to edit a connection, only one active at a time" and `:167-173` `manage_connections` with `delete_multiple` disabled.
-  Touches: `data/ReplicaSettingsRepository.kt`, `model/AppModels.kt`, `ui/settings/SettingsCatalog.kt`, `ui/settings/Forms.kt`
-  Acceptance: several connections persist with one marked active, editing an existing one does not create a duplicate, deleting asks first, and the audited connections page still matches its captured geometry.
-  Complexity: M
-
 - [ ] P1 — IS-112 Nothing survives a crash: no handler, no log file, no diagnostics export
   Why: the app has six log calls, an in-app Log tab that is a hardcoded string, and a "send debug details" row that is a toast. A user whose stream failed in the field has nothing to send and the developer has nothing to read.
   Evidence: zero occurrences of `UncaughtExceptionHandler` or `Thread.setDefault*` under `replica-app/app/src`; `ui/live/QuickSettingsPanel.kt:258-287` renders a fixed string ending `state=SIMULATED`; `ui/settings/SettingsCatalog.kt:356` is a toast-only row.

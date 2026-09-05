@@ -11,8 +11,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   in flight, waits a little longer between each one, and goes back to live as
   soon as the destination accepts again. Pressing Stop ends it for good.
 
+### Added
+
+- Several outgoing connections can be saved. Tap one to make it the destination
+  the console broadcasts to, and delete one from Manage outgoing connections,
+  which asks first. Saving a name that already exists edits it instead of adding
+  a duplicate.
+
 ### Fixed
 
+- Saving a second connection no longer silently replaces the first.
+- Changing the resolution or frame rate while the preview is open now reaches
+  the encoder when you press Start, instead of sending the size the preview
+  happened to open with.
+- Stopping a broadcast clears the bytes-sent total, so an idle console no longer
+  shows a figure from the session that just ended.
 - A destination URL ending in a slash no longer shows its stream key in full,
   and a key quoted inside a connection error no longer reaches the screen or the
   log. Passwords embedded in a URL are hidden the same way.

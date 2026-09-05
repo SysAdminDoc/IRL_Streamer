@@ -5,6 +5,7 @@ import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.SettingsPage
+import com.irlstreamer.reconstruction.model.effectiveConnections
 import com.irlstreamer.reconstruction.model.hasStreamKey
 import com.irlstreamer.reconstruction.model.redactStreamKey
 
@@ -53,6 +54,12 @@ sealed interface SettingAction {
 
     /** Show or hide the saved destination's stream key, for this visit only. */
     data object ToggleStreamKeyReveal : SettingAction
+
+    /** Make this saved destination the one the console broadcasts to. */
+    data class SelectConnection(val name: String) : SettingAction
+
+    /** Ask before forgetting a saved destination. */
+    data class DeleteConnection(val name: String) : SettingAction
 }
 
 data class SettingsPageSpec(
@@ -157,16 +164,25 @@ object SettingsCatalog {
      * navigation.
      */
     fun connectionsPage(settings: ReplicaSettings, revealStreamKey: Boolean = false): SettingsPageSpec {
-        if (settings.connectionUrl.isBlank()) return connections
-        val saved = SettingItem.Row(
-            id = "saved_connection",
-            title = settings.connectionName.ifBlank { "Connection" },
-            summary = if (revealStreamKey) settings.connectionUrl else redactStreamKey(settings.connectionUrl),
-            action = SettingAction.Navigate(SettingsPage.MANAGE_CONNECTIONS),
-        )
+        val saved = settings.effectiveConnections
+        if (saved.isEmpty()) return connections
         val items = mutableListOf<SettingItem>()
         items += connections.items
-        items += saved
+        // Every saved destination, so a second one no longer replaces the first
+        // without saying so. Tapping one makes it the destination to broadcast to.
+        saved.forEach { connection ->
+            val active = connection.name.equals(settings.connectionName, ignoreCase = true)
+            items += SettingItem.Row(
+                id = if (active) "saved_connection" else "saved_connection_${connection.name}",
+                title = connection.name,
+                // The summary is the destination and nothing else; the active
+                // one is marked by the accent, which keeps the row readable and
+                // leaves the URL the only thing in the summary.
+                summary = if (revealStreamKey && active) connection.url else redactStreamKey(connection.url),
+                accentTitle = active,
+                action = SettingAction.SelectConnection(connection.name),
+            )
+        }
         if (hasStreamKey(settings.connectionUrl)) {
             items += SettingItem.Row(
                 id = "reveal_stream_key",
@@ -176,6 +192,23 @@ object SettingsCatalog {
             )
         }
         return connections.copy(items = items)
+    }
+
+    /** The audited page, plus a delete row per saved destination. */
+    fun manageConnectionsPage(settings: ReplicaSettings): SettingsPageSpec {
+        val saved = settings.effectiveConnections
+        if (saved.isEmpty()) return manageConnections
+        val items = mutableListOf<SettingItem>()
+        items += manageConnections.items
+        saved.forEach { connection ->
+            items += SettingItem.Row(
+                id = "delete_connection_${connection.name}",
+                title = "Delete ${connection.name}",
+                summary = redactStreamKey(connection.url),
+                action = SettingAction.DeleteConnection(connection.name),
+            )
+        }
+        return manageConnections.copy(items = items)
     }
 
     private val connections = SettingsPageSpec(

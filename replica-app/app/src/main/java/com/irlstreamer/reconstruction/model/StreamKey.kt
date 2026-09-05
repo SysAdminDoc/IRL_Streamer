@@ -57,7 +57,15 @@ fun hasStreamKey(url: String): Boolean = redactStreamKey(url) != url.trim()
  * so passing one through unchanged puts the key back on screen.
  */
 fun redactStreamKeysIn(text: String): String =
-    URL_IN_TEXT.replace(text) { match -> redactStreamKey(match.value) }
+    URL_IN_TEXT.replace(text) { match ->
+        // A URL at the end of a sentence picks up its punctuation, and masking
+        // that as part of the key would eat the full stop or close-paren.
+        val trailing = match.value.takeLastWhile { it in TRAILING_PUNCTUATION }
+        redactStreamKey(match.value.dropLast(trailing.length)) + trailing
+    }
+
+/** Characters that end a sentence rather than a URL. */
+private const val TRAILING_PUNCTUATION = ".,;:!?)]}\"'"
 
 /** `rtmp://user:password@host/...` keeps the user and hides the password. */
 private fun maskCredentials(url: String, afterScheme: Int): String {

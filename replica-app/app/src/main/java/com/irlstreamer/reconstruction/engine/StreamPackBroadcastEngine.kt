@@ -207,11 +207,27 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     private var settings = ReplicaSettings()
 
     override fun configure(settings: ReplicaSettings) {
+        val previousFormat = videoFormat()
         this.settings = settings
         _statistics.value = _statistics.value.copy(
             targetBitrateKbps = settings.h264BitrateKbps,
             links = linksFrom(settings),
         )
+        // The encoder is configured when the camera opens, but the console opens
+        // it for the preview before Start is pressed. Without this, changing the
+        // resolution and then starting still sent the size the preview opened
+        // with. Only while idle: reconfiguring a running encoder is a separate
+        // question, and a broadcast must not change size underneath its receiver.
+        if (previousFormat != videoFormat() && _state.value == BroadcastState.IDLE) {
+            engineScope.launch { applyVideoConfig() }
+        }
+    }
+
+    /** Pushes the current settings onto an already-open streamer. */
+    private suspend fun applyVideoConfig() {
+        val current = streamerLock.withLock { streamer } ?: return
+        runCatching { current.setVideoConfig(videoConfig()) }
+            .onFailure { Log.e(TAG, "could not apply the new video config: ${safeMessage(it)}") }
     }
 
     /**
@@ -391,6 +407,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
             currentBitrateKbps = 0,
             uptimeSeconds = 0,
             droppedFrames = 0,
+            bytesSent = 0,
             reconnectAttempt = 0,
         )
     }

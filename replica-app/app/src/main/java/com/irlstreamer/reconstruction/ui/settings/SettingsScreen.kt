@@ -48,6 +48,8 @@ fun SettingsScreen(state: AppUiState, viewModel: MainViewModel) {
 private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewModel: MainViewModel) {
     val spec = if (page == SettingsPage.CONNECTIONS) {
         SettingsCatalog.connectionsPage(state.settings, state.runtime.transientBooleans[REVEAL_STREAM_KEY] == true)
+    } else if (page == SettingsPage.MANAGE_CONNECTIONS) {
+        SettingsCatalog.manageConnectionsPage(state.settings)
     } else {
         SettingsCatalog.page(page)
     }
@@ -159,6 +161,8 @@ private fun handleAction(action: SettingAction, state: AppUiState, viewModel: Ma
         SettingAction.OpenFolder -> viewModel.requestFolderPicker()
         is SettingAction.Toast -> viewModel.showToast(action.message)
         SettingAction.ToggleStreamKeyReveal -> viewModel.toggleStreamKeyReveal()
+        is SettingAction.SelectConnection -> viewModel.selectConnection(action.name)
+        is SettingAction.DeleteConnection -> viewModel.confirmDeleteConnection(action.name)
     }
 }
 

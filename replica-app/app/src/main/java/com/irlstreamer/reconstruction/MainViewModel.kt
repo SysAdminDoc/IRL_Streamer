@@ -177,6 +177,15 @@ class MainViewModel(
             return
         }
 
+        when {
+            dialog.id.startsWith(DELETE_CONNECTION_DIALOG) -> {
+                val name = dialog.id.removePrefix(DELETE_CONNECTION_DIALOG)
+                viewModelScope.launch { repository.deleteConnection(name) }
+                runtime.value = runtime.value.copy(dialog = null)
+                return
+            }
+        }
+
         when (dialog.id) {
             "chat_font_scale" -> value.toIntOrNull()?.let { setInt("chat_font_scale", it) }
             "alert_dashboard_scale" -> value.toIntOrNull()?.let { setInt("alert_dashboard_scale", it) }
@@ -228,6 +237,28 @@ class MainViewModel(
     /** Persists the destination entered on the connection form. */
     fun saveConnection(name: String, url: String) {
         viewModelScope.launch { repository.setConnection(name.trim(), url.trim()) }
+    }
+
+    /** Broadcast to a different saved destination. */
+    fun selectConnection(name: String) {
+        viewModelScope.launch { repository.setActiveConnection(name) }
+    }
+
+    /**
+     * Deleting is irreversible and there is no undo for it, so it asks first.
+     * The name travels in the dialog id, which is what [confirmDialog] reads.
+     */
+    fun confirmDeleteConnection(name: String) {
+        runtime.value = runtime.value.copy(
+            dialog = DialogRequest(
+                id = "$DELETE_CONNECTION_DIALOG$name",
+                title = "Delete connection",
+                type = DialogType.ALERT,
+                message = "Forget \"$name\"? This cannot be undone.",
+                positiveLabel = "DELETE",
+                negativeLabel = "CANCEL",
+            ),
+        )
     }
 
     fun toggleQuickPanel() {
@@ -481,3 +512,6 @@ class MainViewModel(
         )
     }
 }
+
+/** Dialog-id prefix carrying the name of the connection awaiting deletion. */
+private const val DELETE_CONNECTION_DIALOG = "delete_connection:"

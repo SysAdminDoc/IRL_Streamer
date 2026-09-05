@@ -12,7 +12,13 @@ import androidx.datastore.preferences.core.mutablePreferencesOf
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.irlstreamer.reconstruction.model.OutgoingConnection
 import com.irlstreamer.reconstruction.model.ReplicaSettings
+import com.irlstreamer.reconstruction.model.activeOrFirst
+import com.irlstreamer.reconstruction.model.decodeConnections
+import com.irlstreamer.reconstruction.model.encodeConnections
+import com.irlstreamer.reconstruction.model.removeNamed
+import com.irlstreamer.reconstruction.model.upsert
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -74,6 +80,8 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
         val webOverlayMaster = booleanPreferencesKey("web_overlay_master")
         val connectionName = stringPreferencesKey("connection_name")
         val connectionUrl = stringPreferencesKey("connection_url")
+        val connections = stringPreferencesKey("connections")
+        val activeConnection = stringPreferencesKey("active_connection")
     }
 
     val settings: Flow<ReplicaSettings> = dataStore.data.map { preferences ->
@@ -102,8 +110,9 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
             safeMarginRatios = preferences[Keys.safeMarginRatios] ?: setOf("16:9 (1.78)"),
             timestampActive = preferences[Keys.timestampActive] ?: false,
             webOverlayMaster = preferences[Keys.webOverlayMaster] ?: true,
-            connectionName = preferences[Keys.connectionName] ?: "",
-            connectionUrl = preferences[Keys.connectionUrl] ?: "",
+            connectionName = activeConnectionIn(preferences)?.name ?: "",
+            connectionUrl = activeConnectionIn(preferences)?.url ?: "",
+            connections = savedConnectionsIn(preferences),
             extraToggles = preferences.asMap()
                 .filterKeys { it.name.startsWith(TOGGLE_PREFIX) }
                 .entries
@@ -147,11 +156,56 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
         preferences[stringPreferencesKey("$CHOICE_PREFIX$id")] = value
     }
 
-    /** Saves the outgoing destination the console broadcasts to. */
+    /**
+     * Saves a destination and makes it the active one.
+     *
+     * Saving the same name edits that entry rather than adding a second, which
+     * is what stops the form's edit path from leaving duplicates. A second
+     * destination used to overwrite the first with no warning.
+     */
     suspend fun setConnection(name: String, url: String) = dataStore.edit { preferences ->
-        preferences[Keys.connectionName] = name
-        preferences[Keys.connectionUrl] = url
+        val saved = savedConnectionsIn(preferences).upsert(OutgoingConnection(name.trim(), url.trim()))
+        preferences[Keys.connections] = encodeConnections(saved)
+        preferences[Keys.activeConnection] = name.trim()
+        // The legacy single-destination keys are no longer read; clearing them
+        // stops a stale pair from reappearing if the list is ever emptied.
+        preferences.remove(Keys.connectionName)
+        preferences.remove(Keys.connectionUrl)
     }
+
+    /** Marks an already-saved destination as the one to broadcast to. */
+    suspend fun setActiveConnection(name: String) = dataStore.edit { preferences ->
+        preferences[Keys.activeConnection] = name.trim()
+    }
+
+    /** Forgets a destination. The active one falls back to whatever is left. */
+    suspend fun deleteConnection(name: String) = dataStore.edit { preferences ->
+        val remaining = savedConnectionsIn(preferences).removeNamed(name)
+        preferences[Keys.connections] = encodeConnections(remaining)
+        if (preferences[Keys.activeConnection].orEmpty().equals(name, ignoreCase = true)) {
+            preferences[Keys.activeConnection] = remaining.firstOrNull()?.name.orEmpty()
+        }
+        preferences.remove(Keys.connectionName)
+        preferences.remove(Keys.connectionUrl)
+    }
+
+    /**
+     * The saved list, migrating a destination stored under the old
+     * single-connection keys so an existing install does not lose it.
+     */
+    private fun savedConnectionsIn(preferences: Preferences): List<OutgoingConnection> {
+        preferences[Keys.connections]?.let { return decodeConnections(it) }
+        val legacyName = preferences[Keys.connectionName].orEmpty()
+        val legacyUrl = preferences[Keys.connectionUrl].orEmpty()
+        return if (legacyName.isNotBlank() && legacyUrl.isNotBlank()) {
+            listOf(OutgoingConnection(legacyName, legacyUrl))
+        } else {
+            emptyList()
+        }
+    }
+
+    private fun activeConnectionIn(preferences: Preferences): OutgoingConnection? =
+        savedConnectionsIn(preferences).activeOrFirst(preferences[Keys.activeConnection].orEmpty())
 
     /**
      * Clears every stored value and returns what was cleared.

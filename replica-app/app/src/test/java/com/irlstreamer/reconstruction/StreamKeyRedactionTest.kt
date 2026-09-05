@@ -94,6 +94,19 @@ class StreamKeyRedactionTest {
     }
 
     @Test
+    fun sentencePunctuationSurvivesRedaction() {
+        // The URL pattern would otherwise swallow the full stop into the key and
+        // drop it, and the same for a closing paren.
+        val masked = redactStreamKeysIn("failed on rtmp://ingest.example.com/live/$secret.")
+        assertFalse(masked, masked.contains(secret))
+        assertTrue(masked, masked.endsWith("."))
+
+        val parenthesised = redactStreamKeysIn("(see rtmp://ingest.example.com/live/$secret)")
+        assertFalse(parenthesised, parenthesised.contains(secret))
+        assertTrue(parenthesised, parenthesised.endsWith(")"))
+    }
+
+    @Test
     fun textWithNoUrlIsUnchanged() {
         val message = "Connection reset by peer"
 
