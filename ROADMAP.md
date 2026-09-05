@@ -526,14 +526,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P1
 
-- [ ] P1 — IS-106 Reconnect automatically after a drop, with bounded backoff
-  Why: cellular drops are the defining failure of IRL streaming and every competitor answers them. LifeStreamer advertises infinite reconnect; this app stops and stays stopped, while `BroadcastState.RECONNECTING` is already declared and never used.
-  Evidence: `engine/BroadcastEngine.kt:17-18` (`DEGRADED`, `RECONNECTING` emitted only by the test fake at `app/src/test/.../BroadcastEngineTest.kt:141-146`); https://github.com/dimadesu/LifeStreamer feature list.
-  Depends on: IS-102
-  Touches: `engine/StreamPackBroadcastEngine.kt`, `ui/live/LiveConsoleScreen.kt`
-  Acceptance: dropping the receiver moves the console to RECONNECTING and it returns to LIVE without user action once the receiver comes back; retries use bounded exponential backoff, stop on an explicit Stop, and the attempt count is visible; a test covers drop, retry and recovery.
-  Complexity: M
-
 - [ ] P1 — IS-107 The screen sleeps and the process is killable mid-broadcast
   Why: the app holds no wake lock and sets no keep-screen-on flag, so a broadcast ends when the display times out or the system reclaims the process. This is the difference between a demo and a tool someone walks around with.
   Evidence: zero occurrences of `keepScreenOn`, `FLAG_KEEP_SCREEN_ON` or `WakeLock` under `replica-app/app/src`; no `<service>` element in `AndroidManifest.xml`. `FLAG_KEEP_SCREEN_ON` needs no permission and covers the visible console; a `PARTIAL_WAKE_LOCK` held by the foreground service covers screen-off.

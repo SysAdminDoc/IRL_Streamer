@@ -184,6 +184,21 @@ fun LiveConsoleScreen(state: AppUiState, viewModel: MainViewModel) {
             onClick = viewModel::toggleBroadcast,
         )
 
+        // Only drawn while a dropped stream is being retried. The audited
+        // captures run the simulation, which never reconnects, so this adds
+        // nothing to them.
+        val reconnectAttempt by viewModel.reconnectAttempt.collectAsStateWithLifecycle()
+        if (reconnectAttempt > 0) {
+            Text(
+                text = "Reconnecting… $reconnectAttempt",
+                color = Color(0xFFFFB74D),
+                fontSize = 11.sp,
+                modifier = Modifier
+                    .offset(x = 248.89.dp, y = maxHeight - 62.dp)
+                    .testTag("reconnect_status"),
+            )
+        }
+
         LensSelector(
             selectedId = state.runtime.currentCameraId,
             onSelect = viewModel::setCurrentCamera,

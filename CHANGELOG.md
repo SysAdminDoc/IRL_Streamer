@@ -5,6 +5,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- A dropped broadcast reconnects on its own. The console shows which retry is
+  in flight, waits a little longer between each one, and goes back to live as
+  soon as the destination accepts again. Pressing Stop ends it for good.
+
 ### Fixed
 
 - A broadcast that drops now leaves the live state instead of showing LIVE

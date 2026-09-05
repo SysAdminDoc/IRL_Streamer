@@ -53,6 +53,16 @@ class MainViewModel(
         .map { it == BroadcastState.CONNECTING || it == BroadcastState.LIVE || it == BroadcastState.DEGRADED }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
 
+    /**
+     * Which reconnect attempt is in flight, or 0 when nothing is reconnecting.
+     *
+     * The console renders this only while it is non-zero, so the audited
+     * captures - which run the simulation - are unchanged.
+     */
+    val reconnectAttempt: StateFlow<Int> = engine.statistics
+        .map { it.reconnectAttempt }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
     private val _cameraFailure = MutableStateFlow<String?>(null)
 
     /** Why the preview is not showing, when it is not. */

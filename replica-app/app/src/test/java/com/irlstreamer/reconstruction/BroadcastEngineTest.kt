@@ -7,11 +7,18 @@ import com.irlstreamer.reconstruction.engine.BroadcastResult
 import com.irlstreamer.reconstruction.engine.BroadcastState
 import com.irlstreamer.reconstruction.engine.BroadcastStatistics
 import com.irlstreamer.reconstruction.engine.SimulatedBroadcastEngine
+import com.irlstreamer.reconstruction.engine.RECONNECT_BASE_DELAY_MS
+import com.irlstreamer.reconstruction.engine.RECONNECT_MAX_ATTEMPTS
+import com.irlstreamer.reconstruction.engine.RECONNECT_MAX_DELAY_MS
+import com.irlstreamer.reconstruction.engine.reconnectDelayMillis
+import com.irlstreamer.reconstruction.engine.reconnectWithBackoff
 import com.irlstreamer.reconstruction.engine.watchOutgoingStream
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -276,6 +283,73 @@ class BroadcastEngineTest {
 
         assertEquals(1, reported.size)
         assertTrue(reported.single() is BroadcastFailure.TransportUnavailable)
+    }
+
+    @Test
+    fun backoffGrowsThenStopsGrowing() {
+        // A brief blip recovers in about a second; a long outage still retries
+        // about twice a minute rather than hammering the receiver.
+        assertEquals(RECONNECT_BASE_DELAY_MS, reconnectDelayMillis(1))
+        assertEquals(2_000L, reconnectDelayMillis(2))
+        assertEquals(4_000L, reconnectDelayMillis(3))
+        assertEquals(RECONNECT_MAX_DELAY_MS, reconnectDelayMillis(RECONNECT_MAX_ATTEMPTS))
+        // No overflow into a negative or zero wait at absurd attempt numbers.
+        assertEquals(RECONNECT_MAX_DELAY_MS, reconnectDelayMillis(64))
+        assertTrue(reconnectDelayMillis(1000) > 0)
+    }
+
+    @Test
+    fun aDroppedStreamRetriesUntilTheReceiverComesBack() = runTest {
+        val attempts = mutableListOf<Int>()
+        var connected = false
+
+        // The receiver refuses twice, then accepts.
+        val recovered = reconnectWithBackoff(
+            onAttempt = { attempts += it },
+            connect = {
+                if (attempts.size >= 3) {
+                    connected = true
+                    true
+                } else {
+                    false
+                }
+            },
+        )
+
+        assertTrue("the retry loop gave up on a receiver that came back", recovered)
+        assertTrue(connected)
+        assertEquals(listOf(1, 2, 3), attempts)
+    }
+
+    @Test
+    fun retriesAreBoundedSoAWrongDestinationEventuallyStops() = runTest {
+        val attempts = mutableListOf<Int>()
+
+        val recovered = reconnectWithBackoff(
+            maxAttempts = 4,
+            onAttempt = { attempts += it },
+            connect = { false },
+        )
+
+        assertTrue("a destination that never accepts must not retry forever", !recovered)
+        assertEquals(listOf(1, 2, 3, 4), attempts)
+    }
+
+    @Test
+    fun anExplicitStopCancelsTheRetryLoop() = runTest {
+        val attempts = mutableListOf<Int>()
+        val job = backgroundScope.launch {
+            reconnectWithBackoff(onAttempt = { attempts += it }, connect = { false })
+        }
+
+        // Let the first two retries happen, then stop as the user would.
+        advanceTimeBy(RECONNECT_BASE_DELAY_MS + 2_000L + 1)
+        val seenBeforeStop = attempts.size
+        job.cancel()
+        advanceTimeBy(60_000)
+
+        assertTrue("no retry ran before the stop", seenBeforeStop > 0)
+        assertEquals("retries continued after an explicit stop", seenBeforeStop, attempts.size)
     }
 
     @Test

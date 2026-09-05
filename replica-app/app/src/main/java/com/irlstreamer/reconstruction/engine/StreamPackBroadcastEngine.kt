@@ -27,6 +27,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -81,6 +82,50 @@ internal fun CoroutineScope.watchOutgoingStream(
     }
 }
 
+/** First retry waits this long; each later one doubles. */
+internal const val RECONNECT_BASE_DELAY_MS = 1_000L
+
+/** Ceiling on the wait, so a long outage still retries about twice a minute. */
+internal const val RECONNECT_MAX_DELAY_MS = 30_000L
+
+/** Bounded, so a destination that is simply wrong stops rather than retrying forever. */
+internal const val RECONNECT_MAX_ATTEMPTS = 10
+
+/**
+ * How long to wait before attempt [attempt], counting from 1.
+ *
+ * Exponential so a brief cellular blip recovers in about a second while a real
+ * outage backs off instead of hammering the receiver.
+ */
+internal fun reconnectDelayMillis(attempt: Int): Long {
+    if (attempt <= 1) return RECONNECT_BASE_DELAY_MS
+    val shift = (attempt - 1).coerceAtMost(20)
+    val scaled = RECONNECT_BASE_DELAY_MS shl shift
+    return if (scaled <= 0L) RECONNECT_MAX_DELAY_MS else scaled.coerceAtMost(RECONNECT_MAX_DELAY_MS)
+}
+
+/**
+ * Retries [connect] with bounded exponential backoff until it succeeds.
+ *
+ * Uses `delay`, so a test drives it on virtual time rather than waiting. An
+ * explicit stop cancels the coroutine this runs in, and `delay` is
+ * cancellable, so no extra stop flag is needed.
+ *
+ * @return true when a retry connected, false when [maxAttempts] were used up.
+ */
+internal suspend fun reconnectWithBackoff(
+    maxAttempts: Int = RECONNECT_MAX_ATTEMPTS,
+    onAttempt: (Int) -> Unit = {},
+    connect: suspend () -> Boolean,
+): Boolean {
+    for (attempt in 1..maxAttempts) {
+        delay(reconnectDelayMillis(attempt))
+        onAttempt(attempt)
+        if (connect()) return true
+    }
+    return false
+}
+
 /**
  * Camera capture, H.264 encode and RTMP publish.
  *
@@ -102,6 +147,10 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     /** Outlives any single streamer: the watch is re-established on every open. */
     private val engineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private var watchJob: Job? = null
+
+    /** Where a dropped broadcast should reconnect to. Cleared by an explicit stop. */
+    private var activeUrl: String? = null
+    private var reconnectJob: Job? = null
 
     /** The console previews this once the camera is open. */
     private val _videoSource = MutableStateFlow<IWithVideoSource?>(null)
@@ -184,6 +233,10 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         _state.value = BroadcastState.IDLE
         watchJob?.cancel()
         watchJob = null
+        // The camera is gone, so there is nothing left to reconnect with.
+        activeUrl = null
+        reconnectJob?.cancel()
+        reconnectJob = null
         runCatching {
             current.stopStream()
             current.close()
@@ -234,10 +287,14 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
             opened.startStream(url)
         }.fold(
             onSuccess = {
+                // Remembered so a drop can reconnect without the console asking
+                // the user to start again.
+                activeUrl = url
                 _state.value = BroadcastState.LIVE
                 _statistics.value = _statistics.value.copy(
                     currentBitrateKbps = settings.h264BitrateKbps,
                     fps = VIDEO_FPS,
+                    reconnectAttempt = 0,
                 )
                 BroadcastResult.Started
             },
@@ -263,16 +320,29 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         // to not-streaming as a lost link unless the state already says we asked.
         _state.value = BroadcastState.IDLE
         _failure.value = null
+        // An explicit stop ends the broadcast for good; nothing should reconnect
+        // behind the user's back.
+        activeUrl = null
+        reconnectJob?.cancel()
+        reconnectJob = null
         runCatching {
             current.stopStream()
             current.close()
         }.onFailure { Log.e(TAG, "stop failed", it) }
-        _statistics.value = _statistics.value.copy(currentBitrateKbps = 0, uptimeSeconds = 0, droppedFrames = 0)
+        _statistics.value = _statistics.value.copy(
+            currentBitrateKbps = 0,
+            uptimeSeconds = 0,
+            droppedFrames = 0,
+            reconnectAttempt = 0,
+        )
     }
 
     override fun release() {
         watchJob?.cancel()
         watchJob = null
+        reconnectJob?.cancel()
+        reconnectJob = null
+        activeUrl = null
         engineScope.cancel()
         val current = streamer ?: return
         streamer = null
@@ -282,14 +352,65 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     }
 
     /**
-     * The outgoing stream ended without the app asking. Records why and leaves
-     * LIVE, so the console stops claiming to be broadcasting.
+     * The outgoing stream ended without the app asking.
+     *
+     * A drop is the normal case on a phone, so this reconnects rather than
+     * ending the broadcast. It reports the failure and gives up only once the
+     * retries are exhausted.
      */
     private fun onStreamLost(failure: BroadcastFailure) {
         Log.e(TAG, "outgoing stream lost: $failure")
-        _failure.value = failure
-        _state.value = BroadcastState.ERROR
         _statistics.value = _statistics.value.copy(currentBitrateKbps = 0)
+        val url = activeUrl
+        if (url == null) {
+            _failure.value = failure
+            _state.value = BroadcastState.ERROR
+            return
+        }
+        _state.value = BroadcastState.RECONNECTING
+        reconnectJob?.cancel()
+        reconnectJob = engineScope.launch {
+            val recovered = reconnectWithBackoff(
+                onAttempt = { attempt ->
+                    _statistics.value = _statistics.value.copy(reconnectAttempt = attempt)
+                },
+                connect = { attemptReconnect(url) },
+            )
+            if (recovered) {
+                _state.value = BroadcastState.LIVE
+                _statistics.value = _statistics.value.copy(
+                    reconnectAttempt = 0,
+                    currentBitrateKbps = settings.h264BitrateKbps,
+                    fps = VIDEO_FPS,
+                )
+            } else {
+                _failure.value = failure
+                _state.value = BroadcastState.ERROR
+                _statistics.value = _statistics.value.copy(reconnectAttempt = 0)
+            }
+        }
+    }
+
+    /**
+     * One reconnect attempt.
+     *
+     * The streamer has to be closed before it can publish again, and the camera
+     * may have been taken away while the link was down, so this reopens rather
+     * than assuming the old session is still usable.
+     */
+    private suspend fun attemptReconnect(url: String): Boolean {
+        val current = streamerLock.withLock { streamer } ?: return false
+        return runCatching {
+            runCatching { current.stopStream() }
+            runCatching { current.close() }
+            current.startStream(url)
+        }.fold(
+            onSuccess = { true },
+            onFailure = { failure ->
+                Log.e(TAG, "reconnect to ${redactStreamKey(url)} failed", failure)
+                false
+            },
+        )
     }
 
     private fun videoConfig() = VideoCodecConfig(
