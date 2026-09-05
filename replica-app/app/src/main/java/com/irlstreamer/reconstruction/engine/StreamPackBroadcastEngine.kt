@@ -9,6 +9,7 @@ import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.redactStreamKey
+import com.irlstreamer.reconstruction.model.videoFormatFrom
 import io.github.thibaultbee.streampack.core.elements.encoders.AudioCodecConfig
 import io.github.thibaultbee.streampack.core.elements.encoders.VideoCodecConfig
 import io.github.thibaultbee.streampack.core.elements.sources.audio.audiorecord.MicrophoneSourceFactory
@@ -293,7 +294,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
                 _state.value = BroadcastState.LIVE
                 _statistics.value = _statistics.value.copy(
                     currentBitrateKbps = settings.h264BitrateKbps,
-                    fps = VIDEO_FPS,
+                    fps = videoFormat().fps,
                     reconnectAttempt = 0,
                 )
                 BroadcastResult.Started
@@ -381,7 +382,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
                 _statistics.value = _statistics.value.copy(
                     reconnectAttempt = 0,
                     currentBitrateKbps = settings.h264BitrateKbps,
-                    fps = VIDEO_FPS,
+                    fps = videoFormat().fps,
                 )
             } else {
                 _failure.value = failure
@@ -413,11 +414,17 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         )
     }
 
-    private fun videoConfig() = VideoCodecConfig(
-        startBitrate = settings.h264BitrateKbps * 1_000,
-        resolution = Size(VIDEO_WIDTH, VIDEO_HEIGHT),
-        fps = VIDEO_FPS,
-    )
+    /** The picture the user asked for on the Video parameters page. */
+    private fun videoFormat() = videoFormatFrom(settings.choiceValues)
+
+    private fun videoConfig(): VideoCodecConfig {
+        val format = videoFormat()
+        return VideoCodecConfig(
+            startBitrate = settings.h264BitrateKbps * 1_000,
+            resolution = Size(format.width, format.height),
+            fps = format.fps,
+        )
+    }
 
     private fun linksFrom(settings: ReplicaSettings) = listOf(
         LinkStatistics("cellular", "Cellular", settings.cellularEnabled, settings.cellularWeight, 0),
@@ -425,9 +432,4 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         LinkStatistics("ethernet", "Ethernet", settings.ethernetEnabled, settings.ethernetWeight, 0),
     )
 
-    private companion object {
-        const val VIDEO_WIDTH = 1920
-        const val VIDEO_HEIGHT = 1080
-        const val VIDEO_FPS = 30
-    }
 }

@@ -13,6 +13,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- The Resolution and FPS settings now reach the encoder. Choosing 1280x720 sends
+  1280x720 instead of 1080p regardless of the setting. A variable frame rate uses
+  the top of its range, and System default is 30 fps.
 - A broadcast that drops now leaves the live state instead of showing LIVE
   forever. The console watches the outgoing stream and says why it stopped.
 - Stream keys no longer leave the device in a cloud backup or a phone-to-phone

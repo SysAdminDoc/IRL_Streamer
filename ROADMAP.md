@@ -534,14 +534,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: a broadcast survives the display timeout and a manual screen-off; the flag and the wake lock are released the moment the broadcast stops, verified with `dumpsys power`.
   Complexity: S
 
-- [ ] P1 — IS-108 Resolution and FPS settings never reach the encoder
-  Why: the Video parameters page presents nine resolutions and eleven frame rates as configurable and persists the choice, but the encoder is hardcoded. A user who selects 720p to survive a weak link gets 1080p anyway.
-  Evidence: `engine/StreamPackBroadcastEngine.kt:204-208, 216-219` (`VIDEO_WIDTH = 1920`, `VIDEO_HEIGHT = 1080`, `VIDEO_FPS = 30`); `model/AppModels.kt` carries `h264BitrateKbps` and no resolution or fps field; `ui/settings/SettingsCatalog.kt` video page rows `resolution` and `fps`.
-  Cross-reference: this is the specific case IS-70 covers in general; close it there when this lands.
-  Touches: `model/AppModels.kt`, `data/ReplicaSettingsRepository.kt`, `engine/StreamPackBroadcastEngine.kt`
-  Acceptance: selecting 1280x720 at 30 fps produces a stream a receiver reports as 1280x720; the "System default" fps option resolves to a documented value; a unit test asserts the `VideoCodecConfig` built from settings matches the selection.
-  Complexity: M
-
 - [ ] P1 — IS-109 Broadcast statistics are fabricated while a real stream is running
   Why: uptime and dropped frames are only ever reset to zero and the current bitrate is echoed back from settings, so the numbers on the console cannot tell a healthy stream from a failing one. StreamPack already measures all of it.
   Evidence: `engine/StreamPackBroadcastEngine.kt:165-170, 195-197`; StreamPack 3.2.0 `BasicEndpointMetrics` exposes `uptime`, `packetsWritten`, `packetsWriteDropped`, `packetsWriteLost`, `bytesWritten` and the `writtenBitrateInBps` extension (`core/src/main/java/io/github/thibaultbee/streampack/core/elements/metrics/EndpointMetrics.kt`), with an RTMP implementation in `extensions/rtmp/.../RtmpEndpointMetrics.kt`.
