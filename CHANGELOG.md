@@ -10,6 +10,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - A dropped broadcast reconnects on its own. The console shows which retry is
   in flight, waits a little longer between each one, and goes back to live as
   soon as the destination accepts again. Pressing Stop ends it for good.
+- A crash now leaves a report behind. The app writes a timestamped file to its
+  own storage, keeps the last five, and the Log tab shows recent activity instead
+  of a fixed string. Send debug details shares that report through the usual
+  chooser, with stream keys removed.
 - The app checks GitHub once a day for a newer release and says so under Help &
   support, with a link to the releases page. It fails silently offline and can be
   turned off. There is no store to push updates, so it has to look.

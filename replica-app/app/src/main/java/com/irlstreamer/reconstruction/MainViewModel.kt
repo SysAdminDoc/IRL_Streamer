@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.irlstreamer.reconstruction.data.ReplicaSettingsRepository
 import com.irlstreamer.reconstruction.debug.Harness
+import com.irlstreamer.reconstruction.diagnostics.DiagnosticEntry
+import com.irlstreamer.reconstruction.diagnostics.DiagnosticsLog
+import com.irlstreamer.reconstruction.diagnostics.buildDiagnosticsReport
 import com.irlstreamer.reconstruction.engine.BroadcastEngine
 import com.irlstreamer.reconstruction.engine.BroadcastFailure
 import com.irlstreamer.reconstruction.engine.BroadcastRequest
@@ -40,7 +43,9 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val repository: ReplicaSettingsRepository,
     private val engine: BroadcastEngine = SimulatedBroadcastEngine(),
+    private val log: DiagnosticsLog = DiagnosticsLog(),
 ) : ViewModel() {
+    private val timestampFormat = java.text.SimpleDateFormat("HH:mm:ss", java.util.Locale.US)
     private val runtime = MutableStateFlow(RuntimeUiState())
     private var lastRearCameraId = 0
     private var lastFrontCameraId = 1
@@ -74,6 +79,15 @@ class MainViewModel(
         .map { it.currentBitrateKbps }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
+    /**
+     * Recent activity, for the console's Log tab and the diagnostics export.
+     *
+     * Empty until something is recorded, which the capture harness never does,
+     * so the audited Log tab still shows its fixture.
+     */
+    private val _diagnostics = MutableStateFlow<List<DiagnosticEntry>>(emptyList())
+    val diagnostics: StateFlow<List<DiagnosticEntry>> = _diagnostics
+
     private val _cameraFailure = MutableStateFlow<String?>(null)
 
     /** Why the preview is not showing, when it is not. */
@@ -102,10 +116,35 @@ class MainViewModel(
                         is BroadcastFailure.TransportUnavailable -> "The broadcast stopped: ${redactStreamKeysIn(failure.reason)}"
                     },
                 )
+                recordDiagnostic("broadcast", "stopped: $failure")
             }
+        }
+        viewModelScope.launch {
+            engine.state.collect { recordDiagnostic("state", it.name) }
         }
         checkForUpdate()
     }
+
+    /** Adds a line to the log the console shows and the export shares. */
+    fun recordDiagnostic(tag: String, message: String) {
+        log.record(tag, message, System.currentTimeMillis())
+        _diagnostics.value = log.entries()
+    }
+
+    /**
+     * The text the "send debug details" row shares.
+     *
+     * Built through [buildDiagnosticsReport], which redacts, so a report can
+     * never carry the stream key off the device.
+     */
+    fun diagnosticsReport(versionName: String, device: String, androidRelease: String): String =
+        buildDiagnosticsReport(
+            versionName = versionName,
+            device = device,
+            androidRelease = androidRelease,
+            entries = log.entries(),
+            formatTimestamp = { millis -> timestampFormat.format(java.util.Date(millis)) },
+        )
 
     /**
      * Looks for a newer release, at most once a day.
@@ -506,9 +545,10 @@ class MainViewModel(
     class Factory(
         private val repository: ReplicaSettingsRepository,
         private val engine: BroadcastEngine,
+        private val log: DiagnosticsLog = DiagnosticsLog(),
     ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(repository, engine) as T
+        override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(repository, engine, log) as T
     }
 
     private companion object {

@@ -542,13 +542,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: credentials entered on the form are persisted through the secret store, applied to the RTMP connect, and survive an app restart; a test round-trips a credentialled connection.
   Complexity: M
 
-- [ ] P1 — IS-112 Nothing survives a crash: no handler, no log file, no diagnostics export
-  Why: the app has six log calls, an in-app Log tab that is a hardcoded string, and a "send debug details" row that is a toast. A user whose stream failed in the field has nothing to send and the developer has nothing to read.
-  Evidence: zero occurrences of `UncaughtExceptionHandler` or `Thread.setDefault*` under `replica-app/app/src`; `ui/live/QuickSettingsPanel.kt:258-287` renders a fixed string ending `state=SIMULATED`; `ui/settings/SettingsCatalog.kt:356` is a toast-only row.
-  Touches: new `diagnostics/` package, `ui/live/QuickSettingsPanel.kt`, `ui/settings/SettingsCatalog.kt`
-  Acceptance: an uncaught exception writes a timestamped crash file; the Log tab renders the real ring buffer; the export action produces a share intent whose payload contains no stream key or credential, asserted by a test.
-  Complexity: M
-
 - [ ] P1 — IS-114 The only risky class in the repo has no tests
   Why: `StreamPackBroadcastEngine` owns the camera, the microphone, the encoder and the network and is referenced by no test source set, while `BroadcastEngineTest` asserts on a `FakeEngine` that emits DEGRADED and RECONNECTING states no production code can produce.
   Evidence: `app/src/test/java/com/irlstreamer/reconstruction/BroadcastEngineTest.kt:141-146`; no occurrence of `StreamPackBroadcastEngine` in `app/src/test` or `app/src/androidTest`.

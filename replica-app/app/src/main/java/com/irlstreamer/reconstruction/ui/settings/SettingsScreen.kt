@@ -57,6 +57,21 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
         SettingsCatalog.page(page)
     }
     val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
+    val context = androidx.compose.ui.platform.LocalContext.current
+    // The user chooses where it goes; the app never sends anything itself.
+    val shareDiagnostics: () -> Unit = {
+        val report = viewModel.diagnosticsReport(
+            versionName = BuildConfig.VERSION_NAME,
+            device = "${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}",
+            androidRelease = android.os.Build.VERSION.RELEASE,
+        )
+        val intent = android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(android.content.Intent.EXTRA_SUBJECT, "IRL Streamer diagnostics")
+            putExtra(android.content.Intent.EXTRA_TEXT, report)
+        }
+        context.startActivity(android.content.Intent.createChooser(intent, "Send debug details"))
+    }
     val visibleItems = remember(spec.items, state.effectiveSafeMargins) {
         if (page == SettingsPage.DISPLAY && !state.effectiveSafeMargins) {
             spec.items.filterNot {
@@ -123,7 +138,7 @@ private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewMod
                             enabled = derivedEnabled,
                             accentTitle = item.accentTitle,
                             onClick = if (derivedEnabled) {
-                                { handleAction(item.action, state, viewModel, uriHandler::openUri) }
+                                { handleAction(item.action, state, viewModel, uriHandler::openUri, shareDiagnostics) }
                             } else null,
                         )
                     }
@@ -162,6 +177,7 @@ private fun handleAction(
     state: AppUiState,
     viewModel: MainViewModel,
     openUri: (String) -> Unit,
+    shareDiagnostics: () -> Unit,
 ) {
     when (action) {
         SettingAction.None -> Unit
@@ -169,6 +185,7 @@ private fun handleAction(
         is SettingAction.Dialog -> viewModel.showDialog(withCurrentValue(action.request, state))
         SettingAction.OpenFolder -> viewModel.requestFolderPicker()
         SettingAction.OpenReleasesPage -> openUri(RELEASES_URL)
+        SettingAction.ShareDiagnostics -> shareDiagnostics()
         is SettingAction.Toast -> viewModel.showToast(action.message)
         SettingAction.ToggleStreamKeyReveal -> viewModel.toggleStreamKeyReveal()
         is SettingAction.SelectConnection -> viewModel.selectConnection(action.name)

@@ -59,6 +59,9 @@ sealed interface SettingAction {
     /** Make this saved destination the one the console broadcasts to. */
     data class SelectConnection(val name: String) : SettingAction
 
+    /** Share the recent-activity report, with secrets removed. */
+    data object ShareDiagnostics : SettingAction
+
     /** Open the GitHub releases page, where the newer build is. */
     data object OpenReleasesPage : SettingAction
 
@@ -442,7 +445,7 @@ object SettingsCatalog {
         title = "Help & support",
         items = listOf(
             SettingItem.Row("community", "Community", "External support links are intentionally omitted", action = SettingAction.Toast("No authorized external support destination was supplied")),
-            SettingItem.Row("debug_details", "Send cameras debug details to developers", "Produces no share action in this privacy-safe fixture", action = SettingAction.Toast("Debug details stay on this device")),
+            SettingItem.Row("debug_details", "Send debug details", "Shares recent activity with the stream key removed. Nothing is sent automatically.", action = SettingAction.ShareDiagnostics),
             SettingItem.Row("reset", "Reset app settings", action = SettingAction.Dialog(alert("reset_settings", "Reset app settings", "This resets only the reconstruction's local preferences.", "RESET", "CANCEL"))),
             SettingItem.Row("about", "About IRL Streamer", action = SettingAction.Dialog(DialogRequest(
                 id = "about",

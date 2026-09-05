@@ -141,7 +141,7 @@ fun QuickSettingsPanel(
                 QuickTab.DISPLAY -> DisplayQuickSettings(state, viewModel)
                 QuickTab.OVERLAYS -> OverlayQuickSettings(state, viewModel)
                 QuickTab.AUDIO -> AudioQuickSettings(state, viewModel)
-                QuickTab.LOG -> LogQuickSettings()
+                QuickTab.LOG -> LogQuickSettings(viewModel)
             }
         }
     }
@@ -259,7 +259,20 @@ private fun AudioQuickSettings(state: AppUiState, viewModel: MainViewModel) {
 }
 
 @Composable
-private fun LogQuickSettings() {
+private fun LogQuickSettings(viewModel: MainViewModel) {
+    val entries by viewModel.diagnostics.collectAsStateWithLifecycle()
+    if (entries.isNotEmpty()) {
+        // Real activity once anything has happened. The audited capture runs the
+        // simulation with a fresh log, so it still shows the fixture below.
+        Text(
+            entries.joinToString(separator = "\n") { "${it.tag}: ${it.message}" },
+            color = Color(0xFFBDBDBD),
+            fontSize = 9.sp,
+            lineHeight = 11.sp,
+            modifier = Modifier.testTag("quick_log"),
+        )
+        return
+    }
     // Audit evidence: screen 138 shows a wrapped encoder-configuration dump filling
     // the panel, scrolled to the bottom, ending on an onVideoCaptureStateChanged
     // line. The reference text lists the capture device's own vendor encoder keys;

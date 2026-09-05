@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.irlstreamer.reconstruction.data.ReplicaSettingsRepository
+import com.irlstreamer.reconstruction.diagnostics.DiagnosticsLog
+import com.irlstreamer.reconstruction.diagnostics.installCrashReporter
 import com.irlstreamer.reconstruction.engine.SimulatedBroadcastEngine
 import com.irlstreamer.reconstruction.engine.StreamPackBroadcastEngine
 import com.irlstreamer.reconstruction.model.AppRoute
@@ -36,7 +38,11 @@ class MainActivity : ComponentActivity() {
         } else {
             StreamPackBroadcastEngine(applicationContext)
         }
-        val factory = MainViewModel.Factory(ReplicaSettingsRepository(applicationContext), engine)
+        val log = DiagnosticsLog()
+        // A crash in the field leaves nothing behind otherwise: no store collects
+        // reports and logcat is gone once the phone is unplugged.
+        installCrashReporter(applicationContext, log)
+        val factory = MainViewModel.Factory(ReplicaSettingsRepository(applicationContext), engine, log)
         mainViewModel = androidx.lifecycle.ViewModelProvider(this, factory)[MainViewModel::class.java]
         handleDebugIntent(intent)
 
