@@ -112,6 +112,10 @@ class ConnectionDestinationTest {
         )
         val row = saved.items.filterIsInstance<SettingItem.Row>().single { it.id == "saved_connection" }
         assertEquals("Local fixture", row.title)
-        assertTrue(row.summary.contains("rtmp://10.0.2.2/live/key"))
+        // The row must identify the destination without carrying the stream
+        // key. This previously asserted the whole URL appeared in the summary,
+        // which asserted the leak itself - see StreamKeyRedactionTest.
+        assertTrue(row.summary, row.summary.startsWith("rtmp://10.0.2.2/live/"))
+        assertTrue(row.summary, !row.summary.contains("key"))
     }
 }

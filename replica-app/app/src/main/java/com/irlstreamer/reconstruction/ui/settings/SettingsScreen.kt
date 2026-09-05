@@ -19,6 +19,7 @@ import com.irlstreamer.reconstruction.model.AppRoute
 import com.irlstreamer.reconstruction.model.AppUiState
 import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
+import com.irlstreamer.reconstruction.model.REVEAL_STREAM_KEY
 import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.ui.components.AuditedAppBar
 import com.irlstreamer.reconstruction.ui.components.InfoRow
@@ -46,7 +47,7 @@ fun SettingsScreen(state: AppUiState, viewModel: MainViewModel) {
 @Composable
 private fun GenericSettingsScreen(page: SettingsPage, state: AppUiState, viewModel: MainViewModel) {
     val spec = if (page == SettingsPage.CONNECTIONS) {
-        SettingsCatalog.connectionsPage(state.settings)
+        SettingsCatalog.connectionsPage(state.settings, state.runtime.transientBooleans[REVEAL_STREAM_KEY] == true)
     } else {
         SettingsCatalog.page(page)
     }
@@ -157,6 +158,7 @@ private fun handleAction(action: SettingAction, state: AppUiState, viewModel: Ma
         is SettingAction.Dialog -> viewModel.showDialog(withCurrentValue(action.request, state))
         SettingAction.OpenFolder -> viewModel.requestFolderPicker()
         is SettingAction.Toast -> viewModel.showToast(action.message)
+        SettingAction.ToggleStreamKeyReveal -> viewModel.toggleStreamKeyReveal()
     }
 }
 

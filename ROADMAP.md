@@ -526,14 +526,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P1
 
-- [ ] P1 — IS-105 The stream key is displayed in clear on two screens
-  Why: the connections page renders the whole RTMP URL as a row summary and a publish failure raises a toast containing the same URL. A stream key visible on the phone screen is exactly the channel-hijack path that key rotation exists to undo, and this screen is what an IRL streamer shares.
-  Evidence: `ui/settings/SettingsCatalog.kt:152` (`summary = settings.connectionUrl`); `engine/StreamPackBroadcastEngine.kt:179` builds `"Could not publish to $url"`, surfaced by `MainViewModel.kt:329-330` as `toastMessage`. The `Log.e` on line 174 is already redacted, so the sanitisation exists but does not cover the user-visible paths.
-  Depends on: IS-07
-  Touches: `ui/settings/SettingsCatalog.kt`, `engine/StreamPackBroadcastEngine.kt`, `MainViewModel.kt`
-  Acceptance: the row summary and every failure message show scheme, host and path with the key segment masked, with a deliberate reveal action; a unit test feeds a URL with a known key and asserts it appears in no user-facing string.
-  Complexity: S
-
 - [ ] P1 — IS-106 Reconnect automatically after a drop, with bounded backoff
   Why: cellular drops are the defining failure of IRL streaming and every competitor answers them. LifeStreamer advertises infinite reconnect; this app stops and stays stopped, while `BroadcastState.RECONNECTING` is already declared and never used.
   Evidence: `engine/BroadcastEngine.kt:17-18` (`DEGRADED`, `RECONNECTING` emitted only by the test fake at `app/src/test/.../BroadcastEngineTest.kt:141-146`); https://github.com/dimadesu/LifeStreamer feature list.

@@ -8,6 +8,7 @@ import android.util.Size
 import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
 import com.irlstreamer.reconstruction.model.ReplicaSettings
+import com.irlstreamer.reconstruction.model.redactStreamKey
 import io.github.thibaultbee.streampack.core.elements.encoders.AudioCodecConfig
 import io.github.thibaultbee.streampack.core.elements.encoders.VideoCodecConfig
 import io.github.thibaultbee.streampack.core.elements.sources.audio.audiorecord.MicrophoneSourceFactory
@@ -241,12 +242,14 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
                 BroadcastResult.Started
             },
             onFailure = { failure ->
-                // The URL carries the stream key; only the host is safe to log.
-                Log.e(TAG, "publish to ${url.substringBefore("://")}://${url.substringAfter("://").substringBefore('/')} failed", failure)
+                // The URL carries the stream key, so neither the log nor the
+                // message the console shows may contain it.
+                val safeUrl = redactStreamKey(url)
+                Log.e(TAG, "publish to $safeUrl failed", failure)
                 _state.value = BroadcastState.ERROR
                 BroadcastResult.Rejected(
                     BroadcastFailure.TransportUnavailable(
-                        failure.message ?: "Could not publish to $url",
+                        failure.message ?: "Could not publish to $safeUrl",
                     ),
                 )
             },

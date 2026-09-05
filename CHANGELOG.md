@@ -12,6 +12,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Stream keys no longer leave the device in a cloud backup or a phone-to-phone
   transfer. The backup rules named a file the app never writes, so the settings
   store holding the connection URL was being copied off the device.
+- The saved destination no longer shows its stream key on screen. Outgoing
+  connections list the server and application path with the key hidden, and a
+  Show stream key row reveals it for that visit only. Publish failures name the
+  destination the same way instead of quoting the whole URL.
 
 ## [0.4.0], 2026-08-30
 

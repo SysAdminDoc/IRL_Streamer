@@ -20,6 +20,7 @@ import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.QuickTab
 import com.irlstreamer.reconstruction.model.ReplicaSettings
+import com.irlstreamer.reconstruction.model.REVEAL_STREAM_KEY
 import com.irlstreamer.reconstruction.model.RuntimeUiState
 import com.irlstreamer.reconstruction.model.SettingsPage
 import com.irlstreamer.reconstruction.model.noConnectionDialog
@@ -396,6 +397,20 @@ class MainViewModel(
         } else {
             viewModelScope.launch { repository.setExtraToggle(key, !current) }
         }
+    }
+
+    /**
+     * Show or hide the saved destination's stream key.
+     *
+     * Deliberately transient: `transientBooleans` is cleared on navigation, so
+     * the key cannot be left on screen by a setting the user forgot about, and
+     * it never reaches storage or a backup.
+     */
+    fun toggleStreamKeyReveal() {
+        val current = runtime.value.transientBooleans[REVEAL_STREAM_KEY] == true
+        runtime.value = runtime.value.copy(
+            transientBooleans = runtime.value.transientBooleans + (REVEAL_STREAM_KEY to !current),
+        )
     }
 
     fun setBoolean(key: String, value: Boolean) {

@@ -5,6 +5,8 @@ import com.irlstreamer.reconstruction.model.DialogRequest
 import com.irlstreamer.reconstruction.model.DialogType
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.SettingsPage
+import com.irlstreamer.reconstruction.model.hasStreamKey
+import com.irlstreamer.reconstruction.model.redactStreamKey
 
 sealed interface SettingItem {
     data class Section(val title: String) : SettingItem
@@ -48,6 +50,9 @@ sealed interface SettingAction {
     data class Dialog(val request: DialogRequest) : SettingAction
     data object OpenFolder : SettingAction
     data class Toast(val message: String) : SettingAction
+
+    /** Show or hide the saved destination's stream key, for this visit only. */
+    data object ToggleStreamKeyReveal : SettingAction
 }
 
 data class SettingsPageSpec(
@@ -143,16 +148,34 @@ object SettingsCatalog {
         ),
     )
 
-    /** The audited page, plus the saved destination when there is one. */
-    fun connectionsPage(settings: ReplicaSettings): SettingsPageSpec {
+    /**
+     * The audited page, plus the saved destination when there is one.
+     *
+     * The URL is masked by default: it carries the stream key, and this screen
+     * is on the phone a user is streaming with. [revealStreamKey] is a
+     * transient, deliberate choice - it is never persisted and is dropped on
+     * navigation.
+     */
+    fun connectionsPage(settings: ReplicaSettings, revealStreamKey: Boolean = false): SettingsPageSpec {
         if (settings.connectionUrl.isBlank()) return connections
         val saved = SettingItem.Row(
             id = "saved_connection",
             title = settings.connectionName.ifBlank { "Connection" },
-            summary = settings.connectionUrl,
+            summary = if (revealStreamKey) settings.connectionUrl else redactStreamKey(settings.connectionUrl),
             action = SettingAction.Navigate(SettingsPage.MANAGE_CONNECTIONS),
         )
-        return connections.copy(items = connections.items + saved)
+        val items = mutableListOf<SettingItem>()
+        items += connections.items
+        items += saved
+        if (hasStreamKey(settings.connectionUrl)) {
+            items += SettingItem.Row(
+                id = "reveal_stream_key",
+                title = if (revealStreamKey) "Hide stream key" else "Show stream key",
+                summary = if (revealStreamKey) "The key is on screen now." else "The key stays hidden until you ask for it.",
+                action = SettingAction.ToggleStreamKeyReveal,
+            )
+        }
+        return connections.copy(items = items)
     }
 
     private val connections = SettingsPageSpec(
