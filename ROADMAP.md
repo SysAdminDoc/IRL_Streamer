@@ -542,14 +542,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: credentials entered on the form are persisted through the secret store, applied to the RTMP connect, and survive an app restart; a test round-trips a credentialled connection.
   Complexity: M
 
-- [ ] P1 — IS-114 The only risky class in the repo has no tests
-  Why: `StreamPackBroadcastEngine` owns the camera, the microphone, the encoder and the network and is referenced by no test source set, while `BroadcastEngineTest` asserts on a `FakeEngine` that emits DEGRADED and RECONNECTING states no production code can produce.
-  Evidence: `app/src/test/java/com/irlstreamer/reconstruction/BroadcastEngineTest.kt:141-146`; no occurrence of `StreamPackBroadcastEngine` in `app/src/test` or `app/src/androidTest`.
-  Depends on: IS-102
-  Touches: `engine/StreamPackBroadcastEngine.kt` (extract a streamer factory seam), `app/src/test/.../`
-  Acceptance: the engine takes its streamer through an injectable factory so a fake `IStreamer` can drive open, start, throw, reopen and release; tests cover the audio-permission fork, the failure-release path and the state transitions, and mutating the engine turns them red.
-  Complexity: M
-
 ### P2
 
 - [ ] P2 — IS-116 Offer HEVC as an encoder choice

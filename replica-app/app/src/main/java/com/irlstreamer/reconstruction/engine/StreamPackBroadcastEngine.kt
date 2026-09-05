@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.util.Log
-import android.util.Size
 import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
 import com.irlstreamer.reconstruction.model.ReplicaSettings
@@ -12,20 +11,14 @@ import com.irlstreamer.reconstruction.model.redactStreamKey
 import com.irlstreamer.reconstruction.model.redactStreamKeysIn
 import com.irlstreamer.reconstruction.model.videoFormatFrom
 import io.github.thibaultbee.streampack.core.elements.metrics.TrackedMetrics
-import io.github.thibaultbee.streampack.core.elements.metrics.WithEndpointMetrics
-import io.github.thibaultbee.streampack.core.elements.metrics.metricsFlow
 import io.github.thibaultbee.streampack.core.elements.metrics.writtenBitrateInBps
 import io.github.thibaultbee.streampack.core.elements.encoders.AudioCodecConfig
-import io.github.thibaultbee.streampack.core.elements.encoders.VideoCodecConfig
 import io.github.thibaultbee.streampack.core.elements.sources.audio.audiorecord.MicrophoneSourceFactory
 import io.github.thibaultbee.streampack.core.elements.sources.video.camera.extensions.backCameras
 import io.github.thibaultbee.streampack.core.elements.sources.video.camera.extensions.cameraManager
 import io.github.thibaultbee.streampack.core.elements.sources.video.camera.extensions.frontCameras
 import io.github.thibaultbee.streampack.core.interfaces.IWithVideoSource
-import io.github.thibaultbee.streampack.core.interfaces.setCameraId
-import io.github.thibaultbee.streampack.core.interfaces.releaseBlocking
 import io.github.thibaultbee.streampack.core.interfaces.startStream
-import io.github.thibaultbee.streampack.core.streamers.single.IVideoSingleStreamer
 import io.github.thibaultbee.streampack.core.streamers.single.cameraSingleStreamer
 import io.github.thibaultbee.streampack.core.streamers.single.cameraVideoOnlySingleStreamer
 import kotlinx.coroutines.CoroutineScope
@@ -175,7 +168,49 @@ internal suspend fun reconnectWithBackoff(
  * is captured too when RECORD_AUDIO has been granted; without it the stream is
  * video only rather than refusing to start.
  */
-class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine {
+class StreamPackBroadcastEngine internal constructor(
+    /** True when RECORD_AUDIO is granted right now; it can be revoked while running. */
+    private val hasAudioPermission: () -> Boolean,
+    /** Same for CAMERA, which switching lenses needs. */
+    private val hasCameraPermission: () -> Boolean,
+    private val openStreamer: OutgoingStreamerFactory,
+    /**
+     * Outlives any single streamer: the watch is re-established on every open.
+     * Tests hand in a scope with virtual time so the reconnect backoff does not
+     * cost real seconds.
+     */
+    private val engineScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default),
+) : BroadcastEngine {
+
+    /**
+     * The production engine: permission and capture come from Android.
+     *
+     * The primary constructor takes both as parameters so the engine's own
+     * decisions - the audio fork, the release-on-failure path, the state
+     * transitions - can be exercised without a device.
+     */
+    constructor(context: Context) : this(
+        hasAudioPermission = {
+            ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) ==
+                PackageManager.PERMISSION_GRANTED
+        },
+        hasCameraPermission = {
+            ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) ==
+                PackageManager.PERMISSION_GRANTED
+        },
+        openStreamer = { withAudio ->
+            val streamer = if (withAudio) {
+                cameraSingleStreamer(context = context, audioSourceFactory = MicrophoneSourceFactory())
+                    .also { it.setAudioConfig(AudioCodecConfig()) }
+            } else {
+                cameraVideoOnlySingleStreamer(context = context)
+            }
+            StreamPackStreamer(streamer) { front ->
+                val manager = context.cameraManager
+                (if (front) manager.frontCameras else manager.backCameras).firstOrNull()
+            }
+        },
+    )
     private val _state = MutableStateFlow(BroadcastState.IDLE)
     override val state: StateFlow<BroadcastState> = _state.asStateFlow()
 
@@ -185,8 +220,6 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     private val _failure = MutableStateFlow<BroadcastFailure?>(null)
     override val failure: StateFlow<BroadcastFailure?> = _failure.asStateFlow()
 
-    /** Outlives any single streamer: the watch is re-established on every open. */
-    private val engineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private var watchJob: Job? = null
 
     /** Where a dropped broadcast should reconnect to. Cleared by an explicit stop. */
@@ -199,7 +232,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     val videoSource: StateFlow<IWithVideoSource?> = _videoSource.asStateFlow()
 
     private val streamerLock = Mutex()
-    private var streamer: IVideoSingleStreamer? = null
+    private var streamer: OutgoingStreamer? = null
 
     /** True when the open streamer captures sound as well as picture. */
     var hasAudio: Boolean = false
@@ -226,8 +259,15 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     /** Pushes the current settings onto an already-open streamer. */
     private suspend fun applyVideoConfig() {
         val current = streamerLock.withLock { streamer } ?: return
-        runCatching { current.setVideoConfig(videoConfig()) }
-            .onFailure { Log.e(TAG, "could not apply the new video config: ${safeMessage(it)}") }
+        val format = videoFormat()
+        runCatching {
+            current.setVideoConfig(
+                width = format.width,
+                height = format.height,
+                fps = format.fps,
+                bitrateBps = settings.h264BitrateKbps * 1_000,
+            )
+        }.onFailure { Log.e(TAG, "could not apply the new video config: ${safeMessage(it)}") }
     }
 
     /**
@@ -239,25 +279,23 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
      * without one, and the input cannot be added afterwards.
      */
     @RequiresPermission(Manifest.permission.CAMERA)
-    suspend fun openCamera(): Result<IVideoSingleStreamer> = streamerLock.withLock {
-        streamer?.let { return@withLock Result.success(it) }
-        val withAudio = ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) ==
-            PackageManager.PERMISSION_GRANTED
-        var opened: IVideoSingleStreamer? = null
+    suspend fun openCamera(): Result<Unit> = streamerLock.withLock {
+        if (streamer != null) return@withLock Result.success(Unit)
+        val withAudio = hasAudioPermission()
+        var opened: OutgoingStreamer? = null
         runCatching {
-            opened = if (withAudio) {
-                cameraSingleStreamer(
-                    context = context,
-                    audioSourceFactory = MicrophoneSourceFactory(),
-                ).also { it.setAudioConfig(AudioCodecConfig()) }
-            } else {
-                cameraVideoOnlySingleStreamer(context = context)
-            }
+            opened = openStreamer.open(withAudio)
             val streamerToUse = requireNotNull(opened)
-            streamerToUse.setVideoConfig(videoConfig())
+            val format = videoFormat()
+            streamerToUse.setVideoConfig(
+                width = format.width,
+                height = format.height,
+                fps = format.fps,
+                bitrateBps = settings.h264BitrateKbps * 1_000,
+            )
             hasAudio = withAudio
             streamer = streamerToUse
-            _videoSource.value = streamerToUse
+            _videoSource.value = streamerToUse.videoSource
             watchJob?.cancel()
             watchJob = engineScope.watchOutgoingStream(
                 throwableFlow = streamerToUse.throwableFlow,
@@ -266,24 +304,24 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
                 onLost = ::onStreamLost,
             )
             metricsJob?.cancel()
-            metricsJob = (streamerToUse.endpoint as? WithEndpointMetrics<*>)?.let { source ->
-                engineScope.launch {
-                    source.metricsFlow().collect { sample ->
-                        // Only while the stream is up: between attempts these
-                        // would report a link that is not carrying anything.
-                        if (_state.value == BroadcastState.LIVE) {
-                            _statistics.value = _statistics.value.withEndpointMetrics(sample)
-                        }
+            metricsJob = engineScope.launch {
+                streamerToUse.metrics().collect { sample ->
+                    // Only while the stream is up: between attempts these
+                    // would report a link that is not carrying anything.
+                    if (_state.value == BroadcastState.LIVE) {
+                        _statistics.value = _statistics.value.withEndpointMetrics(sample)
                     }
                 }
             }
-            streamerToUse
+            Unit
         }.onFailure { failure ->
-            Log.e(TAG, "camera open failed", failure)
+            Log.e(TAG, "camera open failed: ${safeMessage(failure)}")
             // Configuring can throw after the camera is already held. Dropping
             // that streamer untracked would leave the device open and every
             // retry would then fail with "camera in use".
-            opened?.let { runCatching { it.releaseBlocking() } }
+            opened?.let { runCatching { it.release() } }
+            streamer = null
+            _videoSource.value = null
         }
     }
 
@@ -312,7 +350,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         runCatching {
             current.stopStream()
             current.close()
-            current.releaseBlocking()
+            current.release()
         }.onFailure { Log.e(TAG, "camera release failed", it) }
     }
 
@@ -326,14 +364,11 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         val current = streamerLock.withLock { streamer } ?: return Result.success(Unit)
         // The permission can be revoked while the app is running, and switching
         // reopens the device.
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+        if (!hasCameraPermission()) {
             return Result.failure(SecurityException("camera permission is not granted"))
         }
-        val manager = context.cameraManager
-        val target = (if (front) manager.frontCameras else manager.backCameras).firstOrNull()
-            ?: return Result.failure(IllegalStateException("no ${if (front) "front" else "back"} camera"))
-        return runCatching { current.setCameraId(target) }
-            .onFailure { Log.e(TAG, "camera switch failed", it) }
+        return current.selectFacing(front)
+            .onFailure { Log.e(TAG, "camera switch failed: ${safeMessage(it)}") }
     }
 
     @RequiresPermission(Manifest.permission.CAMERA)
@@ -345,11 +380,13 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         // shows a stale reason over a running stream.
         _failure.value = null
 
-        val opened = openCamera().getOrElse {
+        openCamera().onFailure { failure ->
             return BroadcastResult.Rejected(
-                BroadcastFailure.TransportUnavailable("Camera unavailable: ${it.message ?: it.javaClass.simpleName}"),
+                BroadcastFailure.TransportUnavailable("Camera unavailable: ${safeMessage(failure)}"),
             )
         }
+        val opened = streamerLock.withLock { streamer }
+            ?: return BroadcastResult.Rejected(BroadcastFailure.TransportUnavailable("Camera unavailable"))
 
         _state.value = BroadcastState.CONNECTING
         return runCatching {
@@ -425,7 +462,7 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         streamer = null
         _videoSource.value = null
         _state.value = BroadcastState.IDLE
-        current.releaseBlocking()
+        current.release()
     }
 
     /**
@@ -498,15 +535,6 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
 
     /** The picture the user asked for on the Video parameters page. */
     private fun videoFormat() = videoFormatFrom(settings.choiceValues)
-
-    private fun videoConfig(): VideoCodecConfig {
-        val format = videoFormat()
-        return VideoCodecConfig(
-            startBitrate = settings.h264BitrateKbps * 1_000,
-            resolution = Size(format.width, format.height),
-            fps = format.fps,
-        )
-    }
 
     private fun linksFrom(settings: ReplicaSettings) = listOf(
         LinkStatistics("cellular", "Cellular", settings.cellularEnabled, settings.cellularWeight, 0),

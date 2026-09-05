@@ -71,6 +71,10 @@ android {
 
     testOptions {
         unitTests.isIncludeAndroidResources = true
+        // The engine logs through android.util.Log on its failure paths, and the
+        // stub android.jar throws on every unmocked call. Without this the JVM
+        // tests can only reach the happy paths.
+        unitTests.isReturnDefaultValues = true
     }
 
     packaging {
