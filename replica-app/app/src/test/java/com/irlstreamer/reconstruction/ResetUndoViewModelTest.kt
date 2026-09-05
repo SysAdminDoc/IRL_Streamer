@@ -41,7 +41,7 @@ class ResetUndoViewModelTest {
 
     @Test
     fun undoAfterAResetRestoresTheSettings() = runTest(dispatcher) {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         repository.setInt("h264_bitrate_kbps", 4200)
         val viewModel = MainViewModel(repository)
         // uiState is WhileSubscribed: without a collector it never leaves its initial value.
@@ -62,7 +62,7 @@ class ResetUndoViewModelTest {
 
     @Test
     fun aSecondResetKeepsTheOriginalSnapshotAndReoffersUndo() = runTest(dispatcher) {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         repository.setInt("h264_bitrate_kbps", 4200)
         val viewModel = MainViewModel(repository)
         // uiState is WhileSubscribed: without a collector it never leaves its initial value.
@@ -93,7 +93,7 @@ class ResetUndoViewModelTest {
 
     @Test
     fun lettingTheOfferLapseKeepsTheReset() = runTest(dispatcher) {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         repository.setInt("h264_bitrate_kbps", 4200)
         val viewModel = MainViewModel(repository)
         // uiState is WhileSubscribed: without a collector it never leaves its initial value.

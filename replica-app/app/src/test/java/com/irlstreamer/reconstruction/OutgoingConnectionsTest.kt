@@ -18,7 +18,7 @@ class OutgoingConnectionsTest {
 
     @Test
     fun severalConnectionsPersistWithOneActive() = runTest {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
 
         repository.setConnection("Home", "rtmp://10.0.0.2/live/home")
         repository.setConnection("Relay", "rtmp://relay.example.com/live/relay")
@@ -32,7 +32,7 @@ class OutgoingConnectionsTest {
 
     @Test
     fun editingAnExistingConnectionDoesNotCreateADuplicate() = runTest {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         repository.setConnection("Home", "rtmp://10.0.0.2/live/old")
 
         repository.setConnection("Home", "rtmp://10.0.0.2/live/new")
@@ -44,7 +44,7 @@ class OutgoingConnectionsTest {
 
     @Test
     fun theActiveConnectionCanBeSwitched() = runTest {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         repository.setConnection("Home", "rtmp://10.0.0.2/live/home")
         repository.setConnection("Relay", "rtmp://relay.example.com/live/relay")
 
@@ -55,7 +55,7 @@ class OutgoingConnectionsTest {
 
     @Test
     fun deletingRemovesOnlyThatConnection() = runTest {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         repository.setConnection("Home", "rtmp://10.0.0.2/live/home")
         repository.setConnection("Relay", "rtmp://relay.example.com/live/relay")
 
@@ -70,7 +70,7 @@ class OutgoingConnectionsTest {
 
     @Test
     fun deletingTheLastConnectionLeavesNothingActive() = runTest {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         repository.setConnection("Home", "rtmp://10.0.0.2/live/home")
 
         repository.deleteConnection("Home")

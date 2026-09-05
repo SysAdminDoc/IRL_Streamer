@@ -125,6 +125,18 @@ class MainViewModel(
         checkForUpdate()
     }
 
+    /**
+     * Writes a dialog value, reporting a credential the device would not protect.
+     *
+     * The transient value is already on screen by the time this runs, so a
+     * silent failure would show the key as saved and lose it on the next start.
+     */
+    private suspend fun persistChoice(id: String, value: String) {
+        if (!repository.setChoiceValue(id, value)) {
+            recordDiagnostic(SECURE_STORAGE_TAG, "Could not save $id: secure storage is unavailable on this device.")
+        }
+    }
+
     /** Adds a line to the log the console shows and the export shares. */
     fun recordDiagnostic(tag: String, message: String) {
         log.record(tag, message, System.currentTimeMillis())
@@ -226,7 +238,7 @@ class MainViewModel(
             runtime.value = runtime.value.copy(
                 transientValues = runtime.value.transientValues + (dialog.id to choice),
             )
-            viewModelScope.launch { repository.setChoiceValue(dialog.id, choice) }
+            viewModelScope.launch { persistChoice(dialog.id, choice) }
         }
 
         // A number dialog that cannot parse its input must say so rather than
@@ -281,7 +293,7 @@ class MainViewModel(
                     runtime.value = runtime.value.copy(
                         transientValues = runtime.value.transientValues + (dialog.id to value),
                     )
-                    viewModelScope.launch { repository.setChoiceValue(dialog.id, value) }
+                    viewModelScope.launch { persistChoice(dialog.id, value) }
                 }
         }
         runtime.value = runtime.value.copy(dialog = null)
@@ -297,7 +309,13 @@ class MainViewModel(
 
     /** Persists the destination entered on the connection form. */
     fun saveConnection(name: String, url: String) {
-        viewModelScope.launch { repository.setConnection(name.trim(), url.trim()) }
+        viewModelScope.launch {
+            if (!repository.setConnection(name.trim(), url.trim())) {
+                // The destination is not in the list, so say so here rather than
+                // letting the user find out when the broadcast has nowhere to go.
+                recordDiagnostic(SECURE_STORAGE_TAG, "Could not save $name: secure storage is unavailable on this device.")
+            }
+        }
     }
 
     /** Broadcast to a different saved destination. */
@@ -577,3 +595,6 @@ class MainViewModel(
 
 /** Dialog-id prefix carrying the name of the connection awaiting deletion. */
 private const val DELETE_CONNECTION_DIALOG = "delete_connection:"
+
+/** Tag on the log lines that report a secret the keystore would not take. */
+private const val SECURE_STORAGE_TAG = "SecureStorage"

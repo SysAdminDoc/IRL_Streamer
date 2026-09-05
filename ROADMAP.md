@@ -19,14 +19,6 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
   Acceptance: broadcast survives backgrounding; ongoing notification matches the audited shape; verified on the API 36 emulator and on a physical device.
   Complexity: M
 
-- [ ] P1 — IS-07 Encrypted storage for stream keys and API tokens
-  Note (2026-08-29): androidx.security-crypto is deprecated. Use DataStore 1.3.0-alpha07+ `datastore-tink` with an AndroidKeyStore-backed keyset (https://developer.android.com/jetpack/androidx/releases/datastore).
-  Why: the audited settings accept stream keys plus Streamlabs and Toonation API keys, and the export/QR-import flow round-trips settings. Plain `SharedPreferences` for these would be a real vulnerability.
-  Evidence: audited screens 025-031, 008-009, 116-118; RESEARCH.md "Security, Privacy, and Reliability"
-  Touches: `.../data/ReplicaSettingsRepository.kt`, new secret storage
-  Acceptance: secrets are stored via Keystore-backed encryption; export omits or explicitly re-encrypts them; a test asserts no secret appears in cleartext prefs or exported payloads.
-  Complexity: M
-
 - [ ] P1 — IS-08 Local recording to file
   Why: the audited Recording tree is fully specified and needs no network, making it the cheapest genuinely-real feature in the app.
   Evidence: audited screens 076-082; StreamPack supports simultaneous record-and-stream to TS/FLV/MP4/WebM.
@@ -116,7 +108,7 @@ Added 2026-08-15 from `RESEARCH.md`. Every item traces to a source recorded ther
   Note (2026-08-29): Today the import dialog is prefilled `irlstreamer://` and parsed nowhere (SettingsCatalog.kt:296-301); export is a toast. StreamCaster-android's QR endpoint payload is a versioned-JSON reference.
   Why: audited screens 116-118 define the flow, and it is how the original moves configuration between devices — but it must not exfiltrate secrets.
   Evidence: audited screens 116-118; `app-audit/app/components-and-intents.md` (payload grammar UNKNOWN beyond the scheme prefix)
-  Depends on: IS-07
+  Depends on: IS-07 (done; secrets go through `data/SecretCipher.kt`)
   Touches: `AndroidManifest.xml` intent filter, import/export settings page, secret storage
   Acceptance: a settings payload round-trips between two installs; secrets are excluded or re-encrypted; the deep-link grammar is this project's own and documented as a deviation, since the original's is unknown.
   Complexity: M
@@ -206,7 +198,7 @@ From `RESEARCH.md` second pass (screenshot-testing ecosystem, competitor matrice
 - [ ] P2 — IS-55 OBS WebSocket 5.x client (Kotlin) for remote scene/stream control
   Why: parity-plus-leapfrog at low cost — Moblin ships it, IRL Pro's site still lists it as TODO after 23 stagnant months, and it is the integration path for receiver-side BRB scene switching (pairs with IS-14/IS-56). Protocol 5.7.4 is 9 opcodes over JSON with SHA256-challenge auth; the only JVM client (obs-websocket-java 2.0.0) is low-activity and not coroutine-native, so a ~500-line Kotlin/OkHttp + kotlinx.serialization client is the better long-term asset.
   Evidence: obsproject/obs-websocket protocol.md (RPC 1); irlpro.app TODO list; Moblin README — RESEARCH.md "Competitive Landscape".
-  Depends on: IS-02 (surfaces as an engine-adjacent service), IS-07 (server password storage)
+  Depends on: IS-02 (surfaces as an engine-adjacent service), IS-07 (done; server password goes through `data/SecretCipher.kt`)
   Touches: new `.../data/obsws/`, advanced settings page, quick-panel action
   Acceptance: connects to OBS 28+ (auth + RPC negotiation), switches scenes and reads stream status from the quick panel; disconnect/reconnect is visible and non-fatal; unit tests run against a fake server over the same opcodes.
   Complexity: M
@@ -298,11 +290,10 @@ Added after v0.3.0 shipped the CameraX preview. The app is a pixel-faithful repl
 ### Suggested order
 
 1. IS-06 next. Camera, microphone, and RTMP publishing are live, but a stream still needs a foreground service to survive screen-off.
-2. IS-07 before any connection form can save a key.
-3. IS-09, IS-12, IS-14/IS-56, IS-08: what makes a cellular stream survivable.
-4. IS-58: the ultrawide-for-free pitch the research found. Small job once IS-04 is in.
-5. IS-17 + IS-52: bonding only after single-link streaming is solid.
-6. IS-53: demote SSIM to advisory now; real camera frames make most live states incomparable anyway.
+2. IS-09, IS-12, IS-14/IS-56, IS-08: what makes a cellular stream survivable.
+3. IS-58: the ultrawide-for-free pitch the research found. Small job once IS-04 is in.
+4. IS-17 + IS-52: bonding only after single-link streaming is solid.
+5. IS-53: demote SSIM to advisory now; real camera frames make most live states incomparable anyway.
 
 ### P1
 
@@ -537,7 +528,7 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
 - [ ] P1 — IS-110 RTMP authorization login and password are collected and thrown away
   Why: selecting "RTMP authorization" reveals Login and Password fields, but Save persists only the name and URL, so the credentials vanish and any authenticated destination fails with no explanation.
   Evidence: `ui/settings/Forms.kt:135-136` hold `login`/`password` in local `remember` state; the Save handler at `Forms.kt:143` calls `viewModel.saveConnection(name, url)` only; `data/ReplicaSettingsRepository.kt:129-132` stores two keys.
-  Depends on: IS-07
+  Depends on: IS-07 (done; secrets go through `data/SecretCipher.kt`)
   Touches: `ui/settings/Forms.kt`, `MainViewModel.kt`, `data/ReplicaSettingsRepository.kt`, `engine/StreamPackBroadcastEngine.kt`
   Acceptance: credentials entered on the form are persisted through the secret store, applied to the RTMP connect, and survive an app restart; a test round-trips a credentialled connection.
   Complexity: M

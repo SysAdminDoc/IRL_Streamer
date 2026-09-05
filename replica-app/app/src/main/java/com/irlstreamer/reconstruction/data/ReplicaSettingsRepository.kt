@@ -18,6 +18,7 @@ import com.irlstreamer.reconstruction.model.ReplicaSettings
 import com.irlstreamer.reconstruction.model.activeOrFirst
 import com.irlstreamer.reconstruction.model.decodeConnections
 import com.irlstreamer.reconstruction.model.encodeConnections
+import com.irlstreamer.reconstruction.model.isSecretChoiceId
 import com.irlstreamer.reconstruction.model.removeNamed
 import com.irlstreamer.reconstruction.model.upsert
 import kotlinx.coroutines.flow.Flow
@@ -51,8 +52,17 @@ private val Context.replicaDataStore by preferencesDataStore(name = SETTINGS_DAT
 private const val TOGGLE_PREFIX = "toggle."
 private const val CHOICE_PREFIX = "choice."
 
-class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
-    constructor(context: Context) : this(context.replicaDataStore)
+class ReplicaSettingsRepository internal constructor(
+    private val dataStore: DataStore<Preferences>,
+    /**
+     * Protects the values that would let someone else broadcast to the user's
+     * channel. Injected because the AndroidKeyStore does not exist off-device,
+     * and a default that quietly degraded to plaintext there would be a default
+     * that could ship.
+     */
+    private val secrets: SecretCipher,
+) {
+    constructor(context: Context) : this(context.replicaDataStore, KeystoreSecretCipher())
 
     private object Keys {
         val showPlatformIcons = booleanPreferencesKey("show_platform_icons")
@@ -131,7 +141,10 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
                 .filterKeys { it.name.startsWith(CHOICE_PREFIX) }
                 .entries
                 .mapNotNull { (key, value) ->
-                    (value as? String)?.let { key.name.removePrefix(CHOICE_PREFIX) to it }
+                    (value as? String)?.let { stored ->
+                        val id = key.name.removePrefix(CHOICE_PREFIX)
+                        id to if (isSecretChoiceId(id)) reveal(stored, secrets) else stored
+                    }
                 }
                 .toMap(),
         )
@@ -158,9 +171,19 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
         preferences[booleanPreferencesKey("$TOGGLE_PREFIX$key")] = value
     }
 
-    /** Persist a single-choice or text value, keyed by dialog id. */
-    suspend fun setChoiceValue(id: String, value: String) = dataStore.edit { preferences ->
-        preferences[stringPreferencesKey("$CHOICE_PREFIX$id")] = value
+    /**
+     * Persist a single-choice or text value, keyed by dialog id.
+     *
+     * @return false when the value is a credential the device would not encrypt.
+     * Nothing is written in that case: a dashboard key belongs on disk protected
+     * or not at all.
+     */
+    suspend fun setChoiceValue(id: String, value: String): Boolean {
+        val stored = if (isSecretChoiceId(id)) protect(value, secrets) ?: return false else value
+        dataStore.edit { preferences ->
+            preferences[stringPreferencesKey("$CHOICE_PREFIX$id")] = stored
+        }
+        return true
     }
 
     /**
@@ -170,14 +193,22 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
      * is what stops the form's edit path from leaving duplicates. A second
      * destination used to overwrite the first with no warning.
      */
-    suspend fun setConnection(name: String, url: String) = dataStore.edit { preferences ->
-        val saved = savedConnectionsIn(preferences).upsert(OutgoingConnection(name.trim(), url.trim()))
-        preferences[Keys.connections] = encodeConnections(saved)
-        preferences[Keys.activeConnection] = name.trim()
-        // The legacy single-destination keys are no longer read; clearing them
-        // stops a stale pair from reappearing if the list is ever emptied.
-        preferences.remove(Keys.connectionName)
-        preferences.remove(Keys.connectionUrl)
+    suspend fun setConnection(name: String, url: String): Boolean {
+        // Before the transaction: a destination whose key cannot be protected is
+        // not saved at all, and finding that out mid-edit would leave the list
+        // half written.
+        val storedUrl = protect(url.trim(), secrets) ?: return false
+        dataStore.edit { preferences ->
+            val saved = storedConnectionsIn(preferences)
+                .upsert(OutgoingConnection(name.trim(), storedUrl))
+            preferences[Keys.connections] = encodeConnections(saved)
+            preferences[Keys.activeConnection] = name.trim()
+            // The legacy single-destination keys are no longer read; clearing them
+            // stops a stale pair from reappearing if the list is ever emptied.
+            preferences.remove(Keys.connectionName)
+            preferences.remove(Keys.connectionUrl)
+        }
+        return true
     }
 
     /** Records what the last release check found, and when it ran. */
@@ -193,7 +224,9 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
 
     /** Forgets a destination. The active one falls back to whatever is left. */
     suspend fun deleteConnection(name: String) = dataStore.edit { preferences ->
-        val remaining = savedConnectionsIn(preferences).removeNamed(name)
+        // The stored form, because this writes the list straight back: decrypting
+        // first would put every remaining key on disk in the clear.
+        val remaining = storedConnectionsIn(preferences).removeNamed(name)
         preferences[Keys.connections] = encodeConnections(remaining)
         if (preferences[Keys.activeConnection].orEmpty().equals(name, ignoreCase = true)) {
             preferences[Keys.activeConnection] = remaining.firstOrNull()?.name.orEmpty()
@@ -206,7 +239,18 @@ class ReplicaSettingsRepository(private val dataStore: DataStore<Preferences>) {
      * The saved list, migrating a destination stored under the old
      * single-connection keys so an existing install does not lose it.
      */
-    private fun savedConnectionsIn(preferences: Preferences): List<OutgoingConnection> {
+    private fun savedConnectionsIn(preferences: Preferences): List<OutgoingConnection> =
+        storedConnectionsIn(preferences).map { it.copy(url = reveal(it.url, secrets)) }
+
+    /**
+     * The list exactly as it sits on disk, URLs still encrypted.
+     *
+     * Anything that writes the list back works from this. A destination saved
+     * before this build, or by a build that could not protect it, is plaintext
+     * here and [reveal] passes it through; it becomes ciphertext the next time
+     * the user saves it.
+     */
+    private fun storedConnectionsIn(preferences: Preferences): List<OutgoingConnection> {
         preferences[Keys.connections]?.let { return decodeConnections(it) }
         val legacyName = preferences[Keys.connectionName].orEmpty()
         val legacyUrl = preferences[Keys.connectionUrl].orEmpty()

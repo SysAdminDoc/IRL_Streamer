@@ -51,7 +51,7 @@ class SettingsPersistenceTest {
 
     @Test
     fun resetClearsEverythingAndUndoPutsItAllBack() = runBlocking {
-        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore())
+        val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         repository.setBoolean("grid_visible", true)
         repository.setInt("h264_bitrate_kbps", 4200)
         repository.setStringSet("safe_margin_ratios", setOf("21:9 (2.33)"))
