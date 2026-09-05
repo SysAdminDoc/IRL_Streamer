@@ -44,6 +44,13 @@ class MainViewModel(
     private val repository: ReplicaSettingsRepository,
     private val engine: BroadcastEngine = SimulatedBroadcastEngine(),
     private val log: DiagnosticsLog = DiagnosticsLog(),
+    /**
+     * Where the release check looks. Injected because the default reaches
+     * api.github.com on construction, which a unit test must not do: it made
+     * every ViewModel test depend on the network and on being offline in the
+     * right way.
+     */
+    private val latestReleaseTag: suspend () -> String? = ::fetchLatestReleaseTag,
 ) : ViewModel() {
     private val timestampFormat = java.text.SimpleDateFormat("HH:mm:ss", java.util.Locale.US)
     private val runtime = MutableStateFlow(RuntimeUiState())
@@ -172,7 +179,7 @@ class MainViewModel(
             if (!shouldCheckForUpdate(settings.updateCheckEnabled, settings.updateLastCheckMillis, System.currentTimeMillis())) {
                 return@launch
             }
-            val tag = fetchLatestReleaseTag() ?: return@launch
+            val tag = latestReleaseTag() ?: return@launch
             repository.recordUpdateCheck(tag, System.currentTimeMillis())
         }
     }
@@ -562,11 +569,17 @@ class MainViewModel(
 
     class Factory(
         private val repository: ReplicaSettingsRepository,
-        private val engine: BroadcastEngine,
+        /**
+         * Built on demand, not up front. The activity makes a factory on every
+         * configuration change while `ViewModelProvider` hands back the retained
+         * ViewModel, so an engine built eagerly here would take the camera, own a
+         * coroutine scope and then be dropped unreleased on every rotation.
+         */
+        private val engine: () -> BroadcastEngine,
         private val log: DiagnosticsLog = DiagnosticsLog(),
     ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(repository, engine, log) as T
+        override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(repository, engine(), log) as T
     }
 
     private companion object {
@@ -589,6 +602,10 @@ class MainViewModel(
             "safe_margins_visible",
             "timestamp_active",
             "web_overlay_master",
+            // Reads back through ReplicaSettings.updateCheckEnabled, so it has to
+            // be stored under its own key: as a generic toggle it went to
+            // "toggle.update_check_enabled" and the check never saw it.
+            "update_check_enabled",
         )
     }
 }

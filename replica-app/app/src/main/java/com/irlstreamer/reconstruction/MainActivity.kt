@@ -33,10 +33,12 @@ class MainActivity : ComponentActivity() {
         // harness drives audited states, and its screenshots have to be
         // reproducible. An instrumented run must not either - it would grab the
         // camera from whatever else holds it and make results device-dependent.
-        val engine = if (shouldSimulateBroadcast(isCaptureLaunch(intent), isUnderInstrumentation())) {
-            SimulatedBroadcastEngine()
-        } else {
-            StreamPackBroadcastEngine(applicationContext)
+        val engine = {
+            if (shouldSimulateBroadcast(isCaptureLaunch(intent), isUnderInstrumentation())) {
+                SimulatedBroadcastEngine()
+            } else {
+                StreamPackBroadcastEngine(applicationContext)
+            }
         }
         val log = DiagnosticsLog()
         // A crash in the field leaves nothing behind otherwise: no store collects

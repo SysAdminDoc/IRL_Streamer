@@ -311,6 +311,7 @@ class ReplicaSettingsRepository internal constructor(
         "safe_margins_visible" -> Keys.safeMarginsVisible
         "timestamp_active" -> Keys.timestampActive
         "web_overlay_master" -> Keys.webOverlayMaster
+        "update_check_enabled" -> Keys.updateCheckEnabled
         else -> error("Unknown boolean preference: $key")
     }
 

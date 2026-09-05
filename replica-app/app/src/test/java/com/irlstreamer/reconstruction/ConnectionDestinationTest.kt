@@ -70,7 +70,7 @@ class ConnectionDestinationTest {
     fun theSavedConnectionUrlIsWhatTheEngineIsAskedToPublishTo() = runTest(dispatcher) {
         val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
         val engine = RecordingEngine()
-        val viewModel = MainViewModel(repository, engine)
+        val viewModel = MainViewModel(repository, engine, latestReleaseTag = { null })
         backgroundScope.launch { viewModel.uiState.collect {} }
         advanceUntilIdle()
 
@@ -89,7 +89,7 @@ class ConnectionDestinationTest {
     @Test
     fun withNothingSavedStartStillRaisesTheAuditedGuard() = runTest(dispatcher) {
         val repository = ReplicaSettingsRepository(InMemoryPreferencesDataStore(), FakeSecretCipher())
-        val viewModel = MainViewModel(repository)
+        val viewModel = MainViewModel(repository, latestReleaseTag = { null })
         backgroundScope.launch { viewModel.uiState.collect {} }
         advanceUntilIdle()
 
