@@ -23,5 +23,6 @@ $arguments = @(
     '--max-shift', $thresholdRow.max_alignment_px
 )
 if (Test-Path -LiteralPath $mask -PathType Leaf) { $arguments += @('--mask', $mask) }
-& py.exe @arguments
+$python = Resolve-PythonCommand
+& $python.Path @($python.Prefix + $arguments)
 exit $LASTEXITCODE

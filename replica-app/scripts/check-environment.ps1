@@ -13,7 +13,9 @@ Invoke-Checked -FilePath (Join-Path $android.JavaHome 'bin\java.exe') -Arguments
 Invoke-Checked -FilePath $android.Gradle -Arguments @('--version', '--no-daemon', '--no-configuration-cache', '--console=plain') -LogPath $log
 
 $pythonCheck = 'import PIL,numpy,skimage; print(PIL.__version__, numpy.__version__, skimage.__version__)'
-Invoke-Checked -FilePath 'py.exe' -Arguments @('-3.12', '-c', $pythonCheck) -LogPath $log
+$python = Resolve-PythonCommand
+"Python: $($python.Path) $($python.Prefix -join ' ')" | Tee-Object -FilePath $log -Append
+Invoke-Checked -FilePath $python.Path -Arguments ($python.Prefix + @('-c', $pythonCheck)) -LogPath $log
 
 if (-not [string]::IsNullOrWhiteSpace($Serial)) {
     Assert-ReplicaDevice -Serial $Serial -Adb $android.Adb

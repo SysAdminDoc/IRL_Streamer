@@ -30,12 +30,13 @@ if (-not (Test-Path -LiteralPath $hierarchyDir)) {
 }
 
 $summaryCsv = Join-Path $script:ValidationRoot 'reports\geometry-summary.csv'
-Invoke-Checked -FilePath 'py.exe' -Arguments @(
-    '-3.12', (Join-Path $PSScriptRoot 'geometry_diff.py'),
+$python = Resolve-PythonCommand
+Invoke-Checked -FilePath $python.Path -Arguments ($python.Prefix + @(
+    (Join-Path $PSScriptRoot 'geometry_diff.py'),
     '--all',
     '--replica-dir', $hierarchyDir,
     '--out-csv', $summaryCsv
-) -LogPath $log
+)) -LogPath $log
 
 # Always wrap Where-Object results: under StrictMode 2.0 a zero- or one-row
 # result has no .Count property and the guard below would throw instead of

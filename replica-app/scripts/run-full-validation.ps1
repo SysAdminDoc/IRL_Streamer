@@ -22,7 +22,8 @@ foreach ($step in $steps) {
 
 # Regenerate the documented comparison masks before comparing, so the secondary
 # app-chrome metric always reflects the current mask register.
-& powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "py.exe -3.12 '$(Join-Path $PSScriptRoot 'build_masks.py')'"
+$python = Resolve-PythonCommand
+& $python.Path @($python.Prefix + @((Join-Path $PSScriptRoot 'build_masks.py')))
 if ($LASTEXITCODE -ne 0) { throw "Mask generation failed." }
 
 $visualArgs = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', (Join-Path $PSScriptRoot 'run-visual-validation.ps1'), '-Serial', $Serial)

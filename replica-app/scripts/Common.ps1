@@ -37,6 +37,39 @@ function Initialize-AndroidEnvironment {
     }
 }
 
+# Resolve the Python that runs the comparison scripts.
+#
+# The scripts used to hardcode `py.exe -3.12`. The launcher is not always on
+# PATH, and 3.12 is not necessarily the interpreter a given machine has, so a
+# missing version made every gate fail with "py.exe is not recognized" rather
+# than with anything about the gate. `geometry_diff.py` is pure standard
+# library; only `visual_compare.py` needs Pillow, NumPy and scikit-image.
+function Resolve-PythonCommand {
+    $candidates = @()
+    $launcher = Get-Command 'py.exe' -ErrorAction SilentlyContinue
+    if ($launcher) {
+        foreach ($version in @('-3.13', '-3.12', '-3')) {
+            $candidates += , @{ Path = $launcher.Source; Prefix = @($version) }
+        }
+    }
+    $onPath = Get-Command 'python.exe' -ErrorAction SilentlyContinue
+    if ($onPath) { $candidates += , @{ Path = $onPath.Source; Prefix = @() } }
+    foreach ($version in @('313', '312', '311')) {
+        $direct = Join-Path $env:LOCALAPPDATA "Programs\Python\Python$version\python.exe"
+        if (Test-Path -LiteralPath $direct -PathType Leaf) {
+            $candidates += , @{ Path = $direct; Prefix = @() }
+        }
+    }
+
+    foreach ($candidate in $candidates) {
+        $probe = Get-NativeOutput -FilePath $candidate.Path -Arguments ($candidate.Prefix + @('-c', 'print(1)'))
+        if ($probe -eq '1') {
+            return [pscustomobject]@{ Path = $candidate.Path; Prefix = $candidate.Prefix }
+        }
+    }
+    throw 'No working Python interpreter was found. Tried the py launcher, python.exe on PATH, and %LOCALAPPDATA%\Programs\Python\Python3xx.'
+}
+
 function New-ValidationLog {
     param([Parameter(Mandatory = $true)][string]$Name)
     New-Item -ItemType Directory -Path $script:LogsRoot -Force | Out-Null
