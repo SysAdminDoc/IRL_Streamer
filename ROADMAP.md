@@ -524,14 +524,6 @@ Added 2026-09-04 from `RESEARCH.md`. Every item traces to a source recorded ther
 
 ### P0
 
-- [ ] P0 — IS-102 A dropped stream still reads as LIVE
-  Why: `StreamPackBroadcastEngine` sets `BroadcastState.LIVE` on a successful `startStream` and never observes the streamer again, so a lost connection leaves the console showing a live broadcast that is transmitting nothing.
-  Evidence: `replica-app/app/src/main/java/com/irlstreamer/reconstruction/engine/StreamPackBroadcastEngine.kt:162-186`; StreamPack exposes `IStreamer.throwableFlow: StateFlow<Throwable?>`, `IStreamer.isStreamingFlow` and `ICloseableStreamer.isOpenFlow` (https://github.com/ThibaultBee/StreamPack/blob/main/core/src/main/java/io/github/thibaultbee/streampack/core/interfaces/IStreamer.kt), none of which is collected anywhere in the app.
-  Cross-reference: IS-14 covers the degraded state under sustained low bitrate; this covers a connection that is gone entirely.
-  Touches: `engine/StreamPackBroadcastEngine.kt`, `engine/BroadcastEngine.kt`, `MainViewModel.kt`
-  Acceptance: killing the receiver mid-broadcast moves the console out of LIVE within two seconds and surfaces the reason; a test drives a fake streamer that emits into `throwableFlow` and asserts the state transition.
-  Complexity: S
-
 - [ ] P0 — IS-103 The stream key is copied off the device by cloud backup and device transfer
   Why: `backup_rules.xml` and `data_extraction_rules.xml` exclude `sharedpref/secrets.xml`, a file this app never writes. The real store is the DataStore file under `getFilesDir()`, which Auto Backup includes by default, and it holds `connection_url` with the stream key in its path.
   Evidence: `replica-app/app/src/main/res/xml/backup_rules.xml:3`, `res/xml/data_extraction_rules.xml`, `data/ReplicaSettingsRepository.kt:19` (`preferencesDataStore(name = "irl_streamer_settings")`), `AndroidManifest.xml` `allowBackup="true"`; default inclusion of `getFilesDir()` per https://developer.android.com/identity/data/autobackup

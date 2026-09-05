@@ -2,6 +2,7 @@ package com.irlstreamer.reconstruction
 
 import com.irlstreamer.reconstruction.data.ReplicaSettingsRepository
 import com.irlstreamer.reconstruction.engine.BroadcastEngine
+import com.irlstreamer.reconstruction.engine.BroadcastFailure
 import com.irlstreamer.reconstruction.engine.BroadcastRequest
 import com.irlstreamer.reconstruction.engine.BroadcastResult
 import com.irlstreamer.reconstruction.engine.BroadcastState
@@ -50,6 +51,7 @@ class ConnectionDestinationTest {
         override val state: StateFlow<BroadcastState> = _state.asStateFlow()
         private val _statistics = MutableStateFlow(BroadcastStatistics())
         override val statistics: StateFlow<BroadcastStatistics> = _statistics.asStateFlow()
+        override val failure: StateFlow<BroadcastFailure?> = MutableStateFlow(null)
 
         override suspend fun start(request: BroadcastRequest): BroadcastResult {
             this.request = request

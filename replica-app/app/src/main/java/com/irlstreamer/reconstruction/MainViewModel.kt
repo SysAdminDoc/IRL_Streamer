@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -69,6 +70,18 @@ class MainViewModel(
         // Keep the engine's view of the durable settings current, so bonding
         // weights and encoder targets cannot drift from the settings tree.
         viewModelScope.launch { repository.settings.collect(engine::configure) }
+        // A broadcast that ends on its own has no start request to reject, so
+        // the engine reports it here instead.
+        viewModelScope.launch {
+            engine.failure.filterNotNull().collect { failure ->
+                runtime.value = runtime.value.copy(
+                    toastMessage = when (failure) {
+                        BroadcastFailure.NoActiveConnection -> "The broadcast stopped: no active connection."
+                        is BroadcastFailure.TransportUnavailable -> "The broadcast stopped: ${failure.reason}"
+                    },
+                )
+            }
+        }
     }
 
     fun navigateTo(page: SettingsPage) {

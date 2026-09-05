@@ -24,6 +24,9 @@ class SimulatedBroadcastEngine : BroadcastEngine {
     private val _statistics = MutableStateFlow(IdleStatistics)
     override val statistics: StateFlow<BroadcastStatistics> = _statistics.asStateFlow()
 
+    /** The simulation never loses a link, so it never has anything to report. */
+    override val failure: StateFlow<BroadcastFailure?> = MutableStateFlow(null).asStateFlow()
+
     /**
      * Bonding link readings are derived from the persisted weights so the
      * Network quick tab and the Bonding settings page cannot disagree.

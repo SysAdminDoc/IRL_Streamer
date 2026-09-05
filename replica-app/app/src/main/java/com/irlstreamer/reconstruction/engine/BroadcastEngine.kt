@@ -67,13 +67,23 @@ data class BroadcastRequest(
 /**
  * The seam between the UI and whatever produces the outgoing stream.
  *
- * `SimulatedBroadcastEngine` is the only implementation today and transmits
- * nothing (deviation D005). A capture/transport implementation lands behind
- * this interface without touching Compose or the debug-state harness.
+ * `SimulatedBroadcastEngine` transmits nothing (deviation D005);
+ * `StreamPackBroadcastEngine` captures and publishes for real. A transport
+ * lands behind this interface without touching Compose or the debug-state
+ * harness.
  */
 interface BroadcastEngine {
     val state: StateFlow<BroadcastState>
     val statistics: StateFlow<BroadcastStatistics>
+
+    /**
+     * Why the broadcast ended when the user did not end it.
+     *
+     * A start request reports its own refusal through [BroadcastResult]. This
+     * carries the other case: the stream was running and then stopped on its
+     * own. Null whenever there is nothing to report.
+     */
+    val failure: StateFlow<BroadcastFailure?>
 
     /**
      * Push the durable settings into the engine. Called whenever persisted

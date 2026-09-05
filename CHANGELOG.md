@@ -3,6 +3,13 @@
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Fixed
+
+- A broadcast that drops now leaves the live state instead of showing LIVE
+  forever. The console watches the outgoing stream and says why it stopped.
+
 ## [0.4.0], 2026-08-30
 
 ### Added

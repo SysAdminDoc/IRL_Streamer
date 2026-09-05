@@ -7,10 +7,14 @@ import com.irlstreamer.reconstruction.engine.BroadcastResult
 import com.irlstreamer.reconstruction.engine.BroadcastState
 import com.irlstreamer.reconstruction.engine.BroadcastStatistics
 import com.irlstreamer.reconstruction.engine.SimulatedBroadcastEngine
+import com.irlstreamer.reconstruction.engine.watchOutgoingStream
 import com.irlstreamer.reconstruction.model.ReplicaSettings
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -24,7 +28,7 @@ class BroadcastEngineTest {
 
     /** Minimal in-memory engine proving the interface is implementable without Android. */
     private class FakeBroadcastEngine(
-        private val failure: BroadcastFailure? = null,
+        private val rejectWith: BroadcastFailure? = null,
     ) : BroadcastEngine {
         val startedRequests = mutableListOf<BroadcastRequest>()
         var released = false
@@ -32,10 +36,11 @@ class BroadcastEngineTest {
         override val state: StateFlow<BroadcastState> = _state
         private val _statistics = MutableStateFlow(BroadcastStatistics())
         override val statistics: StateFlow<BroadcastStatistics> = _statistics
+        override val failure: StateFlow<BroadcastFailure?> = MutableStateFlow(null)
 
         override suspend fun start(request: BroadcastRequest): BroadcastResult {
             startedRequests += request
-            failure?.let { return BroadcastResult.Rejected(it) }
+            rejectWith?.let { return BroadcastResult.Rejected(it) }
             _state.value = BroadcastState.LIVE
             return BroadcastResult.Started
         }
@@ -122,6 +127,7 @@ class BroadcastEngineTest {
         override val state: StateFlow<BroadcastState> = _state
         private val _statistics = MutableStateFlow(BroadcastStatistics())
         override val statistics: StateFlow<BroadcastStatistics> = _statistics
+        override val failure: StateFlow<BroadcastFailure?> = MutableStateFlow(null)
         val transitions = mutableListOf<BroadcastState>()
 
         private fun move(next: BroadcastState) {
@@ -213,5 +219,84 @@ class BroadcastEngineTest {
         val refusing = FakeBroadcastEngine(BroadcastFailure.TransportUnavailable("no camera"))
         val rejected = refusing.start(BroadcastRequest("rig")) as BroadcastResult.Rejected
         assertTrue(rejected.failure is BroadcastFailure.TransportUnavailable)
+    }
+
+    /**
+     * The streamer's two failure signals, as `StreamPackBroadcastEngine` sees
+     * them. Driving the flows directly is what the real engine's watch consumes,
+     * and it needs no Android context to exercise.
+     */
+    private class FakeStreamerSignals {
+        val throwableFlow = MutableStateFlow<Throwable?>(null)
+        val isStreamingFlow = MutableStateFlow(false)
+    }
+
+    @Test
+    fun aThrowWhileLiveIsReportedAsALostStream() = runTest(UnconfinedTestDispatcher()) {
+        val signals = FakeStreamerSignals()
+        var live = true
+        val reported = mutableListOf<BroadcastFailure>()
+        backgroundScope.watchOutgoingStream(
+            throwableFlow = signals.throwableFlow,
+            isStreamingFlow = signals.isStreamingFlow,
+            isLive = { live },
+            onLost = { reported += it },
+        )
+        advanceUntilIdle()
+
+        signals.throwableFlow.value = java.net.SocketException("Connection reset")
+        advanceUntilIdle()
+
+        assertEquals(1, reported.size)
+        assertEquals(
+            BroadcastFailure.TransportUnavailable("Connection reset"),
+            reported.single(),
+        )
+        live = false
+    }
+
+    @Test
+    fun theFarEndClosingTheConnectionIsReportedEvenWithoutAThrow() = runTest(UnconfinedTestDispatcher()) {
+        val signals = FakeStreamerSignals()
+        val reported = mutableListOf<BroadcastFailure>()
+        backgroundScope.watchOutgoingStream(
+            throwableFlow = signals.throwableFlow,
+            isStreamingFlow = signals.isStreamingFlow,
+            isLive = { true },
+            onLost = { reported += it },
+        )
+        advanceUntilIdle()
+
+        signals.isStreamingFlow.value = true
+        advanceUntilIdle()
+        assertTrue("streaming must not itself report a loss", reported.isEmpty())
+
+        signals.isStreamingFlow.value = false
+        advanceUntilIdle()
+
+        assertEquals(1, reported.size)
+        assertTrue(reported.single() is BroadcastFailure.TransportUnavailable)
+    }
+
+    @Test
+    fun aDeliberateStopReportsNothing() = runTest(UnconfinedTestDispatcher()) {
+        val signals = FakeStreamerSignals()
+        val reported = mutableListOf<BroadcastFailure>()
+        // Callers leave LIVE before asking the streamer to stop, so the flip
+        // they cause must stay quiet.
+        backgroundScope.watchOutgoingStream(
+            throwableFlow = signals.throwableFlow,
+            isStreamingFlow = signals.isStreamingFlow,
+            isLive = { false },
+            onLost = { reported += it },
+        )
+        advanceUntilIdle()
+
+        signals.isStreamingFlow.value = true
+        signals.isStreamingFlow.value = false
+        signals.throwableFlow.value = IllegalStateException("closed by us")
+        advanceUntilIdle()
+
+        assertTrue(reported.isEmpty())
     }
 }

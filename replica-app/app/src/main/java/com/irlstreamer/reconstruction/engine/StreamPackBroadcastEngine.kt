@@ -21,13 +21,64 @@ import io.github.thibaultbee.streampack.core.interfaces.startStream
 import io.github.thibaultbee.streampack.core.streamers.single.IVideoSingleStreamer
 import io.github.thibaultbee.streampack.core.streamers.single.cameraSingleStreamer
 import io.github.thibaultbee.streampack.core.streamers.single.cameraVideoOnlySingleStreamer
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 private const val TAG = "StreamPackEngine"
+
+/**
+ * Watches a streamer's own flows and reports a stream that ended without being
+ * asked to.
+ *
+ * The engine used to command StreamPack and never listen to it, so a link that
+ * died mid-broadcast left the console showing LIVE indefinitely. Both signals
+ * matter: `throwableFlow` carries a socket or muxer failure, while
+ * `isStreamingFlow` going false covers a clean close by the far end that throws
+ * nothing.
+ *
+ * [isLive] is what makes a deliberate stop quiet - callers move the state out
+ * of LIVE before they ask the streamer to stop, so the flip they cause is
+ * ignored here.
+ */
+internal fun CoroutineScope.watchOutgoingStream(
+    throwableFlow: Flow<Throwable?>,
+    isStreamingFlow: Flow<Boolean>,
+    isLive: () -> Boolean,
+    onLost: (BroadcastFailure) -> Unit,
+): Job = launch {
+    launch {
+        throwableFlow.filterNotNull().collect { throwable ->
+            if (isLive()) {
+                onLost(
+                    BroadcastFailure.TransportUnavailable(
+                        throwable.message ?: throwable.javaClass.simpleName,
+                    ),
+                )
+            }
+        }
+    }
+    launch {
+        // The first value is the streamer's current state at subscription time,
+        // which is false on a streamer that has not started yet.
+        isStreamingFlow.drop(1).collect { streaming ->
+            if (!streaming && isLive()) {
+                onLost(BroadcastFailure.TransportUnavailable("The destination closed the connection."))
+            }
+        }
+    }
+}
 
 /**
  * Camera capture, H.264 encode and RTMP publish.
@@ -43,6 +94,13 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
 
     private val _statistics = MutableStateFlow(BroadcastStatistics())
     override val statistics: StateFlow<BroadcastStatistics> = _statistics.asStateFlow()
+
+    private val _failure = MutableStateFlow<BroadcastFailure?>(null)
+    override val failure: StateFlow<BroadcastFailure?> = _failure.asStateFlow()
+
+    /** Outlives any single streamer: the watch is re-established on every open. */
+    private val engineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private var watchJob: Job? = null
 
     /** The console previews this once the camera is open. */
     private val _videoSource = MutableStateFlow<IWithVideoSource?>(null)
@@ -92,6 +150,13 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
             hasAudio = withAudio
             streamer = streamerToUse
             _videoSource.value = streamerToUse
+            watchJob?.cancel()
+            watchJob = engineScope.watchOutgoingStream(
+                throwableFlow = streamerToUse.throwableFlow,
+                isStreamingFlow = streamerToUse.isStreamingFlow,
+                isLive = { _state.value == BroadcastState.LIVE || _state.value == BroadcastState.CONNECTING },
+                onLost = ::onStreamLost,
+            )
             streamerToUse
         }.onFailure { failure ->
             Log.e(TAG, "camera open failed", failure)
@@ -116,6 +181,8 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
         _videoSource.value = null
         hasAudio = false
         _state.value = BroadcastState.IDLE
+        watchJob?.cancel()
+        watchJob = null
         runCatching {
             current.stopStream()
             current.close()
@@ -147,6 +214,10 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     override suspend fun start(request: BroadcastRequest): BroadcastResult {
         val url = request.connectionName?.takeIf { it.isNotBlank() }
             ?: return BroadcastResult.Rejected(BroadcastFailure.NoActiveConnection)
+
+        // A new attempt clears whatever ended the last one, so the console never
+        // shows a stale reason over a running stream.
+        _failure.value = null
 
         val opened = openCamera().getOrElse {
             return BroadcastResult.Rejected(
@@ -185,20 +256,37 @@ class StreamPackBroadcastEngine(private val context: Context) : BroadcastEngine 
     override suspend fun stop() {
         val current = streamerLock.withLock { streamer } ?: return
         if (_state.value == BroadcastState.IDLE) return
+        // Leave LIVE before asking the streamer to stop: the watch treats a flip
+        // to not-streaming as a lost link unless the state already says we asked.
+        _state.value = BroadcastState.IDLE
+        _failure.value = null
         runCatching {
             current.stopStream()
             current.close()
         }.onFailure { Log.e(TAG, "stop failed", it) }
-        _state.value = BroadcastState.IDLE
         _statistics.value = _statistics.value.copy(currentBitrateKbps = 0, uptimeSeconds = 0, droppedFrames = 0)
     }
 
     override fun release() {
+        watchJob?.cancel()
+        watchJob = null
+        engineScope.cancel()
         val current = streamer ?: return
         streamer = null
         _videoSource.value = null
         _state.value = BroadcastState.IDLE
         current.releaseBlocking()
+    }
+
+    /**
+     * The outgoing stream ended without the app asking. Records why and leaves
+     * LIVE, so the console stops claiming to be broadcasting.
+     */
+    private fun onStreamLost(failure: BroadcastFailure) {
+        Log.e(TAG, "outgoing stream lost: $failure")
+        _failure.value = failure
+        _state.value = BroadcastState.ERROR
+        _statistics.value = _statistics.value.copy(currentBitrateKbps = 0)
     }
 
     private fun videoConfig() = VideoCodecConfig(
