@@ -178,6 +178,11 @@ class StreamPackBroadcastEngine internal constructor(
      * Outlives any single streamer: the watch is re-established on every open.
      * Tests hand in a scope with virtual time so the reconnect backoff does not
      * cost real seconds.
+     *
+     * `release()` cancels this, and the engine is finished afterwards - the
+     * watch, the metrics and every reconnect are dead. Give it a scope of its
+     * own; passing a `viewModelScope` here would take the ViewModel down with
+     * the engine.
      */
     private val engineScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default),
 ) : BroadcastEngine {
@@ -351,7 +356,7 @@ class StreamPackBroadcastEngine internal constructor(
             current.stopStream()
             current.close()
             current.release()
-        }.onFailure { Log.e(TAG, "camera release failed", it) }
+        }.onFailure { Log.e(TAG, "camera release failed: ${safeMessage(it)}") }
     }
 
     /**
@@ -379,6 +384,13 @@ class StreamPackBroadcastEngine internal constructor(
         // A new attempt clears whatever ended the last one, so the console never
         // shows a stale reason over a running stream.
         _failure.value = null
+
+        // And whatever the last one was sending to. The watch treats CONNECTING
+        // as live, so a start that throws would otherwise hand the old URL to
+        // the reconnect and republish to a destination the user just left.
+        reconnectJob?.cancel()
+        reconnectJob = null
+        activeUrl = null
 
         openCamera().onFailure { failure ->
             return BroadcastResult.Rejected(
@@ -439,7 +451,7 @@ class StreamPackBroadcastEngine internal constructor(
         runCatching {
             current.stopStream()
             current.close()
-        }.onFailure { Log.e(TAG, "stop failed", it) }
+        }.onFailure { Log.e(TAG, "stop failed: ${safeMessage(it)}") }
         _statistics.value = _statistics.value.copy(
             currentBitrateKbps = 0,
             uptimeSeconds = 0,
@@ -507,6 +519,9 @@ class StreamPackBroadcastEngine internal constructor(
                 _failure.value = failure
                 _state.value = BroadcastState.ERROR
                 _statistics.value = _statistics.value.copy(reconnectAttempt = 0)
+                // Given up on: leaving it set would let a later failed start
+                // reconnect to it instead of reporting.
+                activeUrl = null
             }
         }
     }
@@ -514,9 +529,11 @@ class StreamPackBroadcastEngine internal constructor(
     /**
      * One reconnect attempt.
      *
-     * The streamer has to be closed before it can publish again, and the camera
-     * may have been taken away while the link was down, so this reopens rather
-     * than assuming the old session is still usable.
+     * The streamer has to be closed before it can publish again. The capture
+     * session itself is kept: in StreamPack 3.2.0 `close()` clears the endpoint
+     * and `startStream(url)` opens a new one, re-registering the tracks, so only
+     * `release()` is one-way. Rebuilding the session here would take the camera
+     * down and back up on every blip.
      */
     private suspend fun attemptReconnect(url: String): Boolean {
         val current = streamerLock.withLock { streamer } ?: return false
