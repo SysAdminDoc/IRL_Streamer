@@ -13,6 +13,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- A destination URL ending in a slash no longer shows its stream key in full,
+  and a key quoted inside a connection error no longer reaches the screen or the
+  log. Passwords embedded in a URL are hidden the same way.
+- A stream that drops again in the moment a reconnect succeeds is now noticed
+  rather than ignored.
 - Broadcast statistics are measured instead of invented. Uptime, bytes sent,
   dropped packets and the current bitrate come from the outgoing stream, and the
   Network tab shows the real rate while a broadcast is running.
