@@ -8,7 +8,7 @@ The captured target comprises 145 visual states, 119 logical screen names, 15 pr
 
 ## Product identity and authorization decisions
 
-- Repository: `C:\Users\--\repos\IRL_Streamer`
+- Repository: `C:\repos\IRL_Streamer`
 - Android project: `replica-app`
 - Display name: `IRL Streamer`
 - Original package (evidence only): `app.irlpro.android`
